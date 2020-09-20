@@ -1,2 +1,0 @@
-Non-Negative Matrix Factorization
-=================================
