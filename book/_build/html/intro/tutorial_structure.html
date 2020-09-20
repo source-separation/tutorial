@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial Structure and Setup &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="What is Source Separation?" href="src_sep_101.html" />
+    <link rel="prev" title="Welcome!" href="../landing.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tutorial Structure and Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="src_sep_101.html">
+   What is Source Separation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="motivation.html">
+   Motivating Source Separation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="examples.html">
+   Examples
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basics of Source Separation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/representations.html">
+   Representing Audio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/tf_and_masking.html">
+   TF Representations and Masking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/phase.html">
+   Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/eval.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classic Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/intro.html">
+   Introduction to Classic Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/repet.html">
+   Repetition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/nmf.html">
+   Non-Negative Matrix Factorization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/spatial.html">
+   Spatial Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/melodia.html">
+   Melodia
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deep Learning Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/intro.html">
+   Introduction to Deep Learning-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/masking.html">
+   Deep Learning - Masking-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/waveform.html">
+   Deep Learning - Waveform-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/open_src_projects.html">
+   Guide to Open-Source Source Separation Projects
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Conclusions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/applications.html">
+   Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/concluding_remarks.html">
+   Concluding Remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/additional_resources.html">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/refs.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/acknowledgements.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/authors.html">
+   About the Authors
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/intro/tutorial_structure.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-this-tutorial-is-structured">
+   How this Tutorial is Structured
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-your-environment">
+   Setting Up Your Environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-locally-vs-on-the-cloud">
+     Running Locally vs. On the Cloud
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#found-a-bug">
+   Found a bug?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-and-comments">
+   Questions and Comments
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="tutorial-structure-and-setup">
+<h1>Tutorial Structure and Setup<a class="headerlink" href="#tutorial-structure-and-setup" title="Permalink to this headline">¶</a></h1>
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Video not working?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">If you are having access issues, here is a OneDrive mirror to the full video.
+<a href=""></a></p>
+<p class="card-text">Alternatively the text on this page covers the same material as the video.</p>
+</div>
+</details><p>This tutorial will mostly be asynchronous and self-guided. All of the material
+needed to go through this tutorial is here on this website.</p>
+<p>We will have a set of synchronous Zoom “office hours” after particular sections where we
+will be available to answer questions about that section.</p>
+<p>You are free to do this tutorial on your own time, if you choose.
+This website and materials will be available after the allotted tutorial time.</p>
+<div class="section" id="how-this-tutorial-is-structured">
+<h2>How this Tutorial is Structured<a class="headerlink" href="#how-this-tutorial-is-structured" title="Permalink to this headline">¶</a></h2>
+<p>There are many videos throughout the tutorial that will guide you through the main
+concepts. The content of the videos will mirror the text that surrounds them,
+therefore you can either:</p>
+<p align="center"><b>
+Watch the videos
+</b></p>
+<p align="center"><b>
+OR
+</b></p>
+<p align="center"><b>
+Read the text.
+</b></p>
+<p>Both will give you the same information overall, although the text might go into
+more detail on certain subjects and will provide references for further reading.
+We will mark the sections in the text that you can practically skip, but we
+hope this document can act as a reference point if you decide come back at a
+later time. If for some reason you are unable to load the YouTube videos, we have
+provided OneDrive links to the videos on the page for each section.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/search_bar.png"><img alt="The search bar is on the top left corner of this webpage." src="../_images/search_bar.png" style="width: 200px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The text is all searchable using the search function on the top
+left side of this webpage.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>On the left-hand side of this web page you’ll see the table of contents for the
+entire tutorial. If you don’t see the contents, click the hamburger (☰) icon
+to expand the left-hand column. On the right-hand side of the page you’ll see
+the table of contents for this particular page. To navigate to the next section
+you can either click on the next section on the tutorial’s table of contents on
+the left-hand side, or you can scroll to the bottom of the page to click the
+button on the bottom right to go to the next section.</p>
+</div>
+<div class="section" id="setting-up-your-environment">
+<h2>Setting Up Your Environment<a class="headerlink" href="#setting-up-your-environment" title="Permalink to this headline">¶</a></h2>
+<p>All of the material presented here is written in the <code class="docutils literal notranslate"><span class="pre">python3</span></code> programming language.
+It is presented in <a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a>,
+which allows us to interweave the lecture material with the code interactively.
+The notebooks we have provided should be ready to go to run all of the
+code and experiments without any further setup.</p>
+<p>We have also included <a class="reference external" href="https://github.com/source-separation/ismir2020-tutorial">github repo</a>
+and <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> to set up your own environment
+so that you can use these tools after the tutorial is run.</p>
+<div class="section" id="running-locally-vs-on-the-cloud">
+<h3>Running Locally vs. On the Cloud<a class="headerlink" href="#running-locally-vs-on-the-cloud" title="Permalink to this headline">¶</a></h3>
+<p>If possible, we recommend running the notebooks on the cloud. We have designed the
+tutorial such that we limit the need for heavy computational resources</p>
+</div>
+</div>
+<div class="section" id="found-a-bug">
+<h2>Found a bug?<a class="headerlink" href="#found-a-bug" title="Permalink to this headline">¶</a></h2>
+<p>Please <a class="reference external" href="https://github.com/source-separation/ismir2020-tutorial/issues">open an issue here</a>.</p>
+</div>
+<div class="section" id="questions-and-comments">
+<h2>Questions and Comments<a class="headerlink" href="#questions-and-comments" title="Permalink to this headline">¶</a></h2>
+<p>If you have questions and comments, please direct them to …</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "source-separation/ismir2020-tutorial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../landing.html" title="previous page">Welcome!</a>
+    <a class='right-next' id="next-link" href="src_sep_101.html" title="next page">What is Source Separation?</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ethan Manilow, Prem Seetharaman, Justin Salamon<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

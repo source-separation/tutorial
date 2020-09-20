@@ -1,0 +1,57 @@
+- file: landing
+
+- part: Introduction
+  chapters:
+    - file: intro/tutorial_structure
+    - file: intro/src_sep_101
+    - file: intro/motivation
+    - file: intro/examples
+
+- part: Basics of Source Separation
+  chapters:
+    - file: basics/representations
+    - file: basics/tf_and_masking
+    - file: basics/phase
+#    - file: basics/ideal_masks
+    - file: basics/eval
+
+- part: Classic Approaches
+  chapters:
+    - file: approaches/classic/intro
+    - file: approaches/classic/repet
+    - file: approaches/classic/nmf
+    - file: approaches/classic/spatial
+    - file: approaches/classic/melodia
+
+- part: Deep Learning Approaches
+  chapters:
+    - file: approaches/deep/intro
+    - file: approaches/deep/masking
+      sections:
+        - file: approaches/deep/mask_inf
+        - file: approaches/deep/unet
+        - file: approaches/deep/deep_clustering
+        - file: approaches/deep/chimera
+    - file: approaches/deep/waveform
+      sections:
+        - file: approaches/deep/wave_u_net
+        - file: approaches/deep/tasnet
+        - file: approaches/deep/dprnn
+    - file: approaches/open_src_projects
+
+
+- part: Conclusions
+  chapters:
+    - file: conclusions/applications
+    - file: conclusions/concluding_remarks
+    - file: conclusions/additional_resources
+
+
+
+
+- part: Appendix
+  chapters:
+    - file: appendix/glossary
+    - file: appendix/refs
+    - file: appendix/acknowledgements
+    - file: appendix/authors

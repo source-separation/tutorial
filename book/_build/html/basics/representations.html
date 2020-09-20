@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Representing Audio &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TF Representations and Masking" href="tf_and_masking.html" />
+    <link rel="prev" title="Examples" href="../intro/examples.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/tutorial_structure.html">
+   Tutorial Structure and Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/src_sep_101.html">
+   What is Source Separation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/motivation.html">
+   Motivating Source Separation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/examples.html">
+   Examples
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basics of Source Separation
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Representing Audio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tf_and_masking.html">
+   TF Representations and Masking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="phase.html">
+   Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="eval.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classic Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/intro.html">
+   Introduction to Classic Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/repet.html">
+   Repetition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/nmf.html">
+   Non-Negative Matrix Factorization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/spatial.html">
+   Spatial Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/melodia.html">
+   Melodia
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deep Learning Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/intro.html">
+   Introduction to Deep Learning-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/masking.html">
+   Deep Learning - Masking-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/waveform.html">
+   Deep Learning - Waveform-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/open_src_projects.html">
+   Guide to Open-Source Source Separation Projects
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Conclusions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/applications.html">
+   Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/concluding_remarks.html">
+   Concluding Remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/additional_resources.html">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/refs.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/acknowledgements.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/authors.html">
+   About the Authors
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/basics/representations.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/basics/representations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/source-separation/ismir2020-tutorial/master?urlpath=tree/book/basics/representations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#waveforms">
+   Waveforms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#desirable-properties-of-representations">
+   Desirable Properties of Representations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-representations">
+   Input Representations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-frequency-tf-representations">
+     Time-Frequency (TF) Representations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#short-time-fourier-transform-stft">
+       Short-time Fourier Transform (STFT)
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#window-types">
+         Window Types
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#window-length">
+         Window Length
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#hop-length">
+         Hop Length
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#other-considerations">
+         Other Considerations
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#magnitude-spectrograms">
+       Magnitude Spectrograms
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#power-spectrograms">
+       Power Spectrograms
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#log-spectrograms">
+       Log Spectrograms
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mel-spaced-spectrograms">
+       Mel-spaced Spectrograms
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#log-mel-spaced-spectrograms">
+       Log Mel-spaced Spectrograms
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-representations">
+     Other Representations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#output-representations">
+   Output Representations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#which-is-better-inputting-a-waveform-or-a-time-frequency-representation">
+   Which is Better? Inputting a Waveform or a Time-Frequency Representation?
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="representing-audio">
+<h1>Representing Audio<a class="headerlink" href="#representing-audio" title="Permalink to this headline">¶</a></h1>
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Video not working?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">If you are having access issues, here is a OneDrive mirror to the full video.
+<a href=""></a></p>
+<p class="card-text">Alternatively the text on this page covers the same material as the video.</p>
+</div>
+</details><div class="cell tag_hide-output tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inputs for this notebook</span>
+<span class="kn">import</span> <span class="nn">nussl</span>
+<span class="kn">import</span> <span class="nn">librosa</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a5af965fda1b</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Inputs for this notebook</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">nussl</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">librosa</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;nussl&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first thing we want to examine are the input and output representations of a source
+separation system and how the inputs and outputs are represented. In its most
+unprocessed form, we assume that audio is stored as a waveform. Some source
+separation approaches operate on the waveform directly, although many require
+some preprocessing before separating sources. In this section, we will discuss
+the different types of input and output representations that are commonly used
+in source separation approaches.</p>
+<p>Many of the details of this section can be found other places. We
+encourage the curious to follow the resources on this page to learn more.</p>
+<p>Some great resources for further reading:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://musicinformationretrieval.com/">Music Information Retrieval</a> website</p></li>
+<li><p><a class="reference external" href="https://interactiveaudiolab.github.io/teaching/eecs352.html">Prof. Bryan Pardo’s class on Machine Perception of Music</a></p></li>
+<li><p><a class="reference external" href="https://www.audiocontentanalysis.org/">Prof. Alexander Lerch’s Audio Content Analysis</a> website</p></li>
+</ul>
+<div class="section" id="waveforms">
+<h2>Waveforms<a class="headerlink" href="#waveforms" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="waveform-gif">
+<img alt="Waveform shown at many different time scales from a few seconds to a few samples." src="../_images/richter.gif" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">A waveform shown at many different time scales. Each value is sampled at a uniform
+rate and quantized. Image used courtesy of Jan Van Balen (<a href="https://jvbalen.github.io/notes/waveform.html">source</a>).</span><a class="headerlink" href="#waveform-gif" title="Permalink to this image">¶</a></p>
+</div>
+<p>A <em>waveform</em> is shorthand for a digitized audio signal, which is most similar to
+what the sound is like physically. For an acoustic sound, the air pressure of
+over time changes, and is
+recorded by a microphone, which converts the changes in air pressure to an electrical
+signal. The voltage of this signal is sampled at a regular time interval,
+quantized, and converted to a digital array in a computer. This digital array is
+what we call the waveform. Of course, this description glosses over a lot of
+details in the realm of physics, acoustics, and signal processing. What’s
+important to know is that a continuous-time signal is discretized in both time
+and amplitude. We say a signal is <a class="reference internal" href="../appendix/glossary.html#term-Monophonic"><span class="xref std std-term">monophonic</span></a>, or <a class="reference internal" href="../appendix/glossary.html#term-Mono"><span class="xref std std-term">mono</span></a>, if there
+is only one audio channel, i.e., this array has shape <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{t \times 1}\)</span>.
+We say a signal is <a class="reference internal" href="../appendix/glossary.html#term-Stereophonic"><span class="xref std std-term">stereophonic</span></a>, or <a class="reference internal" href="../appendix/glossary.html#term-Stereo"><span class="xref std std-term">stereo</span></a>, if the array has two
+channels, i.e., this array has shape <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{t \times 2}\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Audio signals with more than 2 channels have many applications (e.g.
+5.1 surround sound), including applications for in separating sources.
+Approaches that input many audio channels for separation are typically refered
+to under the title of <em>beamforming</em> approaches. Beamforming is a related, but
+separate area of active research. As such, the work we are going to cover in
+this space is sometimes called <em>Single Channel Source Separation</em>.</p>
+</div>
+<p>An important aspect of the waveform is the <a class="reference internal" href="../appendix/glossary.html#term-Sample-Rate"><span class="xref std std-term">sample rate</span></a>, which describes how
+many measurements, or <a class="reference internal" href="../appendix/glossary.html#term-Sample"><span class="xref std std-term">sample</span></a>s, happen per second and is measured in Hertz, or
+Hz<a class="footnote-reference brackets" href="#fn2" id="id1">1</a>. For a signal with sample rate <span class="math notranslate nohighlight">\(sr\)</span>, the maximum frequency that can be
+reliably represented is <span class="math notranslate nohighlight">\(f_N=\frac{sr}{2}\)</span>, which is called the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem">Nyquist frequency</a>.
+For example, if a signal has a sample rate of 44.1 kHz, the highest
+possible frequency is 22.05 kHz.</p>
+<p>Many deep learning-based source separation approaches will reduce the sample
+rate of their input signals (called <span class="xref std std-term">downsampling</span>) to reduce the
+computational load during training time. Downsampling removes high frequency
+information from a signal, which is seen as a necessary evil to increase the
+overall performance of an approach. Most of the frequencies above 10 kHz are
+only harmonics or partials; while these are certainly important for perception,
+researchers have found that ensuring the lower frequencies sound better
+[WHAT DO I WANT TO SAY HERE????]</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All of the source separation approaches we will discuss assume that the sample
+rate between the training, validation, and testing data is the same. The
+assumptions that ensure the approaches work are violated if the sample rate is
+variable. For example, if a system expects a signal at 16 kHz, then
+all input audio should be resampled to 16 kHz before using it.</p>
+</div>
+</div>
+<div class="section" id="desirable-properties-of-representations">
+<h2>Desirable Properties of Representations<a class="headerlink" href="#desirable-properties-of-representations" title="Permalink to this headline">¶</a></h2>
+<p>It can be argued that a source separation approach is only as good as its ability
+to represent audio in a separable manner. With that in mind, it’s important
+to understand how audio itself is represented for the purposes of source separation.
+For the source separation approaches we will explore here, we will see many
+variations on the same theme, namely:</p>
+<ol class="simple">
+<li><p>Convert the audio to a representation easy to separate</p></li>
+<li><p>Separate the audio by manipulating this representation</p></li>
+<li><p>Convert the audio back from the manipulated representation to get isolated sources.</p></li>
+</ol>
+<p>Almost every source separation approach we discuss here–classic and deep–can
+be broken down into these three steps. We want to note that each of these three
+steps might in fact involve multiple separate substeps.
+(The astute reader may notice some similarities between this framing and
+<a class="reference external" href="https://en.wikipedia.org/wiki/Support_vector_machine">Support Vector Machines</a>.)</p>
+<p>Therefore an important aspect of an audio representation is <span class="xref std std-term">invertability</span>, or
+whether a signal that is converted from a waveform to a new representation can
+reliably be converted back to a waveform with little-to-no error. Artifacts that
+arise from converting back and forth will be audible in our separation output, so
+we want to minimize these types of errors (although eliminating them does not
+guarantee a perfect separation).</p>
+<p>An other important aspect is whether this representation can keep data from
+one source apart from another source.</p>
+<p>[[FATEMEH’S EXAMPLES]]</p>
+<p>Some recent source separations approaches use deep learning to learn a representation
+directly from the waveform, while others use preprocessing tools that are common
+in the audio signal processing and music information retrieval literature as a first
+step.</p>
+</div>
+<div class="section" id="input-representations">
+<h2>Input Representations<a class="headerlink" href="#input-representations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="time-frequency-tf-representations">
+<h3>Time-Frequency (TF) Representations<a class="headerlink" href="#time-frequency-tf-representations" title="Permalink to this headline">¶</a></h3>
+<p>[[IMAGE]]</p>
+<p>A Time-Frequency <a class="bibtex reference internal" href="../appendix/refs.html#smith2011spectral" id="id2">[SI11]</a> representation is a 2 dimensional
+matrix that represents the frequency contents of an audio signal over time.
+There are many types of time-frequency representations out in the world, but we
+will only discuss those that are most frequently used for source separation here.</p>
+<p>We call a specific entry in this matrix a <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>. We can visualize a
+<span class="xref std std-term">TF-Representation</span> using a heatmap, which has time along the x-axis and
+frequency along the y-axis. Each TF bin in the heatmap represents the amplitude
+of the signal at that particular time and frequency. Some heatmaps have a colorbar
+alongside them that shows which colors indicate high amplitude values and which
+colors indicate low amplitude values. If there is no color bar, it is usually
+safe to assume that brighter colors indicate higher amplitudes than darker colors.</p>
+<p>Time-frequency representations are the most common types of representations used
+in source separation approaches. Below we will outline some of the most popular
+and fundamental time-frequency representations.</p>
+<div class="section" id="short-time-fourier-transform-stft">
+<h4>Short-time Fourier Transform (STFT)<a class="headerlink" href="#short-time-fourier-transform-stft" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-default" id="stft-process">
+<img alt="Diagram depicting how a short-time Fourier transform is computed." src="../_images/stft_process.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The process of computing a short-time Fourier transform of a waveform. Imaged used
+courtesy of Bryan Pardo.</span><a class="headerlink" href="#stft-process" title="Permalink to this image">¶</a></p>
+</div>
+<p>Many of the time-frequency representations that we will see in this tutorial
+start out as a Short-time Fourier Transform or STFT. An STFT is calculated
+from a waveform representation by computing a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">discrete Fourier transform</a>
+(DFT) of a small, moving window<a class="footnote-reference brackets" href="#fn1" id="id3">2</a> across the duration of the window. The location
+of each entry in an STFT determines its time (x-axis) and frequency (y-axis). The
+absolute value of a TF bin <span class="math notranslate nohighlight">\(|X(t, f)|\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> and frequency <span class="math notranslate nohighlight">\(f\)</span> determines the
+amount of energy heard from frequency <span class="math notranslate nohighlight">\(f\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Importantly, each bin in our STFT is <em>complex</em>, meaning each entry contains both
+a magnitude component and a phase component. Both components are needed to convert
+an STFT matrix back to a waveform so that we may hear it.</p>
+<p>Here are some important parameters to consider when computing an STFT:</p>
+<div class="section" id="window-types">
+<h5>Window Types<a class="headerlink" href="#window-types" title="Permalink to this headline">¶</a></h5>
+<p>[IMAGE]</p>
+<p>The window type determines the shape of the short-time window that will segment
+the audio into short segments before applying the DFT. The shape of this window
+can will affect which frequencies get emphasized or attenuated in the DFT.</p>
+<p>We recommend you use []</p>
+</div>
+<div class="section" id="window-length">
+<h5>Window Length<a class="headerlink" href="#window-length" title="Permalink to this headline">¶</a></h5>
+<p>[IMAGE]</p>
+<p>The window length determines how many samples are included in each short-time
+window. Due to how the DFT is computed, this parameter also determines the
+resolution of the frequency axis of the STFT. The longer the window, the higher
+the frequency resolution and vice versa.</p>
+</div>
+<div class="section" id="hop-length">
+<h5>Hop Length<a class="headerlink" href="#hop-length" title="Permalink to this headline">¶</a></h5>
+<p>The hop length determines the distance, in samples, between any two adjacent
+short-time windows.</p>
+</div>
+<div class="section" id="other-considerations">
+<h5>Other Considerations<a class="headerlink" href="#other-considerations" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Overlap add</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="magnitude-spectrograms">
+<h4>Magnitude Spectrograms<a class="headerlink" href="#magnitude-spectrograms" title="Permalink to this headline">¶</a></h4>
+<p>[IMAGE]</p>
+<p>As we will touch on later in this tutorial, it is hard to model the
+phase of a signal. Therefore most source separation approaches only operate on
+the some variant of the spectrogram that does not explicitly represent phase in
+each <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>. The first of these variants we’ll look at is the Magnitude
+Spectrogram.</p>
+<p>For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Magnitude
+Spectrogram is calculated by taking the absolute value of each element in the
+STFT, <span class="math notranslate nohighlight">\(|X| \in \mathbb{R}^{T \times F}\)</span>.</p>
+<p>Phase is necessary to reconstruct the signal, and we
+will discuss how it’s dealt with in a later section.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A note on terminology: while researchers might loosely interchange “STFT” and
+“spectrogram”, the term “spectrogram” is mostly used to describe a TF Representation
+that does not have any explicit phase representation. As such “spectrogram” might
+refer to a Magnitude Spectrogram, Power Spectrogram, Log Spectrogram, Mel Spectrogram,
+Log Mel Spectrogram, or similar. Use context clues to determine which representation
+is being discussed when possible.</p>
+</div>
+</div>
+<div class="section" id="power-spectrograms">
+<h4>Power Spectrograms<a class="headerlink" href="#power-spectrograms" title="Permalink to this headline">¶</a></h4>
+<p>[IMAGE]</p>
+<p>Similar to the Magnitude Spectrogram, the Power Spectrogram only contains information
+about the amplitude of a signal.</p>
+<p>For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Power
+Spectrogram is calculated by squaring  each element in the
+STFT, <span class="math notranslate nohighlight">\(|X|^2 \in \mathbb{R}^{T \times F}\)</span>.</p>
+</div>
+<div class="section" id="log-spectrograms">
+<h4>Log Spectrograms<a class="headerlink" href="#log-spectrograms" title="Permalink to this headline">¶</a></h4>
+<p>[IMAGE]</p>
+<p>Human hearing is logarithmic with regards to amplitude. To compute a log spectrogram,</p>
+</div>
+<div class="section" id="mel-spaced-spectrograms">
+<h4>Mel-spaced Spectrograms<a class="headerlink" href="#mel-spaced-spectrograms" title="Permalink to this headline">¶</a></h4>
+<p>[IMAGE]</p>
+<p>Human hearing is also logarithmic with regards to frequencies. The
+<a class="reference external" href="https://en.wikipedia.org/wiki/Mel_scale">Mel scale</a> approximates this property
+and is a quick way to make the frequency axis of a spectrogram
+quasi-logarithmic<a class="footnote-reference brackets" href="#fn3" id="id4">3</a>. This is also commonly used to reduce the computational
+load on deep learning-based approaches, because the number of Mel-spaced frequency
+bins is often lower then the number of linearly-spaced frequency bins.</p>
+</div>
+<div class="section" id="log-mel-spaced-spectrograms">
+<h4>Log Mel-spaced Spectrograms<a class="headerlink" href="#log-mel-spaced-spectrograms" title="Permalink to this headline">¶</a></h4>
+<p>[IMAGE]</p>
+<p>Combine Mel representations and</p>
+</div>
+</div>
+<div class="section" id="other-representations">
+<h3>Other Representations<a class="headerlink" href="#other-representations" title="Permalink to this headline">¶</a></h3>
+<p>A few other representations have been explored in the literature. We provide references
+for a few below:</p>
+<ul class="simple">
+<li><p>Constant-Q Transform (CQT)</p>
+<ul>
+<li><p>General Calculation: <a class="bibtex reference internal" href="../appendix/refs.html#brown1991calculation" id="id5">[Bro91]</a><a class="bibtex reference internal" href="../appendix/refs.html#brown1992efficient" id="id6">[BP92]</a></p></li>
+<li><p>Use in source separation: <a class="bibtex reference internal" href="../appendix/refs.html#rafii2011degenerate" id="id7">[RP11]</a><a class="bibtex reference internal" href="../appendix/refs.html#fuentes2012blind" id="id8">[FBR12]</a><a class="bibtex reference internal" href="../appendix/refs.html#jaiswal2011clustering" id="id9">[JFB+11]</a><a class="bibtex reference internal" href="../appendix/refs.html#ganseman2012improving" id="id10">[GSD12]</a><a class="bibtex reference internal" href="../appendix/refs.html#shi2019cqt" id="id11">[SLL+19]</a></p></li>
+</ul>
+</li>
+<li><p>Common Fate Transform (CFT) <a class="bibtex reference internal" href="../appendix/refs.html#stoter2016common" id="id12">[StoterLB+16]</a></p></li>
+<li><p>Multi-resolution Common Fate Transform (MCFT) <a class="bibtex reference internal" href="../appendix/refs.html#pishdadian2018multi" id="id13">[PP18]</a></p></li>
+<li><p>2-Dimensional Fourier Transform (2DFT) <a class="bibtex reference internal" href="../appendix/refs.html#seetharaman2017music" id="id14">[SPP17]</a></p></li>
+<li><p>Gabor Transform</p></li>
+<li><p>Per Channel Energy Normalization (PCEN) <a class="bibtex reference internal" href="../appendix/refs.html#lostanlen2018per" id="id15">[LSC+18]</a></p></li>
+<li><p>Wavelets?</p></li>
+<li><p>KAM</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="output-representations">
+<h2>Output Representations<a class="headerlink" href="#output-representations" title="Permalink to this headline">¶</a></h2>
+<p>Ultimately, all source separation algorithms must be able to convert the audio
+that they processed back to a waveform. While some algorithms output waveforms
+directly, many algorithms output masks, which will be covered in more detail in
+the next sections. The masks get applied to the original mixture spectrogram,
+and that result is converted back to a waveform.</p>
+<p>One thing to note is that if I have a waveform estimate for Source <span class="math notranslate nohighlight">\(i\)</span> from my
+mixture, then it is easy to calculate what the mixture sounds like <em>without</em>
+Source <span class="math notranslate nohighlight">\(i\)</span> present. Simply element-wise subtract the source waveform from the
+mixture waveform.</p>
+</div>
+<div class="section" id="which-is-better-inputting-a-waveform-or-a-time-frequency-representation">
+<h2>Which is Better? Inputting a Waveform or a Time-Frequency Representation?<a class="headerlink" href="#which-is-better-inputting-a-waveform-or-a-time-frequency-representation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The details of this answer will be covered later in this tutorial. Feel free to
+come back to this question after you have read the first two sections.</p>
+</div>
+<p>It depends! Very few non-deep learning source separation approaches operate directly
+on waveforms, and there are a growing number</p>
+<p>The scientific work on evaluating source separation approaches
+is happening with regards to mixtures of speech signals, this does give us some
+indication of how</p>
+<p id="bibtex-bibliography-basics/representations-0"></p>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="fn2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Named after <a href="https://en.wikipedia.org/wiki/Heinrich_Hertz">Heinrich Hertz</a>,
+who proved the existence of electromagnetic waves.</p>
+</dd>
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p>This window is where the term “Short-time” comes from in the name
+“Short-time Fourier Transform”.</p>
+</dd>
+<dt class="label" id="fn3"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">librosa</span></code>, arguably the most commonly used python library for
+MIR work, has two ways to convert from Hz to Mel, which are slightly
+different: <a href="https://librosa.org/doc/latest/_modules/librosa/core/convert.html#hz_to_mel">see here.</a></p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "source-separation/ismir2020-tutorial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../intro/examples.html" title="previous page">Examples</a>
+    <a class='right-next' id="next-link" href="tf_and_masking.html" title="next page">TF Representations and Masking</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ethan Manilow, Prem Seetharaman, Justin Salamon<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

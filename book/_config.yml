@@ -1,0 +1,22 @@
+# Book settings
+title: Open-Source Tools & Data for Music Source Separation
+author: Ethan Manilow, Prem Seetharaman, Justin Salamon
+#logo: logo.png
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+repository:
+  url          : https://github.com/source-separation/ismir2020-tutorial
+  path_to_book : book
+  branch       : master
+
+launch_buttons:
+  notebook_interface: "classic"
+  colab_url: "https://colab.research.google.com"
+  thebe: true
+  binderhub_url: "https://mybinder.org"
+
+execute:
+  execute_notebooks: auto

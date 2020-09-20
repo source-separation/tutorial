@@ -1,0 +1,6 @@
+jupyter-book
+matplotlib
+numpy
+librosa
+nussl
+scaper
