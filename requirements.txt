@@ -5,5 +5,5 @@ librosa
 soxbindings
 nussl
 scaper
-bokeh
-ipywidgets
+# bokeh
+# ipywidgets
