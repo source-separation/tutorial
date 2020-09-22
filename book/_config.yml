@@ -10,7 +10,7 @@ latex:
 repository:
   url          : https://github.com/source-separation/tutorial
   path_to_book : book
-  branch       : master
+  branch       : gh-pages
 
 launch_buttons:
   notebook_interface: "classic"
