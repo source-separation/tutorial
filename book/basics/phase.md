@@ -29,8 +29,14 @@ other:
   more: true
 tags: [hide-output, hide-input]
 ---
-# Inputs for this notebook
+# Imports for this notebook
+
+from ipywidgets import interact
 import numpy as np
+
+from bokeh.io import push_notebook, show, output_notebook
+from bokeh.plotting import figure
+output_notebook()
 
 ```
 
@@ -111,15 +117,37 @@ other:
   more: true
 ---
 
-time = np.linspace(0.0, 1.0, 11)
+time = np.linspace(0.0, 0.05, 2000)
 f1 = 440.0   # A440
 f2 = 523.25  # C above A440
 sin1 = np.sin(2 * np.pi * f1 * time)
-sin2 = np.sin(2 * np.pi * f2 * time)
 
-for i, t in enumerate(time):
-    print(f'sin1({t:.1f}) = {sin1[i]:+.3f},\tsin2({t:.1f}) = {sin2[i]:+.3f}')
+offset = 3
+sin2 = np.sin(2 * np.pi * f2 * time) + offset
 
+# for i, t in enumerate(time):
+#     print(f'sin1({t:.1f}) = {sin1[i]:+.3f},\tsin2({t:.1f}) = {sin2[i]:+.3f}')
+
+p = figure(title="Phase Example", plot_height=400, plot_width=700, y_range=(-1.5, 4.5),
+           background_fill_color='#efefef')
+r1 = p.line(time, sin1, color="#8888cc", line_width=1.5, alpha=0.8)
+r2 = p.line(time, sin2, color="#cc88cc", line_width=1.5, alpha=0.8)
+
+def update(f2_=523.25, phi_=0.0):
+    sin2_ = np.sin(2 * np.pi * f2_ * time + phi_) + offset
+    r2.data_source.data['y'] = sin2_
+    push_notebook()
+
+show(p, notebook_handle=True)
+
+```
+
+```{code-cell} ipython3
+---
+other:
+  more: true
+---
+interact(update, f2_=(440.0, 880.0), phi_=(0, 4 * np.pi, 0.05))
 ```
 
 
@@ -186,9 +214,9 @@ other:
 
 # TODO: Get mix stft, and mask
 
-mix_magnitude, mix_phase = np.abs(mix_stft), np.angle(mix_stft)
-src_magnitude = mix_mag * mask
-src_stft = src_magnitude * np.exp(1j * mix_phase)
+# mix_magnitude, mix_phase = np.abs(mix_stft), np.angle(mix_stft)
+# src_magnitude = mix_mag * mask
+# src_stft = src_magnitude * np.exp(1j * mix_phase)
 
 ```
 

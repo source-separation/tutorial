@@ -8,7 +8,7 @@ latex:
     targetname: book.tex
 
 repository:
-  url          : https://github.com/source-separation/ismir2020-tutorial
+  url          : https://github.com/source-separation/tutorial
   path_to_book : book
   branch       : master
 
