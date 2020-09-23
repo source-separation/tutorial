@@ -75,19 +75,23 @@ $$
 This is inherent the periodicity of the sine wave, and the point where the phase
 "wraps around" or essentially restarts at 0 every $2 \pi f$ seconds.
 
-Let's scale this up. We'll be a little hand-wavy here, but our old pal Fourier
-told us that
+Let's scale this up. Our old pal Fourier told us that
 [any sound can be represented as an infinite summation of sine waves](https://en.wikipedia.org/wiki/Fourier_transform)
-each with their own amplitudes, frequencies, and phase offsets. So now any sound
+each with their own amplitudes, frequencies, and phase offsets. This means that any sound
 we hear can be represented as many, many tuples of $(t, A, f, \phi)$.
+
 Let's think back
 to the section about time-frequency representations: each bin is index by time
-along the x-axis and frequency along the y-axis. A {term}`TF bin` is a snapshot
+along the x-axis and frequency along the y-axis.
+We'll be a little hand-wavy here, but we can think of a {term}`TF bin` as a "snapshot"
 of the sound at that particular time and at that particular frequency component.
 In a magnitude spectrogram, power spectrogram, log spectrogram, etc, each value
 represents the sound's energy for that frequency at that time. So, if you're keeping
-track at home, spectrogram has entries for $t, A$ and $f$, but no representation
-for the phase $\phi$.
+track at home, a spectrogram has entries for $t, A$ and $f$, but _no representation
+for the phase $\phi$._
+
+Phase is crucial to be able to describe and audio signal. Why don't most source separation
+approaches model phase information?
 
 ## Why We Don't Model Phase
 
@@ -153,8 +157,8 @@ other:
 
 When we take snapshots of each sine wave, it's difficult to find a pattern between
 the two (other than, y'know, the sine wave we drew them from).
-Another difficulty is that humans do not perceive phase offsets,, _i.e._,
-if one of the phases at $t /ne 0$,
+Another difficulty is that humans do not always perceive phase offsets,, _i.e._,
+a sine wave with $\phi = 0$ sounds the same as a sine wave with $\phi` \ne 0$
 
 This is all to say that getting phase right is _hard_. That being said, there are ways
 to estimate phase, but few if any source separation approaches
@@ -164,14 +168,16 @@ techniques below.
 
 ## How to Deal with Phase
 
-
+In this section, we will touch on some approaches to dealing with phase information
+in source separation.
 
 ### The Easy Way
 
-All of that being said, there is an easy and very common way to deal with phase
-for source separation: **copy it from the mixture!** This isn't perfect, but
-researchers have discovered that it works surprisingly well, and when things go
-wrong, it's usually not the fault of the phase.
+For a mask-based source separation approach, a easy and very common way to deal with phase
+is to just **copy the phase from the mixture!**
+The mixture phase is sometimes referred to as the _noisy phase_.
+This strategy isn't perfect, but researchers have discovered that it works surprisingly well, and
+when things go wrong, it's usually not the fault of the phase.
 
 So now, with this in place, we finally have our first strategy to convert our
 source estimate back to a waveform. Assume we have a mixture STFT,
@@ -204,7 +210,7 @@ $$
 \tilde{X_i} = (\hat{M}_i \odot |Y|) \odot e^{j \cdot \angle Y}.
 $$
 
-In code, this looks like:
+This math looks pretty complicated, but this is really just a few lines of code:
 
 ```{code-cell} ipython3
 ---
@@ -212,18 +218,19 @@ other:
   more: true
 ---
 
-# TODO: Get mix stft, and mask
 
-# mix_magnitude, mix_phase = np.abs(mix_stft), np.angle(mix_stft)
-# src_magnitude = mix_mag * mask
-# src_stft = src_magnitude * np.exp(1j * mix_phase)
+def apply_mask_with_noisy_phase(mix_stft, mask):
+    mix_magnitude, mix_phase = np.abs(mix_stft), np.angle(mix_stft)
+    src_magnitude = mix_mag * mask
+    src_stft = src_magnitude * np.exp(1j * mix_phase)
+    return src_stft
 
 ```
 
 
 ### The Hard Way, Part 1: Phase Estimation
 
-It is possible to estimate the phase once the estimated mask is applied to the
+It is possible to _estimate_ the phase once the estimated mask is applied to the
 mixture spectrogram. One popular way is the Griffin-Lim algorithm, which can
 iteratively reconstruct the phase component of a spectrogram by...
 

@@ -9,7 +9,7 @@ latex:
 
 repository:
   url          : https://github.com/source-separation/tutorial
-#  path_to_book : book
+  path_to_book : book
   branch       : master
 
 launch_buttons:
