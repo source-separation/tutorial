@@ -1,10 +1,13 @@
-name: example-environment
+name: tutorial-environment
 channels:
   - conda-forge
+  - pypi
+  - defaults
 dependencies:
+  - libsndfile
+  - ffmpeg
   - jupyter-book
   - jupyterlab
-  - libsndfile
   - numpy
   - matplotlib
   - librosa
