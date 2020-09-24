@@ -5,5 +5,7 @@ librosa
 soxbindings
 nussl
 scaper
+numpydoc
+pyyaml
 # bokeh
 # ipywidgets

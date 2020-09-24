@@ -8,10 +8,22 @@ tutorial about Open Source tools for Source Separation. This repo contains the
 code to build the jupyter book website where the tutorial content is hosted.
 
 
-[Click here to visit the tutorial!](https://source-separation.github.io/tutorial/)
+[Click here to visit the tutorial!](https://source-separation.github.io/
+tutorial/)
+
+## Building the book
+
+To build the book, do the following:
+
+```
+pip install -e .
+python -m common.download
+jb build --all book/
+```
 
 ## Questions? Comments? Typos? Bugs? Issues?
 
 Open a github issue [here](https://github.com/source-separation/tutorial/issues/new)
+
 
 
