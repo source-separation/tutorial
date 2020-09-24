@@ -19,4 +19,5 @@ launch_buttons:
   binderhub_url: "https://mybinder.org"
 
 execute:
+  allow_errors: true
   execute_notebooks: auto
