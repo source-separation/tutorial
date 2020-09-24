@@ -10,9 +10,9 @@
 - part: Basics of Source Separation
   chapters:
     - file: basics/representations
+    - file: basics/nussl_intro
     - file: basics/tf_and_masking
     - file: basics/phase
-#    - file: basics/ideal_masks
     - file: basics/eval
 
 - part: Classic Approaches
