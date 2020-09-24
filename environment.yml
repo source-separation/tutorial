@@ -1,0 +1,13 @@
+name: example-environment
+channels:
+  - conda-forge
+dependencies:
+  - jupyter-book
+  - jupyterlab
+  - libsndfile
+  - numpy
+  - matplotlib
+  - librosa
+  - nussl
+  - scaper
+  - soxbindings

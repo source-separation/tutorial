@@ -1,0 +1,9 @@
+# jupyter-book
+# matplotlib
+# numpy
+# librosa
+# soxbindings
+# nussl
+# scaper
+# bokeh
+# ipywidgets
