@@ -31,6 +31,10 @@ jobs:
       run: |
         conda env create -f environment.yml
 
+    - name: Activate tutorial-environment
+      run: |
+        conda activate tutorial-environment
+
     # Build the book
     - name: Build the book
       run: |
