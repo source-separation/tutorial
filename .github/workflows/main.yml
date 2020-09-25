@@ -38,6 +38,10 @@ jobs:
         pip install -e .
         pip install vamp
 
+    - name: Build the book
+      run: |
+        jupyter-book build book/
+
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
