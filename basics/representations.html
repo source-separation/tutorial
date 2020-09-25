@@ -229,8 +229,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/refs.html">
-   References
+  <a class="reference internal" href="../appendix/resources.html">
+   Additional Resources
   </a>
  </li>
  <li class="toctree-l1">
@@ -283,10 +283,7 @@
     
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/basics/representations.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/basics/representations.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -299,6 +296,22 @@
 </div>
         <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/source-separation/tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/source-separation/tutorial/issues/new?title=Issue%20on%20page%20%2Fbasics/representations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -306,26 +319,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/source-separation/tutorial/master?urlpath=tree/book/basics/representations.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
 
     </div>
 
@@ -453,16 +446,7 @@ Video not working?<div class="summary-down docutils">
 <a href=""></a></p>
 <p class="card-text">Alternatively the text on this page covers the same material as the video.</p>
 </div>
-</details><div class="cell tag_hide-output tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inputs for this notebook</span>
-<span class="kn">import</span> <span class="nn">nussl</span>
-<span class="kn">import</span> <span class="nn">librosa</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The first thing we want to examine are the input and output representations of a source
+</details><p>The first thing we want to examine are the input and output representations of a source
 separation system and how the inputs and outputs are represented. In its most
 unprocessed form, we assume that audio is stored as a waveform. Some source
 separation approaches operate on the waveform directly, although many require
@@ -471,12 +455,6 @@ the different types of input and output representations that are commonly used
 in source separation approaches.</p>
 <p>Many of the details of this section can be found other places. We
 encourage the curious to follow the resources on this page to learn more.</p>
-<p>Some great resources for further reading:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://musicinformationretrieval.com/">Music Information Retrieval</a> website</p></li>
-<li><p><a class="reference external" href="https://interactiveaudiolab.github.io/teaching/eecs352.html">Prof. Bryan Pardo’s class on Machine Perception of Music</a></p></li>
-<li><p><a class="reference external" href="https://www.audiocontentanalysis.org/">Prof. Alexander Lerch’s Audio Content Analysis</a> website</p></li>
-</ul>
 <div class="section" id="waveforms">
 <h2>Waveforms<a class="headerlink" href="#waveforms" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="waveform-gif">
@@ -725,7 +703,6 @@ on waveforms, and there are a growing number</p>
 <p>The scientific work on evaluating source separation approaches
 is happening with regards to mixtures of speech signals, this does give us some
 indication of how</p>
-<p id="bibtex-bibliography-basics/representations-0"></p>
 <hr class="docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fn2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>

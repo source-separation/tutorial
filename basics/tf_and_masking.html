@@ -229,8 +229,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/refs.html">
-   References
+  <a class="reference internal" href="../appendix/resources.html">
+   Additional Resources
   </a>
  </li>
  <li class="toctree-l1">
@@ -298,6 +298,22 @@
     
 </div>
         <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/source-separation/tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/source-separation/tutorial/issues/new?title=Issue%20on%20page%20%2Fbasics/tf_and_masking.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
 
 
         <!-- Full screen (wrap in <a> to have style consistency -->
@@ -404,7 +420,7 @@ approach must create multiple masks.</p>
 <p>Masks are most commonly used with approaches
 that process a <a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a>, however you could make the case that
 some waveform-based deep learning architectures use masking within specific parts
-of their network (for instance see these papers: <span class="bibtex" id="id1">[luo2018tasnet]</span><span class="bibtex" id="id2">[ luo2019conv]</span>).
+of their network (for instance see these papers: <span class="bibtex" id="id1">[luo2018tasnet]</span><span class="bibtex" id="id2">[luo2019conv]</span>).
 The content in this section, however, applies specifically to masking
 <a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a>s.</p>
 <p>For reasons we will fully discuss in the next section, we only apply masks to the
@@ -482,7 +498,6 @@ it to our mixture signal to get an estimated magnitude spectrogram for our sourc
 we still have the problem of turning the estimated source magnitude spectrogram
 back into audio so that we can listen to it. For that, we’ll need to understand
 phase, which we will discuss in the next section…</p>
-<p id="bibtex-bibliography-basics/tf_and_masking-0"></p>
 <hr class="docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>

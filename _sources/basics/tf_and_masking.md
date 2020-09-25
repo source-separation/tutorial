@@ -46,7 +46,7 @@ approach must create multiple masks.
 Masks are most commonly used with approaches
 that process a {term}`TF Representation`, however you could make the case that
 some waveform-based deep learning architectures use masking within specific parts
-of their network (for instance see these papers: {cite}`luo2018tasnet, luo2019conv`).
+of their network (for instance see these papers: {cite}`luo2018tasnet,luo2019conv`).
 The content in this section, however, applies specifically to masking
 {term}`TF Representation`s.
 
@@ -141,9 +141,6 @@ back into audio so that we can listen to it. For that, we'll need to understand
 phase, which we will discuss in the next section...
 
 
-
-```{bibliography} book/zreferences.bib
-```
 
 
 [^fn1]: When we mix waves together, it is possible that the result is the product of
