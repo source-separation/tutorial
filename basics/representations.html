@@ -194,6 +194,11 @@
    Guide to Open-Source Source Separation Projects
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/open_src_projects.html#architecture-specific-repositories">
+   Architecture-Specific Repositories
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -229,7 +234,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/aaa_refs.html">
+  <a class="reference internal" href="../zzz_refs.html">
    References
   </a>
  </li>
@@ -500,10 +505,7 @@ possible frequency is 22.05 kHz.</p>
 rate of their input signals (called <span class="xref std std-term">downsampling</span>) to reduce the
 computational load during training time. Downsampling removes high frequency
 information from a signal, which is seen as a necessary evil to increase the
-overall performance of an approach. Most of the frequencies above 10 kHz are
-only harmonics or partials; while these are certainly important for perception,
-researchers have found that ensuring the lower frequencies sound better
-[WHAT DO I WANT TO SAY HERE????]</p>
+overall performance of an approach.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All of the source separation approaches we will discuss assume that the sample
@@ -549,12 +551,12 @@ step.</p>
 <div class="section" id="time-frequency-tf-representations">
 <h3>Time-Frequency (TF) Representations<a class="headerlink" href="#time-frequency-tf-representations" title="Permalink to this headline">¶</a></h3>
 <p>[[IMAGE]]</p>
-<p>A Time-Frequency <span class="bibtex" id="id2">[smith2011spectral]</span> representation is a 2 dimensional
+<p>A Time-Frequency <a class="bibtex reference internal" href="../zzz_refs.html#smith2011spectral" id="id2">[SI11]</a> representation is a 2 dimensional
 matrix that represents the frequency contents of an audio signal over time.
 There are many types of time-frequency representations out in the world, but we
 will only discuss those that are most frequently used for source separation here.</p>
 <p>We call a specific entry in this matrix a <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>. We can visualize a
-<span class="xref std std-term">TF-Representation</span> using a heatmap, which has time along the x-axis and
+<a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a> using a heatmap, which has time along the x-axis and
 frequency along the y-axis. Each TF bin in the heatmap represents the amplitude
 of the signal at that particular time and frequency. Some heatmaps have a colorbar
 alongside them that shows which colors indicate high amplitude values and which
@@ -670,15 +672,15 @@ for a few below:</p>
 <ul class="simple">
 <li><p>Constant-Q Transform (CQT)</p>
 <ul>
-<li><p>General Calculation: <span class="bibtex" id="id5">[brown1991calculation]</span><span class="bibtex" id="id6">[brown1992efficient]</span></p></li>
-<li><p>Use in source separation: <span class="bibtex" id="id7">[rafii2011degenerate]</span><span class="bibtex" id="id8">[fuentes2012blind]</span><span class="bibtex" id="id9">[jaiswal2011clustering]</span><span class="bibtex" id="id10">[ganseman2012improving]</span><span class="bibtex" id="id11">[shi2019cqt]</span></p></li>
+<li><p>General Calculation: <a class="bibtex reference internal" href="../zzz_refs.html#brown1991calculation" id="id5">[Bro91]</a><a class="bibtex reference internal" href="../zzz_refs.html#brown1992efficient" id="id6">[BP92]</a></p></li>
+<li><p>Use in source separation: <a class="bibtex reference internal" href="../zzz_refs.html#rafii2011degenerate" id="id7">[RP11]</a><a class="bibtex reference internal" href="../zzz_refs.html#fuentes2012blind" id="id8">[FBR12]</a><a class="bibtex reference internal" href="../zzz_refs.html#jaiswal2011clustering" id="id9">[JFB+11]</a><a class="bibtex reference internal" href="../zzz_refs.html#ganseman2012improving" id="id10">[GSD12]</a><a class="bibtex reference internal" href="../zzz_refs.html#shi2019cqt" id="id11">[SLL+19]</a></p></li>
 </ul>
 </li>
-<li><p>Common Fate Transform (CFT) <span class="bibtex" id="id12">[stoter2016common]</span></p></li>
-<li><p>Multi-resolution Common Fate Transform (MCFT) <span class="bibtex" id="id13">[pishdadian2018multi]</span></p></li>
-<li><p>2-Dimensional Fourier Transform (2DFT) <span class="bibtex" id="id14">[seetharaman2017music]</span></p></li>
+<li><p>Common Fate Transform (CFT) <a class="bibtex reference internal" href="../zzz_refs.html#stoter2016common" id="id12">[StoterLB+16]</a></p></li>
+<li><p>Multi-resolution Common Fate Transform (MCFT) <a class="bibtex reference internal" href="../zzz_refs.html#pishdadian2018multi" id="id13">[PP18]</a></p></li>
+<li><p>2-Dimensional Fourier Transform (2DFT) <a class="bibtex reference internal" href="../zzz_refs.html#seetharaman2017music" id="id14">[SPP17]</a></p></li>
 <li><p>Gabor Transform</p></li>
-<li><p>Per Channel Energy Normalization (PCEN) <span class="bibtex" id="id15">[lostanlen2018per]</span></p></li>
+<li><p>Per Channel Energy Normalization (PCEN) <a class="bibtex reference internal" href="../zzz_refs.html#lostanlen2018per" id="id15">[LSC+18]</a></p></li>
 <li><p>Wavelets?</p></li>
 <li><p>KAM</p></li>
 </ul>
