@@ -22,7 +22,7 @@ You are free to do this tutorial on your own time, if you choose.
 This website and materials will be available after the allotted tutorial time.
 
 
-### How this Tutorial is Structured
+## How this Tutorial is Structured
 
 There are many videos throughout the tutorial that will guide you through the main 
 concepts. The content of the videos will mirror the text that surrounds them,
@@ -66,7 +66,7 @@ the left-hand side, or you can scroll to the bottom of the page to click the
 button on the bottom right to go to the next section.
 
 
-### Setting Up Your Environment
+## How to Use This Book
 
 All of the material presented here is written in the `python3` programming language.
 It is presented in [Jupyter Notebooks](https://jupyter.org/),
@@ -79,17 +79,22 @@ and `requirements.txt` to set up your own environment
 so that you can use these tools after the tutorial is run.
 
 
-#### Running Locally vs. On the Cloud
+### Running on Google Colab (Recommended)
 
-If possible, we recommend running the notebooks on the cloud. We have designed the
-tutorial such that we limit the need for heavy computational resources
+### Running on MyBinder.org
+
+### Running Locally
 
 
-### Found a bug?
+## Getting in Touch
+
+### ISMIR2020 Slack Channel
+
+## Found a bug?
 
 Please [open an issue here](https://github.com/source-separation/ismir2020-tutorial/issues).
 
-### Questions and Comments
+## Questions and Comments
 
 If you have questions and comments, please direct them to ...
 

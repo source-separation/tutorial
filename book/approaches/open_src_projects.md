@@ -12,21 +12,21 @@ If you are having access issues, here is a OneDrive mirror to the full video.
 Alternatively the text on this page covers the same material as the video.
 ```
 
-### Useful Projects
+## Useful Projects
 
 Librosa
 SoundFile
 Scaper
 
 
-### Libraries that contain multiple Approaches
+## Libraries that contain multiple Approaches
 
 Asteroid
 FASST
 
 
 
-### Architecture-Specific Repositories
+# Architecture-Specific Repositories
 
 | Name        | Weights Avail | License | Training set      | Framework     | Vocal SDR |
 |-------------|---------------|---------|-------------------|---------------|-----------|

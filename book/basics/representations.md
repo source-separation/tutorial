@@ -74,10 +74,7 @@ Many deep learning-based source separation approaches will reduce the sample
 rate of their input signals (called {term}`downsampling`) to reduce the
 computational load during training time. Downsampling removes high frequency
 information from a signal, which is seen as a necessary evil to increase the 
-overall performance of an approach. Most of the frequencies above 10 kHz are
-only harmonics or partials; while these are certainly important for perception,
-researchers have found that ensuring the lower frequencies sound better 
-[WHAT DO I WANT TO SAY HERE????]
+overall performance of an approach. 
 
 ```{note}
 All of the source separation approaches we will discuss assume that the sample
@@ -138,7 +135,7 @@ There are many types of time-frequency representations out in the world, but we
 will only discuss those that are most frequently used for source separation here.
 
 We call a specific entry in this matrix a {term}`TF bin`. We can visualize a 
-{term}`TF-Representation` using a heatmap, which has time along the x-axis and
+{term}`TF Representation` using a heatmap, which has time along the x-axis and
 frequency along the y-axis. Each TF bin in the heatmap represents the amplitude
 of the signal at that particular time and frequency. Some heatmaps have a colorbar
 alongside them that shows which colors indicate high amplitude values and which

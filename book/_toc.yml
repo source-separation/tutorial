@@ -52,7 +52,7 @@
 - part: Appendix
   chapters:
     - file: appendix/glossary
-    - file: appendix/aaa_refs
+    - file: zzz_refs
     - file: appendix/resources
     - file: appendix/acknowledgements
     - file: appendix/authors

@@ -8,31 +8,31 @@ projects that use source separation in a cool or unexpected way.
 ## End User Projects
 
 
-#### Spotify Japan's automatic karaoke machine
+### Spotify Japan's automatic karaoke machine
 [need link]
 
-#### Virtual DJ Track Separation
+### Virtual DJ Track Separation
 https://www.virtualdj.com/
 https://www.musictech.net/features/opinion-analysis/could-virtualdjs-stem-separation-change-the-field-of-djing-forever/
 
 
-#### Unmixer
+### Unmixer
 https://unmixer.ongaaccel.jp/
 
-#### FactorSynth 
+### FactorSynth 
 https://www.youtube.com/watch?v=LBkF1unRnf8 
 https://www.jjburred.com/software/factorsynth/
 
-#### iZotope RX8
+### iZotope RX8
 
-#### spleeter4max 
+### spleeter4max 
 https://github.com/diracdeltas/spleeter4max
 https://www.maxforlive.com/library/device/5956/spleeter-for-max
 
-#### Audionamix
+### Audionamix
 https://audionamix.com/
 
-#### Horde
+### Horde
 
 https://github.com/raver1975/horde
 https://www.youtube.com/watch?v=FjkpVbbDtMY
