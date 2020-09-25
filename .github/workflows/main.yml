@@ -27,13 +27,14 @@ jobs:
       with:
         python-version: 3.7
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-
 #    - name: Install dependencies
 #      run: |
-#        conda env create -f environment.yml
+#        pip install -r requirements.txt
+
+    - name: Install dependencies
+      run: |
+        conda env create -f environment.yml
+        pip install -e .
 #
 #    - name: Activate tutorial-environment
 #      run: |
@@ -45,7 +46,9 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
+        conda activate tutorial-environment
         jupyter-book build book/
+
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
