@@ -33,8 +33,8 @@ jobs:
 
     - name: Activate tutorial-environment
       run: |
-        ps -p $$
         conda init bash
+        exec bash
         conda activate tutorial-environment
 
     # Build the book
