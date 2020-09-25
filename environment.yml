@@ -5,6 +5,7 @@ channels:
 dependencies:
   - libsndfile
   - ffmpeg
+  - pip
   - pip:
     - jupyter-book
     - jupyterlab
