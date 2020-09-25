@@ -29,14 +29,18 @@ jobs:
 
     - name: Install dependencies
       run: |
-        conda env create -f environment.yml
+        pip install -r requirements.txt
 
-    - name: Activate tutorial-environment
-      run: |
-        source /home/runner/.bashrc
-        conda init bash
-        exec bash
-        conda activate tutorial-environment
+#    - name: Install dependencies
+#      run: |
+#        conda env create -f environment.yml
+#
+#    - name: Activate tutorial-environment
+#      run: |
+#        source /home/runner/.bashrc
+#        conda init bash
+#        exec bash
+#        conda activate tutorial-environment
 
     # Build the book
     - name: Build the book
