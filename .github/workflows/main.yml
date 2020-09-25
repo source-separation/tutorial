@@ -27,28 +27,16 @@ jobs:
       with:
         python-version: 3.7
 
-#    - name: Install dependencies
-#      run: |
-#        pip install -r requirements.txt
+    - name: Install binaries
+      run: |
+        sudo apt-get update && sudo apt-get install ffmpeg sox
+        python -m pip install --upgrade pip
 
     - name: Install dependencies
       run: |
-        conda env create -f environment.yml
+        pip install -r requirements.txt
         pip install -e .
-#
-#    - name: Activate tutorial-environment
-#      run: |
-#        source /home/runner/.bashrc
-#        conda init bash
-#        exec bash
-#        conda activate tutorial-environment
-
-    # Build the book
-    - name: Build the book
-      run: |
-        conda activate tutorial-environment
-        jupyter-book build book/
-
+        pip install vamp
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
