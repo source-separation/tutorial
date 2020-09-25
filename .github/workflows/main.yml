@@ -33,6 +33,7 @@ jobs:
 
     - name: Activate tutorial-environment
       run: |
+        source /home/runner/.bashrc
         conda init bash
         exec bash
         conda activate tutorial-environment
