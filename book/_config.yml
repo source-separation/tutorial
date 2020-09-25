@@ -21,3 +21,7 @@ launch_buttons:
 execute:
   allow_errors: true
   execute_notebooks: auto
+
+html:
+  use_repository_button: true
+  use_issues_button: true

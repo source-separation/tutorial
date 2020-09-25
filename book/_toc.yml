@@ -52,6 +52,7 @@
 - part: Appendix
   chapters:
     - file: appendix/glossary
-    - file: appendix/refs
+    - file: appendix/zrefs
+    - file: appendix/resources
     - file: appendix/acknowledgements
     - file: appendix/authors

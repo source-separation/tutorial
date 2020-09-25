@@ -1,14 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 Representing Audio
 ==================
 
@@ -23,18 +12,6 @@ If you are having access issues, here is a OneDrive mirror to the full video.
 Alternatively the text on this page covers the same material as the video.
 ```
 
-```{code-cell} ipython3
----
-other:
-  more: true
-tags: [hide-output, hide-input]
----
-# Inputs for this notebook
-import nussl
-import librosa
-
-```
-
 
 The first thing we want to examine are the input and output representations of a source 
 separation system and how the inputs and outputs are represented. In its most
@@ -46,12 +23,6 @@ in source separation approaches.
 
 Many of the details of this section can be found other places. We
 encourage the curious to follow the resources on this page to learn more.
-
-Some great resources for further reading:
-
-- [Music Information Retrieval](https://musicinformationretrieval.com/) website
-- [Prof. Bryan Pardo's class on Machine Perception of Music](https://interactiveaudiolab.github.io/teaching/eecs352.html)
-- [Prof. Alexander Lerch's Audio Content Analysis](https://www.audiocontentanalysis.org/) website
 
 
 ## Waveforms
@@ -316,7 +287,7 @@ for a few below:
 - Gabor Transform 
 - Per Channel Energy Normalization (PCEN) {cite}`lostanlen2018per`
 - Wavelets?
-- KAM
+- KAM 
 
 
 ## Output Representations
@@ -348,10 +319,6 @@ is happening with regards to mixtures of speech signals, this does give us some
 indication of how 
 
 
-
-
-```{bibliography} book/zreferences.bib
-```
 
 [^fn1]: This window is where the term "Short-time" comes from in the name
  "Short-time Fourier Transform".
