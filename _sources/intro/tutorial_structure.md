@@ -52,6 +52,7 @@ provided OneDrive links to the videos on the page for each section.
 alt: The search bar is on the top left corner of this webpage.
 width: 200px
 align: center
+name: search-bar
 ---
 The text is all searchable using the search function on the top
 left side of this webpage.
@@ -75,7 +76,7 @@ which allows us to interweave the lecture material with the code interactively.
 for a quick guide on how to use Jupyter Notebooks.
 
 Not every chapter will have runnable code, but the ones that do will have a little
-rocket icon in the top right-hand corner (see Fig. 2).
+rocket icon in the top right-hand corner (see {numref}`run-cloud`).
 
 ```{note} 
 Not all content will be visible in the notebooks when you view them outside of
@@ -93,6 +94,7 @@ website you are currently viewing.
 alt: There are links to run each notebook on the cloud at top right of the page.
 width: 600px
 align: center
+name: run-cloud
 ---
 There are links to run each notebook on the cloud at top right of the page.
 ```
@@ -157,6 +159,7 @@ as slow as Binder.
 alt: There are links to download each notebook at top right of the page.
 width: 600px
 align: center
+name: run-local
 ---
 There are links to download each notebook at top right of the page.
 ```
@@ -194,6 +197,7 @@ If you choose to run locally, here are the recommended steps:
 alt: Links to the Github repository are on the top right of the page.
 width: 600px
 align: center
+name: github-links
 ---
 Links to the Github repository are on the top right of the page.
 ```
