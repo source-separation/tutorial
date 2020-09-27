@@ -4,8 +4,6 @@
   chapters:
     - file: intro/tutorial_structure
     - file: intro/src_sep_101
-    - file: intro/motivation
-    - file: intro/examples
 
 - part: Basics of Source Separation
   chapters:

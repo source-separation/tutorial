@@ -1,15 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
 Phase
 =====
 
@@ -21,23 +9,6 @@ Phase
 ```{dropdown} Video not working?
 Here is a <a href="">OneDrive link</a> to the full video.
 <a href=""></a>
-```
-
-```{code-cell} ipython3
----
-other:
-  more: true
-tags: [hide-output, hide-input]
----
-# Imports for this notebook
-
-# from ipywidgets import interact
-import numpy as np
-
-# from bokeh.io import push_notebook, show, output_notebook
-# from bokeh.plotting import figure
-# output_notebook()
-
 ```
 
 While many source separation papers mainly focus on their approaches for creating
@@ -146,13 +117,6 @@ sin2 = np.sin(2 * np.pi * f2 * time) + offset
 
 ```
 
-```{code-cell} ipython3
----
-other:
-  more: true
----
-# interact(update, f2_=(440.0, 880.0), phi_=(0, 4 * np.pi, 0.05))
-```
 
 
 When we take snapshots of each sine wave, it's difficult to find a pattern between
@@ -212,19 +176,12 @@ $$
 
 This math looks pretty complicated, but this is really just a few lines of code:
 
-```{code-cell} ipython3
----
-other:
-  more: true
----
-
-
+```python
 def apply_mask_with_noisy_phase(mix_stft, mask):
     mix_magnitude, mix_phase = np.abs(mix_stft), np.angle(mix_stft)
     src_magnitude = mix_mag * mask
     src_stft = src_magnitude * np.exp(1j * mix_phase)
     return src_stft
-
 ```
 
 
