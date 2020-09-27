@@ -29,7 +29,7 @@ where certain approaches are applicable to a wider array of source types.
 
 The goal of this tutorial is that you leave with:
 
-1. A practical overview of source separation, including its history and current
+1. A practical overview of source separation, including some history and current
    research trends,
 2. A high-level intuition for how and why each source separation approach works,
 3. The ability to make an educated decision about when and how to incorporate source

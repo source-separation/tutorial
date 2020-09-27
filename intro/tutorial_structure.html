@@ -93,16 +93,6 @@
    What is Source Separation?
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="motivation.html">
-   Motivating Source Separation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="examples.html">
-   Examples
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -350,14 +340,21 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-on-google-colab-recommended">
-     Running on Google Colab (Recommended)
+    <a class="reference internal nav-link" href="#running-on-the-cloud-recommended">
+     Running on the Cloud (Recommended)
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#running-on-mybinder-org">
-     Running on MyBinder.org
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#google-colab-recommended">
+       Google Colab (Recommended)
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mybinder-org-thebe">
+       MyBinder.org &amp; Thebe
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#running-locally">
@@ -372,6 +369,18 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#github">
+     Github
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#found-a-bug-typo">
+       Found a bug? Typo?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ismir2020-slack-channel">
      ISMIR2020 Slack Channel
     </a>
@@ -379,13 +388,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#found-a-bug">
-   Found a bug?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions-and-comments">
-   Questions and Comments
+  <a class="reference internal nav-link" href="#let-s-get-started">
+   Let’s get started!
   </a>
  </li>
 </ul>
@@ -456,36 +460,121 @@ button on the bottom right to go to the next section.</p>
 <div class="section" id="how-to-use-this-book">
 <h2>How to Use This Book<a class="headerlink" href="#how-to-use-this-book" title="Permalink to this headline">¶</a></h2>
 <p>All of the material presented here is written in the <code class="docutils literal notranslate"><span class="pre">python3</span></code> programming language.
-It is presented in <a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a>,
+It is presented in the <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a> format,
 which allows us to interweave the lecture material with the code interactively.
-The notebooks we have provided should be ready to go to run all of the
-code and experiments without any further setup.</p>
-<p>We have also included <a class="reference external" href="https://github.com/source-separation/ismir2020-tutorial">github repo</a>
-and <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> to set up your own environment
-so that you can use these tools after the tutorial is run.</p>
-<div class="section" id="running-on-google-colab-recommended">
-<h3>Running on Google Colab (Recommended)<a class="headerlink" href="#running-on-google-colab-recommended" title="Permalink to this headline">¶</a></h3>
+<a class="reference external" href="https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html">Click here</a>
+for a quick guide on how to use Jupyter Notebooks.</p>
+<p>Not every chapter will have runnable code, but the ones that do will have a little
+rocket icon in the top right-hand corner (see Fig. 2).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all content will be visible in the notebooks when you view them outside of
+this page. For instance, special sections on the website this “Notes” block,
+links to reference references or glossary terms, etc, will only work on the live
+website you are currently viewing.</p>
 </div>
-<div class="section" id="running-on-mybinder-org">
-<h3>Running on MyBinder.org<a class="headerlink" href="#running-on-mybinder-org" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="running-on-the-cloud-recommended">
+<h3>Running on the Cloud (Recommended)<a class="headerlink" href="#running-on-the-cloud-recommended" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/run_cloud.gif"><img alt="There are links to run each notebook on the cloud at top right of the page." src="../_images/run_cloud.gif" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">There are links to run each notebook on the cloud at top right of the page.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>If a tutorial web page has an interactive component, the page will have a rocket
+icon in the top right-hand corner. When you hover your mouse over this icon you
+will see three options to run the notebook code in the cloud.</p>
+<div class="section" id="google-colab-recommended">
+<h4>Google Colab (Recommended)<a class="headerlink" href="#google-colab-recommended" title="Permalink to this headline">¶</a></h4>
+<p>Google Colab is Google’s version of a Jupyter Notebook that is run in the cloud.
+<a class="reference external" href="https://colab.research.google.com/notebooks/intro.ipynb">Click here</a> for an
+introduction to using Colab. To use Colab, hover your mouse over the rocket icon
+and select “Colab” from the drop down menu and a populated Colab notebook will
+open in your browser.</p>
+<p>Colab has free access to GPUs. Although they are not required for this tutorial,
+you may find them useful to speed up some of the tasks.
+To use the free GPUs select “Edit &gt; Notebook Settings” and
+choose GPU under the Hardware Accelerator dropdown list. Note that we have not
+tested any of this code on TPUs, so we will not be providing support for them.</p>
+<p>You must also run the first cell of every notebook to install the requirements.
+This takes 2-3 minutes in our experience.</p>
+</div>
+<div class="section" id="mybinder-org-thebe">
+<h4>MyBinder.org &amp; Thebe<a class="headerlink" href="#mybinder-org-thebe" title="Permalink to this headline">¶</a></h4>
+<p><strong>MyBinder.org (Binder)</strong></p>
+<p>If you are unable to access Colab but still want to run the notebook material
+on the cloud, there are direct links to <span class="xref myst">mybinder.org</span> (or Binder)
+versions of the notebooks on each page. To use <code class="docutils literal notranslate"><span class="pre">mybinder</span></code>, hover your mouse over
+the rocket icon and select “Binder” from the drop down menu and a populated
+Binder notebook will open in your browser.</p>
+<p>When you open a Binder, it will take you to a page that says <code class="docutils literal notranslate"><span class="pre">Starting</span> <span class="pre">repository:</span> <span class="pre">source-separation/tutorial/master</span></code>.
+We have also usually the message <code class="docutils literal notranslate"><span class="pre">Your</span> <span class="pre">session</span> <span class="pre">is</span> <span class="pre">taking</span> <span class="pre">longer</span> <span class="pre">than</span> <span class="pre">usual</span> <span class="pre">to</span> <span class="pre">start!</span></code>.
+This is normal, as the Docker environment takes a long time to build.
+<strong>Please expect to wait 10-30 minutes before the first time the Binder notebook launches!!</strong>
+Binder does not offer access to GPUs.</p>
+<p>Once the Binder is launched, you may skip the first cell that installs the required
+packages and run the notebook material.</p>
+<p><strong>Thebe</strong></p>
+<p>If you want to run the notebook cells without leaving this tutorial page, you
+can select “Thebe” from the drop down menu below the rocket icon at the top right
+of the web page. Thebe runs Binder in the background, so expect it to be it to be
+as slow as Binder.</p>
+</div>
 </div>
 <div class="section" id="running-locally">
 <h3>Running Locally<a class="headerlink" href="#running-locally" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/run_local.gif"><img alt="There are links to download each notebook at top right of the page." src="../_images/run_local.gif" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">There are links to download each notebook at top right of the page.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>We have included links to our <a class="reference external" href="https://github.com/source-separation/tutorial">github repo</a>
+which has <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> (or <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code>) to set up your own environment
+so that you can use these tools locally, if you so choose. To run the notebook
+locally, select “.ipynb” (“Download Source File”) from the downloads drop down
+menu at the top right corner of the page.</p>
+<p>If you choose to run locally, here are the recommended steps:</p>
+<ol class="simple">
+<li><p>Clone the <a class="reference external" href="https://github.com/source-separation/tutorial">github repo</a> into a
+new directory.</p></li>
+<li><p>Make a new conda environment.</p>
+<ul class="simple">
+<li><p>If you want to install using the included <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file see the
+(<a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file">instructions here</a>).
+Then activate your environment.</p></li>
+<li><p>If you want to install using <code class="docutils literal notranslate"><span class="pre">pip</span></code>, activate your environment and the
+run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>. Note that you should have <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> installed
+prior to installing the requirements (<a class="reference external" href="https://ffmpeg.org/download.html">instructions here</a>).</p></li>
+</ul>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> in your command line and navigate to the URL that it prints
+in the console<br />
+(<a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/getting_started/starting.html">instructions here</a>).</p></li>
+<li><p>Learn!</p></li>
+</ol>
 </div>
 </div>
 <div class="section" id="getting-in-touch">
 <h2>Getting in Touch<a class="headerlink" href="#getting-in-touch" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="github">
+<h3>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/github.gif"><img alt="Links to the Github repository are on the top right of the page." src="../_images/github.gif" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Links to the Github repository are on the top right of the page.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>There are links to the Github repository for this website and its notebooks at
+the top right corner of every page of this site.</p>
+<div class="section" id="found-a-bug-typo">
+<h4>Found a bug? Typo?<a class="headerlink" href="#found-a-bug-typo" title="Permalink to this headline">¶</a></h4>
+<p>Feel free to <a class="reference external" href="https://github.com/source-separation/ismir2020-tutorial/issues">open an issue here</a>.
+This link is also at the top right corner of every page.</p>
+</div>
+</div>
 <div class="section" id="ismir2020-slack-channel">
 <h3>ISMIR2020 Slack Channel<a class="headerlink" href="#ismir2020-slack-channel" title="Permalink to this headline">¶</a></h3>
+<p>There is also a</p>
 </div>
 </div>
-<div class="section" id="found-a-bug">
-<h2>Found a bug?<a class="headerlink" href="#found-a-bug" title="Permalink to this headline">¶</a></h2>
-<p>Please <a class="reference external" href="https://github.com/source-separation/ismir2020-tutorial/issues">open an issue here</a>.</p>
-</div>
-<div class="section" id="questions-and-comments">
-<h2>Questions and Comments<a class="headerlink" href="#questions-and-comments" title="Permalink to this headline">¶</a></h2>
-<p>If you have questions and comments, please direct them to …</p>
+<div class="section" id="let-s-get-started">
+<h2>Let’s get started!<a class="headerlink" href="#let-s-get-started" title="Permalink to this headline">¶</a></h2>
+<p>Press the button on the bottom right to advance to the next section.</p>
 </div>
 </div>
 

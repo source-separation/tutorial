@@ -21,8 +21,10 @@ some preprocessing before separating sources. In this section, we will discuss
 the different types of input and output representations that are commonly used
 in source separation approaches.
 
-Many of the details of this section can be found other places. We
-encourage the curious to follow the resources on this page to learn more.
+We'll first start talking about waveforms, arguably the most fundamental representation
+of audio, then we'll talk about what types of things are useful when we represent
+audio for source separation before we move onto some common audio representations
+for source separation.
 
 
 ## Waveforms
@@ -87,6 +89,21 @@ all input audio should be resampled to 16 kHz before using it.
 
 ## Desirable Properties of Representations
 
+```{figure} ../images/basics/right_representation.png
+---
+alt: A signal that looks completely unseparable in one representation becomes easily separable in another representation. 
+name: representation-img
+---
+Examples of two signals represented differently. The first row has two ways of
+displaying a mixture of two single-frequency sine waves; panel (a) represents
+the waveform and panel (b) shows the frequency spectrum. The second row has two 
+ways of displaying a mixture of two linear chirp signals (_i.e._, sine waves
+with rising frequency); panel (c) shows a frequency spectrum and panel (d) shows
+a time-frequency representation. Notice how a signal that looks completely
+unseparable in one representation becomes easily separable in another representation. 
+Image used courtesy of Fatemeh Pishdadian and Bryan Pardo. {cite}`pishdadian2018multi`
+```
+
 It can be argued that a source separation approach is only as good as its ability
 to represent audio in a separable manner. With that in mind, it's important
 to understand how audio itself is represented for the purposes of source separation.
@@ -100,8 +117,6 @@ variations on the same theme, namely:
 Almost every source separation approach we discuss here--classic and deep--can
 be broken down into these three steps. We want to note that each of these three 
 steps might in fact involve multiple separate substeps.
-(The astute reader may notice some similarities between this framing and
-[Support Vector Machines](https://en.wikipedia.org/wiki/Support_vector_machine).)
 
 Therefore an important aspect of an audio representation is {term}`invertability`, or
 whether a signal that is converted from a waveform to a new representation can
@@ -111,14 +126,19 @@ we want to minimize these types of errors (although eliminating them does not
 guarantee a perfect separation).
 
 An other important aspect is whether this representation can keep data from 
-one source apart from another source.
-
-[[FATEMEH'S EXAMPLES]]
+one source apart from another source. As seen in {numref}`representation-img`, 
+some representations might be better suited to separate certain signals than other
+representations. In this tutorial we will explore methods that produce representations
+specifically designed for separating sources.
 
 Some recent source separations approaches use deep learning to learn a representation
 directly from the waveform, while others use preprocessing tools that are common 
 in the audio signal processing and music information retrieval literature as a first
 step.
+
+We will first discuss time frequency representations because they are 
+an important preprocessing step, the parameters of which could have an impact
+on the separation quality of your approach.
 
 
 ## Input Representations
@@ -127,7 +147,15 @@ step.
 
 ### Time-Frequency (TF) Representations
 
-[[IMAGE]]
+```{figure} ../images/basics/tf_representation.png
+---
+alt: A time-frequency representation.
+name: tf-repr
+---
+A time-frequency representation. One dimension is indexed by time, another is 
+index by frequency, and values in the matrix represent the energy of the sound
+at that partifular time and frequency.
+```
 
 A Time-Frequency {cite}`smith2011spectral` representation is a 2 dimensional
 matrix that represents the frequency contents of an audio signal over time.

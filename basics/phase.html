@@ -93,16 +93,6 @@
    What is Source Separation?
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro/motivation.html">
-   Motivating Source Separation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro/examples.html">
-   Examples
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -293,10 +283,7 @@
     
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/basics/phase.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/basics/phase.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -332,26 +319,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/source-separation/tutorial/master?urlpath=tree/book/basics/phase.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
 
     </div>
 
@@ -419,21 +386,7 @@ Video not working?<div class="summary-down docutils">
 <p class="card-text">Here is a <a href="">OneDrive link</a> to the full video.
 <a href=""></a></p>
 </div>
-</details><div class="cell tag_hide-output tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports for this notebook</span>
-
-<span class="c1"># from ipywidgets import interact</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># from bokeh.io import push_notebook, show, output_notebook</span>
-<span class="c1"># from bokeh.plotting import figure</span>
-<span class="c1"># output_notebook()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>While many source separation papers mainly focus on their approaches for creating
+</details><p>While many source separation papers mainly focus on their approaches for creating
 better mask estimates, which only apply to the magnitude components of a
 <a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a>, the other crucial aspect of sound is its phase.</p>
 <p>In this section, we will discuss the important problem of how to turn a magnitude
@@ -495,41 +448,6 @@ than at the lower frequencies.</p>
 of two sine waves that have frequency <span class="math notranslate nohighlight">\(440\)</span> Hz and <span class="math notranslate nohighlight">\(523.25\)</span> Hz, which are A440 and
 the C note above A440 respectively. Both start at the origin at time <span class="math notranslate nohighlight">\(t = 0\)</span>.
 Let’s look at the value of each of these sine waves at different time intervals:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
-<span class="n">f1</span> <span class="o">=</span> <span class="mf">440.0</span>   <span class="c1"># A440</span>
-<span class="n">f2</span> <span class="o">=</span> <span class="mf">523.25</span>  <span class="c1"># C above A440</span>
-<span class="n">sin1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>
-
-<span class="n">offset</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">sin2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f2</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span> <span class="o">+</span> <span class="n">offset</span>
-
-<span class="c1"># for i, t in enumerate(time):</span>
-<span class="c1">#     print(f&#39;sin1({t:.1f}) = {sin1[i]:+.3f},\tsin2({t:.1f}) = {sin2[i]:+.3f}&#39;)</span>
-
-<span class="c1"># p = figure(title=&quot;Phase Example&quot;, plot_height=400, plot_width=700, y_range=(-1.5, 4.5),</span>
-<span class="c1">#            background_fill_color=&#39;#efefef&#39;)</span>
-<span class="c1"># r1 = p.line(time, sin1, color=&quot;#8888cc&quot;, line_width=1.5, alpha=0.8)</span>
-<span class="c1"># r2 = p.line(time, sin2, color=&quot;#cc88cc&quot;, line_width=1.5, alpha=0.8)</span>
-<span class="c1">#</span>
-<span class="c1"># def update(f2_=523.25, phi_=0.0):</span>
-<span class="c1">#     sin2_ = np.sin(2 * np.pi * f2_ * time + phi_) + offset</span>
-<span class="c1">#     r2.data_source.data[&#39;y&#39;] = sin2_</span>
-<span class="c1">#     push_notebook()</span>
-<span class="c1">#</span>
-<span class="c1"># show(p, notebook_handle=True)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># interact(update, f2_=(440.0, 880.0), phi_=(0, 4 * np.pi, 0.05))</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>When we take snapshots of each sine wave, it’s difficult to find a pattern between
 the two (other than, y’know, the sine wave we drew them from).
 Another difficulty is that humans do not always perceive phase offsets,, <em>i.e.</em>,
@@ -578,16 +496,12 @@ that the estimate for Source <span class="math notranslate nohighlight">\(i\)</s
 \tilde{X_i} = (\hat{M}_i \odot |Y|) \odot e^{j \cdot \angle Y}.
 \]</div>
 <p>This math looks pretty complicated, but this is really just a few lines of code:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_mask_with_noisy_phase</span><span class="p">(</span><span class="n">mix_stft</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_mask_with_noisy_phase</span><span class="p">(</span><span class="n">mix_stft</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
     <span class="n">mix_magnitude</span><span class="p">,</span> <span class="n">mix_phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mix_stft</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">mix_stft</span><span class="p">)</span>
     <span class="n">src_magnitude</span> <span class="o">=</span> <span class="n">mix_mag</span> <span class="o">*</span> <span class="n">mask</span>
     <span class="n">src_stft</span> <span class="o">=</span> <span class="n">src_magnitude</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">mix_phase</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">src_stft</span>
 </pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="the-hard-way-part-1-phase-estimation">

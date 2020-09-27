@@ -38,7 +38,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Motivating Source Separation" href="motivation.html" />
+    <link rel="next" title="Representing Audio" href="../basics/representations.html" />
     <link rel="prev" title="Tutorial Structure and Setup" href="tutorial_structure.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,16 +91,6 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    What is Source Separation?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="motivation.html">
-   Motivating Source Separation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="examples.html">
-   Examples
   </a>
  </li>
 </ul>
@@ -340,6 +330,11 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-use-source-separation">
+   Why Use Source Separation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#related-fields-of-research">
    Related Fields of Research
   </a>
@@ -388,58 +383,53 @@ Video not working?<div class="summary-down docutils">
 <p class="card-text">Alternatively the text on this page covers the same material as the video.</p>
 </div>
 </details><p>Source Separation is the process of isolating individual sounds in an auditory
-mixture of multiple sounds. We call each sound heard in a mixture a <em>source</em>.
+mixture of multiple sounds. <a class="bibtex reference internal" href="../zzz_refs.html#vincent2018audio" id="id1">[VVG18]</a> We call each sound heard
+in a mixture a <em>source</em>.
 For example, we might want to isolate a singer from the background music to make
 a karaoke version of a song or isolate the bass guitar from the from the rest of
 the band so a musician can learn the part. Put another way, given a mixture of
 multiple sources, how can we recover only the source signals we’re interested in?</p>
 <p>Mathematically, we assume that a mixture signal <span class="math notranslate nohighlight">\(y(t)\)</span> is composed of <span class="math notranslate nohighlight">\(N\)</span> sources,
-<span class="math notranslate nohighlight">\(s_n(t)\)</span>, with corresponding mixing coefficients, <span class="math notranslate nohighlight">\(a_n\)</span>, for <span class="math notranslate nohighlight">\(n=1...N\)</span>, such that</p>
+<span class="math notranslate nohighlight">\(x_n(t)\)</span>, for <span class="math notranslate nohighlight">\(n=1...N\)</span>, such that</p>
 <div class="math notranslate nohighlight">
 \[
-y(t) = \displaystyle\sum_{i=1}^{N} a_i s_i(t).
+y(t) = \displaystyle\sum_{i=1}^{N} x_i(t).
 \]</div>
 <p>Given only <span class="math notranslate nohighlight">\(y(t)\)</span>, the goal of a source separation system is to recover one or
-more <span class="math notranslate nohighlight">\(s(t)\)</span>’s.</p>
-<p>TODO: Keep stuff about mixing coefficients?
-We note that although the mixing coefficient, <span class="math notranslate nohighlight">\(a_i\)</span> is required
-to create the mixture <span class="math notranslate nohighlight">\(y(t)\)</span>, it is not necessary to recover <span class="math notranslate nohighlight">\(a_i\)</span> along with
-<span class="math notranslate nohighlight">\(s_i(t)\)</span>; the mixing coefficients are</p>
-<p>The mixture signal <span class="math notranslate nohighlight">\(y(t)\)</span> might be stereo, meaning that it is actually <em>two</em>
-signals that are related. However, what makes a mixture signal a good candidate
-for a source separation approach is that there are more desired sources within
+more <span class="math notranslate nohighlight">\(x(t)\)</span>’s.</p>
+<p>It is often the case that there are more sources within
 the mixture than there are mixture signals. Because of this, source separation
 is considered an <em>underdetermined problem</em>, meaning that there are fewer observations
-than there are required outcomes. For example, if a stereo mixture contains
-a recording of a piano quartet, for any desired source in the mixture we only have
-two observations (each channel of the stereo mix), therefore source separation
-would be a useful tool to isolate one of the sources.</p>
+(<em>i.e.</em>, the mixture) than there are required outcomes (<em>i.e.,</em> the desires
+source(s)). For example, if a stereo mixture contains a recording of a piano quartet
+(<em>e.g.</em> a piano, violin, viola, and cell) , for any desired source in the
+mixture we only have two observations (each channel of the stereo mix),
+therefore source separation would be a useful tool to isolate one of the
+sources (<em>e.g.</em>, just the piano).</p>
 <p>In this tutorial we will be focusing on music separation, or the process of
 isolating at least one musical instrument or singer from a musical mixture that
 contains one or more other musical instruments or singers. Music is seen as a
 distinct problem from other types of source separation because there are many
-factors that make it uniquely challenging:</p>
+factors that make it uniquely challenging <a class="bibtex reference internal" href="../zzz_refs.html#cano2018musical" id="id2">[CFL+18]</a>:</p>
 <ul class="simple">
 <li><p>Sources in music are <em>highly correlated</em>, meaning that all of the sources usually
 change together at the same time. For example, in a rock band if the bass guitar
 changes its note at the start of a new measure, it is likely that the other
 instruments will change as well.</p></li>
-<li><p>Music is mixed and processed in ways that are aphysical. Contemporary recording
-practices are such that any given source in a mixture might never occur naturally
-in the real world. A famous, early example is the crooning singing style of
-Frank Sinatra or Bing Crosby, both of whom no longer had
-to belt out over a 20-piece big band to be heard after the invention of condenser
-microphone allowed them to sound like they were gently singing in your
-ear.<a class="bibtex reference internal" href="../zzz_refs.html#lockheart2003history" id="id1">[Loc03]</a>
-Nowadays, recording engineers and musicians routinely create sounds that would
-never occur naturally.</p></li>
+<li><p>Music is mixed and processed in ways that are aphysical and non-linear.
+Contemporary recording practices are such that any given source in a mixture
+might never occur naturally in the real world. Reverb, filtering, and other
+non-linear signal processing techniques all make music separation difficult,
+and yet these are tools that recording engineers and musicians routinely use
+to create music. This is a problem because we rarely, if ever, know what
+processing was applied to any source or the whole mixture.</p></li>
 <li><p>If the result of a music source separation system is used in an end-user system,
 the bar for quality is much higher. As we will see, there are now many systems
 for musicians and sound engineers that incorporate source separation. As opposed
 to source separation being used as an intermediate step for another auditory
 process, source separation is the end goal and being listened to by users that
 might expect high quality results. Therefore it is paramount that the results
-of the system sound good enough for those users.<a class="footnote-reference brackets" href="#fn1" id="id2">1</a></p></li>
+of the system sound good enough for those users.<a class="footnote-reference brackets" href="#fn1" id="id3">1</a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -450,6 +440,32 @@ For instance, a dog barking might be background noise in one scenario, and there
 ignored, but for a sound event detection system it might be a source of interest.
 Source separation research has largely assumed that sources and source types are
 known a priori.</p>
+</div>
+<div class="section" id="why-use-source-separation">
+<h2>Why Use Source Separation?<a class="headerlink" href="#why-use-source-separation" title="Permalink to this headline">¶</a></h2>
+<p>There are many reasons to study source separation. One might be interested in
+using existing methods to enhance a downstream task, or one might be interested
+in source separation as a pursuit in itself.</p>
+<p>There are many demonstrated uses for music source separation within the field of
+Music Information Retrieval (MIR). In many scenarios, researchers have discovered
+that it is easier to process a isolated sources than mixtures of those sources.
+For example, source separation has been used to enhance:</p>
+<ul class="simple">
+<li><p>automatic music transcription <a class="bibtex reference internal" href="../zzz_refs.html#plumbley2002automatic" id="id4">[PAB+02]</a><a class="bibtex reference internal" href="../zzz_refs.html#manilow2020simultaneous" id="id5">[MSP20]</a>,</p></li>
+<li><p>lyric and music alignment <a class="bibtex reference internal" href="../zzz_refs.html#fujihara2006automatic" id="id6">[FGO+06]</a>,</p></li>
+<li><p>musical instrument detection <a class="bibtex reference internal" href="../zzz_refs.html#heittola2009musical" id="id7">[HKV09]</a>,</p></li>
+<li><p>lyric recognition <a class="bibtex reference internal" href="../zzz_refs.html#mesaros2010automatic" id="id8">[MV10]</a>,</p></li>
+<li><p>automatic singer identification <a class="bibtex reference internal" href="../zzz_refs.html#weninger2011automatic" id="id9">[WWollmerS11]</a>,</p></li>
+<li><p>vocal activity detection <a class="bibtex reference internal" href="../zzz_refs.html#stoller2018jointly" id="id10">[SED18]</a>,</p></li>
+<li><p>fundamental frequency estimation <a class="bibtex reference internal" href="../zzz_refs.html#jansson2019joint" id="id11">[JBEW19]</a>, and</p></li>
+<li><p>understanding the predictions of black-box audio models. <a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020towards" id="id12">[HMW20a]</a><a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020audiolime" id="id13">[HMW20b]</a></p></li>
+</ul>
+<p>Additionally, source separation has long been seen as an inherently worthwhile
+endeavor on its own merits, with many thousands of research papers appearing over
+the past few decades and more appearing every year.</p>
+<p>Whether you plan to create new source separation research or use existing methods
+to advance your own work, we hope this tutorial will provide you with a solid
+foundation understanding this field.</p>
 </div>
 <div class="section" id="related-fields-of-research">
 <h2>Related Fields of Research<a class="headerlink" href="#related-fields-of-research" title="Permalink to this headline">¶</a></h2>
@@ -465,18 +481,34 @@ noise. The problem of can Speech Enhancement be formulated as a source
 separation problem where one of the sources is always a speaker and the other
 source is always noise (the “noise” source can either be modeled or ignored
 completely).</p>
+<p>These days, almost any advances from Speech Separation or Speech Enhancement
+can be used for music source separation with slight modifications.</p>
 </div>
 <div class="section" id="beamforming">
 <h3>Beamforming<a class="headerlink" href="#beamforming" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Beamforming">Beamforming</a> is a method of using
+the spatial orientation of an array of microphones to separate sources. The core
+idea is to take advantage of the interference patterns in signals to isolate
+specific sources. Beamforming is commonly used to detect human speech in smart
+speaker products like Amazon’s Alexa, but it has musical applications in
+<a class="reference external" href="https://www.izotope.com/en/products/spire-studio.html">iZotopes Spire</a>.</p>
+<p>While this field is beyond the expertise of the authors, we will be touching on
+some methods that do incorporate spatial features for source separation.</p>
 </div>
 </div>
 <div class="section" id="a-historical-perspective">
 <h2>A Historical Perspective<a class="headerlink" href="#a-historical-perspective" title="Permalink to this headline">¶</a></h2>
 <p>Source Separation is a problem that has been studied for decades. Although we won’t
-be able to cover anything except the most recent developments in great detail,</p>
+be able to cover everything in detail, this tutorial will provide a brief overview
+of methods that we think provide a representative demonstration of important concepts and
+provide practical value.</p>
+<p>In general, modern source separation approaches fall into two broad categories: blind
+source separation approaches and data-driven approaches. Blind source separation
+approaches are algorithms that make explicit assumptions about the auditory scene
+upon which they operate</p>
 <hr class="docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
 <dd><p>Some creative applications might not have such strict demands; when using
 source separation to create remixes for instance, the artifacts might be masked
 by other sources in the mix.</p>
@@ -514,7 +546,7 @@ by other sources in the mix.</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="tutorial_structure.html" title="previous page">Tutorial Structure and Setup</a>
-    <a class='right-next' id="next-link" href="motivation.html" title="next page">Motivating Source Separation</a>
+    <a class='right-next' id="next-link" href="../basics/representations.html" title="next page">Representing Audio</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
