@@ -4,7 +4,6 @@ jupyterlab
 matplotlib
 numpy
 librosa
-soxbindings
 nussl
 scaper
 numpydoc

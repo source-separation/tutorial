@@ -3,15 +3,34 @@ Contains code for on-the-fly mixing using scaper.
 """
 import scaper
 import nussl
+import nussl.datasets.transforms as nussl_tfm
 from pathlib import Path
 import tqdm
 import sys
 import numpy as np
+import warnings
 from typing import Union, List
+import logging
+import os
 from . import argbind
 from . import utils
 
 MAX_SOURCE_TIME = 10000
+
+def download():
+    """Downloads required files for tutorial.
+    """
+    AUDIO_FILES = [
+        'schoolboy_fascination_excerpt.wav'
+    ]
+    MODEL_FILES = [
+        
+    ]
+
+    for x in AUDIO_FILES:
+        nussl.efz_utils.download_audio_file(x)
+    for x in MODEL_FILES:
+        nussl.efz_utils.download_trained_model(x)
 
 @argbind.bind_to_parser()
 def signal(
@@ -50,7 +69,7 @@ def transform(
     stft_params : nussl.STFTParams, 
     sample_rate : int,
     excerpt_length : float = 4.0,
-    mask_type : str = 'psa',
+    mask_type : str = 'msa',
     audio_only : bool = False
 ):
     """
@@ -97,8 +116,21 @@ def transform(
     return nussl_tfm.Compose(tfm)
 
 @argbind.bind_to_parser()
-def prepare_musdb(folder=None, musdb_root=None, 
-                  download=False):
+def symlink(
+    folder : str = '~/.nussl/tutorial',
+    target : str = 'data/'
+):
+    folder = Path(folder).expanduser().absolute()
+    target = Path(target).expanduser().absolute()
+    logging.info(f'Symlinking {folder} to {target}')
+    folder.mkdir(exist_ok=True)
+    os.symlink(folder, target)
+
+@argbind.bind_to_parser()
+def prepare_musdb(
+    folder : str = 'data/', 
+    musdb_root : str = None, 
+):
     """Prepares MUSDB data which is organized as .mp4 
     STEM format to a directory structure that can be
     used by Scaper.
@@ -109,40 +141,42 @@ def prepare_musdb(folder=None, musdb_root=None,
         Target foreground folder for re-organized stems.
     musdb_root : str, optional
         Path to root of musdb dataset, by default None
-    download : bool, optional
-        Whether to download the 7s sample data of musdb, by default False
     """
+    download = False
     if musdb_root is None: download = True
-
 
     for split in ['train', 'valid', 'test']:
         if split in ['train', 'valid']:
             subsets = ['train']
+            target_folder = split
         else:
             subsets = ['test']
             split = None
+            target_folder = 'test'
     
         musdb = nussl.datasets.MUSDB18(
             folder=musdb_root, download=download,
             split=split, subsets=subsets)
 
-        folder = Path(folder).expanduser() / split
-        folder.mkdir(parents=True, exist_ok=True)
+        _folder = Path(folder).expanduser() / target_folder
+        _folder.mkdir(parents=True, exist_ok=True)
 
-        for item in tqdm(musdb):
+        logging.info(f"Saving data to {_folder}")
+
+        for item in tqdm.tqdm(musdb):
             song_name = item['mix'].file_name
             for key, val in item['sources'].items():
-                src_path = fg_folder / key 
+                src_path = _folder / key 
                 src_path.mkdir(exist_ok=True)
                 src_path = str(src_path / song_name) + '.wav'
                 val.write_audio_to_file(src_path)
 
 @argbind.bind_to_parser('train', 'val', 'test')
-def musdb_mixer(
+def mixer(
     stft_params,
     transform,
     num_mixtures : int = 10,
-    fg_path : str = None,
+    fg_path : str = 'data/train',
     duration : int = 5.0,
     sample_rate : int = 44100,
     ref_db : Union[float, List] = [-30, -10],
@@ -151,7 +185,8 @@ def musdb_mixer(
     source_file : List = ['choose', []],
     snr : List = ('uniform', -5, 5),
     pitch_shift : List = ('uniform', -2, 2),
-    time_stretch : List = ('uniform', 0.9, 1.1)
+    time_stretch : List = ('uniform', 0.9, 1.1),
+    coherent_prob : float = 0.5,
 ):
     """Creates a mixer that mixes MUSDB examples with data
     augmentation.
@@ -184,6 +219,8 @@ def musdb_mixer(
         Scaper parameter, how much to pitch shift, by default ('uniform', -2, 2)
     time_stretch : List, optional
         Scaper parameter, how much to time stretch., by default ('uniform', 0.9, 1.1)
+    coherent_prob : float, optional
+        Probability of coherent mixture when sampling, by default 0.5.
 
     Returns
     -------
@@ -193,7 +230,8 @@ def musdb_mixer(
     """
     mix_closure = MUSDBMixer(
         fg_path, duration, sample_rate, ref_db, n_channels, 
-        master_label, source_file, snr, pitch_shift, time_stretch
+        master_label, source_file, snr, pitch_shift, time_stretch,
+        coherent_prob
     )
     dataset = nussl.datasets.OnTheFly(
         mix_closure, num_mixtures, stft_params=stft_params,
@@ -216,10 +254,20 @@ def listen(
     seed : int, optional
         Seed to start out for listening.
     """
-    pass
+    stft_params, sample_rate = signal()
+    dataset = mixer(stft_params, None)
+    state = np.random.RandomState(seed)
+    for _ in range(num):
+        idx = state.randint(0, len(dataset))
+        item = dataset[idx]
+        soundscape_jam = item['metadata']['jam']
+        logging.info(f"Item {item['metadata']['idx']} from dataset")
+        utils.pprint(soundscape_jam)
+        item['mix'].play()
 
 class MUSDBMixer():
     def __init__(
+        self,
         fg_path : str,
         duration : float,
         sample_rate : int,
@@ -252,17 +300,18 @@ class MUSDBMixer():
 
     def _create_scaper_object(self, state):
         sc = scaper.Scaper(
-            self.duration, self.fg_path, None
+            self.duration, self.fg_path, self.fg_path,
+            random_state=state
         )
         sc.sr = self.sample_rate
         sc.n_channels = self.n_channels
         ref_db = self.ref_db
-        if isinstance(ref_db, tuple):
+        if isinstance(ref_db, List):
             ref_db = state.uniform(ref_db[0], ref_db[1])
         sc.ref_db = ref_db
         return sc
 
-    def incoherent(self, seed, sc):
+    def incoherent(self, sc):
         event_parameters = self.base_event_parameters.copy()
         labels = ['vocals', 'drums', 'bass', 'other']
         for label in labels:
@@ -271,8 +320,8 @@ class MUSDBMixer():
         
         return sc.generate()
 
-    def coherent(self, seed, sc):        
-        event_parameters = base_event_parameters.copy()
+    def coherent(self, sc):
+        event_parameters = self.base_event_parameters.copy()
         sc.add_event(**event_parameters)
         event = sc._instantiate_event(sc.fg_spec[0])
         sc.reset_fg_event_spec()
@@ -291,15 +340,15 @@ class MUSDBMixer():
         
         return sc.generate()
     
-    def mix_func(dataset, i):
-        random_state = np.random.RandomState(i)
+    def __call__(self, dataset, i):
+        state = np.random.RandomState(i)
         with warnings.catch_warnings():
             warnings.filterwarnings('ignore')
-            sc = self._create_scaper_object(random_state)
-            if random_state.rand() < self.coherent_prob:
-                data = self.coherent(sc, random_state)
+            sc = self._create_scaper_object(state)
+            if state.rand() < self.coherent_prob:
+                data = self.coherent(sc)
             else:
-                data = self.incoherent(sc, random_state)
+                data = self.incoherent(sc)
         
         soundscape_audio, soundscape_jam, annotation_list, event_audio_list = data
         
@@ -317,12 +366,12 @@ class MUSDBMixer():
         output = {
             'mix': mix,
             'sources': sources,
-            'metadata': soundscape_jam
+            'metadata': {
+                'jam': soundscape_jam,
+                'idx': i
+            }
         }
         return output
-
+    
 if __name__ == "__main__":
-    args = argbind.parse_args()
-    with argbind.scope(args):
-        utils.logger()
-        utils.run(sys.modules[__name__])
+    utils.parse_args_and_run(__name__)

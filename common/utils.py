@@ -1,11 +1,32 @@
 import logging
+import json
+import sys
+import torch
+
 from . import argbind
 
 @argbind.bind_to_parser()
-def run(module, cmd : str = None):
+def device(
+    use : str = 'cuda'
+):
+    if not torch.cuda.is_available():
+        return 'cpu'
+    return use
+
+@argbind.bind_to_parser()
+def run(module, *args, cmd : str = None):
     if cmd is not None:
-        cmd_fn = getattr(module, cmd)
-        cmd_fn()
+        cmds = cmd.split(' ')
+        for cmd in cmds:
+            cmd_fn = getattr(module, cmd)
+            cmd_fn(*args)
+
+def parse_args_and_run(name, pass_args=False):
+    args = argbind.parse_args()
+    with argbind.scope(args):
+        _args = [args] if pass_args else []
+        logger()
+        run(sys.modules[name], *_args)
 
 @argbind.bind_to_parser()
 def logger(level : str = 'info'):
@@ -32,3 +53,19 @@ def logger(level : str = 'info'):
         datefmt='%m/%d/%Y %I:%M:%S %p',
         level=level
     )
+
+def pprint(data):
+    if isinstance(data, dict):
+        logging.info(json.dumps(data, indent=4))
+    else:
+        ann = data.search(namespace='scaper')[0]
+        for i, obs in enumerate(ann.data):
+            desc = (
+                f"{i+1}/{len(ann.data)} - {obs.value['label']}: {obs.time}s to {obs.time + obs.duration}s \n"
+                f"Source file: {obs.value['source_file']} \n"
+                f"Pitch shift: {obs.value['pitch_shift']} \n"
+                f"Time stretch: {obs.value['time_stretch']} \n"
+                f"Signal-to-noise ratio: {obs.value['snr']} \n"
+                f"Source time : {obs.value['source_time']} \n"
+            )
+            logging.info('\n' + desc)

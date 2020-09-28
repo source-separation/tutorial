@@ -16,7 +16,7 @@ To build the book, do the following:
 
 ```
 pip install -e .
-python -m common.download
+python -m common.data --run.cmd='download'
 jb build --all book/
 ```
 
