@@ -287,9 +287,9 @@ class MUSDBMixer():
             'source_time': ('uniform', 0, MAX_SOURCE_TIME),
             'event_time': ('const', 0),
             'event_duration': ('const', duration),
-            'snr': snr,
-            'pitch_shift': pitch_shift,
-            'time_stretch': time_stretch,
+            'snr': tuple(snr),
+            'pitch_shift': tuple(pitch_shift),
+            'time_stretch': tuple(time_stretch),
         }
         self.fg_path = fg_path
         self.sample_rate = sample_rate

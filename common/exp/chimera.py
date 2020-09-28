@@ -13,8 +13,8 @@ import numpy as np
 def train(
     args,
     seed : int = 0,
-    num_epochs : int = 1,
-    epoch_length : int = 1,
+    num_epochs : int = 100,
+    epoch_length : int = 1000,
     lr : float = 1e-3,
     batch_size : int = 1,
     dpcl_weight : float = .75,
@@ -128,6 +128,7 @@ def evaluate(
     output_folder : str = './results',
     num_workers : int = 1,
 ):
+    output_folder = Path(output_folder) 
     stft_params, sample_rate = data.signal()
     # Output of net is always in alphabetical order
     labels = ['bass', 'drums', 'other', 'vocals']
@@ -140,6 +141,8 @@ def evaluate(
 
     _device = utils.device()
     separator = models.deep_mask_estimation(_device)
+    
+    utils.plot_metrics(separator, 'l1_loss', output_folder / 'metrics.png')
 
     pbar = tqdm.tqdm(musdb)
     for item in pbar:
@@ -158,7 +161,7 @@ def evaluate(
             json.dump(scores, f, indent=4)
         break
 
-    output_file = Path(output_folder) / 'report_card.txt'    
+    output_file = output_folder / 'report_card.txt'    
 
     json_files = glob.glob(f"{output_folder}/*.json")
     if not json_files:

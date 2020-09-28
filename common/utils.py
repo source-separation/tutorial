@@ -2,7 +2,7 @@ import logging
 import json
 import sys
 import torch
-
+import matplotlib.pyplot as plt
 from . import argbind
 
 @argbind.bind_to_parser()
@@ -69,3 +69,19 @@ def pprint(data):
                 f"Source time : {obs.value['source_time']} \n"
             )
             logging.info('\n' + desc)
+
+
+def plot_metrics(separator, key, output_path):
+    data = separator.metadata['trainer.state.epoch_history']
+    plt.figure(figsize=(5, 4))
+
+    plt.subplot(111)
+    plt.plot(data[f'validation/{key}'], label='val')
+    plt.plot(data[f'train/{key}'], label='train')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.title('Loss')
+    plt.legend()
+    plt.tight_layout()
+
+    plt.savefig(output_path)

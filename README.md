@@ -20,6 +20,17 @@ python -m common.data --run.cmd='download'
 jb build --all book/
 ```
 
+## Running an experiment
+
+To run a basic mask estimation experiment with a Chimera network,
+do the following:
+
+```
+python -m common.data --run.cmd='prepare_musdb'
+python -m common.exp.chimera --run.cmd='train'
+python -m common.exp.chimera --run.cmd='evaluate'
+```
+
 ## Questions? Comments? Typos? Bugs? Issues?
 
 Open a github issue [here](https://github.com/source-separation/tutorial/issues/new)

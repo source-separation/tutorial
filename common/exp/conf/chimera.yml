@@ -1,0 +1,34 @@
+$include: 
+  - common/conf/exp/base.yml
+
+build.bidirectional: 1
+build.dropout: 0.3
+build.embedding_activation:
+- sigmoid
+- unit_norm
+build.embedding_size: 20
+build.hidden_size: 300
+build.mask_activation:
+- sigmoid
+build.num_audio_channels: 1
+build.num_layers: 4
+build.num_sources: 4
+build.rnn_type: lstm
+
+deep_mask_estimation.mask_type: soft
+deep_mask_estimation.model_path: checkpoints/best.model.pth
+
+signal.hop_length: 512
+signal.sample_rate: 44100
+signal.window_length: 2048
+signal.window_type: sqrt_hann
+
+train.batch_size: 32
+train.dpcl_weight: 0.75
+train.epoch_length: 1000
+train.lr: 0.001
+train.mi_weight: 0.25
+train.num_epochs: 100
+train.num_workers: 4
+train.output_folder: .
+train.seed: 0

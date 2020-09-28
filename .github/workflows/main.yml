@@ -40,7 +40,7 @@ jobs:
 
     - name: Build the book
       run: |
-        python common/download.py
+        python -m common.data --run.cmd='download'
         jupyter-book build book/
 
     # Push the book's HTML to github-pages

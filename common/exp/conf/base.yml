@@ -1,0 +1,45 @@
+autoclip.percentile: 10
+
+evaluate.folder: data/test
+evaluate.num_workers: 1
+evaluate.output_folder: ./results
+
+logger.level: info
+
+mixer.coherent_prob: 0.25
+mixer.master_label: vocals
+mixer.n_channels: 1
+mixer.num_mixtures: 10
+mixer.pitch_shift: [uniform, -2, 2]
+mixer.ref_db: [-30, -10]
+mixer.sample_rate: 44100
+mixer.snr: [uniform, -5, 5]
+mixer.source_file: [choose, []]
+mixer.time_stretch: [uniform, .9, 1.1]
+
+train/mixer.fg_path: data/train
+train/mixer.duration: 4.0
+train/transform.excerpt_length: 4.0
+
+val/mixer.duration: 10.0
+val/transform.excerpt_length: 10.0
+
+val/mixer.coherent_prob: 1.0
+val.mixer.pitch_shift: [const, 0]
+val/mixer.time_stretch: [const, 1.0]
+val/mixer.fg_path: data/valid
+val/mixer.num_mixtures: 100
+
+device.use: cuda
+
+early_stopping.cumulative_delta: 0
+early_stopping.epochs: 30
+early_stopping.min_delta: 0.0
+
+patience.epochs: 5
+patience.factor: 0.5
+patience.mode: min
+patience.verbose: false
+
+transform.audio_only: false
+transform.mask_type: msa
