@@ -9,6 +9,8 @@ import json
 import glob
 import numpy as np
 
+LABELS = ['bass', 'drums', 'other', 'vocals']
+
 @argbind.bind_to_parser()
 def train(
     args,
@@ -131,10 +133,9 @@ def evaluate(
     output_folder = Path(output_folder) 
     stft_params, sample_rate = data.signal()
     # Output of net is always in alphabetical order
-    labels = ['bass', 'drums', 'other', 'vocals']
 
     musdb = nussl.datasets.MixSourceFolder(
-        folder=folder, source_folders=labels, make_mix=True,
+        folder=folder, source_folders=LABELS, make_mix=True,
         stft_params=stft_params, sample_rate=sample_rate, 
         strict_sample_rate=False
     )
@@ -151,7 +152,7 @@ def evaluate(
         estimates = separator()
         sources = [item['sources'][k] for k in labels]
         evaluator = nussl.evaluation.BSSEvalScale(
-            sources, estimates, source_labels=labels
+            sources, estimates, source_labels=LABELS
         )
         scores = evaluator.evaluate()
         output_folder = Path(output_folder).absolute()
@@ -173,6 +174,31 @@ def evaluate(
 
     with open(output_file, 'w') as f:
         f.write(report_card)
+
+@argbind.bind_to_parser()
+def listen(
+    args,
+    folder : str = 'data/test',
+):
+    stft_params, sample_rate = data.signal()
+    musdb = nussl.datasets.MixSourceFolder(
+        folder=folder, source_folders=LABELS, make_mix=True,
+        stft_params=stft_params, sample_rate=sample_rate, 
+        strict_sample_rate=False
+    )
+    _device = utils.device()
+    separator = models.deep_mask_estimation(_device)
+
+    idx = np.random.randint(len(musdb))
+    item = musdb[idx]
+
+    separator.audio_signal = item['mix']
+    estimates = separator()
+
+    item['mix'].play()
+    for i, e in enumerate(estimates): 
+        print(LABELS[i])
+        e.play()
 
 if __name__ == "__main__":
     utils.parse_args_and_run(__name__, pass_args=True)

@@ -23,12 +23,27 @@ jb build --all book/
 ## Running an experiment
 
 To run a basic mask estimation experiment with a Chimera network,
-do the following:
+do the following, given the base configuration included in
+`common/exp/conf/chimera.yml`:
+
+First, prepare the MUSDB data:
 
 ```
-python -m common.data --run.cmd='prepare_musdb'
-python -m common.exp.chimera --run.cmd='train'
-python -m common.exp.chimera --run.cmd='evaluate'
+# Prepare data
+python -m common.data --run.cmd=prepare_musdb --args.load=common/exp/conf/chimera.yml
+# Listen to Scaper output on train set
+python -m common.data --run.cmd=listen --args.load=common/exp/conf/chimera.yml
+```
+
+Now, train, evaluate, and listen to a model:
+
+```
+# Train the model
+python -m common.exp.chimera --run.cmd='train' --args.load=common/exp/conf/chimera.yml
+# Evaluate the model
+python -m common.exp.chimera --run.cmd='evaluate' --args.load=common/exp/conf/chimera.yml
+# Listen to the model
+python -m common.exp.chimera --run.cmd='listen' --args.load=common/exp/conf/chimera.yml
 ```
 
 ## Questions? Comments? Typos? Bugs? Issues?

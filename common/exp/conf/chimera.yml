@@ -1,5 +1,5 @@
 $include: 
-  - common/conf/exp/base.yml
+  - common/exp/conf/base.yml
 
 build.bidirectional: 1
 build.dropout: 0.3
