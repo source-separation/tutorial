@@ -51,6 +51,7 @@ def train(
 
     # TRAIN STEP
     def train_step(engine, batch):
+        model.train()
         output = model(batch)
         
         # Calculate DPCL loss
@@ -168,6 +169,7 @@ def evaluate(
         raise RuntimeError("No JSON files found! Did you evaluate?")
     df = nussl.evaluation.aggregate_score_files(
         json_files, aggregator=np.nanmedian)
+    nussl.evaluation.associate_metrics(separator.model, df, musdb)
     report_card = nussl.evaluation.report_card(
         df, report_each_source=True)
     logging.info(report_card)

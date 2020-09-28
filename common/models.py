@@ -97,6 +97,7 @@ class BaseMaskEstimation(nn.Module):
             _connections += [[k, [f'model:{k}']]]
 
         _config = {
+            'name': cls.__name__,
             'modules': _modules,
             'connections': _connections,
             'output': alias_keys
