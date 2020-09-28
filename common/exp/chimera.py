@@ -159,7 +159,6 @@ def evaluate(
         output_file = output_folder / sources[0].file_name.replace('wav', 'json')
         with open(output_file, 'w') as f:
             json.dump(scores, f, indent=4)
-        break
 
     output_file = output_folder / 'report_card.txt'    
 
