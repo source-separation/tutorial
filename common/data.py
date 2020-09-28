@@ -4,6 +4,7 @@ Contains code for on-the-fly mixing using scaper.
 import scaper
 import nussl
 import nussl.datasets.transforms as nussl_tfm
+import torch
 from pathlib import Path
 import tqdm
 import sys
@@ -170,6 +171,22 @@ def prepare_musdb(
                 src_path.mkdir(exist_ok=True)
                 src_path = str(src_path / song_name) + '.wav'
                 val.write_audio_to_file(src_path)
+
+@argbind.bind_to_parser()
+def profile(
+    num_workers : int = 0,
+    batch_size : int = 1,
+):
+    stft_params, sample_rate = signal()
+    train_tfm = transform(stft_params, sample_rate)
+    train_data = mixer(stft_params, train_tfm)
+    train_sampler = torch.utils.data.sampler.RandomSampler(train_data)
+    train_dataloader = torch.utils.data.DataLoader(train_data, 
+        num_workers=num_workers, batch_size=batch_size, 
+        sampler=train_sampler)
+    for _ in tqdm.tqdm(train_dataloader):
+        pass
+    
 
 @argbind.bind_to_parser('train', 'val', 'test')
 def mixer(

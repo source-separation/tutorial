@@ -8,6 +8,8 @@ logger.level: info
 
 mixer.coherent_prob: 0.25
 mixer.master_label: vocals
+mixer.duration: 5.0
+mixer.sample_rate: 44100
 mixer.n_channels: 1
 mixer.num_mixtures: 10
 mixer.pitch_shift: [uniform, -2, 2]
@@ -18,8 +20,8 @@ mixer.source_file: [choose, []]
 mixer.time_stretch: [uniform, .9, 1.1]
 
 train/mixer.fg_path: data/train
-train/mixer.duration: 4.0
-train/transform.excerpt_length: 4.0
+train/mixer.duration: 5.0
+train/transform.excerpt_length: 5.0
 
 val/mixer.duration: 10.0
 val/transform.excerpt_length: 10.0
@@ -41,5 +43,5 @@ patience.factor: 0.5
 patience.mode: min
 patience.verbose: false
 
-transform.audio_only: false
+transform.audio_only: true
 transform.mask_type: msa
