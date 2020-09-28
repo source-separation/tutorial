@@ -13,7 +13,7 @@ from . import utils
 
 MAX_SOURCE_TIME = 10000
 
-@utils.bind_to_parser()
+@argbind.bind_to_parser()
 def signal(
     window_length : int = 2048,
     hop_length : int = 512,
@@ -45,7 +45,7 @@ def signal(
         sample_rate
     )
 
-@utils.bind_to_parser('train', 'val')
+@argbind.bind_to_parser('train', 'val')
 def transform(
     stft_params : nussl.STFTParams, 
     sample_rate : int,
@@ -240,7 +240,7 @@ class MUSDBMixer():
             'event_time': ('const', 0),
             'event_duration': ('const', duration),
             'snr': snr,
-            'pitch_shift': pitch_shift
+            'pitch_shift': pitch_shift,
             'time_stretch': time_stretch,
         }
         self.fg_path = fg_path
