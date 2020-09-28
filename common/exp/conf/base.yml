@@ -9,18 +9,20 @@ logger.level: info
 mixer.coherent_prob: 0.25
 mixer.master_label: vocals
 mixer.duration: 5.0
-mixer.sample_rate: 44100
+mixer.sample_rate: 16000
 mixer.n_channels: 1
 mixer.num_mixtures: 10
-mixer.pitch_shift: [uniform, -2, 2]
 mixer.ref_db: [-30, -10]
 mixer.sample_rate: 44100
 mixer.snr: [uniform, -5, 5]
 mixer.source_file: [choose, []]
+mixer.augment_prob: 0.5
 mixer.time_stretch: [uniform, .9, 1.1]
+mixer.pitch_shift: [uniform, -2, 2]
 
 train/mixer.fg_path: data/train
 train/mixer.duration: 5.0
+train/mixer.num_mixtures: 10000000
 train/transform.excerpt_length: 5.0
 
 val/mixer.duration: 10.0
@@ -30,7 +32,7 @@ val/mixer.coherent_prob: 1.0
 val.mixer.pitch_shift: [const, 0]
 val/mixer.time_stretch: [const, 1.0]
 val/mixer.fg_path: data/valid
-val/mixer.num_mixtures: 100
+val/mixer.num_mixtures: 1000
 
 device.use: cuda
 
@@ -43,5 +45,5 @@ patience.factor: 0.5
 patience.mode: min
 patience.verbose: false
 
-transform.audio_only: true
+transform.audio_only: false
 transform.mask_type: msa

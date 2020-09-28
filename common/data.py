@@ -194,7 +194,7 @@ def mixer(
     transform,
     num_mixtures : int = 10,
     fg_path : str = 'data/train',
-    duration : int = 5.0,
+    duration : float = 5.0,
     sample_rate : int = 44100,
     ref_db : Union[float, List] = [-30, -10],
     n_channels : int = 1,
@@ -204,6 +204,8 @@ def mixer(
     pitch_shift : List = ('uniform', -2, 2),
     time_stretch : List = ('uniform', 0.9, 1.1),
     coherent_prob : float = 0.5,
+    augment_prob : float = 0.5,
+    quick_pitch_time_prob : float = 1.0,
 ):
     """Creates a mixer that mixes MUSDB examples with data
     augmentation.
@@ -238,6 +240,10 @@ def mixer(
         Scaper parameter, how much to time stretch., by default ('uniform', 0.9, 1.1)
     coherent_prob : float, optional
         Probability of coherent mixture when sampling, by default 0.5.
+    augment_prob : float, optional
+        Probability of augmenting via pitch shift and time stretch, by default 0.5.
+    quick_pitch_time_prob : float, optional
+        Probability of augmenting with pitch shifting and time stretching in quick mode, by default 1.0.
 
     Returns
     -------
@@ -248,7 +254,7 @@ def mixer(
     mix_closure = MUSDBMixer(
         fg_path, duration, sample_rate, ref_db, n_channels, 
         master_label, source_file, snr, pitch_shift, time_stretch,
-        coherent_prob
+        coherent_prob, augment_prob, quick_pitch_time_prob
     )
     dataset = nussl.datasets.OnTheFly(
         mix_closure, num_mixtures, stft_params=stft_params,
@@ -296,17 +302,31 @@ class MUSDBMixer():
         snr=('uniform', -5, 5),
         pitch_shift=('uniform', -2, 2),
         time_stretch=('uniform', 0.9, 1.1),
-        coherent_prob=0.5
+        # Generation parameters
+        coherent_prob=0.5,
+        augment_prob=0.5,
+        quick_pitch_time_prob=1.0
     ):
+        pitch_shift = (
+            tuple(pitch_shift) 
+            if pitch_shift 
+            else None
+        )
+        time_stretch = (
+            tuple(time_stretch) 
+            if time_stretch 
+            else None
+        )
+        snr = tuple(snr)
         self.base_event_parameters = {
             'label': ('const', master_label),
             'source_file': ('choose', []),
             'source_time': ('uniform', 0, MAX_SOURCE_TIME),
             'event_time': ('const', 0),
             'event_duration': ('const', duration),
-            'snr': tuple(snr),
-            'pitch_shift': tuple(pitch_shift),
-            'time_stretch': tuple(time_stretch),
+            'snr': snr,
+            'pitch_shift': pitch_shift,
+            'time_stretch': time_stretch
         }
         self.fg_path = fg_path
         self.sample_rate = sample_rate
@@ -314,6 +334,8 @@ class MUSDBMixer():
         self.n_channels = n_channels
         self.duration = duration
         self.coherent_prob = coherent_prob
+        self.augment_prob = augment_prob
+        self.quick_pitch_time_prob = quick_pitch_time_prob
 
     def _create_scaper_object(self, state):
         sc = scaper.Scaper(
@@ -330,22 +352,32 @@ class MUSDBMixer():
 
     def incoherent(self, sc):
         event_parameters = self.base_event_parameters.copy()
+        if sc.random_state.rand() > self.augment_prob:
+            event_parameters['pitch_shift'] = None
+            event_parameters['time_stretch'] = None
+
         labels = ['vocals', 'drums', 'bass', 'other']
         for label in labels:
             event_parameters['label'] = ('const', label)
             sc.add_event(**event_parameters)
-        
-        return sc.generate()
+        quick_pitch_time = sc.random_state.rand() <= self.quick_pitch_time_prob
+        return sc.generate(fix_clipping=True, quick_pitch_time=quick_pitch_time)
 
     def coherent(self, sc):
         event_parameters = self.base_event_parameters.copy()
+        if sc.random_state.rand() > self.augment_prob:
+            event_parameters['pitch_shift'] = None
+            event_parameters['time_stretch'] = None
+
         sc.add_event(**event_parameters)
         event = sc._instantiate_event(sc.fg_spec[0])
         sc.reset_fg_event_spec()
         
         event_parameters['source_time'] = ('const', event.source_time)
-        event_parameters['pitch_shift'] = ('const', event.pitch_shift)
-        event_parameters['time_stretch'] = ('const', event.time_stretch)
+        if event_parameters['pitch_shift'] is not None:
+            event_parameters['pitch_shift'] = ('const', event.pitch_shift)
+        if event_parameters['time_stretch'] is not None:
+            event_parameters['time_stretch'] = ('const', event.time_stretch)
 
         labels = ['vocals', 'drums', 'bass', 'other']
         for label in labels:
@@ -354,8 +386,8 @@ class MUSDBMixer():
                 'const', event.source_file.replace('vocals', label)
             )
             sc.add_event(**event_parameters)
-        
-        return sc.generate()
+        quick_pitch_time = sc.random_state.rand() <= self.quick_pitch_time_prob
+        return sc.generate(fix_clipping=True, quick_pitch_time=quick_pitch_time)
     
     def __call__(self, dataset, i):
         state = np.random.RandomState(i)
