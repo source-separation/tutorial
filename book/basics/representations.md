@@ -199,40 +199,97 @@ Importantly, each bin in our STFT is _complex_, meaning each entry contains both
 a magnitude component and a phase component. Both components are needed to convert
 an STFT matrix back to a waveform so that we may hear it.
 
+The STFT is invertable, meaning that a complex valued STFT can be converted back
+to a waveform. This is called the inverse Short-time Fourier Transform or iSTFT.
+
 Here are some important parameters to consider when computing an STFT:
 
 ##### Window Types
 
-[IMAGE]
+```{figure} ../images/basics/window_types.png
+---
+alt: Six commonly used window types for calculating an STFT.
+name: window_types
+---
+Six commonly used window types for calculating an STFT.
+```
 
 The window type determines the shape of the short-time window that will segment
 the audio into short segments before applying the DFT. The shape of this window
-can will affect which frequencies get emphasized or attenuated in the DFT.
+can will affect which frequencies get emphasized or attenuated in the DFT. There
+are many types of window functions, in {numref}`window_types`, we show the most
+common ones when calculating an STFT for source separation. For more information
+on other types of windows and their frequency response, please see `scipy.signal`'s
+documentation [here](https://docs.scipy.org/doc/scipy/reference/signal.windows.html).
 
-We recommend you use []
+
+```{tip}
+We have informally noticed that our models acheive the best performance using
+the `sqrt_hann` window, shown above. 
+```
 
 ##### Window Length
 
-[IMAGE]
+```{figure} ../images/basics/win_len.png
+---
+alt: Trade off between time and frequency resolution for different window lengths.
+name: window_lens
+---
+Trade off between time and frequency resolution for different window lengths.
+In the simplified case, the number of frequency bins is determined by the window
+length.
+Using the same signal, we compute the STFT once with window length 512, and
+again with window length 1024. The white space is where there is no STFT data,
+which is left in to intentionally show how time and frequency interplay with
+the window length.
+```
 
 The window length determines how many samples are included in each short-time
 window. Due to how the DFT is computed, this parameter also determines the
 resolution of the frequency axis of the STFT. The longer the window, the higher
-the frequency resolution and vice versa.
+the frequency resolution and vice versa, as is visible in {numref}`window_lens`.
 
 ##### Hop Length
 
+```{figure} ../images/basics/hop_len.png
+---
+alt: The hope length determines the distance (in samples) between adjacent short-time windows.
+name: hop_lens
+---
+The hope length determines the distance (in samples) between adjacent short-time
+windows. An STFT is computed twice on the same signal; the smaller the hop length
+the more times a particular segment of the audio signal is represented in the
+STFT.
+```
+
 The hop length determines the distance, in samples, between any two adjacent
-short-time windows.
+short-time windows. In the image shown in {numref}`hop_lens` shows how the hop
+length can elongate or shorten the time axis on an STFT depending on how it is
+set.
 
-##### Other Considerations
+##### Overlap-Add
 
-- Overlap add
+Many parameter settings for window type, window length, and hop length might
+not reconstruct the original signal perfectly when converting a signal to an STFT
+and back to a waveform. However, a certain set of parameters 
+is mathematically guaranteed to perfectly reconstruct any signal. These parameter sets
+are called Constant Overlap-Add (COLA) because when applying successive windows,
+they add up to a [constant value](https://www.dsprelated.com/freebooks/sasp/Constant_Overlap_Add_COLA_Cases.html).
+
+In general, we tend to use a hop length that is half of the window length, but
+there are [many documented COLA settings](https://gist.github.com/endolith/c5b39ab78f1910e99cadaced9b839fc1),
+and an [easy way to check if a tuple of settings is COLA](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.check_COLA.html).
 
 
 #### Magnitude Spectrograms
 
-[IMAGE]
+```{figure} ../images/basics/mag_spec.png
+---
+alt:
+name: mag_spec
+---
+
+```
 
 As we will touch on later in this tutorial, it is hard to model the
 phase of a signal. Therefore most source separation approaches only operate on
@@ -260,7 +317,13 @@ is being discussed when possible.
 
 #### Power Spectrograms
 
-[IMAGE]
+```{figure} ../images/basics/pow_spec.png
+---
+alt:
+name: pow_spec
+---
+
+```
 
 Similar to the Magnitude Spectrogram, the Power Spectrogram only contains information
 about the amplitude of a signal.
