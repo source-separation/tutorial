@@ -112,14 +112,11 @@ class RecurrentChimera(BaseMaskEstimation):
                  embedding_size=20, num_audio_channels=1, rnn_type='lstm'):
         super().__init__()
         self.amplitude_to_db = AmplitudeToDB()
-        self.input_normalization = BatchNorm() # nussl's BN by default does input norm
-        self.projection = nn.Sequential(
-            nn.Linear(num_features, hidden_size),
-            nn.ReLU()
-        )
-
+        # nussl's BN by default does input norm
+        self.input_normalization = BatchNorm() 
+        
         self.recurrent_stack = RecurrentStack(
-            hidden_size, hidden_size, num_layers, bidirectional,
+            num_features, hidden_size, num_layers, bidirectional,
             dropout, rnn_type=rnn_type
         )
         out_features = hidden_size * 2 if bidirectional else hidden_size
@@ -136,16 +133,12 @@ class RecurrentChimera(BaseMaskEstimation):
     def forward(self, mix_magnitude):
         # batch, time, features, audio channels 
         nb, nt, nf, nc = mix_magnitude.shape
-        # Step 0. Convert amplitude to decibel-scale log-amplitude
+
+        # Step 1. Convert amplitude to decibel-scale log-amplitude
         data = self.amplitude_to_db(mix_magnitude)
 
-        # Step 1. Normalize before RNN! Very important.
+        # Step 2. Normalize before RNN! Very important.
         data = self.input_normalization(data)
-
-        # Step 2. Project data to smaller subspace
-        data = data.transpose(2, -1)
-        data = self.projection(data)
-        data = data.transpose(2, -1)
 
         # Step 3. Process data with stack of recurrent layers
         data = self.recurrent_stack(data)
