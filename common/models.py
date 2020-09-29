@@ -5,7 +5,7 @@ from torch.nn.utils import weight_norm
 from nussl.ml.networks.modules import (
     Embedding, DualPath, DualPathBlock, STFT, 
     LearnedFilterBank, AmplitudeToDB, RecurrentStack,
-    MelProjection
+    MelProjection, BatchNorm
 )
 import numpy as np
 from . import utils, argbind
@@ -112,10 +112,12 @@ class RecurrentChimera(BaseMaskEstimation):
                  embedding_size=20, num_audio_channels=1, rnn_type='lstm'):
         super().__init__()
         self.amplitude_to_db = AmplitudeToDB()
+        self.input_normalization = BatchNorm() # nussl's BN by default does input norm
         self.projection = nn.Sequential(
             nn.Linear(num_features, hidden_size),
             nn.ReLU()
         )
+
         self.recurrent_stack = RecurrentStack(
             hidden_size, hidden_size, num_layers, bidirectional,
             dropout, rnn_type=rnn_type
@@ -137,22 +139,25 @@ class RecurrentChimera(BaseMaskEstimation):
         # Step 0. Convert amplitude to decibel-scale log-amplitude
         data = self.amplitude_to_db(mix_magnitude)
 
-        # Step 1. Project data to smaller subspace
+        # Step 1. Normalize before RNN! Very important.
+        data = self.input_normalization(data)
+
+        # Step 2. Project data to smaller subspace
         data = data.transpose(2, -1)
         data = self.projection(data)
         data = data.transpose(2, -1)
 
-        # Step 2. Process data with stack of recurrent layers
+        # Step 3. Process data with stack of recurrent layers
         data = self.recurrent_stack(data)
         
-        # Step 3. Project recurrent stack to masks and embedding
+        # Step 4. Project recurrent stack to masks and embedding
         mask = self.mask(data)
         embedding = self.embedding(data)
 
-        # Step 4. Mask the mix magnitude to get the estimates
+        # Step 5. Mask the mix magnitude to get the estimates
         estimates = mask * mix_magnitude.unsqueeze(-1).expand_as(mask)
 
-        # Step 5. Return as a dictionary with keys that match nussl API
+        # Step 6. Return as a dictionary with keys that match nussl API
         output = {
             'mask': mask,
             'estimates': estimates,

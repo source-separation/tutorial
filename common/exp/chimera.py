@@ -19,8 +19,8 @@ def train(
     epoch_length : int = 1000,
     lr : float = 1e-3,
     batch_size : int = 1,
-    dpcl_weight : float = .75,
-    mi_weight : float = .25,
+    dpcl_weight : float = .1,
+    mi_weight : float = .9,
     num_workers : int = 1,
     output_folder : str = '.',
 ):

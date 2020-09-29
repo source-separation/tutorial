@@ -24,10 +24,10 @@ signal.window_length: 512
 signal.window_type: sqrt_hann
 
 train.batch_size: 16
-train.dpcl_weight: 0.75
+train.dpcl_weight: 0.01
 train.epoch_length: 1000
 train.lr: 0.001
-train.mi_weight: 0.25
+train.mi_weight: 0.99
 train.num_epochs: 100
 train.num_workers: 8
 train.output_folder: .
