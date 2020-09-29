@@ -157,8 +157,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/repet.html">
-   Repetition
+  <a class="reference internal" href="../approaches/classic/repetition.html">
+   Repetition and Median Filtering
   </a>
  </li>
  <li class="toctree-l1">
@@ -397,8 +397,8 @@
       </ul>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#magnitude-spectrograms">
-       Magnitude Spectrograms
+      <a class="reference internal nav-link" href="#magnitude-power-and-log-spectrograms">
+       Magnitude, Power, and Log Spectrograms
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -681,21 +681,32 @@ there are <a class="reference external" href="https://gist.github.com/endolith/c
 and an <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.check_COLA.html">easy way to check if a tuple of settings is COLA</a>.</p>
 </div>
 </div>
-<div class="section" id="magnitude-spectrograms">
-<h4>Magnitude Spectrograms<a class="headerlink" href="#magnitude-spectrograms" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="magnitude-power-and-log-spectrograms">
+<h4>Magnitude, Power, and Log Spectrograms<a class="headerlink" href="#magnitude-power-and-log-spectrograms" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="mag-spec">
 <img alt="" src="../_images/mag_spec.png" />
 </div>
 <p>As we will touch on later in this tutorial, it is hard to model the
 phase of a signal. Therefore most source separation approaches only operate on
 the some variant of the spectrogram that does not explicitly represent phase in
-each <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>. The first of these variants we’ll look at is the Magnitude
-Spectrogram.</p>
-<p>For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Magnitude
+each <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>.</p>
+<p><strong>Magnitude Spectrogram</strong>
+For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Magnitude
 Spectrogram is calculated by taking the absolute value of each element in the
 STFT, <span class="math notranslate nohighlight">\(|X| \in \mathbb{R}^{T \times F}\)</span>.</p>
-<p>Phase is necessary to reconstruct the signal, and we
-will discuss how it’s dealt with in a later section.</p>
+<p><strong>Power Spectrogram</strong>
+For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Power
+Spectrogram is calculated by squaring  each element in the
+STFT, <span class="math notranslate nohighlight">\(|X|^2 \in \mathbb{R}^{T \times F}\)</span>.</p>
+<p><strong>Log Spectrogram</strong></p>
+<p>Human hearing is logarithmic with regards to amplitude.
+For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Log
+Spectrogram is calculated taking the log of the absolute value of each element in the
+STFT, <span class="math notranslate nohighlight">\(\log{|X|} \in \mathbb{R}^{T \times F}\)</span>.</p>
+<p><strong>Log Power Spectrogram</strong></p>
+<p>For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Log
+Spectrogram is calculated taking the log of the square of each element in the
+STFT, <span class="math notranslate nohighlight">\(\log{|X|^2} \in \mathbb{R}^{T \times F}\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A note on terminology: while researchers might loosely interchange “STFT” and
@@ -713,14 +724,10 @@ is being discussed when possible.</p>
 </div>
 <p>Similar to the Magnitude Spectrogram, the Power Spectrogram only contains information
 about the amplitude of a signal.</p>
-<p>For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Power
-Spectrogram is calculated by squaring  each element in the
-STFT, <span class="math notranslate nohighlight">\(|X|^2 \in \mathbb{R}^{T \times F}\)</span>.</p>
 </div>
 <div class="section" id="log-spectrograms">
 <h4>Log Spectrograms<a class="headerlink" href="#log-spectrograms" title="Permalink to this headline">¶</a></h4>
 <p>[IMAGE]</p>
-<p>Human hearing is logarithmic with regards to amplitude. To compute a log spectrogram,</p>
 </div>
 <div class="section" id="mel-spaced-spectrograms">
 <h4>Mel-spaced Spectrograms<a class="headerlink" href="#mel-spaced-spectrograms" title="Permalink to this headline">¶</a></h4>
