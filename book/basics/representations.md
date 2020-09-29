@@ -281,7 +281,7 @@ there are [many documented COLA settings](https://gist.github.com/endolith/c5b39
 and an [easy way to check if a tuple of settings is COLA](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.check_COLA.html).
 
 
-#### Magnitude Spectrograms
+#### Magnitude, Power, and Log Spectrograms
 
 ```{figure} ../images/basics/mag_spec.png
 ---
@@ -294,16 +294,32 @@ name: mag_spec
 As we will touch on later in this tutorial, it is hard to model the
 phase of a signal. Therefore most source separation approaches only operate on
 the some variant of the spectrogram that does not explicitly represent phase in
-each {term}`TF bin`. The first of these variants we'll look at is the Magnitude
-Spectrogram.
+each {term}`TF bin`. 
 
+**Magnitude Spectrogram** 
 For a complex-valued STFT, $X \in \mathbb{C}^{T \times F}$, the Magnitude
 Spectrogram is calculated by taking the absolute value of each element in the
 STFT, $|X| \in \mathbb{R}^{T \times F}$. 
 
+**Power Spectrogram**
+For a complex-valued STFT, $X \in \mathbb{C}^{T \times F}$, the Power
+Spectrogram is calculated by squaring  each element in the
+STFT, $|X|^2 \in \mathbb{R}^{T \times F}$.
 
-Phase is necessary to reconstruct the signal, and we
-will discuss how it's dealt with in a later section.
+**Log Spectrogram**
+
+Human hearing is logarithmic with regards to amplitude. 
+For a complex-valued STFT, $X \in \mathbb{C}^{T \times F}$, the Log
+Spectrogram is calculated taking the log of the absolute value of each element in the
+STFT, $\log{|X|} \in \mathbb{R}^{T \times F}$.
+
+**Log Power Spectrogram**
+
+For a complex-valued STFT, $X \in \mathbb{C}^{T \times F}$, the Log
+Spectrogram is calculated taking the log of the square of each element in the
+STFT, $\log{|X|^2} \in \mathbb{R}^{T \times F}$.
+
+
 
 
 ```{note}
@@ -328,9 +344,7 @@ name: pow_spec
 Similar to the Magnitude Spectrogram, the Power Spectrogram only contains information
 about the amplitude of a signal.
 
-For a complex-valued STFT, $X \in \mathbb{C}^{T \times F}$, the Power
-Spectrogram is calculated by squaring  each element in the
-STFT, $|X|^2 \in \mathbb{R}^{T \times F}$. 
+ 
 
 
 
@@ -338,7 +352,7 @@ STFT, $|X|^2 \in \mathbb{R}^{T \times F}$.
 
 [IMAGE]
 
-Human hearing is logarithmic with regards to amplitude. To compute a log spectrogram,
+
 
 
 

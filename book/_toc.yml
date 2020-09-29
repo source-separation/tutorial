@@ -16,7 +16,7 @@
 - part: Classic Approaches
   chapters:
     - file: approaches/classic/intro
-    - file: approaches/classic/repet
+    - file: approaches/classic/repetition
     - file: approaches/classic/nmf
     - file: approaches/classic/spatial
     - file: approaches/classic/melodia
