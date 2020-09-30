@@ -5,7 +5,7 @@ from torch.nn.utils import weight_norm
 from nussl.ml.networks.modules import (
     Embedding, DualPath, DualPathBlock, STFT, 
     LearnedFilterBank, AmplitudeToDB, RecurrentStack,
-    MelProjection, BatchNorm
+    MelProjection, BatchNorm, InstanceNorm, ShiftAndScale
 )
 import numpy as np
 from . import utils, argbind
@@ -112,8 +112,8 @@ class RecurrentChimera(BaseMaskEstimation):
                  embedding_size=20, num_audio_channels=1, rnn_type='lstm'):
         super().__init__()
         self.amplitude_to_db = AmplitudeToDB()
-        # nussl's BN by default does input norm
-        self.input_normalization = BatchNorm() 
+        self.input_normalization = ShiftAndScale()
+        self.batch_norm = BatchNorm(num_features)
         
         self.recurrent_stack = RecurrentStack(
             num_features, hidden_size, num_layers, bidirectional,
@@ -139,6 +139,7 @@ class RecurrentChimera(BaseMaskEstimation):
 
         # Step 2. Normalize before RNN! Very important.
         data = self.input_normalization(data)
+        data = self.batch_norm(data)
 
         # Step 3. Process data with stack of recurrent layers
         data = self.recurrent_stack(data)
@@ -172,6 +173,7 @@ class RecurrentChimera(BaseMaskEstimation):
         embedding_size : int = 20,
         num_audio_channels : int = 1,
         rnn_type : str = 'lstm',
+        verbose : int = 0,
     ):
         num_features = stft_params.window_length // 2 + 1
         config = RecurrentChimera.config(
@@ -184,7 +186,7 @@ class RecurrentChimera(BaseMaskEstimation):
             num_audio_channels=num_audio_channels, rnn_type=rnn_type,
             add_embedding=True
         )
-        return nussl.ml.SeparationModel(config)
+        return nussl.ml.SeparationModel(config, verbose=verbose)
 
 # ----------------------------------------------------
 # --------------- AUDIO ESTIMATION MODELS ------------

@@ -206,6 +206,8 @@ def mixer(
     coherent_prob : float = 0.5,
     augment_prob : float = 0.5,
     quick_pitch_time_prob : float = 1.0,
+    overfit : bool = False,
+    overfit_seed : int = 0,
 ):
     """Creates a mixer that mixes MUSDB examples with data
     augmentation.
@@ -244,6 +246,10 @@ def mixer(
         Probability of augmenting via pitch shift and time stretch, by default 0.5.
     quick_pitch_time_prob : float, optional
         Probability of augmenting with pitch shifting and time stretching in quick mode, by default 1.0.
+    overfit : int, optional
+        Whether or not to overfit to a single batch.
+    overfit_seed : int, optional
+        Seed to overfit with.
 
     Returns
     -------
@@ -254,7 +260,8 @@ def mixer(
     mix_closure = MUSDBMixer(
         fg_path, duration, sample_rate, ref_db, n_channels, 
         master_label, source_file, snr, pitch_shift, time_stretch,
-        coherent_prob, augment_prob, quick_pitch_time_prob
+        coherent_prob, augment_prob, quick_pitch_time_prob,
+        overfit, overfit_seed
     )
     dataset = nussl.datasets.OnTheFly(
         mix_closure, num_mixtures, stft_params=stft_params,
@@ -305,7 +312,9 @@ class MUSDBMixer():
         # Generation parameters
         coherent_prob=0.5,
         augment_prob=0.5,
-        quick_pitch_time_prob=1.0
+        quick_pitch_time_prob=1.0,
+        overfit=False,
+        overfit_seed=0,
     ):
         pitch_shift = (
             tuple(pitch_shift) 
@@ -336,6 +345,9 @@ class MUSDBMixer():
         self.coherent_prob = coherent_prob
         self.augment_prob = augment_prob
         self.quick_pitch_time_prob = quick_pitch_time_prob
+
+        self.overfit = overfit
+        self.overfit_seed = overfit_seed
 
     def _create_scaper_object(self, state):
         sc = scaper.Scaper(
@@ -390,6 +402,8 @@ class MUSDBMixer():
         return sc.generate(fix_clipping=True, quick_pitch_time=quick_pitch_time)
     
     def __call__(self, dataset, i):
+        if self.overfit:
+            i = self.overfit_seed
         state = np.random.RandomState(i)
         with warnings.catch_warnings():
             warnings.filterwarnings('ignore')

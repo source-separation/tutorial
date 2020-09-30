@@ -46,7 +46,7 @@ def train(
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
     # Setting up losses
-    dpcl_loss = nussl.ml.train.loss.WhitenedKMeansLoss()
+    dpcl_loss = nussl.ml.train.loss.DeepClusteringLoss()
     l1_loss = nussl.ml.train.loss.L1Loss()
 
     # TRAIN STEP
