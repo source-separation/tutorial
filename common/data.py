@@ -22,7 +22,9 @@ def download():
     """Downloads required files for tutorial.
     """
     AUDIO_FILES = [
-        'schoolboy_fascination_excerpt.wav'
+        'schoolboy_fascination_excerpt.wav',
+        'historyrepeating_7olLrex.wav',
+        'wsj_speech_mixture_ViCfBJj.mp3'
     ]
     MODEL_FILES = [
         
