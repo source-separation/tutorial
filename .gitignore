@@ -948,3 +948,6 @@ data/*
 data
 checkpoints/
 results/
+
+# PyCharm
+.idea/*
