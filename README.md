@@ -29,12 +29,8 @@ do the following, given the base configuration included in
 First, prepare the MUSDB data:
 
 ```
-# Symlink your data directory to ./data/
-python -m common.data --run.cmd='symlink' --symlink.folder=~/.nussl/tutorial
-# Prepare data
-python -m common.data --run.cmd=prepare_musdb --args.load=common/exp/conf/chimera.yml
-# Listen to Scaper output on train set
-python -m common.data --run.cmd=listen --args.load=common/exp/conf/chimera.yml
+# Symlink your data directory to ./data/ and prepare it for scaper
+python -m common.data --args.load=common/exp/conf/chimera.yml
 ```
 
 Now, train, evaluate, and listen to a model:

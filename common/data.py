@@ -290,32 +290,6 @@ def mixer(
     )
     return dataset
 
-@argbind.bind_to_parser()
-def listen(
-    num : int = 1,
-    seed : int = 0,
-):
-    """
-    Listen to ```num``` examples from the dataset.
-
-    Parameters
-    ----------
-    num : int, optional
-        Number of examples to listen to from dataset, by default 1
-    seed : int, optional
-        Seed to start out for listening.
-    """
-    stft_params, sample_rate = signal()
-    dataset = mixer(stft_params, None)
-    state = np.random.RandomState(seed)
-    for _ in range(num):
-        idx = state.randint(0, len(dataset))
-        item = dataset[idx]
-        soundscape_jam = item['metadata']['jam']
-        logging.info(f"Item {item['metadata']['idx']} from dataset")
-        utils.pprint(soundscape_jam)
-        item['mix'].play()
-
 class MUSDBMixer():
     def __init__(
         self,
@@ -469,4 +443,8 @@ class MUSDBMixer():
         return output
     
 if __name__ == "__main__":
-    utils.parse_args_and_run(__name__)
+    utils.logger()
+    args = argbind.parse_args()
+    with argbind.scope(args):
+        symlink()
+        prepare_musdb()
