@@ -1,4 +1,4 @@
-(data:intro)=
+(data:introduction)=
 # Introduction
 
 In this chapter we'll cover the key aspects we need to know about data for source separation: what do data for source 
@@ -52,8 +52,10 @@ In summary, from a data standpoint, to train a music source separation model we 
 
 ## Data is a key component
 
-Your model can only be as good as the data used to train it (the ["garbage in garbage 
-out"](https://en.wikipedia.org/wiki/Garbage_in,_garbage_out) principle). It may be tempting to generate simple synthetic 
+Your model can only be as good as the data used to train it (the [garbage in garbage 
+out](https://en.wikipedia.org/wiki/Garbage_in,_garbage_out) principle), and failing to use data (music) that is 
+representative of the data you plan to apply your model to ([sampling bias](https://en.wikipedia.org/wiki/Sampling_bias))
+It may be tempting to generate simple synthetic 
 stems or make some multi-track recordings in the lab and use these to train a model. However, there is little to no chance 
 that a model trained on such data will generalize to real-world music. Put simply, you need to train your model with data 
 that is representative of the type of data you plan to apply your model to once it is trained.
