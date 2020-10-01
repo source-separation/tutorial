@@ -446,5 +446,6 @@ if __name__ == "__main__":
     utils.logger()
     args = argbind.parse_args()
     with argbind.scope(args):
+        download()
         symlink()
         prepare_musdb()
