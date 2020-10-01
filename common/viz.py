@@ -14,3 +14,6 @@ def embed(sources):
     
     _sources = {k: v * 1 / len(sources) for k, v in sources.items()}
     nussl.play_utils.multitrack(_sources, ext='.wav')
+
+show = embed
+visualize = embed

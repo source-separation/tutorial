@@ -177,30 +177,8 @@ def evaluate(
     with open(output_file, 'w') as f:
         f.write(report_card)
 
-@argbind.bind_to_parser()
-def listen(
-    args,
-    folder : str = 'data/test',
-):
-    stft_params, sample_rate = data.signal()
-    musdb = nussl.datasets.MixSourceFolder(
-        folder=folder, source_folders=LABELS, make_mix=True,
-        stft_params=stft_params, sample_rate=sample_rate, 
-        strict_sample_rate=False
-    )
-    _device = utils.device()
-    separator = models.deep_mask_estimation(_device)
-
-    idx = np.random.randint(len(musdb))
-    item = musdb[idx]
-
-    separator.audio_signal = item['mix']
-    estimates = separator()
-
-    item['mix'].play()
-    for i, e in enumerate(estimates): 
-        print(LABELS[i])
-        e.play()
-
 if __name__ == "__main__":
-    utils.parse_args_and_run(__name__, pass_args=True)
+    args = argbind.parse_args()
+    with argbind.scope(args):
+        train(args)
+        evaluate(args)
