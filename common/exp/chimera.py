@@ -148,6 +148,7 @@ def evaluate(
     target_instrument : str = 'vocals',
 ):
     output_folder = Path(output_folder) 
+    output_folder.mkdir(exist_ok=True)
     stft_params, sample_rate = data.signal()
 
     with argbind.scope(args, 'test'):
@@ -161,13 +162,14 @@ def evaluate(
         transform=test_tfm, stft_params=stft_params, 
         sample_rate=sample_rate, strict_sample_rate=False
     )
+    musdb.sample_rate = sample_rate # TODO: Remove after nussl 1.1.3rc2.
     separator = models.deep_mask_estimation(utils.device())
     
     utils.plot_metrics(separator, 'l1_loss', output_folder / 'metrics.png')
 
     pbar = tqdm.tqdm(musdb)
     for item in pbar:
-        pbar.set_description(item['mix'].file_name)
+        pbar.set_description(str(item['mix']))
         separator.audio_signal = item['mix']
         estimates = separator()
         
@@ -182,7 +184,7 @@ def evaluate(
         estimates = [estimates[k] for k in source_keys]
 
         evaluator = nussl.evaluation.BSSEvalScale(
-            sources, estimates, source_labels=LABELS
+            sources, estimates, source_labels=new_labels
         )
         scores = evaluator.evaluate()
         output_folder = Path(output_folder).absolute()
@@ -210,5 +212,5 @@ if __name__ == "__main__":
     utils.logger()
     args = argbind.parse_args()
     with argbind.scope(args):
-        train(args)
+        # train(args)
         evaluate(args)
