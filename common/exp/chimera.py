@@ -59,16 +59,12 @@ def train(
         model.train()
         output = model(batch)
         
-        weights = torch.ones_like(
-            batch['weights'], 
-            device=batch['weights'].device
-        )
         # Calculate DPCL loss
         _dpcl = dpcl_loss(
             output['embedding'], 
             # These come from the transforms
             batch['ideal_binary_mask'], 
-            weights
+            batch['weights']
         )
         # Calculate spectrogram loss
         _l1 = l1_loss(output['estimates'], batch['source_magnitudes'])
