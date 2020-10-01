@@ -59,13 +59,16 @@ def train(
     def train_step(engine, batch):
         model.train()
         output = model(batch)
+
+        weights = torch.ones_like(
+            batch['weights']).to(batch['weights'].device)
         
         # Calculate DPCL loss
         _dpcl = dpcl_loss(
             output['embedding'], 
             # These come from the transforms
             batch['ideal_binary_mask'], 
-            batch['weights']
+            weights
         )
         # Calculate spectrogram loss
         _l1 = l1_loss(output['estimates'], batch['source_magnitudes'])
