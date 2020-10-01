@@ -36,6 +36,13 @@ PLACEHOLDER: block diagram of training
 The difference between the estimated stems and original stems is also used to *evaluate* a trained source separation model,
 as we shall see later on.
 
+```{note}
+Our goal may not always be to separate all the stems. For example, we may want to train a model to only separate the vocals
+from the accompaniment (i.e., everything else) in a mixture. In this case we can think of the mixture as the sum of two 
+stems: one containing the vocals and the other containing all other instruments. We can achieve this by mixing all but 
+the vocal stems into an "accompaniment stem", and train the model to separate the mixture into these two stems. 
+```
+
 In summary, from a data standpoint, to train a music source separation model we need:
 1. The isolated stems of all instruments/voices that comprise a music recording. This is commonly referred to as a
 "multi-track recording", since each instrument is recorded on a separate track of a digital audio workstation (DAW).
@@ -44,6 +51,25 @@ In summary, from a data standpoint, to train a music source separation model we 
 
 ## Data is a key component
 
+Your model can only be as good as the data used to train it (the ["garbage in garbage 
+out"](https://en.wikipedia.org/wiki/Garbage_in,_garbage_out) principle). It may be tempting to generate simple synthetic 
+stems or make some multi-track recordings in the lab and use these to train a model. However, there is little to no chance 
+that a model trained on such data will generalize to real-world music. Put simply, you need to train your model with data 
+that is representative of the type of data you plan to apply your model to once it is trained.
+
 ## Data for source separation hard to obtain
 
+Due to copyright, it is hard to obtain and share music recordings for machine learning purposes. It is even harder to obtain
+multi-track recordings that include the isolated stems, as these are rarely made available by artists. Fortuntaely, the research
+community has nonetheless been able to create and share multi-track datasets, as we shall see late. The size of these datasets
+is typically very small compared to other machine learning datasets. Luckily for us, we have tools to generate multiple, 
+different mixtures from the same set of stems, helping us to maximize what our model can learn from a given set of stems. 
+
 ## Chapter outline
+
+The remainder of this chapter is structured as follows:
+* In Datasets, we will provide an overview of existing datasets for training music source separation models.
+* In The MUSDB18 dataset, we will go into further detail about one dataset which we will use for the remainder of the tutorial.
+* In Transforms, we will explain how to transform an audio signal into an input representation we can use for training.
+* In Data generation with Scaper, we will learn how to use the Scaper library to generate and augment mixtures on-the-fly
+for training and evaluation. 
