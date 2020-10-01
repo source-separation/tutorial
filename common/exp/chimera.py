@@ -9,8 +9,6 @@ import json
 import glob
 import numpy as np
 
-LABELS = ['bass', 'drums', 'other', 'vocals']
-
 @argbind.bind_to_parser()
 def train(
     args,
@@ -23,22 +21,29 @@ def train(
     mi_weight : float = .9,
     num_workers : int = 1,
     output_folder : str = '.',
+    target_instrument : str = 'vocals',
 ):
     nussl.utils.seed(seed)
     stft_params, sample_rate = data.signal()
 
     with argbind.scope(args, 'train'):
-        train_tfm = data.transform(stft_params, sample_rate)
+        train_tfm, LABELS = data.transform(
+            stft_params, sample_rate, 
+            target_instrument, only_audio_signal=False,
+        )
         train_data = data.mixer(stft_params, train_tfm)
 
     with argbind.scope(args, 'val'):
-        val_tfm = data.transform(stft_params, sample_rate)
+        val_tfm, _ = data.transform(
+            stft_params, sample_rate,
+            target_instrument, only_audio_signal=False,
+        )
         val_data = data.mixer(stft_params, val_tfm)
     
     # Initialize the model
     nussl.utils.seed(seed)
     _device = utils.device()
-    model = models.RecurrentChimera.build(stft_params)
+    model = models.RecurrentChimera.recurrent_chimera(stft_params)
     model = model.to(_device)
     logging.info(model)
 
@@ -46,7 +51,7 @@ def train(
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
     # Setting up losses
-    dpcl_loss = nussl.ml.train.loss.DeepClusteringLoss()
+    dpcl_loss = nussl.ml.train.loss.WhitenedKMeansLoss()
     l1_loss = nussl.ml.train.loss.L1Loss()
 
     # TRAIN STEP
@@ -54,12 +59,16 @@ def train(
         model.train()
         output = model(batch)
         
+        weights = torch.ones_like(
+            batch['weights'], 
+            device=batch['weights'].device
+        )
         # Calculate DPCL loss
         _dpcl = dpcl_loss(
             output['embedding'], 
             # These come from the transforms
             batch['ideal_binary_mask'], 
-            batch['weights']
+            weights
         )
         # Calculate spectrogram loss
         _l1 = l1_loss(output['estimates'], batch['source_magnitudes'])
@@ -130,19 +139,23 @@ def evaluate(
     folder : str = 'data/test',
     output_folder : str = './results',
     num_workers : int = 1,
+    target_instrument : str = 'vocals',
 ):
     output_folder = Path(output_folder) 
     stft_params, sample_rate = data.signal()
-    # Output of net is always in alphabetical order
+
+    with argbind.scope(args, 'test'):
+        test_tfm, new_labels = data.transform(
+            stft_params, sample_rate, 
+            target_instrument, only_audio_signal=True
+        )
 
     musdb = nussl.datasets.MixSourceFolder(
-        folder=folder, source_folders=LABELS, make_mix=True,
-        stft_params=stft_params, sample_rate=sample_rate, 
-        strict_sample_rate=False
+        folder=folder, source_folders=data.LABELS, make_mix=True,
+        transform=test_tfm, stft_params=stft_params, 
+        sample_rate=sample_rate, strict_sample_rate=False
     )
-
-    _device = utils.device()
-    separator = models.deep_mask_estimation(_device)
+    separator = models.deep_mask_estimation(utils.device())
     
     utils.plot_metrics(separator, 'l1_loss', output_folder / 'metrics.png')
 
@@ -151,7 +164,17 @@ def evaluate(
         pbar.set_description(item['mix'].file_name)
         separator.audio_signal = item['mix']
         estimates = separator()
-        sources = [item['sources'][k] for k in labels]
+        
+        source_keys = list(item['sources'].keys())
+        other_label = [k for k in source_keys if k != target_instrument]
+        estimates = {
+            target_instrument: estimates[0],
+            other_label[0]: item['mix'] - estimates[0]
+        }
+
+        sources = [item['sources'][k] for k in source_keys]
+        estimates = [estimates[k] for k in source_keys]
+
         evaluator = nussl.evaluation.BSSEvalScale(
             sources, estimates, source_labels=LABELS
         )
@@ -178,6 +201,7 @@ def evaluate(
         f.write(report_card)
 
 if __name__ == "__main__":
+    utils.logger()
     args = argbind.parse_args()
     with argbind.scope(args):
         train(args)

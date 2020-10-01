@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import nussl
 
-def embed(sources):
+def show_sources(sources):
     if isinstance(sources, list):
         sources = {f'Source {i}': s for i, s in enumerate(sources)}
     plt.figure(figsize=(20, 10))
@@ -15,5 +15,6 @@ def embed(sources):
     _sources = {k: v * 1 / len(sources) for k, v in sources.items()}
     nussl.play_utils.multitrack(_sources, ext='.wav')
 
-show = embed
-visualize = embed
+# For backwards compat.
+# TODO: Remove eventually.
+embed = show_sources

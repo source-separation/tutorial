@@ -24,9 +24,9 @@ mixer.pitch_shift: [uniform, -2, 2]
 mixer.overfit_seed: 0
 
 train/mixer.fg_path: data/train
-train/mixer.duration: 1.0
+train/mixer.duration: 5.0
 train/mixer.num_mixtures: 10000000
-train/transform.excerpt_length: 1.0
+train/transform.excerpt_length: 5.0
 
 val/mixer.duration: 5.0
 val/transform.excerpt_length: 5.0
