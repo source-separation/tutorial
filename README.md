@@ -40,12 +40,8 @@ python -m common.data --run.cmd=listen --args.load=common/exp/conf/chimera.yml
 Now, train, evaluate, and listen to a model:
 
 ```
-# Train the model
-python -m common.exp.chimera --run.cmd='train' --args.load=common/exp/conf/chimera.yml
-# Evaluate the model
-python -m common.exp.chimera --run.cmd='evaluate' --args.load=common/exp/conf/chimera.yml
-# Listen to the model
-python -m common.exp.chimera --run.cmd='listen' --args.load=common/exp/conf/chimera.yml
+# Train and evaluate the model
+python -m common.exp.chimera --args.load=common/exp/conf/chimera.yml
 ```
 
 ## Questions? Comments? Typos? Bugs? Issues?
