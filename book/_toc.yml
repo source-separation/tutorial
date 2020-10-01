@@ -37,15 +37,26 @@
         - file: approaches/deep/dprnn
     - file: approaches/open_src_projects
 
+- part: Training
+  chapters:
+    - file: training/intro
+    - file: training/gradient_descent
+    - file: training/inputs_outputs_losses
+    - file: training/building_blocks
+    - file: training/bugs
+    - file: training/activity
+
+- part: Experimental workflow
+  chapters:
+    - file: experiments/intro
+    - file: experiments/principles
+    - file: experiments/activity
 
 - part: Conclusions
   chapters:
     - file: conclusions/applications
     - file: conclusions/concluding_remarks
     - file: conclusions/additional_resources
-
-
-
 
 - part: Appendix
   chapters:
