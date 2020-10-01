@@ -8,6 +8,7 @@ from common import data, models, argbind, utils, handlers
 import json
 import glob
 import numpy as np
+import ignite
 
 @argbind.bind_to_parser()
 def train(
@@ -117,6 +118,12 @@ def train(
     nussl.ml.train.add_tensorboard_handler(output_folder / 'logs/', trainer)
     nussl.ml.train.add_progress_bar_handler(trainer)
     nussl.ml.train.add_progress_bar_handler(validator)
+
+    # Add handler for terminating on NaN
+    trainer.add_event_handler(
+        ignite.engine.Events.ITERATION_COMPLETED,
+        ignite.handlers.TerminateOnNan()
+    )
 
     # Add patience, autoclip, and early stopping
     handlers.autoclip()(trainer, model)
