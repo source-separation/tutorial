@@ -1,3 +1,4 @@
+(data:intro)=
 # Introduction
 
 In this chapter we'll cover the key aspects we need to know about data for source separation: what do data for source 
@@ -19,9 +20,9 @@ processed with effects such as compression, reverb, etc.
 PLACEHOLDER: diagram of simplified mixing process 
 
 ```{note}
-This is a simplified view of music creation. In practice, the mixture (musicians refer to this as the "mix") typically 
-goes through a "mastering" step which includes the application of multiple non-linear transformations to the mixture signal
-to produce the "master", which is rarely a simple sum of the stems. Nonetheless, this simplified view (no mastering) allows 
+This is a simplified view of music creation. In practice, the mixture (musicians refer to this as the *mix*) typically 
+goes through a *mastering* step which includes the application of multiple non-linear transformations to the mixture signal
+to produce the *master*, which is rarely a simple sum of the stems. Nonetheless, this simplified view (no mastering) allows 
 us to train models that produce compelling results, as we shall see throughout this tutorial. 
 ```
 
@@ -68,8 +69,8 @@ different mixtures from the same set of stems, helping us to maximize what our m
 ## Chapter outline
 
 The remainder of this chapter is structured as follows:
-* In Datasets, we will provide an overview of existing datasets for training music source separation models.
-* In The MUSDB18 dataset, we will go into further detail about one dataset which we will use for the remainder of the tutorial.
-* In Transforms, we will explain how to transform an audio signal into an input representation we can use for training.
-* In Data generation with Scaper, we will learn how to use the Scaper library to generate and augment mixtures on-the-fly
+* In {ref}`Datasets <data:datasets>`, we will provide an overview of existing datasets for training music source separation models.
+* In {ref}`The MUSDB18 dataset <data:musdb18>`, we will go into further detail about the dataset we will use in this tutorial.
+* In {ref}`Transforms <data:transforms>`, we will explain how to transform an audio signal into an input representation we can use for training.
+* In {ref}`Data generation with Scaper <data:scaper>`, we will learn how to use the Scaper library to generate and augment mixtures on-the-fly
 for training and evaluation. 
