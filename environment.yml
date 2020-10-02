@@ -15,4 +15,5 @@ dependencies:
     - nussl
     - scaper
     - soxbindings
+    - numpydoc
     - pyloudnorm
