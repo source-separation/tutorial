@@ -10,6 +10,7 @@ In this section, we will outline a few of the recent systems.
 ## Mask-Based Systems
 
 
+(architectures:unets)=
 ### U-Nets
 
 ```
@@ -36,13 +37,17 @@ The final mask is multiplied by the input mixture and the loss is taken
 between the ground truth source spectrogram and mixture spectrogram
 with the estimated mask applied, as per usual.
 
-Many variants of the U-Net architecture have been proposed
+Many variants of the U-Net architecture have been proposed, some which add
+conditioning on the latent space to control or enhance the output
 
 
+(architectures:openunmix)=
 ### Open-Unmix
 
 Open-Unmix is a 
 
+
+(architectures:maskinference)=
 ### Mask Inference
 
 Although many deep learning systems make masks, the term _Mask
@@ -60,6 +65,7 @@ activation on the fully connected layer to create the mask.
 Batch norm, whitening? Dropout
 
 
+(architectures:deepclustering)=
 ### Deep Clustering
 
 Deep Clustering maps each {term}`TF-bin` to a high-dimensional
@@ -74,19 +80,24 @@ fully connected layer with a sigmoid activation function that makes
 masks.
 
 
+(architectures:chimera)=
 ### Chimera
 
 Chimera combines the Mask Inference and Deep Clustering architectures
 into a multi-task neural network. The net is trained to optimize both
 loss functions simultaneously. It does this by having a separate
-"head" for each loss. Each of these heads is 
+"head" for each loss. Each of these heads is its own fully connected
+layer and activation with only one loss applied from the
 
 
 ## Waveform Systems
 
+(architectures:convtasnet)=
 ### ConvTasnet
 
+
+(architectures:waveunet)=
 ### Wave-U-Net
 
-
+(architectures:demucs)=
 ### Demucs
