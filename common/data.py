@@ -72,7 +72,6 @@ def transform(
     sample_rate : int,
     target_instrument, 
     only_audio_signal : bool,
-    excerpt_length : float = 4.0,
     mask_type : str = 'msa',
     audio_only : bool = False
 ):
@@ -92,8 +91,6 @@ def transform(
     only_audio_signal : bool
         Whether to return only the audio signals, no
         tensors (useful for eval).
-    excerpt_length : float, optional
-        Length of excerpt in seconds, by default 4.0.
     mask_type : str, optional
         What type of masking to use. Either phase
         sensitive spectrum approx. (psa) or
@@ -123,16 +120,7 @@ def transform(
         tfm.append(nussl_tfm.IndexSources('source_magnitudes', target_index))
 
         tfm.append(nussl_tfm.ToSeparationModel())
-
-        length_in_samples = int(excerpt_length * sample_rate)
-        length_in_frames = int(length_in_samples / stft_params.hop_length)
-
-        if not audio_only:
-            tfm.append(nussl_tfm.GetExcerpt(length_in_frames))
         
-        tfm.append(nussl_tfm.GetExcerpt(
-            length_in_samples, time_dim=1, tf_keys=['mix_audio', 'source_audio'])
-        )
     return nussl_tfm.Compose(tfm), new_labels
 
 @argbind.bind_to_parser()
@@ -142,13 +130,18 @@ def symlink(
 ):
     folder = Path(folder).expanduser().absolute()
     target = Path(target).expanduser().absolute()
+    target.parent.mkdir(parents=True, exist_ok=True)
+
     logging.info(f'Symlinking {folder} to {target}')
     folder.mkdir(exist_ok=True)
-    os.symlink(folder, target)
+    try:
+        os.symlink(folder, target)
+    except:
+        logging.warning("Symlink already exists!")
 
 @argbind.bind_to_parser()
 def prepare_musdb(
-    folder : str = 'data/', 
+    folder : str = 'data/MUSDB18_7s/', 
     musdb_root : str = None, 
 ):
     """Prepares MUSDB data which is organized as .mp4 
@@ -441,11 +434,23 @@ class MUSDBMixer():
             }
         }
         return output
+
+@argbind.bind_to_parser()
+def run(
+    args,
+    output_folder : str = '.',
+    stages : List[str] = ['download', 'symlink', 'prepare_musdb']
+):
+    output_folder = Path(output_folder)
+    output_folder.mkdir(exist_ok=True, parents=True)
+    with utils.chdir(output_folder):
+        for stage in stages:
+            fn = globals()[stage]
+            fn()
+
     
 if __name__ == "__main__":
     utils.logger()
     args = argbind.parse_args()
     with argbind.scope(args):
-        download()
-        symlink()
-        prepare_musdb()
+        run(args)

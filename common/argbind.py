@@ -235,14 +235,24 @@ def load_args(input_path):
         data = yaml.load(f, Loader=yaml.Loader)
     
     if '$include' in data:
+        include_files = data.pop('$include')
         include_args = {}
-        for include_file in data['$include']:
+        for include_file in include_files:
             with open(include_file, 'r') as f:
                 _include_args = yaml.load(f, Loader=yaml.Loader)
             include_args.update(_include_args)
         include_args.update(data)
         data = include_args
-        
+
+    if '$vars' in data:
+        _vars = data.pop('$vars')
+        for key, val in data.items():
+            # Check if string starts with $.
+            if isinstance(val, str) and val.startswith('$'):
+                lookup = val[1:]
+                if lookup in _vars:
+                    data[key] = _vars[lookup]
+
     if 'args.debug' not in data:
         data['args.debug'] = DEBUG
     return data

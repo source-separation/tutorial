@@ -5,6 +5,8 @@ import torch
 import matplotlib.pyplot as plt
 import os
 from contextlib import contextmanager
+import tqdm
+from pathlib import Path
 from . import argbind
 
 @contextmanager
@@ -44,10 +46,8 @@ def run(module, *args, cmd : str = None):
             cmd_fn = getattr(module, cmd)
             cmd_fn(*args)
 
-def save_exp(args):
-    if args['args.save']:
-        save_path = args['args.save'].replace('yml')
-        argbind.dump_args(used_args, save_path)
+def save_exp(args, save_path):
+    argbind.dump_args(args, save_path)
 
 def parse_args_and_run(name, pass_args=False):
     args = argbind.parse_args()
@@ -82,6 +82,25 @@ def logger(level : str = 'info'):
         datefmt='%m/%d/%Y %I:%M:%S %p',
         level=level
     )
+
+@argbind.bind_to_parser()
+def log_file(
+    path : str = './logs/log.txt'
+):
+    """Log everything that happens in the basic logger to a 
+    file.
+
+    Parameters
+    ----------
+    path : str
+        Path where log will be saved.
+    """
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    logger = logging.getLogger()
+    handler = logging.FileHandler(path)
+    logger.addHandler(handler)
+
 
 def pprint(data):
     if isinstance(data, dict):

@@ -22,7 +22,6 @@ def train(
     dpcl_weight : float = .1,
     mi_weight : float = .9,
     num_workers : int = 1,
-    output_folder : str = '.',
     target_instrument : str = 'vocals',
 ):
     nussl.utils.seed(seed)
@@ -113,7 +112,7 @@ def train(
         num_workers=num_workers, batch_size=batch_size, 
         sampler=val_sampler)
 
-    output_folder = Path(output_folder).absolute()
+    output_folder = Path('.').absolute()
 
     # Add some handlers for printing to stdout and saving model
     nussl.ml.train.add_stdout_handler(trainer, validator)
@@ -144,11 +143,11 @@ def train(
 def evaluate(
     args,
     folder : str = 'data/test',
-    output_folder : str = './results',
     num_workers : int = 1,
+    results_folder : str = 'results/',
     target_instrument : str = 'vocals',
 ):
-    output_folder = Path(output_folder) 
+    output_folder = Path(results_folder) 
     output_folder.mkdir(parents=True, exist_ok=True)
     stft_params, sample_rate = data.signal()
 
@@ -166,7 +165,7 @@ def evaluate(
     musdb.sample_rate = sample_rate # TODO: Remove after nussl 1.1.3rc2.
     separator = models.deep_mask_estimation(utils.device())
     
-    utils.plot_metrics(separator, 'l1_loss', output_folder / 'metrics.png')
+    utils.plot_metrics(separator, 'l1_loss', output_folder.parent / 'metrics.png')
 
     pbar = tqdm.tqdm(musdb)
     for item in pbar:
@@ -212,11 +211,17 @@ def evaluate(
 @argbind.bind_to_parser()
 def run(
     args,
+    output_folder : str = '.',
     stages : List[str] = ['train', 'evaluate']
 ):
-    for stage in stages:
-        fn = globals()[stage]
-        fn(args)
+    output_folder = Path(output_folder)
+    output_folder.mkdir(exist_ok=True, parents=True)
+    with utils.chdir(output_folder):
+        utils.log_file()
+        utils.save_exp(args, './args.yml')
+        for stage in stages:
+            fn = globals()[stage]
+            fn(args)
 
 
 if __name__ == "__main__":

@@ -944,7 +944,5 @@ cython_debug/
 .idea/vcs.xml
 
 book/_build
-data/*
-data
+output/
 checkpoints/
-results/

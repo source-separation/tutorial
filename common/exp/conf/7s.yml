@@ -1,0 +1,14 @@
+# These settings are for training a model
+# On the 7-second sample MUSDB data.
+
+$vars:
+  sample_rate: 16000
+  test_folder: ../data/7s/test
+  train_folder: ../data/7s/train
+  val_folder: ../data/7s/valid
+
+run.output_folder: 'output/7s/'
+
+symlink.folder: '~/.nussl/tutorial/'
+symlink.target: ../data/7s/
+prepare_musdb.folder: '../data/7s'
