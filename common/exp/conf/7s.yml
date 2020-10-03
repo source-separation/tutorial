@@ -6,6 +6,7 @@ $vars:
   test_folder: ../data/7s/test
   train_folder: ../data/7s/train
   val_folder: ../data/7s/valid
+  target_instrument: vocals
 
 run.output_folder: 'output/7s/'
 

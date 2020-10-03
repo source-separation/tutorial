@@ -8,6 +8,7 @@ $vars:
   test_folder: ../data/musdb18/wav/test
   train_folder: ../data/musdb18/wav/train
   val_folder: ../data/musdb18/wav/valid
+  target_instrument: vocals
 
 run.output_folder: 'output/musdb18/'
 
