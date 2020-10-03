@@ -8,5 +8,6 @@ nussl==1.1.3rc1
 scaper==1.6.4
 numpydoc
 pyyaml
+gradio
 # bokeh
 # ipywidgets

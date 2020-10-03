@@ -32,4 +32,3 @@ train.seed: 0
 train.target_instrument: $target_instrument
 evaluate.target_instrument: $target_instrument
 mixer.target_instrument: $target_instrument
-mixer.target_snr_boost: 5.0
