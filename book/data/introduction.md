@@ -54,13 +54,13 @@ In summary, from a data standpoint, to train a music source separation model we 
 
 Your model can only be as good as the data used to train it (the [garbage in garbage 
 out](https://en.wikipedia.org/wiki/Garbage_in,_garbage_out) principle), and failing to use data (music) that is 
-representative of the data you plan to apply your model to ([sampling bias](https://en.wikipedia.org/wiki/Sampling_bias))
+representative of the data you plan to apply your model to ([sampling bias](https://en.wikipedia.org/wiki/Sampling_bias)).
 It may be tempting to generate simple synthetic 
 stems or make some multi-track recordings in the lab and use these to train a model. However, there is little to no chance 
 that a model trained on such data will generalize to real-world music. Put simply, you need to train your model with data 
 that is representative of the type of data you plan to apply your model to once it is trained.
 
-## Data for source separation hard to obtain
+## Data for source separation is hard to obtain
 
 Due to copyright, it is hard to obtain and share music recordings for machine learning purposes. It is even harder to obtain
 multi-track recordings that include the isolated stems, as these are rarely made available by artists. Fortuntaely, the research
