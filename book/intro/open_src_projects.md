@@ -94,32 +94,8 @@ sometimes released. Here is a non-exhaustive list of some recent open source
 projects.
 
 We will discuss some of these architectures in more detail in later sections,
-but here we will provide links to their Github repositories.
-
-
-(opensrc:openunmix)=
-#### `Open-Unmix`
-
-See our overview here: {ref}`architectures:openunmix`  
-[Github Link (pytorch)](https://github.com/sigsep/open-unmix-pytorch)  
-[Github Link (nnabla)](https://github.com/sigsep/open-unmix-nnabla)  
-
-| Weights Avail? | License | Training set      | Framework     | Vocal SDR |
-|----------------|---------|-------------------|---------------|-----------|
-| Yes            | MIT     | MUSDB             | pytorch       | 5.3       |
-
-
-(opensrc:demucs)=
-#### `Demucs`
-
-See our overview here: {ref}`architectures:convtasnet`   
-[Github Link](https://github.com/facebookresearch/demucs)
-
-
-| Weights Avail? | License | Training set      | Framework     | Vocal SDR |
-|----------------|---------|-------------------|---------------|-----------|
-| Yes            | MIT     | MUSDB             | pytorch       | 5.6       |
-| Yes            | MIT     | MUSDB + 150 songs | pytorch       | 6.3       |
+but here we will provide some highlights and links to their Github repositories,
+in alphabetical order.
 
 
 (opensrc:convtasnet)=
@@ -136,6 +112,45 @@ This implementation is from the {ref}`opensrc:demucs` github page.
 
 
 
+(opensrc:demucs)=
+#### `Demucs`
+
+See our overview here: {ref}`architectures:convtasnet`   
+[Github Link](https://github.com/facebookresearch/demucs)
+
+
+| Weights Avail? | License | Training set      | Framework     | Vocal SDR |
+|----------------|---------|-------------------|---------------|-----------|
+| Yes            | MIT     | MUSDB             | pytorch       | 5.6       |
+| Yes            | MIT     | MUSDB + 150 songs | pytorch       | 6.3       |
+
+
+(opensrc:openunmix)=
+#### `Open-Unmix`
+
+See our overview here: {ref}`architectures:openunmix`  
+[Github Link (pytorch)](https://github.com/sigsep/open-unmix-pytorch)  
+[Github Link (nnabla)](https://github.com/sigsep/open-unmix-nnabla)  
+
+| Weights Avail? | License | Training set      | Framework     | Vocal SDR |
+|----------------|---------|-------------------|---------------|-----------|
+| Yes            | MIT     | MUSDB             | pytorch       | 5.3       |
+
+
+
+
+(opensrc:spleeter)=
+#### `Spleeter`
+
+Spleeter is based on a `U-Net` architecture. See more here: {ref}`architectures:unets`   
+[Github Link](https://github.com/deezer/spleeter)
+
+
+| Weights Avail? | License | Training set      | Framework     | Vocal SDR |
+|----------------|---------|-------------------|---------------|-----------|
+| Yes            | MIT     | MUSDB + others    | tensorflow v1 | 5.9       |
+
+
 (opensrc:waveunet)=
 #### `Wave-U-Net`
 
@@ -149,17 +164,6 @@ See our overview here: {ref}`architectures:waveunet`
 | Yes            | MIT     | MUSDB             | pytorch       | 3.2       |
 | Yes            | MIT     | MUSDB             | tensorflow v1 | 3.2       |
 
-
-(opensrc:spleeter)=
-#### `Spleeter`
-
-Spleeter is based on a `U-Net` architecture. See more here: {ref}`architectures:unets`   
-[Github Link](https://github.com/deezer/spleeter)
-
-
-| Weights Avail? | License | Training set      | Framework     | Vocal SDR |
-|----------------|---------|-------------------|---------------|-----------|
-| Yes            | MIT     | MUSDB + others    | tensorflow v1 | 5.9       |
 
 
 

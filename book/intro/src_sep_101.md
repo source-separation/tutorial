@@ -96,7 +96,7 @@ For example, source separation has been used to enhance:
 - lyric and music alignment {cite}`fujihara2006automatic`, 
 - musical instrument detection {cite}`heittola2009musical`, 
 - lyric recognition {cite}`mesaros2010automatic`, 
-- automatic singer identification {cite}`weninger2011automatic`, 
+- automatic singer identification {cite}`weninger2011automatic,hu2015separation,sharma2019importance`, 
 - vocal activity detection {cite}`stoller2018jointly`, 
 - fundamental frequency estimation {cite}`jansson2019joint`, and 
 - understanding the predictions of black-box audio models. {cite}`haunschmid2020towards,haunschmid2020audiolime`

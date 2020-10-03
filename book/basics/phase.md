@@ -158,7 +158,7 @@ our source estimate. Note that this equation looks similar if we want to apply
 a mask to a power spectrogram ($|Y|^2$), log spectrogram ($\log |Y|$), etc.
 
 Now we can just copy the phase from the mixture over to the magnitude spectrogram
-of our source estimate, $\hat{X_i}$:
+of our source estimate, $\hat{X}_i$:
 
 $$
 \tilde{X}_i = \hat{X}_i \odot e^{j \cdot \angle Y}

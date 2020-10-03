@@ -75,8 +75,8 @@ possible frequency is 22.05 kHz.
 Many deep learning-based source separation approaches will reduce the sample
 rate of their input signals (called {term}`downsampling`) to reduce the
 computational load during training time. Downsampling removes high frequency
-information from a signal, which is seen as a necessary evil to increase the 
-overall performance of an approach. 
+information from a signal, which is seen as a necessary evil when prototyping
+models. 
 
 ```{note}
 All of the source separation approaches we will discuss assume that the sample
