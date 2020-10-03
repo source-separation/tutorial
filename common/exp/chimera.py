@@ -9,6 +9,7 @@ import json
 import glob
 import numpy as np
 import ignite
+from typing import List
 
 @argbind.bind_to_parser()
 def train(
@@ -148,7 +149,7 @@ def evaluate(
     target_instrument : str = 'vocals',
 ):
     output_folder = Path(output_folder) 
-    output_folder.mkdir(exist_ok=True)
+    output_folder.mkdir(parents=True, exist_ok=True)
     stft_params, sample_rate = data.signal()
 
     with argbind.scope(args, 'test'):
@@ -208,9 +209,18 @@ def evaluate(
     with open(output_file, 'w') as f:
         f.write(report_card)
 
+@argbind.bind_to_parser()
+def run(
+    args,
+    stages : List[str] = ['train', 'evaluate']
+):
+    for stage in stages:
+        fn = globals()[stage]
+        fn(args)
+
+
 if __name__ == "__main__":
     utils.logger()
     args = argbind.parse_args()
     with argbind.scope(args):
-        # train(args)
-        evaluate(args)
+        run(args)
