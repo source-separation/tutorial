@@ -4,10 +4,11 @@ jupyterlab
 matplotlib
 numpy
 librosa
-nussl==1.1.3rc1
+nussl==1.1.3rc3
 scaper==1.6.4
 numpydoc
 pyyaml
 gradio
+gif
 # bokeh
 # ipywidgets
