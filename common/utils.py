@@ -119,7 +119,7 @@ def pprint(data):
             logging.info('\n' + desc)
 
 
-def plot_metrics(separator, key, output_path):
+def plot_metrics(separator, key, output_path=None):
     data = separator.metadata['trainer.state.epoch_history']
     plt.figure(figsize=(5, 4))
 
@@ -132,4 +132,7 @@ def plot_metrics(separator, key, output_path):
     plt.legend()
     plt.tight_layout()
 
-    plt.savefig(output_path)
+    if output_path is not None:
+        plt.savefig(output_path)
+    else:
+        plt.show()
