@@ -6,17 +6,18 @@ Here's a quick overview of existing datasets for Music Source Separation:
 
 | **Dataset** | **Year** | **Genre** | **Instrument categories** | **Tracks** | **Avgerage duration (s)** | **Full songs** | **Stereo** |
 | ----------  | -------- | --------- | ------------------------- | ---------- | ------------------------- | -------------- | ---------- |
-| [MASS](http://www.mtg.upf.edu/download/datasets/mass)  | 2008 | | | 9          | 16 $\pm$ 7           | :x: | :heavy_check_mark:         |
-| [MIR-1K](https://sites.google.com/site/unvoicedsoundseparation/mir-1k)  | 2010 |  | 2 | 1,000      | 8 $\pm$ 8            | :x: | :x:          |
-| [QUASI](http://www.tsi.telecom-paristech.fr/aao/en/2012/03/12/quasi/)       | 2011 |  |   | 5          | 206 $\pm$ 21         | :heavy_check_mark: | :heavy_check_mark:        |
-| [ccMixter](http://www.loria.fr/~aliutkus/kam/)    | 2014 |  |   | 50         | 231 $\pm$ 77         | :heavy_check_mark: | :heavy_check_mark:        |
-| [MedleyDB](http://medleydb.weebly.com/) | 2014 | | 82 | 63         | 206 $\pm$ 121        | :heavy_check_mark: | :heavy_check_mark:        |
-| [iKala](http://mac.citi.sinica.edu.tw/ikala/)  | 2015 |  |  2  | 206 | 30                     | :x: | :x:          |
-| [DSD100](/datasets/dsd100.md)| 2015 |  |   4 | 100        | 251 $\pm$ 60         | :heavy_check_mark: | :heavy_check_mark:        |
-| [MUSDB18](/datasets/musdb.md) | 2017 |  |  4  | 150        | 236 $\pm$ 95         | :heavy_check_mark: | :heavy_check_mark:        |
-| [MUSDB18-HQ](/datasets/musdb.md) | 2019 |   | ? | 150        | 236 $\pm$ 95         | :heavy_check_mark: | :heavy_check_mark:        |
-| [Slakh2100](http://www.slakh.com/) | 2019 | ? | 34 | 2100 | ? | :heavy_check_mark: | ? |  
+| [MASS](http://www.mtg.upf.edu/download/datasets/mass) | 2008 | ? | ? | 9 | 16 $\pm$ 7 | ❌ | ✅️ |
+| [MIR-1K](https://sites.google.com/site/unvoicedsoundseparation/mir-1k) | 2010 | ? | 2 | 1,000 | 8 $\pm$ 8 | ❌ | ❌ |
+| [QUASI](http://www.tsi.telecom-paristech.fr/aao/en/2012/03/12/quasi/) | 2011 | ? | ? | 5 | 206 $\pm$ 21 | ✅ | ✅ |
+| [ccMixter](http://www.loria.fr/~aliutkus/kam/)  | 2014 | ? | ? | 50 | 231 $\pm$ 77 | ✅ | ✅ |
+| [MedleyDB](http://medleydb.weebly.com/) | 2014 | ? | 82 | 63 | 206 $\pm$ 121 | ✅ | ✅ |
+| [iKala](http://mac.citi.sinica.edu.tw/ikala/)  | 2015 | ? |  2  | 206 | 30 | ❌ | ❌ |
+| [DSD100](/datasets/dsd100.md)| 2015 | ? | 4 | 100 | 251 $\pm$ 60 | ✅ | ✅ |
+| [MUSDB18](https://sigsep.github.io/datasets/musdb.html) | 2017 | ? | 4 | 150 | 236 $\pm$ 95 | ✅ | ✅ | 
+| [Slakh2100](http://www.slakh.com/) | 2019 | ? | 34 | 2100 | ? | ✅ | ? |  
 This extended table is based on: [SigSep/datasets](https://sigsep.github.io/datasets/), and reproduced with permission.
+
+<!--- | [MUSDB18-HQ](https://sigsep.github.io/datasets/musdb.html) | 2019 | ? | ? | 150 | 236 $\pm$ 95 | ✅ | ✅ |)  # omitted since almost identical to MUSDB18 --->
 
 The columns of the table indicate the key characteristics we must consider when choosing or curating a dataset for music source separation:
 * **Number of tracks**: Generally speaking, the more the better. But quantity isn't enough! We need quality and variability too, as captured by 
