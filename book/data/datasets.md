@@ -1,7 +1,7 @@
 (data:datasets)=
-Datasets
-========
+# Datasets
 
+## Overview
 Here's a quick overview of existing datasets for Music Source Separation:
 
 | **Dataset** | **Year** | **Genre** | **Instrument categories** | **Tracks** | **Avgerage duration (s)** | **Full songs** | **Stereo** |
@@ -38,4 +38,21 @@ separating a specific instrument or voice from the mix, separating into groups s
 its constituent sources.
 
 In this tutorial we'll be using the MUSDB18 dataset. More specifically, we'll use short clips from this dataset. There's no need to download the dataset, we will provide
-code for obtaining the clips later on in the tutorial. Let's examine this dataset in more detail. 
+code for obtaining the clips later on in the tutorial. We'll discuss this dataset in more detail in the next section.
+
+
+## Always listen to your data
+
+A common pitfall in machine learning is not inspecting your data before you start training models with it. Inspecting the data is critical, as it gives us 
+a much better understanding of the content, for example: what types of samples does it contain? Is it comprehensive or narrow? Are the annotations correct? 
+Are there outliers? Etc. Inspecting the data is key to ensure we don't model it based on incorrect assumptions, which can lead to sub-optimal performance, 
+generalization issues, bias, and other problems.
+
+When working with audio, we have the unique privilege of being able to *listen* to our data. Listening to our data allows us to quickly get an idea for the type 
+of music it includes, the quality (is it amateur musicians or professional?), the frequency range, and various other characteristics that can inform our design choices  
+later on such as model selection, data pre-processing and post-processing, optimization algorithm, etc.
+
+```{tip}
+Always listen to your data before you start working with it. It will inform design choices, help prevent bias and generalization issues, and help identify what 
+to look for when you perform error analysis on your trained model.  
+``` 
