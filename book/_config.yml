@@ -21,6 +21,7 @@ launch_buttons:
 execute:
   allow_errors: true
   execute_notebooks: auto
+  timeout: 500
 
 html:
   use_repository_button: true
