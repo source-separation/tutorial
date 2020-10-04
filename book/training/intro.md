@@ -24,4 +24,4 @@ separation. We will cover the following topics:
 
 As we proceed through this section, we will gradually build up a script that can be used
 and modified to train and evaluate a deep audio source separation
-network. Ready to dive in? Read on!
+network.
