@@ -20,7 +20,7 @@ the [MedleyDB dataset](http://medleydb.weebly.com),
 the [Native Instruments stems pack](https://www.native-instruments.com/en/specials/stems-for-all/free-stems-tracks/),
 and the [The Easton Ellises - heise stems remix competition](https://www.heise.de/ct/artikel/c-t-Remix-Wettbewerb-The-Easton-Ellises-2542427.html#englisch).
 
-```{note{
+```{note}
 MUSDB18 can be used academic purposes only, with multiple of its tracks licensed under a Creative Commons Non-Commercial Share Alike license (BY-NC-SA).
 ```
 
@@ -29,12 +29,13 @@ the latter for model evaluation.
 
 ```{note}
 You do not need to download the full MUSDB18 dataset to complete this tutorial. For simplicity, we'll be using short excerpts (clips) from this dataset which 
-we will download via python code later in the tutorial.  
+we will download via the `nussl` python library in the next step.  
 ```
 
-## Downloading and inspecting MUSDB18 clips for this tutorial
+## Downloading and inspecting MUSDB18 clips
 
-TODO
+We'll use `nussl`, the source separation library used in this tutorial, to download MUSDB18 clips. Recall `nussl` was briefly introduced HERE, and we'll dive into it
+in greater detail HERE. For now, we'll just use it to download the data: 
 
 
 ## Acknowledgement
