@@ -2,9 +2,8 @@
 # Introduction
 
 In this chapter we'll cover the key aspects we need to know about data for source separation: what do data for source 
-separation look like, relevant datasets, input representations for training models, and, importantly, how to programatically
-generate training and evaluation data to minimize the time we spend data wrangling and maximize the performance we can squeeze
-out of our data.
+separation look like, relevant datasets and, importantly, how to programatically generate training and evaluation data 
+to minimize the time we spend data wrangling and maximize the performance we can squeeze out of our data.
 
 ## Data for music source separation
 
@@ -73,6 +72,5 @@ different mixtures from the same set of stems, helping us to maximize what our m
 The remainder of this chapter is structured as follows:
 * In {ref}`Datasets <data:datasets>`, we will provide an overview of existing datasets for training music source separation models.
 * In {ref}`The MUSDB18 dataset <data:musdb18>`, we will go into further detail about the dataset we will use in this tutorial.
-* In {ref}`Transforms <data:transforms>`, we will explain how to transform an audio signal into an input representation we can use for training.
 * In {ref}`Data generation with Scaper <data:scaper>`, we will learn how to use the Scaper library to generate and augment mixtures on-the-fly
 for training and evaluation. 

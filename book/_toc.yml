@@ -42,7 +42,6 @@
     - file: data/introduction
     - file: data/datasets
     - file: data/musdb18
-    - file: data/transforms
     - file: data/scaper
 
 - part: Conclusions
