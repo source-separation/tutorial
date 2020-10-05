@@ -946,3 +946,7 @@ cython_debug/
 book/_build
 output/
 checkpoints/
+results/
+
+# PyCharm
+.idea/*

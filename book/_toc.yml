@@ -50,6 +50,12 @@
     - file: experiments/intro
     - file: experiments/principles
     - file: experiments/activity
+- part: Data
+  chapters:
+    - file: data/introduction
+    - file: data/datasets
+    - file: data/musdb18
+    - file: data/scaper
 
 - part: Conclusions
   chapters:
