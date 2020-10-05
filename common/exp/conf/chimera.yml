@@ -1,19 +1,19 @@
 $include: 
   - common/exp/conf/base.yml
 
-build.bidirectional: 1
-build.dropout: 0.3
-build.embedding_activation:
+recurrent_chimera.bidirectional: 1
+recurrent_chimera.dropout: 0.3
+recurrent_chimera.embedding_activation:
 - sigmoid
 - unit_norm
-build.embedding_size: 20
-build.hidden_size: 300
-build.mask_activation:
+recurrent_chimera.embedding_size: 20
+recurrent_chimera.hidden_size: 300
+recurrent_chimera.mask_activation:
 - sigmoid
-build.num_audio_channels: 1
-build.num_layers: 4
-build.num_sources: 4
-build.rnn_type: lstm
+recurrent_chimera.num_audio_channels: 1
+recurrent_chimera.num_layers: 4
+recurrent_chimera.num_sources: 1
+recurrent_chimera.rnn_type: lstm
 
 deep_mask_estimation.mask_type: soft
 deep_mask_estimation.model_path: checkpoints/best.model.pth
@@ -24,11 +24,16 @@ signal.window_length: 512
 signal.window_type: sqrt_hann
 
 train.batch_size: 16
-train.dpcl_weight: 0.75
+train.dpcl_weight: 0.01
 train.epoch_length: 1000
 train.lr: 0.001
-train.mi_weight: 0.25
+train.mi_weight: 0.99
 train.num_epochs: 100
 train.num_workers: 8
 train.output_folder: .
 train.seed: 0
+
+train.target_instrument: vocals
+evaluate.target_instrument: vocals
+mixer.target_instrument: vocals
+mixer.target_snr_boost: 5.0

@@ -17,6 +17,7 @@ from . import argbind
 from . import utils
 
 MAX_SOURCE_TIME = 10000
+LABELS = ['bass', 'drums', 'other', 'vocals']
 
 def download():
     """Downloads required files for tutorial.
@@ -71,6 +72,8 @@ def signal(
 def transform(
     stft_params : nussl.STFTParams, 
     sample_rate : int,
+    target_instrument, 
+    only_audio_signal : bool,
     excerpt_length : float = 4.0,
     mask_type : str = 'msa',
     audio_only : bool = False
@@ -85,6 +88,12 @@ def transform(
         Parameters of STFT (see: signal).
     sample_rate : int
         Sample rate of audio signal (see: signal).
+    target_instrument : str
+        Which instrument to learn to separate out of
+        a mixture.
+    only_audio_signal : bool
+        Whether to return only the audio signals, no
+        tensors (useful for eval).
     excerpt_length : float, optional
         Length of excerpt in seconds, by default 4.0.
     mask_type : str, optional
@@ -97,26 +106,36 @@ def transform(
         transform (don't compute STFTs).
     """
     tfm = []
-    if not audio_only:
-        if mask_type == 'psa':
-            tfm.append(nussl_tfm.PhaseSensitiveSpectrumApproximation())
-        elif mask_type == 'msa':
-            tfm.append(nussl_tfm.MagnitudeSpectrumApproximation())
-        tfm.append(nussl_tfm.MagnitudeWeights())
     
-    tfm.append(nussl_tfm.GetAudio())
-    tfm.append(nussl_tfm.ToSeparationModel())
+    other_labels = [k for k in LABELS if k != target_instrument]
+    tfm.append(nussl_tfm.SumSources([other_labels]))
+    new_labels = [target_instrument] + tfm[-1].group_names
+    new_labels = sorted(new_labels)
 
-    length_in_samples = int(excerpt_length * sample_rate)
-    length_in_frames = int(length_in_samples / stft_params.hop_length)
+    if not only_audio_signal:
+        if not audio_only:
+            if mask_type == 'psa':
+                tfm.append(nussl_tfm.PhaseSensitiveSpectrumApproximation())
+            elif mask_type == 'msa':
+                tfm.append(nussl_tfm.MagnitudeSpectrumApproximation())
+            tfm.append(nussl_tfm.MagnitudeWeights())
+        
+        tfm.append(nussl_tfm.GetAudio())
+        target_index = new_labels.index(target_instrument)
+        tfm.append(nussl_tfm.IndexSources('source_magnitudes', target_index))
 
-    if not audio_only:
-        tfm.append(nussl_tfm.GetExcerpt(length_in_frames))
-    
-    tfm.append(nussl_tfm.GetExcerpt(
-        length_in_samples, time_dim=1, tf_keys=['mix_audio', 'source_audio'])
-    )
-    return nussl_tfm.Compose(tfm)
+        tfm.append(nussl_tfm.ToSeparationModel())
+
+        length_in_samples = int(excerpt_length * sample_rate)
+        length_in_frames = int(length_in_samples / stft_params.hop_length)
+
+        if not audio_only:
+            tfm.append(nussl_tfm.GetExcerpt(length_in_frames))
+        
+        tfm.append(nussl_tfm.GetExcerpt(
+            length_in_samples, time_dim=1, tf_keys=['mix_audio', 'source_audio'])
+        )
+    return nussl_tfm.Compose(tfm), new_labels
 
 @argbind.bind_to_parser()
 def symlink(
@@ -203,11 +222,15 @@ def mixer(
     master_label : str = 'vocals',
     source_file : List = ['choose', []],
     snr : List = ('uniform', -5, 5),
+    target_instrument : str = 'vocals',
+    target_snr_boost : float = 0.0,
     pitch_shift : List = ('uniform', -2, 2),
     time_stretch : List = ('uniform', 0.9, 1.1),
     coherent_prob : float = 0.5,
     augment_prob : float = 0.5,
     quick_pitch_time_prob : float = 1.0,
+    overfit : bool = False,
+    overfit_seed : int = 0,
 ):
     """Creates a mixer that mixes MUSDB examples with data
     augmentation.
@@ -246,6 +269,10 @@ def mixer(
         Probability of augmenting via pitch shift and time stretch, by default 0.5.
     quick_pitch_time_prob : float, optional
         Probability of augmenting with pitch shifting and time stretching in quick mode, by default 1.0.
+    overfit : int, optional
+        Whether or not to overfit to a single batch.
+    overfit_seed : int, optional
+        Seed to overfit with.
 
     Returns
     -------
@@ -256,39 +283,14 @@ def mixer(
     mix_closure = MUSDBMixer(
         fg_path, duration, sample_rate, ref_db, n_channels, 
         master_label, source_file, snr, pitch_shift, time_stretch,
-        coherent_prob, augment_prob, quick_pitch_time_prob
+        coherent_prob, augment_prob, quick_pitch_time_prob,
+        overfit, overfit_seed, target_instrument, target_snr_boost,
     )
     dataset = nussl.datasets.OnTheFly(
         mix_closure, num_mixtures, stft_params=stft_params,
         transform=transform, sample_rate=sample_rate
     )
     return dataset
-
-@argbind.bind_to_parser()
-def listen(
-    num : int = 1,
-    seed : int = 0,
-):
-    """
-    Listen to ```num``` examples from the dataset.
-
-    Parameters
-    ----------
-    num : int, optional
-        Number of examples to listen to from dataset, by default 1
-    seed : int, optional
-        Seed to start out for listening.
-    """
-    stft_params, sample_rate = signal()
-    dataset = mixer(stft_params, None)
-    state = np.random.RandomState(seed)
-    for _ in range(num):
-        idx = state.randint(0, len(dataset))
-        item = dataset[idx]
-        soundscape_jam = item['metadata']['jam']
-        logging.info(f"Item {item['metadata']['idx']} from dataset")
-        utils.pprint(soundscape_jam)
-        item['mix'].play()
 
 class MUSDBMixer():
     def __init__(
@@ -307,7 +309,11 @@ class MUSDBMixer():
         # Generation parameters
         coherent_prob=0.5,
         augment_prob=0.5,
-        quick_pitch_time_prob=1.0
+        quick_pitch_time_prob=1.0,
+        overfit=False,
+        overfit_seed=0,
+        target_instrument='vocals',
+        target_snr_boost=0,
     ):
         pitch_shift = (
             tuple(pitch_shift) 
@@ -339,6 +345,12 @@ class MUSDBMixer():
         self.augment_prob = augment_prob
         self.quick_pitch_time_prob = quick_pitch_time_prob
 
+        self.overfit = overfit
+        self.overfit_seed = overfit_seed
+        
+        self.target_instrument = target_instrument
+        self.target_snr_boost = target_snr_boost
+
     def _create_scaper_object(self, state):
         sc = scaper.Scaper(
             self.duration, self.fg_path, self.fg_path,
@@ -352,16 +364,28 @@ class MUSDBMixer():
         sc.ref_db = ref_db
         return sc
 
+    def _add_events(self, sc, event_parameters, event=None):
+        labels = ['vocals', 'drums', 'bass', 'other']
+        snr_dist = event_parameters.pop('snr')
+        for label in labels:
+            _snr_dist = list(snr_dist).copy()
+            if label == self.target_instrument:
+                _snr_dist[1] += self.target_snr_boost
+                _snr_dist[2] += self.target_snr_boost
+            event_parameters['label'] = ('const', label)
+            if event:
+                event_parameters['source_file'] = (
+                    'const', event.source_file.replace('vocals', label)
+                )
+            sc.add_event(snr=tuple(_snr_dist), **event_parameters)
+
     def incoherent(self, sc):
         event_parameters = self.base_event_parameters.copy()
         if sc.random_state.rand() > self.augment_prob:
             event_parameters['pitch_shift'] = None
             event_parameters['time_stretch'] = None
 
-        labels = ['vocals', 'drums', 'bass', 'other']
-        for label in labels:
-            event_parameters['label'] = ('const', label)
-            sc.add_event(**event_parameters)
+        self._add_events(sc, event_parameters)
         quick_pitch_time = sc.random_state.rand() <= self.quick_pitch_time_prob
         return sc.generate(fix_clipping=True, quick_pitch_time=quick_pitch_time)
 
@@ -381,17 +405,13 @@ class MUSDBMixer():
         if event_parameters['time_stretch'] is not None:
             event_parameters['time_stretch'] = ('const', event.time_stretch)
 
-        labels = ['vocals', 'drums', 'bass', 'other']
-        for label in labels:
-            event_parameters['label'] = ('const', label)
-            event_parameters['source_file'] = (
-                'const', event.source_file.replace('vocals', label)
-            )
-            sc.add_event(**event_parameters)
+        self._add_events(sc, event_parameters, event)
         quick_pitch_time = sc.random_state.rand() <= self.quick_pitch_time_prob
         return sc.generate(fix_clipping=True, quick_pitch_time=quick_pitch_time)
     
     def __call__(self, dataset, i):
+        if self.overfit:
+            i = self.overfit_seed
         state = np.random.RandomState(i)
         with warnings.catch_warnings():
             warnings.filterwarnings('ignore')
@@ -425,4 +445,9 @@ class MUSDBMixer():
         return output
     
 if __name__ == "__main__":
-    utils.parse_args_and_run(__name__)
+    utils.logger()
+    args = argbind.parse_args()
+    with argbind.scope(args):
+        download()
+        symlink()
+        prepare_musdb()

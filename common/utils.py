@@ -3,7 +3,30 @@ import json
 import sys
 import torch
 import matplotlib.pyplot as plt
+import os
+from contextlib import contextmanager
 from . import argbind
+
+@contextmanager
+def chdir(newdir):
+    """
+    Context manager for switching directories to run a 
+    function. Useful for when you want to use relative
+    paths to different runs.
+
+    Parameters
+    ----------
+    newdir : str
+        Directory to switch to.
+    """
+    curdir = os.getcwd()
+    try:
+        os.chdir(newdir)
+        logging.info(f"Switched working directory to {newdir}")
+        yield
+    finally:
+        os.chdir(curdir)
+        logging.info(f"Returning to {curdir}")
 
 @argbind.bind_to_parser()
 def device(
@@ -21,8 +44,14 @@ def run(module, *args, cmd : str = None):
             cmd_fn = getattr(module, cmd)
             cmd_fn(*args)
 
+def save_exp(args):
+    if args['args.save']:
+        save_path = args['args.save'].replace('yml')
+        argbind.dump_args(used_args, save_path)
+
 def parse_args_and_run(name, pass_args=False):
     args = argbind.parse_args()
+    save_exp(args)
     with argbind.scope(args):
         _args = [args] if pass_args else []
         logger()
