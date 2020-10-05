@@ -184,7 +184,7 @@ def evaluate(
         estimates = [estimates[k] for k in source_keys]
 
         evaluator = nussl.evaluation.BSSEvalScale(
-            sources, estimates, source_labels=new_labels
+            sources, estimates, source_labels=source_keys
         )
         scores = evaluator.evaluate()
         output_folder = Path(output_folder).absolute()
