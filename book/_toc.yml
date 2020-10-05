@@ -41,8 +41,8 @@
   chapters:
     - file: training/intro
     - file: training/gradient_descent
-    - file: training/inputs_outputs_losses
     - file: training/building_blocks
+    - file: training/putting_it_all_together
     - file: training/activity
 
 - part: Experimental workflow
