@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The MUSDB18 dataset &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/tutorial_structure.html">
+   Tutorial Structure and Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/src_sep_101.html">
+   What is Source Separation?
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basics of Source Separation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/representations.html">
+   Representing Audio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/nussl_intro.html">
+   Introduction to nussl
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/tf_and_masking.html">
+   TF Representations and Masking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/phase.html">
+   Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/eval.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classic Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/intro.html">
+   Introduction to Classic Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/repetition.html">
+   Repetition and Median Filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/nmf.html">
+   Non-Negative Matrix Factorization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/spatial.html">
+   Spatial Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/melodia.html">
+   Melodia
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deep Learning Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/intro.html">
+   Introduction to Deep Learning-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/masking.html">
+   Deep Learning - Masking-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/waveform.html">
+   Deep Learning - Waveform-based Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/open_src_projects.html">
+   Guide to Open-Source Source Separation Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/open_src_projects.html#architecture-specific-repositories">
+   Architecture-Specific Repositories
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datasets.html">
+   Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="musdb18.html">
+   The MUSDB18 dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="scaper.html">
+   Generating mixtures with Scaper
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Conclusions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/applications.html">
+   Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/concluding_remarks.html">
+   Concluding Remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/additional_resources.html">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zzz_refs.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/acknowledgements.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/authors.html">
+   About the Authors
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/data/old.musdb18.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/source-separation/tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/source-separation/tutorial/issues/new?title=Issue%20on%20page%20%2Fdata/old.musdb18.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-and-inspecting-musdb18-clips">
+   Downloading and inspecting MUSDB18 clips
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgement">
+   Acknowledgement
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-musdb18-dataset">
+<span id="data-musdb18"></span><h1>The MUSDB18 dataset<a class="headerlink" href="#the-musdb18-dataset" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The information on this page is based on the <a class="reference external" href="https://sigsep.github.io/datasets/musdb.html">MUSB18 dataset page</a>. Here we have edited down the content
+to focus on the details relevant to this tutorial while keeping it concise. For more details about the datataset pleasecan consult the dataset page.</p>
+<p>MUSDB18 is a dataset of 150 full length music tracks (~10h total duration) of varying genres. For each track it provides a mixture along with the isolated stems for the
+drums, bass, vocals, and others. As its name suggests, the “others” stem contains all other sources in the mix that are not the drums, bass or vocals (labeled as
+“accompaniment” in the diagram below):</p>
+<p><img src=https://sigsep.github.io/assets/img/musheader.41c6bf29.png><br/>
+Image source: https://sigsep.github.io/</p>
+<p>All audio signals in the dataset are stereo and encoded at a sampling rate of 44.1 kHz. The mixture signal is identical to the sum of the stems.</p>
+<p>The data in MUSDB18 is compiled from multiple sources:
+the <span class="xref myst">DSD100 dataset</span>,
+the <a class="reference external" href="http://medleydb.weebly.com">MedleyDB dataset</a>,
+the <a class="reference external" href="https://www.native-instruments.com/en/specials/stems-for-all/free-stems-tracks/">Native Instruments stems pack</a>,
+and the <a class="reference external" href="https://www.heise.de/ct/artikel/c-t-Remix-Wettbewerb-The-Easton-Ellises-2542427.html#englisch">The Easton Ellises - heise stems remix competition</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MUSDB18 can be used academic purposes only, with multiple of its tracks licensed under a Creative Commons Non-Commercial Share Alike license (BY-NC-SA).</p>
+</div>
+<p>The full dataset is divided into train and test folders with 100 and 50 songs respectively. As their names suggest, the former should be used for model training and
+the latter for model evaluation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You do not need to download the full MUSDB18 dataset to complete this tutorial. For simplicity, we’ll be using short excerpts (clips) from this dataset which
+we will download via the <code class="docutils literal notranslate"><span class="pre">nussl</span></code> python library in the next step.</p>
+</div>
+</div>
+<div class="section" id="downloading-and-inspecting-musdb18-clips">
+<h2>Downloading and inspecting MUSDB18 clips<a class="headerlink" href="#downloading-and-inspecting-musdb18-clips" title="Permalink to this headline">¶</a></h2>
+<p>We’ll use <code class="docutils literal notranslate"><span class="pre">nussl</span></code>, the source separation library used in this tutorial, to download MUSDB18 clips. Recall <code class="docutils literal notranslate"><span class="pre">nussl</span></code> was briefly introduced HERE, and we’ll dive into it
+in greater detail HERE. For now, we’ll just use it to download the data:</p>
+</div>
+<div class="section" id="acknowledgement">
+<h2>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this headline">¶</a></h2>
+<p>MUSDB18 was created by: Zafar Rafii, Antoine Liutkus, Fabian-Robert Stöter, Stylianos Ioannis Mimilakis, and Rachel Bittner. When using the dataset in your work,
+please be sure to cite it as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@misc</span><span class="p">{</span><span class="n">musdb18</span><span class="p">,</span>
+  <span class="n">author</span>       <span class="o">=</span> <span class="p">{</span><span class="n">Rafii</span><span class="p">,</span> <span class="n">Zafar</span> <span class="ow">and</span>
+                  <span class="n">Liutkus</span><span class="p">,</span> <span class="n">Antoine</span> <span class="ow">and</span>
+                  <span class="n">Fabian</span><span class="o">-</span><span class="n">Robert</span> <span class="n">St</span><span class="p">{</span>\<span class="s2">&quot;o}ter and</span>
+                  <span class="n">Mimilakis</span><span class="p">,</span> <span class="n">Stylianos</span> <span class="n">Ioannis</span> <span class="ow">and</span>
+                  <span class="n">Bittner</span><span class="p">,</span> <span class="n">Rachel</span><span class="p">},</span>
+  <span class="n">title</span>        <span class="o">=</span> <span class="p">{</span><span class="n">The</span> <span class="p">{</span><span class="n">MUSDB18</span><span class="p">}</span> <span class="n">corpus</span> <span class="k">for</span> <span class="n">music</span> <span class="n">separation</span><span class="p">},</span>
+  <span class="n">month</span>        <span class="o">=</span> <span class="n">dec</span><span class="p">,</span>
+  <span class="n">year</span>         <span class="o">=</span> <span class="mi">2017</span><span class="p">,</span>
+  <span class="n">doi</span>          <span class="o">=</span> <span class="p">{</span><span class="mf">10.5281</span><span class="o">/</span><span class="n">zenodo</span><span class="o">.</span><span class="mi">1117372</span><span class="p">},</span>
+  <span class="n">url</span>          <span class="o">=</span> <span class="p">{</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">doi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">10.5281</span><span class="o">/</span><span class="n">zenodo</span><span class="o">.</span><span class="mi">1117372</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "source-separation/tutorial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ethan Manilow, Prem Seetharaman, Justin Salamon<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>
