@@ -37,6 +37,12 @@
         - file: approaches/deep/dprnn
     - file: approaches/open_src_projects
 
+- part: Data
+  chapters:
+    - file: data/introduction
+    - file: data/datasets
+    - file: data/musdb18
+    - file: data/scaper
 
 - part: Conclusions
   chapters:
