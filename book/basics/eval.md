@@ -1,27 +1,6 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
 Evaluation
 ==========
 
-
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-Here is a <a href="">OneDrive link</a> to the full video.
-<a href=""></a>
-```
 
 Measuring the results of a source separation approach is a challenging problem.
 Generally, there are two main categories for evaluating the outputs of a source

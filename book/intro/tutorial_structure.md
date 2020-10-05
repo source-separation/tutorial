@@ -1,17 +1,6 @@
 Tutorial Structure and Setup
 ============================
 
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-If you are having access issues, here is a OneDrive mirror to the full video.
-<a href=""></a>
-
-Alternatively the text on this page covers the same material as the video.
-```
-
 This tutorial will mostly be asynchronous and self-guided. All of the material
 needed to go through this tutorial is here on this website. 
 

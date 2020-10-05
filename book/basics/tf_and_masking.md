@@ -1,39 +1,5 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
 TF Representations and Masking
 ==============================
-
-
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-Here is a <a href="">OneDrive link</a> to the full video.
-<a href=""></a>
-```
-
-```{code-cell} ipython3
----
-other:
-  more: true
-tags: [hide-output, hide-input]
----
-# Inputs for this notebook
-import nussl
-import librosa
-
-```
 
 
 Masking has many uses in different aspects computer science and machine
@@ -115,6 +81,7 @@ In the literature, this assumption is called W-disjoint orthogonality.
 
 
 
+(masks:softmasks)=
 ## Soft Masks (or Ratio Masks)
 
 Soft Masks are allowed to take any value within the inclusive interval $[0.0, 1.0]$,

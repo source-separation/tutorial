@@ -24,7 +24,7 @@
 
 - part: Deep Learning Approaches
   chapters:
-    - file: approaches/deep/intro
+    - file: approaches/deep/introduction
     - file: approaches/deep/building_blocks
     - file: approaches/deep/architectures
 

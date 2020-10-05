@@ -1,17 +1,6 @@
 What is Source Separation?
 ==========================
 
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-If you are having access issues, here is a OneDrive mirror to the full video.
-<a href=""></a>
-
-Alternatively the text on this page covers the same material as the video.
-```
-
 Source Separation is the process of isolating individual sounds in an auditory
 mixture of multiple sounds. {cite}`vincent2018audio` We call each sound heard
 in a mixture a _source_.

@@ -1,18 +1,6 @@
 Representing Audio
 ==================
 
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-If you are having access issues, here is a OneDrive mirror to the full video.
-<a href=""></a>
-
-Alternatively the text on this page covers the same material as the video.
-```
-
-
 The first thing we want to examine are the input and output representations of a source 
 separation system and how the inputs and outputs are represented. In its most
 unprocessed form, we assume that audio is stored as a waveform. Some source

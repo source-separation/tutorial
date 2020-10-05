@@ -47,6 +47,16 @@ read many different audio formats (_e.g._ `.mp3`, `.ogg`, etc) without any hassl
 [Project Link](https://ffmpeg.org/)
 
 
+#### `Scaper`
+
+`Scaper` was originally intended for soundscape creation with the intention of
+creating training data for sound event detection. But some researchers realized
+the augmentation strategies implemented in `Scaper` are useful for source separation!
+In this tutorial, we will discuss `Scaper` in detail. Stay tuned!
+
+[Github Link](https://github.com/justinsalamon/scaper)
+
+
 ## Source Separation Projects
 
 These projects are more tailored to doing source separation, as opposed to the
@@ -74,16 +84,6 @@ fixes some of the issues that `mir_eval` has. Some recent developments like
 (SI-SDR) are missing from this library though.
 
 [Github Link](https://github.com/sigsep/sigsep-mus-eval)
-
-
-#### `Scaper`
-
-`Scaper` was originally intended for soundscape creation with the intention of
-creating training data for sound event detection. But some researchers realized
-the augmentation strategies implemented in `Scaper` are useful for source separation!
-In this tutorial, we will discuss `Scaper` in detail. Stay tuned!
-
-[Github Link](https://github.com/justinsalamon/scaper)
 
 
 ### Architecture-Specific Projects

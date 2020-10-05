@@ -1,5 +1,5 @@
-Deep Learning Architectures
-===========================
+Architectures
+=============
 
 
 We now have the conceptual building blocks in place to understand
