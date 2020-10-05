@@ -44,8 +44,14 @@ def run(module, *args, cmd : str = None):
             cmd_fn = getattr(module, cmd)
             cmd_fn(*args)
 
+def save_exp(args):
+    if args['args.save']:
+        save_path = args['args.save'].replace('yml')
+        argbind.dump_args(used_args, save_path)
+
 def parse_args_and_run(name, pass_args=False):
     args = argbind.parse_args()
+    save_exp(args)
     with argbind.scope(args):
         _args = [args] if pass_args else []
         logger()
