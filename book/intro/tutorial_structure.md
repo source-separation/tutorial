@@ -13,21 +13,7 @@ This website and materials will be available after the allotted tutorial time.
 
 ## How this Tutorial is Structured
 
-There are many videos throughout the tutorial that will guide you through the main 
-concepts. The content of the videos will mirror the text that surrounds them,
-therefore you can either:
- 
-<p align="center"><b>
-Watch the videos
-</b></p>
- 
-<p align="center"><b>
-OR
-</b></p>
- 
-<p align="center"><b>
-Read the text.
-</b></p>
+TODOTODOTODOTODO
 
 Both will give you the same information overall, although the text might go into
 more detail on certain subjects and will provide references for further reading.

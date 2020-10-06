@@ -3,14 +3,14 @@ Introduction
 
 
 We've now gotten a task of how classic algorithms approach the problem,
-now let's turn to Neural Network methods. Neural Network-based methods,
+now let's turn to Neural Network methods. Neural Network-based methods are
 commonly referred to as deep learning or deep net methods.
 
 Deep nets are currently the state-of-the-art source separation technology.
 In a nutshell, they work by training on a large amount of mixtures and
-isolated source data. The network produces an output for a source,
-the network's output is compared against known, ground truth source.
-That comparison is used to update the network so that the next time
+isolated source data. The network produces an output for a source, then
+the network's output is compared against known, ground truth isolated source.
+This comparison is used to update the network so that the next time
 it produces an estimate for that source, the network's estimate is
 closer to the true source. This process is called
 [back propagation](https://en.wikipedia.org/wiki/Backpropagation).

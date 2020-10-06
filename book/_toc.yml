@@ -12,7 +12,7 @@
     - file: basics/nussl_intro
     - file: basics/tf_and_masking
     - file: basics/phase
-    - file: basics/eval
+    - file: basics/evaluation
 
 - part: Classic Approaches
   chapters:

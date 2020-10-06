@@ -139,8 +139,8 @@ audio. Each loop can ingest the next set of data in steps. The way that
 recurrent layers are used in source separation is that they ingest the
 audio as it changes along time. So, for example, if we have a spectrogram
 that is input into a recurrent layer, the recurrent layer will ingest
-one column of the spectrogram at a time (_i.e._, the whole spectrum at
-that time step).
+one column of the spectrogram at a time (_i.e._, all of the frequency
+components or the entire spectrum at that time step).
 
 The number of units recurrent layers have defines their
 _receptive field_ or the amount of time steps the layer can see at any
@@ -216,35 +216,13 @@ their BLSTM/BGRU layers. For instance, if a paper says they used a
 "BLSTM with 600 units", does that mean 600 units in each direction
 or 300 in each direction (600 total)?
 
-We assume that "600 units" means 600 in _each direction_, because
-[that's how the pytorch API configures it](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html#torch.nn.LSTM).
-But beware!
+Personally, we assume that "600 units" means 600 in _each direction_, because
+[that's how the pytorch API configures it](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html#torch.nn.LSTM)
+but this might not always be the case. Beware of this when reading papers!
 ```
 
 #### Convolutional Layers
 
-````{panels}
-:container: container-fluid 
-:column: col-lg-6 col-md-6 col-sm-6 col-xs-12 
-:card: shadow-none border-0
-
-```{figure} ../../images/deep_approaches/conv1.gif
-:width: 75%
-:name: conv1
-
-Convolution with 2D input with a 3x3 kernel and stride 1.
-```
-
----
-
-```{figure} ../../images/deep_approaches/conv2.gif
-:width: 75%
-:name: conv2
-
-Convolution with 2D input with a 3x3 kernel and stride 2.
-```
-[Image Sources](https://www.cntk.ai/pythondocs/CNTK_103D_MNIST_ConvolutionalNeuralNetwork.html)
-````
 
 
 Convolutional layers are similar to fully connected layers shown above,
@@ -256,23 +234,157 @@ layers also have the property that they are
 
 Convolutional layers are related to the mathematical/signal processing
 concept of [convolutions](https://en.wikipedia.org/wiki/Convolution) in
-that convolutional layers learn a _filter_ from a sliding window
+that convolutional layers learn a set of _filters_ from a sliding window
 of the input layer. This sliding window is the receptive field of the 
-convolutional layer. A depiction of two convolutional layers are
-down in {numref}`conv1` and {numref}`conv2`.
+convolutional layer. A depiction of convolutional layers are
+shown below.
 
-There are two main parameters that affect the output shape of a 
-convolutional layer: the kernel size and the stride. The kernel
-size dictates the number and shape of nodes from the previous layer that
-nodes at the current layer see (the shape of the window), and stride
-dictates the distance that the distance that the window moves between
-adjacent nodes.
+
+##### The Shapes of Convolutions
+
+````{panels}
+:container: container-fluid 
+:column: col-lg-6 col-md-6 col-sm-6 col-xs-12 
+:card: shadow-none border-0
+
+```{figure} ../../images/deep_approaches/conv_no_padding_no_strides.gif
+:width: 75%
+:name: conv1
+
+Convolution with 2D input with a 3x3 kernel and stride 1.
+Blue maps are inputs, and cyan maps are outputs. [Image Source](https://github.com/vdumoulin/conv_arithmetic)
+```
+
+---
+
+```{figure} ../../images/deep_approaches/conv_no_padding_strides.gif
+:width: 75%
+:name: conv2
+
+Convolution with 2D input with a 3x3 kernel and stride 2.
+Blue maps are inputs, and cyan maps are outputs. [Image Source](https://github.com/vdumoulin/conv_arithmetic)
+```
+
+````
+
+One tricky thing about convolutions is that their output shape can
+change wildly depending on how you set up the layers. There are
+four main parameters that effect the output shape of a convolutional
+layer: _kernel size_, _stride_, _padding_, and _dilation_.
+
+The _kernel size_ dictates the number and shape of nodes from the
+previous layer that nodes at the current layer see (the shape of
+the window), and the _stride_ dictates the distance that
+the window moves between adjacent input nodes. 
+
+````{panels}
+:container: container-fluid 
+:column: col-lg-6 col-md-6 col-sm-6 col-xs-12 
+:card: shadow-none border-0
+
+```{figure} ../../images/deep_approaches/conv_same_padding_no_strides.gif
+:width: 75%
+:name: conv3
+
+Convolution with 2D input with a 5x5 kernel and padding of 1.
+Blue maps are inputs, and cyan maps are outputs. [Image Source](https://github.com/vdumoulin/conv_arithmetic)
+```
+
+---
+
+```{figure} ../../images/deep_approaches/conv_no_padding_strides.gif
+:width: 75%
+:name: conv4
+
+Dilated Convolution with 2D input with a 3x3 kernel and dilation factor of 1.
+Blue maps are inputs, and cyan maps are outputs. [Image Source](https://github.com/vdumoulin/conv_arithmetic)
+```
+
+````
+
+The padding determines what to do at the edge of the input. If there is
+no padding, then the inputs at the edge are only covered by the colvolutional
+layer nodes at the edge, but if there _is_ padding then the inputs at
+the edge get covered by more convolutional nodes. Padding is shown in 
+{numref}`conv3`.
+
+Dilation determines the spacing between the input nodes that each
+convolutional node sees. This allows each node to understand more
+context than if no dilation is used. A gif of dilation is shown in 
+{numref}`conv4`. Dilation is perhaps most famous in the audio world
+because of its use in Wavenet {cite}`oord2016wavenet`, which used
+dilated convolutions in an autoregressive manner to produce one sample
+of a waveform at a time. [^fn1]
+
+
+**Transpose Convolutions**  
+Typically the output of convolutional layers have a smaller dimensionality
+than the input layers, however we might want the opposite to happen 
+where we expand the input. This is called a _transpose convolution_ layer or
+_deconvolutional_ layer, and the process is similar to the regular
+convolutional layer.
+
+**Pooling**
+
+```{figure} ../../images/deep_approaches/Max_pooling.png
+---
+scale: 50%
+alt: Max Pooling
+name: max_pooling
+---
+A max pooling operation on a matrix.
+[Image Source](https://commons.wikimedia.org/wiki/File:Max_pooling.png)
+```
+
+An important part of using convolutional layers is _pooling_ or
+reducing the dimensionality of a convolutional layer using some 
+non-linear function, like a `max()` operation. Pooling splits the
+input into non-overlapping regions and performs the downsampling
+function on each region. Pooling is technically
+a separate layer, but it is almost always found after a convolutional 
+layer. The most common type of pooling is _max pooling_, although
+other types of pooling exist like _average pooling_.
+
+
+**Further Reading**
+
+For further information see [this paper](https://arxiv.org/pdf/1603.07285.pdf),
+or see the animations at [this Gitub link](https://github.com/vdumoulin/conv_arithmetic) to provide more intuition
+about how these parameters affect the convolutional shapes. {cite}`dumoulin2016guide`
+
+
+##### In Source Separation
 
 In source separation, convolutions have been used to great effect in
 the waveform and time-frequency domains. In the waveform domain,
 1D convolutions are used to input and output waveforms, and in the 
 time-frequency domain 2D convolutions are used to input spectrograms
 and output masks.
+
+
+```{figure} ../../images/deep_approaches/tasnet_filterbanks.png
+---
+alt: Learned filterbanks on speech for Tasnet.
+name: tasnet_filterbanks
+---
+Learned filterbanks from the last convolutional layer of two Tasnet
+models (covered
+on the next page), which was trained on speech. Figure (a) shows the 
+learned filterbanks of a causal model and Figure (b) shows a noncausal
+model.
+Notice how most of the energy of the filterbanks is in the range
+of human speech.
+Image used courtesy of Yi Luo. {cite}`luo2018tasnet`
+```
+
+When we say that convolutions learn a set of filters (or, a _filterbank_),
+this relates to the concept of filters that we normally think of in audio, like
+high-pass, low-pass, or band-pass filters. For instance, when we learn
+a 1D convolutional layer from a waveform, each of the nodes is learning
+a filter from the data. For instance, {numref}`tasnet_filterbanks` shows
+the result of two networks with convolutional layers that output a waveform.
+The image shows the learned filterbanks from the networks, which were
+trained on human speech. 
 
 Unlike recurrent layers that can process one time step at a time,
 convolutional layers have to have a full example with the exact input
@@ -289,7 +401,8 @@ convolutional neural network might learn discontinuities,
 which might lead to audible artifacts. One way around this is to
 output overlapping windows similar to how an STFT is computed. Going
 back to the above example with a spectrogram, we might instead 
-split it into 16 overlapping windows.
+split it into 16 windows of the same length, but overlap with on
+another. 
 
 
 For further reading, see the
@@ -300,7 +413,7 @@ or [Stanford University's course webpage for CS231](https://cs231n.github.io/con
 
 ```{figure} ../../images/deep_approaches/activation_fn.png
 ---
-scale: 50%
+scale: 75%
 alt: How an activation function is applied in a network.
 name: activation
 ---
@@ -410,6 +523,65 @@ layer when outputting a waveform.
 
 ### Normalization
 
+Normalization is the practice of making sure all of the inputs to a
+network or a layer within a network all look the same from a statistical
+standpoint. Practically, this means that all of the data should have
+the same mean and standard deviation. Changing the mean _shifts_ the
+data, which literally means adding or subtracting the calculated mean
+to every data point, and changing the standard deviation _scales_ the
+data, which literally means dividing every data point by the calculated
+standard deviation. This process makes training neural networks
+much more stable during training. 
+
+There are a few different methods for which data to include in the mean
+and standard deviation calculations. The most common types of normalization
+in source separation are outlined below.
+
+#### Batch Norm
+
+_Batch normalization_, or _batch norm_, {cite}`ioffe2015batch` computes the
+mean and standard
+deviation of each mini-batch during training and normalizes the data
+using those statistics. Like pooling, batch norm is considered another 
+"layer" of a neural network and might be found in various places in a
+network's architecture, including at the input layer.
+
+
+#### Whitening your Data
+
+Some researchers will normalize their whole dataset as a preprocessing step.
+This is called _whitening_ the data. The concept is the same:
+the mean and standard deviation of the whole dataset is used to shift and
+scale the data. Because we need to access all of the data, this must
+happen before we train a network (recall the net only sees mini-batches).
+
+```{tip}
+Though popular in speech separation research, we have not found whitening
+to be of any practical use in music separation.
+```
+
+
+#### Learnable Normalization
+
+The final method we will outline in detail is having the network
+learn to normalize its inputs by itself. In this case, the system
+has two learnable parameters for shifting and scaling. These parameters
+are optimized using gradient descent, just like the other weights of
+the net. When applied as a shift and scale function to network inputs,
+the net will use it to normalize its input data based on what it determines
+works best.
+
+Open-Unmix, which we will discuss in more detail on the next page,
+uses a learnable normalization parameters to great effect.
+
+#### Other Normalization Techniques
+
+There are many other normalization techniques that have been developed
+and quite a few have been used in source separation research such as
+_instance norm_ {cite}`ulyanov2016instance`. A great resource for
+learning more about neural network normalization techniques is
+outlined in the Group Normalization paper: {cite}`wu2018group`
+
 ### Dropout
 
 Dropout is a regularization technique that improves a network's
@@ -418,26 +590,115 @@ whereby at each training step some percentage of the nodes are
 set to 0. This is very widely used in source separation systems
 and is essential to making them work well.
 
-### Spectrogram Components
+### Spectrogram Considerations
 
-- Calculating Spectrograms ahead of time
-- Computing Spectrograms on the fly
-- Mel Spectrograms
+While waveforms can be input into a neural network, sometimes it is
+desirable to explicitly represent frequency information by having
+the network input a spectrogram. As such, the spectrograms must be
+computed from the waveform to be ingested by the network. This
+can be done as a preprocessing step, with all of the spectrogram
+data stored to disk as a cache and loaded during the training 
+process, or the spectrograms can
+be computed on-the-fly when the network needs them.
+Precomputing the spectrograms is usually quicker,
+but usually requires a separate step to compute everything which might
+take a significant amount of time and disk space to store the data.
+On the other hand, computing spectrograms on-the-fly requires more
+computation for each example, and might bottleneck your training
+procedure if not done efficiently.
+
+Many times it makes sense to decrease the size of the spectrogram.
+This is because when we do this it allows us to make our networks
+bigger, and thus it has more capacity to learn better. One way 
+we can decrease the size of the spectrogram and still preserve
+some features that are relevant to human hearing is by converting
+the a linear-scale frequency axis to a mel-scale frequency axis.
+Details about this are discussed
+
+The computation of a spectrogram is completely differentiable, which
+means that we can embed static, non-learnable STFT calculations in
+our network architecture to make waveform-to-waveform models, if 
+we so choose. This is useful if you want to use a spectrogram
+model with one of the waveform losses outlined below. But beware:
+this might noticeably slow down your training process.
 
 ### Learned Filter Banks
 
 
 ## Loss Functions and Targets
 
+The final piece of the neural network puzzle is loss functions.
+As we mentioned at the top of this page, the loss is a function that
+is used to determine the distance between the network's estimates
+and the true sources. It is then used to update the parameters
+of the network.
+
+
 ### Spectrogram Losses
 
-L1 & MSE
-MSA, PSA
+When computing losses with spectrograms, we compare the spectrogram
+of the true source to the input spectrogram with the network's mask
+applied. Given some ground truth STFT for source $i$
+$S_i \in \mathbb{C}^{F\times T}$, an input
+mixture $X \in \mathbb{C}^{F\times T}$, and a net's estimated
+mask $\hat{M}_i \in \mathbb{R}^{F\times T}$ we compute the loss like
 
+$$
+\mathcal{L} = \Big\| S_i - \hat{M}_i \odot |X| \Big\|_p,
+$$
+
+where$\odot$ denotes element-wise product adn $p$ is the _norm_ of
+the loss value. Only two norms are widely
+used in source separation, the L1 norm where $p=1$ and the L2, or
+euclidean norm where $p=2$. The L2 norm is commonly referred to as
+_Mean Squared Error_ or MSE.
+
+
+#### Spectrogram Targets
+
+
+There is some nuance in selecting how you determine the spectrogram of the isolated
+source $S_i$. Just using the magnitude spectrogram as the target is called
+the _Magnitude Spectrum Approximation_ or MSA {cite}`weninger2014discriminatively`.
+This is just the same equation as above unmodified:
+
+$$
+\text{MSA} =  |S_i| - \hat{M}_i \odot |X|
+$$
+
+
+However, as we mentioned in previous sections computing the magnitude
+spectrogram neglects the phase. We can incorporate some aspect of
+the phase data by including it in our target calculation like so
+
+
+$$
+\text{tPSA} = \hat{M}_{i} \odot |X|  - \operatorname{T}_{0}^{|X|}\left(|S_i| \odot \cos(\angle S_i - \angle X)\right)
+$$
+
+
+where $\angle S_i$ is the true
+phase of Source i, $\angle X$ is the mixture phase, and
+$\operatorname{T}_{0}^{|X|}(x)= \min(\max(x,0),|X|)$ is a truncation
+function ensuring the target can be reached with a sigmoid activation function.
+Specifically, we incorporate constructive and destructive interference 
+of the source and mixture into the target with the term $\cos(\angle S_i - \angle X)$.
+
+
+```{tip}
+We have found L1 loss using the tPSA target is the best option for 
+loss and target. 
+```
 
 ### Clustering Losses
+
+Clustering losses are usually used to s
 
 
 ### Waveform Losses
 
-SI-SDR loss
+
+
+
+[^fn1]: Although we won't cover Wavenet in detail in this tutorial, it has been
+  used for music source separation in this paper: {cite}`lluis2019end`.
