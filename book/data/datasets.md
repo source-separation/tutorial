@@ -4,17 +4,17 @@
 ## Overview
 Here's a quick overview of existing datasets for Music Source Separation:
 
-| **Dataset** | **Year** | **Genre** | **Instrument categories** | **Tracks** | **Avgerage duration (s)** | **Full songs** | **Stereo** |
-| ----------  | -------- | --------- | ------------------------- | ---------- | ------------------------- | -------------- | ---------- |
-| [MASS](http://www.mtg.upf.edu/download/datasets/mass) | 2008 | ? | ? | 9 | 16 $\pm$ 7 | ❌ | ✅️ |
-| [MIR-1K](https://sites.google.com/site/unvoicedsoundseparation/mir-1k) | 2010 | ? | 2 | 1,000 | 8 $\pm$ 8 | ❌ | ❌ |
-| [QUASI](http://www.tsi.telecom-paristech.fr/aao/en/2012/03/12/quasi/) | 2011 | ? | ? | 5 | 206 $\pm$ 21 | ✅ | ✅ |
-| [ccMixter](http://www.loria.fr/~aliutkus/kam/)  | 2014 | ? | ? | 50 | 231 $\pm$ 77 | ✅ | ✅ |
-| [MedleyDB](http://medleydb.weebly.com/) | 2014 | ? | 82 | 63 | 206 $\pm$ 121 | ✅ | ✅ |
-| [iKala](http://mac.citi.sinica.edu.tw/ikala/)  | 2015 | ? |  2  | 206 | 30 | ❌ | ❌ |
-| [DSD100](/datasets/dsd100.md)| 2015 | ? | 4 | 100 | 251 $\pm$ 60 | ✅ | ✅ |
-| [MUSDB18](https://sigsep.github.io/datasets/musdb.html) | 2017 | ? | 4 | 150 | 236 $\pm$ 95 | ✅ | ✅ | 
-| [Slakh2100](http://www.slakh.com/) | 2019 | ? | 34 | 2100 | ? | ✅ | ? |  
+| **Dataset** | **Year** |  **Instrument categories** | **Tracks** | **Avgerage duration (s)** | **Full songs** | **Stereo** |
+| ----------  | -------- |  ------------------------- | ---------- | ------------------------- | -------------- | ---------- |
+| [MASS](http://www.mtg.upf.edu/download/datasets/mass) | 2008 | N/A | 9 | 16 $\pm$ 7 | ❌ | ✅️ |
+| [MIR-1K](https://sites.google.com/site/unvoicedsoundseparation/mir-1k) | 2010 | N/A | 1,000 | 8 $\pm$ 8 | ❌ | ❌ |
+| [QUASI](http://www.tsi.telecom-paristech.fr/aao/en/2012/03/12/quasi/) | 2011 | N/A | 5 | 206 $\pm$ 21 | ✅ | ✅ |
+| [ccMixter](http://www.loria.fr/~aliutkus/kam/)  | 2014 | N/A | 50 | 231 $\pm$ 77 | ✅ | ✅ |
+| [MedleyDB](http://medleydb.weebly.com/) | 2014 | 82 | 63 | 206 $\pm$ 121 | ✅ | ✅ |
+| [iKala](http://mac.citi.sinica.edu.tw/ikala/)  | 2015 |  2  | 206 | 30 | ❌ | ❌ |
+| [DSD100](/datasets/dsd100.md)| 2015 | 4 | 100 | 251 $\pm$ 60 | ✅ | ✅ |
+| [MUSDB18](https://sigsep.github.io/datasets/musdb.html) | 2017 | 4 | 150 | 236 $\pm$ 95 | ✅ | ✅ | 
+| [Slakh2100](http://www.slakh.com/) | 2019 | 34 | 2100 | 249 | ✅ | ? |  
 This extended table is based on: [SigSep/datasets](https://sigsep.github.io/datasets/), and reproduced with permission.
 
 <!--- | [MUSDB18-HQ](https://sigsep.github.io/datasets/musdb.html) | 2019 | ? | ? | 150 | 236 $\pm$ 95 | ✅ | ✅ |)  # omitted since almost identical to MUSDB18 --->
