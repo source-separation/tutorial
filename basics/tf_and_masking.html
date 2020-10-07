@@ -113,6 +113,11 @@
    What is Source Separation?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/open_src_projects.html">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -141,7 +146,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="eval.html">
+  <a class="reference internal" href="evaluation.html">
    Evaluation
   </a>
  </li>
@@ -163,18 +168,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/nmf.html">
-   Non-Negative Matrix Factorization
+  <a class="reference internal" href="../approaches/classic/timbre.html">
+   Timbre Clustering with NMF
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/spatial.html">
-   Spatial Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/melodia.html">
-   Melodia
+   Spatialization
   </a>
  </li>
 </ul>
@@ -185,28 +185,18 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/intro.html">
-   Introduction to Deep Learning-based Approaches
+  <a class="reference internal" href="../approaches/deep/introduction.html">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/masking.html">
-   Deep Learning - Masking-based Approaches
+  <a class="reference internal" href="../approaches/deep/building_blocks.html">
+   Building Blocks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/waveform.html">
-   Deep Learning - Waveform-based Approaches
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html">
-   Guide to Open-Source Source Separation Projects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html#architecture-specific-repositories">
-   Architecture-Specific Repositories
+  <a class="reference internal" href="../approaches/deep/architectures.html">
+   Architectures
   </a>
  </li>
 </ul>
@@ -330,10 +320,7 @@
     
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/basics/tf_and_masking.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/basics/tf_and_masking.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -370,26 +357,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/source-separation/tutorial/master?urlpath=tree/book/basics/tf_and_masking.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
 
     </div>
 
@@ -439,28 +406,6 @@
                 
   <div class="section" id="tf-representations-and-masking">
 <h1>TF Representations and Masking<a class="headerlink" href="#tf-representations-and-masking" title="Permalink to this headline">¶</a></h1>
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Video not working?<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">Here is a <a href="">OneDrive link</a> to the full video.
-<a href=""></a></p>
-</div>
-</details><div class="cell tag_hide-output tag_hide-input docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inputs for this notebook</span>
-<span class="kn">import</span> <span class="nn">nussl</span>
-<span class="kn">import</span> <span class="nn">librosa</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Masking has many uses in different aspects computer science and machine
 learning like language modelling and computer vision. It is also an essential
 part of how many modern source separation approaches
@@ -528,7 +473,7 @@ that any <a class="reference internal" href="../appendix/glossary.html#term-TF-b
 In the literature, this assumption is called W-disjoint orthogonality.</p>
 </div>
 <div class="section" id="soft-masks-or-ratio-masks">
-<h2>Soft Masks (or Ratio Masks)<a class="headerlink" href="#soft-masks-or-ratio-masks" title="Permalink to this headline">¶</a></h2>
+<span id="masks-softmasks"></span><h2>Soft Masks (or Ratio Masks)<a class="headerlink" href="#soft-masks-or-ratio-masks" title="Permalink to this headline">¶</a></h2>
 <p>Soft Masks are allowed to take any value within the inclusive interval <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span>,
 which means that instead of assigning</p>
 </div>
@@ -554,7 +499,7 @@ phase, which we will discuss in the next section…</p>
 <dd><p>When we mix waves together, it is possible that the result is the product of
 <a href="https://en.wikipedia.org/wiki/Wave_interference">constructive or destructive interference.</a>
 Masking as we’ve presented it here does not account for either of these phenomena,
-although we do note that we are aware of at least one research paper <a class="bibtex reference internal" href="../zzz_refs.html#le2019phasebook" id="id6">[LRWW+19]</a>
+although we do note that we are aware of some research papers <a class="bibtex reference internal" href="../zzz_refs.html#le2019phasebook" id="id6">[LRWW+19]</a><a class="bibtex reference internal" href="../zzz_refs.html#choi2018phase" id="id7">[CKH+18]</a>
 that specifically designs for interference.</p>
 </dd>
 <dt class="label" id="fn2"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>

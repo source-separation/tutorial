@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Repetition and Median Filtering" href="repetition.html" />
-    <link rel="prev" title="Evaluation" href="../../basics/eval.html" />
+    <link rel="prev" title="Evaluation" href="../../basics/evaluation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -113,6 +113,11 @@
    What is Source Separation?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/open_src_projects.html">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -141,7 +146,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../basics/eval.html">
+  <a class="reference internal" href="../../basics/evaluation.html">
    Evaluation
   </a>
  </li>
@@ -163,18 +168,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nmf.html">
-   Non-Negative Matrix Factorization
+  <a class="reference internal" href="timbre.html">
+   Timbre Clustering with NMF
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="spatial.html">
-   Spatial Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="melodia.html">
-   Melodia
+   Spatialization
   </a>
  </li>
 </ul>
@@ -185,28 +185,18 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../deep/intro.html">
-   Introduction to Deep Learning-based Approaches
+  <a class="reference internal" href="../deep/introduction.html">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../deep/masking.html">
-   Deep Learning - Masking-based Approaches
+  <a class="reference internal" href="../deep/building_blocks.html">
+   Building Blocks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../deep/waveform.html">
-   Deep Learning - Waveform-based Approaches
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../open_src_projects.html">
-   Guide to Open-Source Source Separation Projects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../open_src_projects.html#architecture-specific-repositories">
-   Architecture-Specific Repositories
+  <a class="reference internal" href="../deep/architectures.html">
+   Architectures
   </a>
  </li>
 </ul>
@@ -373,6 +363,20 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-let-s-dive-in-to-source-separation">
+   Now, let’s dive in to source separation!
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -398,17 +402,44 @@ Video not working?<div class="summary-down docutils">
 </div>
 </details><p>Now that we know the basics of spectrograms, masking, and phase, we have all of
 the building blocks for diving into source separation.</p>
-<p>Like many other areas of computing, it’s important to understand the assumptions
-that source separation approaches make. To get a feel for the mechanics of
-source separation, we will begin learning some “classic” algorithms<a class="footnote-reference brackets" href="#fn1" id="id1">1</a>
-that are</p>
+<p>To get a feel for the mechanics of source separation, we will begin learning
+some of the “classic” algorithms.<a class="footnote-reference brackets" href="#fn1" id="id1">1</a></p>
+<p>This serves a few purposes:</p>
+<ol class="simple">
+<li><p>The classic algorithms do not suffer from the same lack of explainability
+that neural nets do (<em>i.e.</em>, neural nets are often considered
+“black-boxes”), and therefore we will explore the general
+mechanics of source separation using them.</p></li>
+<li><p>These methods do not require heaps of data and tons of computing power to
+produce satisfactory results when their assumptions are met. Unlike deep
+nets, you can run them relatively quickly using commodity hardware.</p></li>
+<li><p>Despite these methods not having the same buzz surrounding them as deep
+nets do, we believe they are still useful in many situations. As we will
+see, when the assumptions of the algroithm matches the contents of our
+mix the results can sound quite good.</p></li>
+</ol>
+<p>While it may be great to use the latest and greatest, sometimes the simpler
+tool is the right one for the job. Don’t discount these methods, especially
+when many of them are easy to use, as we will demonstrate.</p>
+<p>One thing we will stress here and throughout the tutorial is the importantance
+of understanding the assumptions (or inductive biases) that source separation
+approaches make. With these classic algorithms, the assumptions are easy to
+understand. Based on our assumptions about the types of mixtures we will see,
+we can make very explicit design decisions that affect how mixtures are
+processed to get out sources. As we will see later, this is also true for
+deep nets, but the assumptions are a little bit harder to parse. More on that
+later…</p>
+<div class="section" id="now-let-s-dive-in-to-source-separation">
+<h2>Now, let’s dive in to source separation!<a class="headerlink" href="#now-let-s-dive-in-to-source-separation" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>We understand that some people might take issue with us declaring all
-non-deep learning source separation approaches, but</p>
+non-deep learning source separation approaches “classic”, but that’s where
+we are now. ¯_(ツ)_/¯</p>
 </dd>
 </dl>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -439,7 +470,7 @@ non-deep learning source separation approaches, but</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../../basics/eval.html" title="previous page">Evaluation</a>
+    <a class='left-prev' id="prev-link" href="../../basics/evaluation.html" title="previous page">Evaluation</a>
     <a class='right-next' id="next-link" href="repetition.html" title="next page">Repetition and Median Filtering</a>
 
     </div>

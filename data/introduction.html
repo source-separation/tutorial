@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Datasets" href="datasets.html" />
-    <link rel="prev" title="Guide to Open-Source Source Separation Projects" href="../approaches/open_src_projects.html" />
+    <link rel="prev" title="Architectures" href="../approaches/deep/architectures.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -113,6 +113,11 @@
    What is Source Separation?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/open_src_projects.html">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -141,7 +146,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../basics/eval.html">
+  <a class="reference internal" href="../basics/evaluation.html">
    Evaluation
   </a>
  </li>
@@ -163,18 +168,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/nmf.html">
-   Non-Negative Matrix Factorization
+  <a class="reference internal" href="../approaches/classic/timbre.html">
+   Timbre Clustering with NMF
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/spatial.html">
-   Spatial Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/melodia.html">
-   Melodia
+   Spatialization
   </a>
  </li>
 </ul>
@@ -185,28 +185,18 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/intro.html">
-   Introduction to Deep Learning-based Approaches
+  <a class="reference internal" href="../approaches/deep/introduction.html">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/masking.html">
-   Deep Learning - Masking-based Approaches
+  <a class="reference internal" href="../approaches/deep/building_blocks.html">
+   Building Blocks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/waveform.html">
-   Deep Learning - Waveform-based Approaches
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html">
-   Guide to Open-Source Source Separation Projects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html#architecture-specific-repositories">
-   Architecture-Specific Repositories
+  <a class="reference internal" href="../approaches/deep/architectures.html">
+   Architectures
   </a>
  </li>
 </ul>
@@ -419,7 +409,7 @@ in a way that’s efficient, reproducible, and maximizes the performance we can 
 <p>At a high level, the inputs and outputs of a source separation model look like this:</p>
 <div class="figure align-default" id="fig-sourcesepio">
 <a class="reference internal image-reference" href="../_images/source_separation_io.png"><img alt="../_images/source_separation_io.png" src="../_images/source_separation_io.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Inputs and outputs of a source separation model.</span><a class="headerlink" href="#fig-sourcesepio" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Inputs and outputs of a source separation model.</span><a class="headerlink" href="#fig-sourcesepio" title="Permalink to this image">¶</a></p>
 </div>
 <p>For this tutorial, we will assume the inputs and outputs were created in the following way:</p>
 <ol class="simple">
@@ -430,7 +420,7 @@ processed with effects such as compression, reverb, etc.</p></li>
 </ol>
 <div class="figure align-default" id="fig-mixing">
 <a class="reference internal image-reference" href="../_images/music_mixing.png"><img alt="../_images/music_mixing.png" src="../_images/music_mixing.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Mixing stems to produce a mixture (mix).</span><a class="headerlink" href="#fig-mixing" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Mixing stems to produce a mixture (mix).</span><a class="headerlink" href="#fig-mixing" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -446,7 +436,7 @@ mixture. The difference between the estimated stems and the original stems is us
 training:</p>
 <div class="figure align-default" id="fig-training">
 <a class="reference internal image-reference" href="../_images/source_separation_training.png"><img alt="../_images/source_separation_training.png" src="../_images/source_separation_training.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">High-level diagram of training a source separation model.</span><a class="headerlink" href="#fig-training" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">High-level diagram of training a source separation model.</span><a class="headerlink" href="#fig-training" title="Permalink to this image">¶</a></p>
 </div>
 <p>The difference between the estimated stems and original stems is also used to <em>evaluate</em> a trained source separation model,
 as we shall see later on.</p>
@@ -522,7 +512,7 @@ for training and evaluation.</p></li>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../approaches/open_src_projects.html" title="previous page">Guide to Open-Source Source Separation Projects</a>
+    <a class='left-prev' id="prev-link" href="../approaches/deep/architectures.html" title="previous page">Architectures</a>
     <a class='right-next' id="next-link" href="datasets.html" title="next page">Datasets</a>
 
     </div>

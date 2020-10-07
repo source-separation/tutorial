@@ -1,15 +1,6 @@
-Phase
-=====
+(phase)=
+# Phase
 
-
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-Here is a <a href="">OneDrive link</a> to the full video.
-<a href=""></a>
-```
 
 While many source separation papers mainly focus on their approaches for creating
 better mask estimates, which only apply to the magnitude components of a
@@ -66,11 +57,19 @@ approaches model phase information?
 
 ## Why We Don't Model Phase
 
-[[REAL PHASE & GAUSSIAN NOISE]]
+```{figure} ../images/basics/real_vs_fake_phase.png
+---
+alt: Which one of these images shows the real phase versus random noise?
+name: real_vs_fake_phase
+---
+The structure of phase within an STFT makes it hard to model.
+One of these two images shows the phase component of an STFT and another
+shows random noise. Can you guess which is which?
+```
 
 Let's do a little experiment. Above are two images. One of the two images shows
-the phase component of an audio signal, the other shows gaussian noise. Can you
-guess which is which?
+the phase component of an audio signal, the other shows white noise. Can you
+guess which is which? [^fn2]
 
 Therein lies the problem: there is a complicated interplay between how the
 {term}`DFT` captures the signal at each time step, how the frequency is captured
@@ -86,36 +85,7 @@ of two sine waves that have frequency $440$ Hz and $523.25$ Hz, which are A440 a
 the C note above A440 respectively. Both start at the origin at time $t = 0$.
 Let's look at the value of each of these sine waves at different time intervals:
 
-```{code-cell} ipython3
----
-other:
-  more: true
----
 
-time = np.linspace(0.0, 0.05, 2000)
-f1 = 440.0   # A440
-f2 = 523.25  # C above A440
-sin1 = np.sin(2 * np.pi * f1 * time)
-
-offset = 3
-sin2 = np.sin(2 * np.pi * f2 * time) + offset
-
-# for i, t in enumerate(time):
-#     print(f'sin1({t:.1f}) = {sin1[i]:+.3f},\tsin2({t:.1f}) = {sin2[i]:+.3f}')
-
-# p = figure(title="Phase Example", plot_height=400, plot_width=700, y_range=(-1.5, 4.5),
-#            background_fill_color='#efefef')
-# r1 = p.line(time, sin1, color="#8888cc", line_width=1.5, alpha=0.8)
-# r2 = p.line(time, sin2, color="#cc88cc", line_width=1.5, alpha=0.8)
-#
-# def update(f2_=523.25, phi_=0.0):
-#     sin2_ = np.sin(2 * np.pi * f2_ * time + phi_) + offset
-#     r2.data_source.data['y'] = sin2_
-#     push_notebook()
-#
-# show(p, notebook_handle=True)
-
-```
 
 
 
@@ -158,7 +128,7 @@ our source estimate. Note that this equation looks similar if we want to apply
 a mask to a power spectrogram ($|Y|^2$), log spectrogram ($\log |Y|$), etc.
 
 Now we can just copy the phase from the mixture over to the magnitude spectrogram
-of our source estimate, $\hat{X_i}$:
+of our source estimate, $\hat{X}_i$:
 
 $$
 \tilde{X}_i = \hat{X}_i \odot e^{j \cdot \angle Y}
@@ -188,13 +158,25 @@ def apply_mask_with_noisy_phase(mix_stft, mask):
 ### The Hard Way, Part 1: Phase Estimation
 
 It is possible to _estimate_ the phase once the estimated mask is applied to the
-mixture spectrogram. One popular way is the Griffin-Lim algorithm, which can
-iteratively reconstruct the phase component of a spectrogram by...
+mixture spectrogram. One popular way is the Griffin-Lim algorithm {cite}`griffin1984signal`,
+which attempts to reconstruct the phase component of a spectrogram by iteratively
+computing an STFT and an inverse STFT. Griffin-Lim usually converges in 50-100
+iterations, although faster methods have been developed {cite}`perraudin2013fast`.
+In our experience, Griffin-Lim can still leave artifacts in the audio.
 
-MISI
+```{tip}
+`librosa` has an implementation of Griffin-Lim [here](https://librosa.org/doc/latest/generated/librosa.griffinlim.html).
+```
+
+Multiple Input Spectrogram Inversion (MISI) is a variant of Girffin-Lim specifically
+designed for source separation with multiple sources. It adds an additional
+constraint to the original algorithm such that all of the estimated sources with
+estimated phase components must all add up to the input mixture. {cite}`gunawan2010iterative`
 
 It's worth noting that the STFT & iSTFT computations, and these phase estimation
-algorithms are all differentiable and researchers have made models that
+algorithms are all differentiable. This means that we can incorporate them as
+part of neural network architectures and train directly on the waveforms, even
+when using mask-based algorithms. {cite}`wichern2018phase,le2019phasebook,masuyama2019deep`
 
 
 ### The Hard Way, Part 2:  Waveform Estimation
@@ -203,7 +185,9 @@ Finally, a recent way that researchers have been tackling the phase problem is
 by side-stepping any explicit representations of it at all. Recently, many
 deep learning-based models have been proposed that are "end-to-end", meaning that
 the model's input and output are all waveforms. In this case, the model decides
-how to represent phase.
+how it wants to represent phase. This might not always be the most efficient
+or effective solution, although many ways to mitigate the drawbacks of this tactic
+are currently being researched. {cite}`engel2018gansynth,engel2019ddsp`
 
 
 
@@ -211,4 +195,8 @@ how to represent phase.
  but still related. Here we will use "amplitude" as a stand-in for whichever one you
  choose.
 
+[^fn2]: We won't keep you guessing forever: the real phase is on the left. This signal
+ was converted from an mp3 so there is a low-pass shelf at ~17 kHz, which is noticeable once
+ you know what you're looking for. There is no data above the shelf though, so this
+ is actually an artifact, not a true representation of the signal.
 

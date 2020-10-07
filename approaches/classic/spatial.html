@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spatial Methods &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
+    <title>Spatialization &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,8 +58,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Melodia" href="melodia.html" />
-    <link rel="prev" title="Non-Negative Matrix Factorization" href="nmf.html" />
+    <link rel="next" title="Introduction" href="../deep/introduction.html" />
+    <link rel="prev" title="Timbre Clustering with NMF" href="timbre.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -113,6 +113,11 @@
    What is Source Separation?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/open_src_projects.html">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -141,7 +146,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../basics/eval.html">
+  <a class="reference internal" href="../../basics/evaluation.html">
    Evaluation
   </a>
  </li>
@@ -163,18 +168,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nmf.html">
-   Non-Negative Matrix Factorization
+  <a class="reference internal" href="timbre.html">
+   Timbre Clustering with NMF
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Spatial Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="melodia.html">
-   Melodia
+   Spatialization
   </a>
  </li>
 </ul>
@@ -185,28 +185,18 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../deep/intro.html">
-   Introduction to Deep Learning-based Approaches
+  <a class="reference internal" href="../deep/introduction.html">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../deep/masking.html">
-   Deep Learning - Masking-based Approaches
+  <a class="reference internal" href="../deep/building_blocks.html">
+   Building Blocks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../deep/waveform.html">
-   Deep Learning - Waveform-based Approaches
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../open_src_projects.html">
-   Guide to Open-Source Source Separation Projects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../open_src_projects.html#architecture-specific-repositories">
-   Architecture-Specific Repositories
+  <a class="reference internal" href="../deep/architectures.html">
+   Architectures
   </a>
  </li>
 </ul>
@@ -332,9 +322,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/approaches/classic/spatial.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/approaches/classic/spatial.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -368,10 +358,49 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/source-separation/tutorial/master?urlpath=tree/book/approaches/classic/spatial.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/source-separation/tutorial/blob/master/book/approaches/classic/spatial.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#duet">
+   DUET
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -380,8 +409,132 @@
         
               <div>
                 
-  <div class="section" id="spatial-methods">
-<h1>Spatial Methods<a class="headerlink" href="#spatial-methods" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="spatialization">
+<h1>Spatialization<a class="headerlink" href="#spatialization" title="Permalink to this headline">¶</a></h1>
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Video not working?<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<p class="card-text">Here is a <a href="">OneDrive link</a> to the full video.
+<a href=""></a></p>
+</div>
+</details><p>If we have access to a stereo mixture, we can leverage the “locations” of different sources to isolate them individually. For example, if we have a mix with two sources and source A is panned hard left and source B is panned hard right (i.e., we only hear source A in our left ear and source B in our right), then it’s simple to “separate” source A from source B by turning off the left or right channel.</p>
+<p>This simple idea can be applied to more complex mixtures as well, and while the algorithms are a little bit more complex than just “turn off the left channel”, the idea remains the same: by putting sources in a representation of the physical space in which the mixture was recorded, we can separate out sources only in a specfici location. This technique is called Spatialization, and the trick is finding a technique that can t</p>
+<div class="section" id="duet">
+<h2>DUET<a class="headerlink" href="#duet" title="Permalink to this headline">¶</a></h2>
+<p>Here we’ll talk about the Degenerate Unmixing Estimation Technique, or DUET. DUET compares the relative difference in attenuation levels and sample delay between the two channels of a stereo signal and uses that information for separation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span> 
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">LinearLocator</span><span class="p">,</span> <span class="n">FormatStrFormatter</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">nussl</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">musdb</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">MUSDB18</span><span class="p">(</span><span class="n">download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">39</span>
+<span class="n">item</span> <span class="o">=</span> <span class="n">musdb</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">item</span><span class="p">[</span><span class="s1">&#39;sources&#39;</span><span class="p">][</span><span class="s1">&#39;other&#39;</span><span class="p">],</span>
+    <span class="n">item</span><span class="p">[</span><span class="s1">&#39;sources&#39;</span><span class="p">][</span><span class="s1">&#39;vocals&#39;</span><span class="p">],</span>
+    <span class="n">item</span><span class="p">[</span><span class="s1">&#39;sources&#39;</span><span class="p">][</span><span class="s1">&#39;bass&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">mixing</span><span class="o">.</span><span class="n">pan_audio_signal</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">a_delays</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">num_channels</span><span class="p">)]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">mixing</span><span class="o">.</span><span class="n">delay_audio_signal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a_delays</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">apply_gain</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">mixing</span><span class="o">.</span><span class="n">pan_audio_signal</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">b_delays</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">num_channels</span><span class="p">)]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">mixing</span><span class="o">.</span><span class="n">delay_audio_signal</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b_delays</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">apply_gain</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">mixing</span><span class="o">.</span><span class="n">pan_audio_signal</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">c_delays</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">num_channels</span><span class="p">)]</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">mixing</span><span class="o">.</span><span class="n">delay_audio_signal</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">c_delays</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">apply_gain</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">mix</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duet</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">separation</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">Duet</span><span class="p">(</span><span class="n">mix</span><span class="p">,</span> <span class="n">num_sources</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">estimates</span> <span class="o">=</span> <span class="n">duet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attn_delay</span> <span class="o">=</span> <span class="n">duet</span><span class="o">.</span><span class="n">normalized_attenuation_delay_histogram</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">duet</span><span class="o">.</span><span class="n">normalized_attenuation_delay_histogram</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7f041c0a0210&gt;
+</pre></div>
+</div>
+<img alt="../../_images/spatial_5_1.png" src="../../_images/spatial_5_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delay</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">duet</span><span class="o">.</span><span class="n">delay_min</span><span class="p">,</span> <span class="n">duet</span><span class="o">.</span><span class="n">delay_max</span><span class="p">,</span> <span class="n">duet</span><span class="o">.</span><span class="n">num_delay_bins</span><span class="p">)</span>
+<span class="n">attn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">duet</span><span class="o">.</span><span class="n">attenuation_min</span><span class="p">,</span> <span class="n">duet</span><span class="o">.</span><span class="n">attenuation_max</span><span class="p">,</span> <span class="n">duet</span><span class="o">.</span><span class="n">num_attenuation_bins</span><span class="p">)</span>
+
+<span class="n">delay</span><span class="p">,</span> <span class="n">attn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">delay</span><span class="p">,</span> <span class="n">attn</span><span class="p">)</span>
+
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">attn</span><span class="p">,</span> <span class="n">delay</span><span class="p">,</span> <span class="n">attn_delay</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">,</span>
+                       <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">antialiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">LinearLocator</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.02f</span><span class="s1">&#39;</span><span class="p">))</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Attenuation ($/alpha$)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Delay&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Weight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Weight&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/spatial_6_1.png" src="../../_images/spatial_6_1.png" />
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -412,8 +565,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="nmf.html" title="previous page">Non-Negative Matrix Factorization</a>
-    <a class='right-next' id="next-link" href="melodia.html" title="next page">Melodia</a>
+    <a class='left-prev' id="prev-link" href="timbre.html" title="previous page">Timbre Clustering with NMF</a>
+    <a class='right-next' id="next-link" href="../deep/introduction.html" title="next page">Introduction</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

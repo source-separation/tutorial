@@ -58,7 +58,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Representing Audio" href="../basics/representations.html" />
+    <link rel="next" title="Map of Open-Source Source Separation Projects" href="open_src_projects.html" />
     <link rel="prev" title="Tutorial Structure and Setup" href="tutorial_structure.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -113,6 +113,11 @@
    What is Source Separation?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="open_src_projects.html">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -141,7 +146,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../basics/eval.html">
+  <a class="reference internal" href="../basics/evaluation.html">
    Evaluation
   </a>
  </li>
@@ -163,18 +168,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/nmf.html">
-   Non-Negative Matrix Factorization
+  <a class="reference internal" href="../approaches/classic/timbre.html">
+   Timbre Clustering with NMF
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/spatial.html">
-   Spatial Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/melodia.html">
-   Melodia
+   Spatialization
   </a>
  </li>
 </ul>
@@ -185,28 +185,18 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/intro.html">
-   Introduction to Deep Learning-based Approaches
+  <a class="reference internal" href="../approaches/deep/introduction.html">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/masking.html">
-   Deep Learning - Masking-based Approaches
+  <a class="reference internal" href="../approaches/deep/building_blocks.html">
+   Building Blocks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/waveform.html">
-   Deep Learning - Waveform-based Approaches
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html">
-   Guide to Open-Source Source Separation Projects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html#architecture-specific-repositories">
-   Architecture-Specific Repositories
+  <a class="reference internal" href="../approaches/deep/architectures.html">
+   Architectures
   </a>
  </li>
 </ul>
@@ -418,21 +408,7 @@
                 
   <div class="section" id="what-is-source-separation">
 <h1>What is Source Separation?<a class="headerlink" href="#what-is-source-separation" title="Permalink to this headline">¶</a></h1>
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Video not working?<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">If you are having access issues, here is a OneDrive mirror to the full video.
-<a href=""></a></p>
-<p class="card-text">Alternatively the text on this page covers the same material as the video.</p>
-</div>
-</details><p>Source Separation is the process of isolating individual sounds in an auditory
+<p>Source Separation is the process of isolating individual sounds in an auditory
 mixture of multiple sounds. <a class="bibtex reference internal" href="../zzz_refs.html#vincent2018audio" id="id1">[VVG18]</a> We call each sound heard
 in a mixture a <em>source</em>.
 For example, we might want to isolate a singer from the background music to make
@@ -456,6 +432,11 @@ source(s)). For example, if a stereo mixture contains a recording of a piano qua
 mixture we only have two observations (each channel of the stereo mix),
 therefore source separation would be a useful tool to isolate one of the
 sources (<em>e.g.</em>, just the piano).</p>
+<div class="figure align-default" id="mixing-sources">
+<img alt="Mixing of musical signals." src="../_images/mixing_overview.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The mixing of music signals is a complex and non-linear process. This makes
+separating musical sources difficult.</span><a class="headerlink" href="#mixing-sources" title="Permalink to this image">¶</a></p>
+</div>
 <p>In this tutorial we will be focusing on music separation, or the process of
 isolating at least one musical instrument or singer from a musical mixture that
 contains one or more other musical instruments or singers. Music is seen as a
@@ -505,10 +486,10 @@ For example, source separation has been used to enhance:</p>
 <li><p>lyric and music alignment <a class="bibtex reference internal" href="../zzz_refs.html#fujihara2006automatic" id="id6">[FGO+06]</a>,</p></li>
 <li><p>musical instrument detection <a class="bibtex reference internal" href="../zzz_refs.html#heittola2009musical" id="id7">[HKV09]</a>,</p></li>
 <li><p>lyric recognition <a class="bibtex reference internal" href="../zzz_refs.html#mesaros2010automatic" id="id8">[MV10]</a>,</p></li>
-<li><p>automatic singer identification <a class="bibtex reference internal" href="../zzz_refs.html#weninger2011automatic" id="id9">[WWollmerS11]</a>,</p></li>
-<li><p>vocal activity detection <a class="bibtex reference internal" href="../zzz_refs.html#stoller2018jointly" id="id10">[SED18]</a>,</p></li>
-<li><p>fundamental frequency estimation <a class="bibtex reference internal" href="../zzz_refs.html#jansson2019joint" id="id11">[JBEW19]</a>, and</p></li>
-<li><p>understanding the predictions of black-box audio models. <a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020towards" id="id12">[HMW20a]</a><a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020audiolime" id="id13">[HMW20b]</a></p></li>
+<li><p>automatic singer identification <a class="bibtex reference internal" href="../zzz_refs.html#weninger2011automatic" id="id9">[WWollmerS11]</a><a class="bibtex reference internal" href="../zzz_refs.html#hu2015separation" id="id10">[HL15]</a><a class="bibtex reference internal" href="../zzz_refs.html#sharma2019importance" id="id11">[SDL19]</a>,</p></li>
+<li><p>vocal activity detection <a class="bibtex reference internal" href="../zzz_refs.html#stoller2018jointly" id="id12">[SED18a]</a>,</p></li>
+<li><p>fundamental frequency estimation <a class="bibtex reference internal" href="../zzz_refs.html#jansson2019joint" id="id13">[JBEW19]</a>, and</p></li>
+<li><p>understanding the predictions of black-box audio models. <a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020towards" id="id14">[HMW20a]</a><a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020audiolime" id="id15">[HMW20b]</a></p></li>
 </ul>
 <p>Additionally, source separation has long been seen as an inherently worthwhile
 endeavor on its own merits, with many thousands of research papers appearing over
@@ -596,7 +577,7 @@ by other sources in the mix.</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="tutorial_structure.html" title="previous page">Tutorial Structure and Setup</a>
-    <a class='right-next' id="next-link" href="../basics/representations.html" title="next page">Representing Audio</a>
+    <a class='right-next' id="next-link" href="open_src_projects.html" title="next page">Map of Open-Source Source Separation Projects</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

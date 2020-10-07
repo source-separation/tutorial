@@ -1,0 +1,1174 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building Blocks &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Architectures" href="architectures.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../landing.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/tutorial_structure.html">
+   Tutorial Structure and Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/src_sep_101.html">
+   What is Source Separation?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/open_src_projects.html">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basics of Source Separation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/representations.html">
+   Representing Audio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/nussl_intro.html">
+   Introduction to nussl
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/tf_and_masking.html">
+   TF Representations and Masking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/phase.html">
+   Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classic Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../classic/intro.html">
+   Introduction to Classic Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../classic/repetition.html">
+   Repetition and Median Filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../classic/timbre.html">
+   Timbre Clustering with NMF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../classic/spatial.html">
+   Spatialization
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deep Learning Approaches
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Building Blocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="architectures.html">
+   Architectures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data/introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data/datasets.html">
+   Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data/musdb18.html">
+   The MUSDB18 dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../data/scaper.html">
+   Generating mixtures with Scaper
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Conclusions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../conclusions/applications.html">
+   Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../conclusions/concluding_remarks.html">
+   Concluding Remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../conclusions/additional_resources.html">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../appendix/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../zzz_refs.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../appendix/resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../appendix/acknowledgements.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../appendix/authors.html">
+   About the Authors
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/approaches/deep/building_blocks.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/source-separation/tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/source-separation/tutorial/issues/new?title=Issue%20on%20page%20%2Fapproaches/deep/building_blocks.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-network-components">
+   Neural Network Components
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#layers">
+     Layers
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fully-connected-layers">
+       Fully Connected Layers
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#masking">
+         Masking
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#reshaping">
+         Reshaping
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recurrent-layers">
+       Recurrent Layers
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#bidirectional-or-unidirectional">
+         Bidirectional or Unidirectional?
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convolutional-layers">
+       Convolutional Layers
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#the-shapes-of-convolutions">
+         The Shapes of Convolutions
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#in-source-separation">
+         In Source Separation
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#activation-functions">
+     Activation Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sigmoid">
+       Sigmoid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tanh">
+       Tanh
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#relu-friends">
+       ReLU &amp; Friends
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#normalization">
+     Normalization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#batch-norm">
+       Batch Norm
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#whitening-your-data">
+       Whitening your Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#learnable-normalization">
+       Learnable Normalization
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#other-normalization-techniques">
+       Other Normalization Techniques
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dropout">
+     Dropout
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spectrogram-considerations">
+     Spectrogram Considerations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learned-filter-banks">
+     Learned Filter Banks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-functions-and-targets">
+   Loss Functions and Targets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spectrogram-losses">
+     Spectrogram Losses
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spectrogram-targets">
+       Spectrogram Targets
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clustering-losses">
+     Clustering Losses
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#waveform-losses">
+     Waveform Losses
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="building-blocks">
+<h1>Building Blocks<a class="headerlink" href="#building-blocks" title="Permalink to this headline">¶</a></h1>
+<p>In this section we will do a quick overview of neural network components
+at a conceptual level,
+paying special attention to how they are used within modern source
+separation systems.</p>
+<p>Neural networks, sometimes called <em>deep learning</em> (or some variant of
+“neural networks” and “deep learning” like “deep nets”), are a type of
+machine learning algorithm that have become very popular in the past few
+years. While we will cover gradient descent in a later section, we will
+not fully dive into the mathematics neural networks.</p>
+<p>There are many, many resources for learning about neural networks,
+so we won’t repeat everything here, but we do want to leave you with
+some intuition about how the work and importantly, <strong>how they work within the
+source separation context.</strong></p>
+<p>On this page we will discuss the most common types of neural network
+components used in source separation systems.</p>
+<div class="section" id="neural-network-components">
+<h2>Neural Network Components<a class="headerlink" href="#neural-network-components" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="layers">
+<h3>Layers<a class="headerlink" href="#layers" title="Permalink to this headline">¶</a></h3>
+<p>Neural networks are composed of <em>layers</em>, each of which has a set
+of weights that get updated through gradient descent.</p>
+<p>When we talk
+about network layers, we usually talk about <em>forward</em> and <em>backward</em>
+passes through the network. During the forward pass, each layer
+receives input from a previous layer or input data and transforms
+the data by multiplying each component of the input by a set of
+<em>weights</em>, the result of which is the output. Usually the way the
+inputs are ingested and outputs calculated is a little more complicated
+that this, but what’s important to know is that as an example input
+gets pumped through a neural network it goes through many discrete
+transformations, each of which is a layer.</p>
+<p>It’s important to know that almost all deep net source separation
+systems are trained with some variant of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent">Stochastic Gradient Descent</a>,
+which means that data is passed through each layer in <em>minibatches</em>
+(sometimes referred to as just <em>batches</em>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>An important first step for debugging neural networks is understanding
+the input and output dimensionality at each layer. In many frameworks
+(<em>e.g.</em>, <a class="reference external" href="https://pytorch.org/">pytorch</a>, or <a class="reference external" href="https://www.tensorflow.org/">tensorflow</a>),
+the dimensionality is referred to as each layer’s <code class="docutils literal notranslate"><span class="pre">shape</span></code>.</p>
+<p>In many cases, getting the shapes set up right will get you 90% of the
+way there to a working system.</p>
+</div>
+<div class="section" id="fully-connected-layers">
+<h4>Fully Connected Layers<a class="headerlink" href="#fully-connected-layers" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-default" id="fully-connected">
+<a class="reference internal image-reference" href="../../_images/fully_connected.png"><img alt="A fully connected layer." src="../../_images/fully_connected.png" style="width: 249.5px; height: 300.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">An input layer, a fully connected hidden layer, and an output layer.
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg">Image Source</a></span><a class="headerlink" href="#fully-connected" title="Permalink to this image">¶</a></p>
+</div>
+<p>In a fully connected layer, every node is connected to every input node
+and is connected to every output node. These are sometimes called <em>linear</em>
+layers because, without an activation function, they apply a linear transform
+to the input data.</p>
+<p>Fully connected layers have many uses, but a common use is to expand or
+compress the dimensionality of the input for the next layer. In this
+sense, they can be thought of as a kind of “glue” between other components.</p>
+<div class="section" id="masking">
+<h5>Masking<a class="headerlink" href="#masking" title="Permalink to this headline">¶</a></h5>
+<p>Within source separation, fully connected layers are usually used to
+create masks, changing the dimensionality of the previous layer so
+that it matches the dimensionality of the output (<em>e.g.</em>, the number of
+frequency components in a spectrogram or number of samples in a waveform).
+The fully connected layers usually have an activation function when used
+as a mask, discussed further below.</p>
+</div>
+<div class="section" id="reshaping">
+<h5>Reshaping<a class="headerlink" href="#reshaping" title="Permalink to this headline">¶</a></h5>
+<p>As we mentioned, linear layers are well suited to expand or compress the
+dimensionality of the input data. There are many ways we can take advantage
+of this property within source separation.</p>
+<p>Here’s a simple example: Let’s say we have a source separation system
+that applies a mask to a spectrogram that has 513 frequency components and
+400 time steps. When we include the batch dimension, the output shape of
+our fully connected layer might look like <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">400,</span> <span class="pre">513)</span></code>, where the
+first dimension is the batch (with 16 examples). But if we want this
+system to make <em>two</em> masks, we can change the output dimensionality of
+this fully connected layer to be <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">400,</span> <span class="pre">1026)</span></code>,
+where now we’ve doubled the frequency dimensions (<span class="math notranslate nohighlight">\(513 \times 2 = 1026\)</span>)
+to indicate that we have two sources. Then we can reshape the output
+such that it looks like <code class="docutils literal notranslate"><span class="pre">(16,</span> <span class="pre">400,</span> <span class="pre">513,</span> <span class="pre">2)</span></code>, where we’ve expanded the frequency
+out into the last dimension to take care of both of our sources.
+The network will learn that this means there are two sources.</p>
+<p>A similar thing happens with Deep Clustering (covered on the next page).
+We use a linear layer to produce a high-dimensional embedding space
+and then reshape it so that we can make sense of it.</p>
+</div>
+</div>
+<div class="section" id="recurrent-layers">
+<h4>Recurrent Layers<a class="headerlink" href="#recurrent-layers" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-default" id="rnn">
+<img alt="An unfolded recurrent node" src="../../_images/rnn.png" />
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Recurrent layers have self-connected loops. When the loops are
+“unfolded” they show how each loop represents a different time step.
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg">Image Source</a></span><a class="headerlink" href="#rnn" title="Permalink to this image">¶</a></p>
+</div>
+<p>Recurrent layers are layers that have connections to themselves, as well
+as to the next layer. In other words, some of the outputs of the nodes
+are plugged back into the inputs of the same nodes, making loops so that
+information to persist.</p>
+<p>Because of these loops, recurrent layers are
+particularly well suited for learning data that varies over time, like
+audio. Each loop can ingest the next set of data in steps. The way that
+recurrent layers are used in source separation is that they ingest the
+audio as it changes along time. So, for example, if we have a spectrogram
+that is input into a recurrent layer, the recurrent layer will ingest
+one column of the spectrogram at a time (<em>i.e.</em>, all of the frequency
+components or the entire spectrum at that time step).</p>
+<p>The number of units recurrent layers have defines their
+<em>receptive field</em> or the amount of time steps the layer can see at any
+given time. So for instance, if a spectrogram has 1000 time steps
+but the recurrent layer only has 400 units, only 400 time steps of
+the spectrogram will be processed by the recurrent layers at a time.
+It will start with the first time step, and work its way across every
+one of the 1000 time steps, advancing by one step at a time. Because
+of this, if you train a recurrent layer that only has 400 time steps,
+it can accept spectrograms of any length. This is not the case for
+convolutional layers, which we will cover shortly.</p>
+<div class="sphinx-bs container-fluid docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="lstm">
+<a class="reference internal image-reference" href="../../_images/lstm.png"><img alt="../../_images/lstm.png" src="../../_images/lstm.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">LSTM cell <a class="reference external" href="https://commons.wikimedia.org/wiki/File:The_LSTM_cell.png">Image Source</a></span><a class="headerlink" href="#lstm" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="gru">
+<a class="reference internal image-reference" href="../../_images/gru.png"><img alt="../../_images/gru.png" src="../../_images/gru.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">GRU <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Gated_Recurrent_Unit,_base_type.svg">Image Source</a></span><a class="headerlink" href="#gru" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The two most common types of recurrent layers are
+<strong><a class="reference external" href="https://en.wikipedia.org/wiki/Long_short-term_memory">Long Short-Term Memory (LSTM)</a></strong> layers
+and <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Gated_recurrent_unit">Gated Recurrent Unit (GRU)</a></strong> layers.
+Although there are
+slight differences between the two, what’s important to know is that
+these layers are able to retain information in a way that is stable,
+whereas naive recurrent layers like those shown in <a class="reference internal" href="#rnn"><span class="std std-numref">Fig. 18</span></a> are
+<em>not</em> stable.</p>
+<p>For source separation, researcher mostly use <strong>LSTM</strong> layers. We are unaware of
+any reason that source separation researchers have settled on LSTMs over
+GRUs, but it is surely the case that GRUs are much less common in the literature
+than LSTMs.</p>
+<p>For more details on how LSTMs and GRUs work, see
+<a class="reference external" href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">Christopher Olah’s terrific blog post.</a></p>
+<div class="section" id="bidirectional-or-unidirectional">
+<h5>Bidirectional or Unidirectional?<a class="headerlink" href="#bidirectional-or-unidirectional" title="Permalink to this headline">¶</a></h5>
+<p>It is very common to see recurrent layers that are <em>bidirectional</em>, meaning
+that they actually contain two sets of units: one that advances forward
+in time and another that advances backward in time. The bidirectional
+case can thus “see the future” because it starts at the end of an audio
+clip. Because of this you should <strong>not</strong> use bidirectional recurrent
+layers if you need a real time system.</p>
+<p>Unidirectional recurrent layers
+are called <em>causal</em> and bidirectional recurrent are called <em>noncausal</em>.
+If an LSTM or GRU is bidirectional, it is denoted as BLSTM or BGRU,
+respectively.</p>
+<div class="admonition-watch-out admonition">
+<p class="admonition-title">Watch out!</p>
+<p>There is some sloppiness when research papers report the details of
+their BLSTM/BGRU layers. For instance, if a paper says they used a
+“BLSTM with 600 units”, does that mean 600 units in each direction
+or 300 in each direction (600 total)?</p>
+<p>Personally, we assume that “600 units” means 600 in <em>each direction</em>, because
+<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html#torch.nn.LSTM">that’s how the pytorch API configures it</a>
+but this might not always be the case. Beware of this when reading papers!</p>
+</div>
+</div>
+</div>
+<div class="section" id="convolutional-layers">
+<h4>Convolutional Layers<a class="headerlink" href="#convolutional-layers" title="Permalink to this headline">¶</a></h4>
+<p>Convolutional layers are similar to fully connected layers shown above,
+except that now each node is only connected to a small set of nodes
+from the previous layers. Reducing the amount of connections makes
+the network less prone to overfitting to the training data. Convolutional
+layers also have the property that they are
+<a class="reference external" href="https://en.wikipedia.org/wiki/Translational_symmetry">translationally invariant</a>.</p>
+<p>Convolutional layers are related to the mathematical/signal processing
+concept of <a class="reference external" href="https://en.wikipedia.org/wiki/Convolution">convolutions</a> in
+that convolutional layers learn a set of <em>filters</em> from a sliding window
+of the input layer. This sliding window is the receptive field of the
+convolutional layer. A depiction of convolutional layers are
+shown below.</p>
+<div class="section" id="the-shapes-of-convolutions">
+<h5>The Shapes of Convolutions<a class="headerlink" href="#the-shapes-of-convolutions" title="Permalink to this headline">¶</a></h5>
+<div class="sphinx-bs container-fluid docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="conv1">
+<a class="reference internal image-reference" href="../../_images/conv_no_padding_no_strides.gif"><img alt="../../_images/conv_no_padding_no_strides.gif" src="../../_images/conv_no_padding_no_strides.gif" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Convolution with 2D input with a 3x3 kernel and stride 1.
+Blue maps are inputs, and cyan maps are outputs. <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">Image Source</a></span><a class="headerlink" href="#conv1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="conv2">
+<a class="reference internal image-reference" href="../../_images/conv_no_padding_strides.gif"><img alt="../../_images/conv_no_padding_strides.gif" src="../../_images/conv_no_padding_strides.gif" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Convolution with 2D input with a 3x3 kernel and stride 2.
+Blue maps are inputs, and cyan maps are outputs. <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">Image Source</a></span><a class="headerlink" href="#conv2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>One tricky thing about convolutions is that their output shape can
+change wildly depending on how you set up the layers. There are
+four main parameters that effect the output shape of a convolutional
+layer: <em>kernel size</em>, <em>stride</em>, <em>padding</em>, and <em>dilation</em>.</p>
+<p>The <em>kernel size</em> dictates the number and shape of nodes from the
+previous layer that nodes at the current layer see (the shape of
+the window), and the <em>stride</em> dictates the distance that
+the window moves between adjacent input nodes.</p>
+<div class="sphinx-bs container-fluid docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="conv3">
+<a class="reference internal image-reference" href="../../_images/conv_same_padding_no_strides.gif"><img alt="../../_images/conv_same_padding_no_strides.gif" src="../../_images/conv_same_padding_no_strides.gif" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Convolution with 2D input with a 5x5 kernel and padding of 1.
+Blue maps are inputs, and cyan maps are outputs. <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">Image Source</a></span><a class="headerlink" href="#conv3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 docutils">
+<div class="card w-100 shadow-none border-0 docutils">
+<div class="card-body docutils">
+<div class="figure align-default" id="conv4">
+<a class="reference internal image-reference" href="../../_images/conv_no_padding_strides.gif"><img alt="../../_images/conv_no_padding_strides.gif" src="../../_images/conv_no_padding_strides.gif" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Dilated Convolution with 2D input with a 3x3 kernel and dilation factor of 1.
+Blue maps are inputs, and cyan maps are outputs. <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">Image Source</a></span><a class="headerlink" href="#conv4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The padding determines what to do at the edge of the input. If there is
+no padding, then the inputs at the edge are only covered by the colvolutional
+layer nodes at the edge, but if there <em>is</em> padding then the inputs at
+the edge get covered by more convolutional nodes. Padding is shown in
+<a class="reference internal" href="#conv3"><span class="std std-numref">Fig. 23</span></a>.</p>
+<p>Dilation determines the spacing between the input nodes that each
+convolutional node sees. This allows each node to understand more
+context than if no dilation is used. A gif of dilation is shown in
+<a class="reference internal" href="#conv4"><span class="std std-numref">Fig. 24</span></a>. Dilation is perhaps most famous in the audio world
+because of its use in Wavenet <a class="bibtex reference internal" href="../../zzz_refs.html#oord2016wavenet" id="id1">[ODZ+16]</a>, which used
+dilated convolutions in an autoregressive manner to produce one sample
+of a waveform at a time. <a class="footnote-reference brackets" href="#fn1" id="id2">1</a></p>
+<p><strong>Transpose Convolutions</strong><br />
+Typically the output of convolutional layers have a smaller dimensionality
+than the input layers, however we might want the opposite to happen
+where we expand the input. This is called a <em>transpose convolution</em> layer or
+<em>deconvolutional</em> layer, and the process is similar to the regular
+convolutional layer.</p>
+<p><strong>Pooling</strong></p>
+<div class="figure align-default" id="max-pooling">
+<a class="reference internal image-reference" href="../../_images/Max_pooling.png"><img alt="Max Pooling" src="../../_images/Max_pooling.png" style="width: 285.0px; height: 165.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">A max pooling operation on a matrix.
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Max_pooling.png">Image Source</a></span><a class="headerlink" href="#max-pooling" title="Permalink to this image">¶</a></p>
+</div>
+<p>An important part of using convolutional layers is <em>pooling</em> or
+reducing the dimensionality of a convolutional layer using some
+non-linear function, like a <code class="docutils literal notranslate"><span class="pre">max()</span></code> operation. Pooling splits the
+input into non-overlapping regions and performs the downsampling
+function on each region. Pooling is technically
+a separate layer, but it is almost always found after a convolutional
+layer. The most common type of pooling is <em>max pooling</em>, although
+other types of pooling exist like <em>average pooling</em>.</p>
+<p><strong>Further Reading</strong></p>
+<p>For further information see <a class="reference external" href="https://arxiv.org/pdf/1603.07285.pdf">this paper</a>,
+or see the animations at <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">this Gitub link</a> to provide more intuition
+about how these parameters affect the convolutional shapes. <a class="bibtex reference internal" href="../../zzz_refs.html#dumoulin2016guide" id="id3">[DumoulinVisin16]</a></p>
+</div>
+<div class="section" id="in-source-separation">
+<h5>In Source Separation<a class="headerlink" href="#in-source-separation" title="Permalink to this headline">¶</a></h5>
+<p>In source separation, convolutions have been used to great effect in
+the waveform and time-frequency domains. In the waveform domain,
+1D convolutions are used to input and output waveforms, and in the
+time-frequency domain 2D convolutions are used to input spectrograms
+and output masks.</p>
+<div class="figure align-default" id="tasnet-filterbanks">
+<img alt="Learned filterbanks on speech for Tasnet." src="../../_images/tasnet_filterbanks.png" />
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Learned filterbanks from the last convolutional layer of two Tasnet
+models (covered
+on the next page), which was trained on speech. Figure (a) shows the
+learned filterbanks of a causal model and Figure (b) shows a noncausal
+model.
+Notice how most of the energy of the filterbanks is in the range
+of human speech.
+Image used courtesy of Yi Luo. <a class="bibtex reference internal" href="../../zzz_refs.html#luo2018tasnet" id="id4">[LM18]</a></span><a class="headerlink" href="#tasnet-filterbanks" title="Permalink to this image">¶</a></p>
+</div>
+<p>When we say that convolutions learn a set of filters (or, a <em>filterbank</em>),
+this relates to the concept of filters that we normally think of in audio, like
+high-pass, low-pass, or band-pass filters. For instance, when we learn
+a 1D convolutional layer from a waveform, each of the nodes is learning
+a filter from the data. For instance, <a class="reference internal" href="#tasnet-filterbanks"><span class="std std-numref">Fig. 26</span></a> shows
+the result of two networks with convolutional layers that output a waveform.
+The image shows the learned filterbanks from the networks, which were
+trained on human speech.</p>
+<p>Unlike recurrent layers that can process one time step at a time,
+convolutional layers have to have a full example with the exact input
+shape in order to process data. For example, if we have a spectrogram
+with 512 frequency bins and 1000 time steps above, but our first convolutional
+layer requires an input shape of <code class="docutils literal notranslate"><span class="pre">(512,</span> <span class="pre">128)</span></code>, we have to split our
+spectrogram into 8 windows of size exactly 128 and include the necessary
+padding on the last window.</p>
+<p>Convolutional layers can sometimes have a hard time with edge effects.
+For instance, when predicting a waveform it is possible that a
+convolutional neural network might learn discontinuities,
+which might lead to audible artifacts. One way around this is to
+output overlapping windows similar to how an STFT is computed. Going
+back to the above example with a spectrogram, we might instead
+split it into 16 windows of the same length, but overlap with on
+another.</p>
+<p>For further reading, see the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network">Wikipedia article on Convolutional Networks</a>,
+or <a class="reference external" href="https://cs231n.github.io/convolutional-networks/">Stanford University’s course webpage for CS231</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="activation-functions">
+<h3>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="activation">
+<a class="reference internal image-reference" href="../../_images/activation_fn.png"><img alt="How an activation function is applied in a network." src="../../_images/activation_fn.png" style="width: 480.0px; height: 228.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">How an activation function is applied in a network. Each node has a
+“weight”, which get combined and passed through the activation function.
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:ArtificialNeuronModel_english.png">Image Source</a></span><a class="headerlink" href="#activation" title="Permalink to this image">¶</a></p>
+</div>
+<p>Activation functions change how much one layer influences the next layer.
+For each node in a layer, the activation function “decides” whether
+that node should be “on” or “off”. Activation functions are usually
+non-linear and always <a class="reference external" href="https://en.wikipedia.org/wiki/Differentiable_function">differentiable</a>.</p>
+<p>It is usually important to have at least one layer with a non-linear
+activation function. A list of many activation function can be seen
+on this <a class="reference external" href="https://en.wikipedia.org/wiki/Activation_function">Wikipedia article</a>.
+The most common ones seen in source separation
+are discussed below:</p>
+<div class="section" id="sigmoid">
+<h4>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-default" id="id5">
+<a class="reference internal image-reference" href="../../_images/sigmoid.png"><img alt="A plot of the sigmoid activation function." src="../../_images/sigmoid.png" style="width: 300.0px; height: 200.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">A plot of the Sigmoid activation function.
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Logistic-curve.svg">Image Source</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> activation function is shown in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 28</span></a> and
+is used very commonly as the output of a neural net that creates masks.
+Because it is bounded in the range <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> it is perfectly
+suited to make <a class="reference internal" href="../../basics/tf_and_masking.html#masks-softmasks"><span class="std std-ref">Soft Masks (or Ratio Masks)</span></a>. It is sometimes denoted <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+</div>
+<div class="section" id="tanh">
+<h4>Tanh<a class="headerlink" href="#tanh" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-default" id="id6">
+<a class="reference internal image-reference" href="../../_images/tanh.png"><img alt="A plot of the tanh activation function." src="../../_images/tanh.png" style="width: 320.0px; height: 160.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">A plot of the tanh activation function.
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Activation_tanh.svg">Image Source</a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">tanh</span></code>, or the hyperbolic tangent, activation function is
+shown in <a class="reference internal" href="#id6"><span class="std std-numref">Fig. 29</span></a>. Tanh is similar to sigmoid, but it is bounded
+in the range <span class="math notranslate nohighlight">\([-1.0, 1.0]\)</span>, instead of <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> like sigmoid.
+For this reason it is more common to find a <code class="docutils literal notranslate"><span class="pre">tanh</span></code> in the
+middle of a source separation network than at the ends.</p>
+</div>
+<div class="section" id="relu-friends">
+<h4>ReLU &amp; Friends<a class="headerlink" href="#relu-friends" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-default" id="relu">
+<a class="reference internal image-reference" href="../../_images/relu.png"><img alt="A plot of the ReLU activation function." src="../../_images/relu.png" style="width: 320.0px; height: 160.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">A plot of the ReLU activation function.
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Activation_rectified_linear.svg">Image Source</a></span><a class="headerlink" href="#relu" title="Permalink to this image">¶</a></p>
+</div>
+<p>The Rectified Linear Unit, or <code class="docutils literal notranslate"><span class="pre">relu</span></code> activation function is shown
+above in <a class="reference internal" href="#relu"><span class="std std-numref">Fig. 30</span></a>. It is <span class="math notranslate nohighlight">\(0.0\)</span> if the input is less than <span class="math notranslate nohighlight">\(0.0\)</span>
+and is linear with slope <span class="math notranslate nohighlight">\(1\)</span> otherwise:</p>
+<p><img alt="relu_eq" src="../../_images/relu_eq.svg" /></p>
+<p>ReLUs are sometimes used to
+make masks, and some systems use them to output waveforms as well.</p>
+<div class="figure align-default" id="leaky-relu">
+<a class="reference internal image-reference" href="../../_images/leaky_relu.png"><img alt="A plot of the PReLU activation function." src="../../_images/leaky_relu.png" style="width: 320.0px; height: 160.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">A plot of the PReLU activation function.
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Activation_prelu.svg">Image Source</a></span><a class="headerlink" href="#leaky-relu" title="Permalink to this image">¶</a></p>
+</div>
+<p>Two related activation functions to ReLUs are the <code class="docutils literal notranslate"><span class="pre">Leaky</span> <span class="pre">ReLU</span></code> and <code class="docutils literal notranslate"><span class="pre">PReLU</span></code>.</p>
+<p>The Leaky ReLU is similar to the regular ReLU, but instead of
+the output being <span class="math notranslate nohighlight">\(0.0\)</span> below <span class="math notranslate nohighlight">\(x=0.0\)</span> it is ever so slightly above <span class="math notranslate nohighlight">\(0.0\)</span>:</p>
+<p><img alt="leaky_relu_eq" src="../../_images/leaky_relu_eq.svg" /></p>
+<p>And PReLU has a learnable network parameter <span class="math notranslate nohighlight">\(\alpha\)</span> that defines the slope
+below <span class="math notranslate nohighlight">\(x=0.0\)</span>:</p>
+<p><img alt="prelu_eq" src="../../_images/prelu_eq.svg" /></p>
+<p>These are sometimes used in middle layers or as an activation for the final
+layer when outputting a waveform.</p>
+</div>
+</div>
+<div class="section" id="normalization">
+<h3>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">¶</a></h3>
+<p>Normalization is the practice of making sure all of the inputs to a
+network or a layer within a network all look the same from a statistical
+standpoint. Practically, this means that all of the data should have
+the same mean and standard deviation. Changing the mean <em>shifts</em> the
+data, which literally means adding or subtracting the calculated mean
+to every data point, and changing the standard deviation <em>scales</em> the
+data, which literally means dividing every data point by the calculated
+standard deviation. This process makes training neural networks
+much more stable during training.</p>
+<p>There are a few different methods for which data to include in the mean
+and standard deviation calculations. The most common types of normalization
+in source separation are outlined below.</p>
+<div class="section" id="batch-norm">
+<h4>Batch Norm<a class="headerlink" href="#batch-norm" title="Permalink to this headline">¶</a></h4>
+<p><em>Batch normalization</em>, or <em>batch norm</em>, <a class="bibtex reference internal" href="../../zzz_refs.html#ioffe2015batch" id="id7">[IS15]</a> computes the
+mean and standard
+deviation of each mini-batch during training and normalizes the data
+using those statistics. Like pooling, batch norm is considered another
+“layer” of a neural network and might be found in various places in a
+network’s architecture, including at the input layer.</p>
+</div>
+<div class="section" id="whitening-your-data">
+<h4>Whitening your Data<a class="headerlink" href="#whitening-your-data" title="Permalink to this headline">¶</a></h4>
+<p>Some researchers will normalize their whole dataset as a preprocessing step.
+This is called <em>whitening</em> the data. The concept is the same:
+the mean and standard deviation of the whole dataset is used to shift and
+scale the data. Because we need to access all of the data, this must
+happen before we train a network (recall the net only sees mini-batches).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Though popular in speech separation research, we have not found whitening
+to be of any practical use in music separation.</p>
+</div>
+</div>
+<div class="section" id="learnable-normalization">
+<h4>Learnable Normalization<a class="headerlink" href="#learnable-normalization" title="Permalink to this headline">¶</a></h4>
+<p>The final method we will outline in detail is having the network
+learn to normalize its inputs by itself. In this case, the system
+has two learnable parameters for shifting and scaling. These parameters
+are optimized using gradient descent, just like the other weights of
+the net. When applied as a shift and scale function to network inputs,
+the net will use it to normalize its input data based on what it determines
+works best.</p>
+<p>Open-Unmix, which we will discuss in more detail on the next page,
+uses a learnable normalization parameters to great effect.</p>
+</div>
+<div class="section" id="other-normalization-techniques">
+<h4>Other Normalization Techniques<a class="headerlink" href="#other-normalization-techniques" title="Permalink to this headline">¶</a></h4>
+<p>There are many other normalization techniques that have been developed
+and quite a few have been used in source separation research such as
+<em>instance norm</em> <a class="bibtex reference internal" href="../../zzz_refs.html#ulyanov2016instance" id="id8">[UVL16]</a>. A great resource for
+learning more about neural network normalization techniques is
+outlined in the Group Normalization paper: <a class="bibtex reference internal" href="../../zzz_refs.html#wu2018group" id="id9">[WH18]</a></p>
+</div>
+</div>
+<div class="section" id="dropout">
+<h3>Dropout<a class="headerlink" href="#dropout" title="Permalink to this headline">¶</a></h3>
+<p>Dropout is a regularization technique that improves a network’s
+ability to generalize to unseen data. This is a simple technique
+whereby at each training step some percentage of the nodes are
+set to 0. This is very widely used in source separation systems
+and is essential to making them work well.</p>
+</div>
+<div class="section" id="spectrogram-considerations">
+<h3>Spectrogram Considerations<a class="headerlink" href="#spectrogram-considerations" title="Permalink to this headline">¶</a></h3>
+<p>While waveforms can be input into a neural network, sometimes it is
+desirable to explicitly represent frequency information by having
+the network input a spectrogram. As such, the spectrograms must be
+computed from the waveform to be ingested by the network. This
+can be done as a preprocessing step, with all of the spectrogram
+data stored to disk as a cache and loaded during the training
+process, or the spectrograms can
+be computed on-the-fly when the network needs them.
+Precomputing the spectrograms is usually quicker,
+but usually requires a separate step to compute everything which might
+take a significant amount of time and disk space to store the data.
+On the other hand, computing spectrograms on-the-fly requires more
+computation for each example, and might bottleneck your training
+procedure if not done efficiently.</p>
+<p>Many times it makes sense to decrease the size of the spectrogram.
+This is because when we do this it allows us to make our networks
+bigger, and thus it has more capacity to learn better. One way
+we can decrease the size of the spectrogram and still preserve
+some features that are relevant to human hearing is by converting
+the a linear-scale frequency axis to a mel-scale frequency axis.
+Details about this are discussed</p>
+<p>The computation of a spectrogram is completely differentiable, which
+means that we can embed static, non-learnable STFT calculations in
+our network architecture to make waveform-to-waveform models, if
+we so choose. This is useful if you want to use a spectrogram
+model with one of the waveform losses outlined below. But beware:
+this might noticeably slow down your training process.</p>
+</div>
+<div class="section" id="learned-filter-banks">
+<h3>Learned Filter Banks<a class="headerlink" href="#learned-filter-banks" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="loss-functions-and-targets">
+<h2>Loss Functions and Targets<a class="headerlink" href="#loss-functions-and-targets" title="Permalink to this headline">¶</a></h2>
+<p>The final piece of the neural network puzzle is loss functions.
+As we mentioned at the top of this page, the loss is a function that
+is used to determine the distance between the network’s estimates
+and the true sources. It is then used to update the parameters
+of the network.</p>
+<div class="section" id="spectrogram-losses">
+<h3>Spectrogram Losses<a class="headerlink" href="#spectrogram-losses" title="Permalink to this headline">¶</a></h3>
+<p>When computing losses with spectrograms, we compare the spectrogram
+of the true source to the input spectrogram with the network’s mask
+applied. Given some ground truth STFT for source <span class="math notranslate nohighlight">\(i\)</span>
+<span class="math notranslate nohighlight">\(S_i \in \mathbb{C}^{F\times T}\)</span>, an input
+mixture <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{F\times T}\)</span>, and a net’s estimated
+mask <span class="math notranslate nohighlight">\(\hat{M}_i \in \mathbb{R}^{F\times T}\)</span> we compute the loss like</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L} = \Big\| S_i - \hat{M}_i \odot |X| \Big\|_p,
+\]</div>
+<p>where<span class="math notranslate nohighlight">\(\odot\)</span> denotes element-wise product adn <span class="math notranslate nohighlight">\(p\)</span> is the <em>norm</em> of
+the loss value. Only two norms are widely
+used in source separation, the L1 norm where <span class="math notranslate nohighlight">\(p=1\)</span> and the L2, or
+euclidean norm where <span class="math notranslate nohighlight">\(p=2\)</span>. The L2 norm is commonly referred to as
+<em>Mean Squared Error</em> or MSE.</p>
+<div class="section" id="spectrogram-targets">
+<h4>Spectrogram Targets<a class="headerlink" href="#spectrogram-targets" title="Permalink to this headline">¶</a></h4>
+<p>There is some nuance in selecting how you determine the spectrogram of the isolated
+source <span class="math notranslate nohighlight">\(S_i\)</span>. Just using the magnitude spectrogram as the target is called
+the <em>Magnitude Spectrum Approximation</em> or MSA <a class="bibtex reference internal" href="../../zzz_refs.html#weninger2014discriminatively" id="id10">[WHLRS14]</a>.
+This is just the same equation as above unmodified:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{MSA} =  |S_i| - \hat{M}_i \odot |X|
+\]</div>
+<p>However, as we mentioned in previous sections computing the magnitude
+spectrogram neglects the phase. We can incorporate some aspect of
+the phase data by including it in our target calculation like so</p>
+<div class="math notranslate nohighlight">
+\[
+\text{tPSA} = \hat{M}_{i} \odot |X|  - \operatorname{T}_{0}^{|X|}\left(|S_i| \odot \cos(\angle S_i - \angle X)\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\angle S_i\)</span> is the true
+phase of Source i, <span class="math notranslate nohighlight">\(\angle X\)</span> is the mixture phase, and
+<span class="math notranslate nohighlight">\(\operatorname{T}_{0}^{|X|}(x)= \min(\max(x,0),|X|)\)</span> is a truncation
+function ensuring the target can be reached with a sigmoid activation function.
+Specifically, we incorporate constructive and destructive interference
+of the source and mixture into the target with the term <span class="math notranslate nohighlight">\(\cos(\angle S_i - \angle X)\)</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We have found L1 loss using the tPSA target is the best option for
+loss and target.</p>
+</div>
+</div>
+</div>
+<div class="section" id="clustering-losses">
+<h3>Clustering Losses<a class="headerlink" href="#clustering-losses" title="Permalink to this headline">¶</a></h3>
+<p>Clustering losses are usually used to s</p>
+</div>
+<div class="section" id="waveform-losses">
+<h3>Waveform Losses<a class="headerlink" href="#waveform-losses" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>Although we won’t cover Wavenet in detail in this tutorial, it has been
+used for music source separation in this paper: <a class="bibtex reference internal" href="../../zzz_refs.html#lluis2019end" id="id11">[LluisPS19]</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "source-separation/tutorial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./approaches/deep"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="introduction.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="architectures.html" title="next page">Architectures</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ethan Manilow, Prem Seetharaman, Justin Salamon<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

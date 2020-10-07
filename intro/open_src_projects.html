@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map of Open-Source Source Separation Projects &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Representing Audio" href="../basics/representations.html" />
+    <link rel="prev" title="What is Source Separation?" href="src_sep_101.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing.html">
+   Welcome!
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_structure.html">
+   Tutorial Structure and Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="src_sep_101.html">
+   What is Source Separation?
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basics of Source Separation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/representations.html">
+   Representing Audio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/nussl_intro.html">
+   Introduction to nussl
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/tf_and_masking.html">
+   TF Representations and Masking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/phase.html">
+   Phase
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classic Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/intro.html">
+   Introduction to Classic Approaches
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/repetition.html">
+   Repetition and Median Filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/timbre.html">
+   Timbre Clustering with NMF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/spatial.html">
+   Spatialization
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deep Learning Approaches
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/building_blocks.html">
+   Building Blocks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/deep/architectures.html">
+   Architectures
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/datasets.html">
+   Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/musdb18.html">
+   The MUSDB18 dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data/scaper.html">
+   Generating mixtures with Scaper
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Conclusions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/applications.html">
+   Applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/concluding_remarks.html">
+   Concluding Remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../conclusions/additional_resources.html">
+   Additional Resources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/glossary.html">
+   Glossary
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zzz_refs.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/resources.html">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/acknowledgements.html">
+   Acknowledgements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/authors.html">
+   About the Authors
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/intro/open_src_projects.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/source-separation/tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/source-separation/tutorial/issues/new?title=Issue%20on%20page%20%2Fintro/open_src_projects.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#useful-audio-projects">
+   Useful Audio Projects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#librosa">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       librosa
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#soundfile">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SoundFile
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ffmpeg">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ffmpeg
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scaper">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Scaper
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#source-separation-projects">
+   Source Separation Projects
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#source-separation-infrastructure">
+     Source Separation Infrastructure
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mir-eval">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         mir_eval
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#mus-eval">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         mus_eval
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#architecture-specific-projects">
+     Architecture-Specific Projects
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convtasnet">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         ConvTasnet
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#demucs">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Demucs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#open-unmix">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Open-Unmix
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spleeter">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Spleeter
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#wave-u-net">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Wave-U-Net
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multi-architecture-projects">
+     Multi-Architecture Projects
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asteroid">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         Asteroid
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#nussl">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         nussl
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-you-ll-need-for-this-tutorial">
+   What You’ll Need for this Tutorial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-we-re-teaching-nussl-and-scaper-in-this-tutorial">
+   Why We’re Teaching
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nussl
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Scaper
+    </span>
+   </code>
+   in this Tutorial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-start-the-tutorial">
+   Let’s Start the Tutorial!
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="map-of-open-source-source-separation-projects">
+<span id="opensrcmap"></span><h1>Map of Open-Source Source Separation Projects<a class="headerlink" href="#map-of-open-source-source-separation-projects" title="Permalink to this headline">¶</a></h1>
+<p>The open source world is filled with lots of projects for source separation! Here
+we want to compile a list of some of these projects to provide an overview of the
+landscape. This is not an exhaustive list, but it should serve as a good starting
+point.</p>
+<p>Some of the terms and evaluation results (<em>e.g.</em> “SDR”) discussed on this page
+may be unfamiliar to you at the moment, but by the end of the tutorial you we
+hope that you will understand everything on this page. We encourage you to
+come back to this page at the end of the tutorial.</p>
+<p>All projects outlined below are primarily written in the <code class="docutils literal notranslate"><span class="pre">python</span></code> programming
+language, unless otherwise noted.</p>
+<div class="section" id="useful-audio-projects">
+<span id="opensrc-audioprojects"></span><h2>Useful Audio Projects<a class="headerlink" href="#useful-audio-projects" title="Permalink to this headline">¶</a></h2>
+<p>These projects are useful for any type of <code class="docutils literal notranslate"><span class="pre">python</span></code> audio project you might want to
+do.</p>
+<div class="section" id="librosa">
+<h3><code class="docutils literal notranslate"><span class="pre">librosa</span></code><a class="headerlink" href="#librosa" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">librosa</span></code> is the de-facto standard library for all things music information retrieval.
+Containing implementations of many, many common and useful algorithms in this space,
+it is hard to imaging the field without it. Ignore it at your own peril!</p>
+<p><a class="reference external" href="https://github.com/librosa/librosa">Github Link</a></p>
+</div>
+<div class="section" id="soundfile">
+<h3><code class="docutils literal notranslate"><span class="pre">SoundFile</span></code><a class="headerlink" href="#soundfile" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SoundFile</span></code> is one of many ways to load audio files in python, but we find that
+it can handle almost any type of audio file without any problems. Use <code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code>
+(below) to give <code class="docutils literal notranslate"><span class="pre">SoundFile</span></code> super powers. <code class="docutils literal notranslate"><span class="pre">librosa</span></code>, <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code>, <code class="docutils literal notranslate"><span class="pre">nussl</span></code>, and
+many more open source projects use it under the hood.</p>
+<p><a class="reference external" href="https://github.com/bastibe/SoundFile">Github Link</a></p>
+</div>
+<div class="section" id="ffmpeg">
+<h3><code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code><a class="headerlink" href="#ffmpeg" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code> is a command line application written in <code class="docutils literal notranslate"><span class="pre">C</span></code> that can read and manipulate
+many different types of media files. Use this with <code class="docutils literal notranslate"><span class="pre">librosa</span></code> or <code class="docutils literal notranslate"><span class="pre">SoundFile</span></code> to
+read many different audio formats (<em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">.mp3</span></code>, <code class="docutils literal notranslate"><span class="pre">.ogg</span></code>, etc) without any hassle.</p>
+<p><a class="reference external" href="https://ffmpeg.org/">Project Link</a></p>
+</div>
+<div class="section" id="scaper">
+<h3><code class="docutils literal notranslate"><span class="pre">Scaper</span></code><a class="headerlink" href="#scaper" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Scaper</span></code> was originally intended for soundscape creation with the intention of
+creating training data for sound event detection. But some researchers realized
+the augmentation strategies implemented in <code class="docutils literal notranslate"><span class="pre">Scaper</span></code> are useful for source separation!
+In this tutorial, we will discuss <code class="docutils literal notranslate"><span class="pre">Scaper</span></code> in detail. Stay tuned!</p>
+<p><a class="reference external" href="https://github.com/justinsalamon/scaper">Github Link</a></p>
+</div>
+</div>
+<div class="section" id="source-separation-projects">
+<span id="opensrc-sourceseparationprojects"></span><h2>Source Separation Projects<a class="headerlink" href="#source-separation-projects" title="Permalink to this headline">¶</a></h2>
+<p>These projects are more tailored to doing source separation, as opposed to the
+general projects we discussed above.</p>
+<div class="section" id="source-separation-infrastructure">
+<span id="opensrc-sourceseparationinfra"></span><h3>Source Separation Infrastructure<a class="headerlink" href="#source-separation-infrastructure" title="Permalink to this headline">¶</a></h3>
+<p>Before we talk about projects that contain source separation approaches, let’s
+talk about some projects that help with source separation.</p>
+<div class="section" id="mir-eval">
+<span id="opensrc-mireval"></span><h4><code class="docutils literal notranslate"><span class="pre">mir_eval</span></code><a class="headerlink" href="#mir-eval" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">mir_eval</span></code> is a python library that contains reference implementations for
+many MIR tasks, source separation included. While this is a good starting point,
+we do not recommend using the source separation metrics that are implemented
+here as they are obsolete at this point.</p>
+<p><a class="reference external" href="https://github.com/craffel/mir_eval">Github Link</a></p>
+</div>
+<div class="section" id="mus-eval">
+<span id="opensrc-museval"></span><h4><code class="docutils literal notranslate"><span class="pre">mus_eval</span></code><a class="headerlink" href="#mus-eval" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">mus_eval</span></code> has a more updated version of the source separation metrics, which
+fixes some of the issues that <code class="docutils literal notranslate"><span class="pre">mir_eval</span></code> has. Some recent developments like
+(SI-SDR) are missing from this library though.</p>
+<p><a class="reference external" href="https://github.com/sigsep/sigsep-mus-eval">Github Link</a></p>
+</div>
+</div>
+<div class="section" id="architecture-specific-projects">
+<span id="opensrc-architectures"></span><h3>Architecture-Specific Projects<a class="headerlink" href="#architecture-specific-projects" title="Permalink to this headline">¶</a></h3>
+<p>It has become increasingly common for researchers to release code accompanying
+their research papers. In the era of deep learning, the trained models are also
+sometimes released. Here is a non-exhaustive list of some recent open source
+projects.</p>
+<p>We will discuss some of these architectures in more detail in later sections,
+but here we will provide some highlights and links to their Github repositories,
+in alphabetical order.</p>
+<div class="section" id="convtasnet">
+<span id="opensrc-convtasnet"></span><h4><code class="docutils literal notranslate"><span class="pre">ConvTasnet</span></code><a class="headerlink" href="#convtasnet" title="Permalink to this headline">¶</a></h4>
+<p>See our overview here: <a class="reference internal" href="../approaches/deep/architectures.html#architectures-demucs"><span class="std std-ref">Demucs</span></a><br />
+This implementation is from the <a class="reference internal" href="#opensrc-demucs"><span class="std std-ref">Demucs</span></a> github page.<br />
+<a class="reference external" href="https://github.com/facebookresearch/demucs">Github Link</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Weights Avail?</p></th>
+<th class="head"><p>License</p></th>
+<th class="head"><p>Training set</p></th>
+<th class="head"><p>Framework</p></th>
+<th class="head"><p>Vocal SDR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>MIT</p></td>
+<td><p>MUSDB</p></td>
+<td><p>pytorch</p></td>
+<td><p>5.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yes</p></td>
+<td><p>MIT</p></td>
+<td><p>MUSDB + 150 songs</p></td>
+<td><p>pytorch</p></td>
+<td><p>6.3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="demucs">
+<span id="opensrc-demucs"></span><h4><code class="docutils literal notranslate"><span class="pre">Demucs</span></code><a class="headerlink" href="#demucs" title="Permalink to this headline">¶</a></h4>
+<p>See our overview here: <a class="reference internal" href="../approaches/deep/architectures.html#architectures-convtasnet"><span class="std std-ref">ConvTasnet</span></a><br />
+<a class="reference external" href="https://github.com/facebookresearch/demucs">Github Link</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Weights Avail?</p></th>
+<th class="head"><p>License</p></th>
+<th class="head"><p>Training set</p></th>
+<th class="head"><p>Framework</p></th>
+<th class="head"><p>Vocal SDR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>MIT</p></td>
+<td><p>MUSDB</p></td>
+<td><p>pytorch</p></td>
+<td><p>5.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yes</p></td>
+<td><p>MIT</p></td>
+<td><p>MUSDB + 150 songs</p></td>
+<td><p>pytorch</p></td>
+<td><p>6.3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="open-unmix">
+<span id="opensrc-openunmix"></span><h4><code class="docutils literal notranslate"><span class="pre">Open-Unmix</span></code><a class="headerlink" href="#open-unmix" title="Permalink to this headline">¶</a></h4>
+<p>See our overview here: <a class="reference internal" href="../approaches/deep/architectures.html#architectures-openunmix"><span class="std std-ref">Open-Unmix</span></a><br />
+<a class="reference external" href="https://github.com/sigsep/open-unmix-pytorch">Github Link (pytorch)</a><br />
+<a class="reference external" href="https://github.com/sigsep/open-unmix-nnabla">Github Link (nnabla)</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Weights Avail?</p></th>
+<th class="head"><p>License</p></th>
+<th class="head"><p>Training set</p></th>
+<th class="head"><p>Framework</p></th>
+<th class="head"><p>Vocal SDR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>MIT</p></td>
+<td><p>MUSDB</p></td>
+<td><p>pytorch</p></td>
+<td><p>5.3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="spleeter">
+<span id="opensrc-spleeter"></span><h4><code class="docutils literal notranslate"><span class="pre">Spleeter</span></code><a class="headerlink" href="#spleeter" title="Permalink to this headline">¶</a></h4>
+<p>Spleeter is based on a <code class="docutils literal notranslate"><span class="pre">U-Net</span></code> architecture. See more here: <a class="reference internal" href="../approaches/deep/architectures.html#architectures-unets"><span class="std std-ref">U-Nets</span></a><br />
+<a class="reference external" href="https://github.com/deezer/spleeter">Github Link</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Weights Avail?</p></th>
+<th class="head"><p>License</p></th>
+<th class="head"><p>Training set</p></th>
+<th class="head"><p>Framework</p></th>
+<th class="head"><p>Vocal SDR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>MIT</p></td>
+<td><p>MUSDB + others</p></td>
+<td><p>tensorflow v1</p></td>
+<td><p>5.9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="wave-u-net">
+<span id="opensrc-waveunet"></span><h4><code class="docutils literal notranslate"><span class="pre">Wave-U-Net</span></code><a class="headerlink" href="#wave-u-net" title="Permalink to this headline">¶</a></h4>
+<p>See our overview here: <a class="reference internal" href="../approaches/deep/architectures.html#architectures-waveunet"><span class="std std-ref">Wave-U-Net</span></a><br />
+<a class="reference external" href="https://github.com/f90/Wave-U-Net-Pytorch">Github Link (pytorch)</a><br />
+<a class="reference external" href="https://github.com/f90/Wave-U-Net">Github Link (tesnorflow v1)</a></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Weights Avail?</p></th>
+<th class="head"><p>License</p></th>
+<th class="head"><p>Training set</p></th>
+<th class="head"><p>Framework</p></th>
+<th class="head"><p>Vocal SDR</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>MIT</p></td>
+<td><p>MUSDB</p></td>
+<td><p>pytorch</p></td>
+<td><p>3.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Yes</p></td>
+<td><p>MIT</p></td>
+<td><p>MUSDB</p></td>
+<td><p>tensorflow v1</p></td>
+<td><p>3.2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="multi-architecture-projects">
+<h3>Multi-Architecture Projects<a class="headerlink" href="#multi-architecture-projects" title="Permalink to this headline">¶</a></h3>
+<p>A few existing projects aim to provide an entrypoint for multiple source separation
+approaches. Here we will outline some of them.</p>
+<div class="section" id="asteroid">
+<h4><code class="docutils literal notranslate"><span class="pre">Asteroid</span></code><a class="headerlink" href="#asteroid" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Asteroid</span></code> is a library that enables fast prototyping of deep learning-based
+source separation approaches. It contains implementations of 6 recent deep
+learning-based source separation approaches and support for 6 speech datasets.
+Support for more approaches and datasets are coming in the near future,
+including support for MUSDB18.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Asteroid</span></code> contains support for training and evaluating models, as well as
+pretrained models that are ready to download through
+<a class="reference external" href="https://zenodo.org/communities/asteroid-models/search?page=1&amp;size=20">Zenodo</a>.
+So far <code class="docutils literal notranslate"><span class="pre">Asteroid</span></code> only has available pre-trained models for speech separation,
+but they will soon have code available to train music models. All of the code is based
+on the <a class="reference external" href="https://pytorch.org/">Pytorch</a> deep learning framework.</p>
+<p><a class="reference external" href="https://github.com/mpariente/asteroid">Github Link</a></p>
+</div>
+<div class="section" id="nussl">
+<h4><code class="docutils literal notranslate"><span class="pre">nussl</span></code><a class="headerlink" href="#nussl" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">nussl</span></code> is an object-oriented library for source separation that contains many
+classic and deep learning-based algorithms, hooks for datasets, and evaluation
+metrics all in the box. We will be discussing <code class="docutils literal notranslate"><span class="pre">nussl</span></code> throughout this tutorial
+and exploring source separation. So we will be learning more about it very soon.</p>
+<p><a class="reference external" href="https://github.com/nussl/nussl">Github Link</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="what-you-ll-need-for-this-tutorial">
+<h2>What You’ll Need for this Tutorial<a class="headerlink" href="#what-you-ll-need-for-this-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, you will only need <code class="docutils literal notranslate"><span class="pre">nussl</span></code> and <code class="docutils literal notranslate"><span class="pre">Scaper</span></code>. These two projects
+have all of the components needed to use off-the-shelf source separation or
+develop new research.</p>
+<p>As mentioned, we’ve included <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> files
+to get set up with all of the dependencies for these projects, should you find
+them useful outside of this tutorial. (Recall that the coding portion of the
+tutorial is all through Colab or Mybinder.org).</p>
+</div>
+<div class="section" id="why-we-re-teaching-nussl-and-scaper-in-this-tutorial">
+<h2>Why We’re Teaching <code class="docutils literal notranslate"><span class="pre">nussl</span></code> and <code class="docutils literal notranslate"><span class="pre">Scaper</span></code> in this Tutorial<a class="headerlink" href="#why-we-re-teaching-nussl-and-scaper-in-this-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>There are so many wonderful open source projects out there, and we would love to
+do a deep dive into all of them. But there’s only so much time, so we choose
+<code class="docutils literal notranslate"><span class="pre">nussl</span></code> and <code class="docutils literal notranslate"><span class="pre">Scaper</span></code> for a few reasons:</p>
+<ul class="simple">
+<li><p><strong>We believe that the combination of <code class="docutils literal notranslate"><span class="pre">nussl</span></code>+<code class="docutils literal notranslate"><span class="pre">Scaper</span></code> provides a solid foundation
+for all source separation projects.</strong> We hope to convince you of the
+utility of both of these projects as you work through this tutorial.</p></li>
+<li><p><strong>The lessons we will explore in these two projects extend beyond them.</strong>
+There are many common themes and design patterns in this area of research,
+and as we progress you will start to see the themes again and again. We
+believe that <code class="docutils literal notranslate"><span class="pre">nussl</span></code>+<code class="docutils literal notranslate"><span class="pre">Scaper</span></code> is a good way to explore these themes so that
+you can understand <em>any</em> modern source separation system.</p></li>
+<li><p><strong>We are the primary developers for these projects.</strong> We <em>really</em> understand
+these tools because, well, we built them! That means we are well equipped to
+answer any questions that come up. (And we can also be held accountable for
+mistakes you find!)</p></li>
+</ul>
+</div>
+<div class="section" id="let-s-start-the-tutorial">
+<h2>Let’s Start the Tutorial!<a class="headerlink" href="#let-s-start-the-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>In the next section we’ll start digging the conceptual foundations of source
+separation.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "source-separation/tutorial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="src_sep_101.html" title="previous page">What is Source Separation?</a>
+    <a class='right-next' id="next-link" href="../basics/representations.html" title="next page">Representing Audio</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Ethan Manilow, Prem Seetharaman, Justin Salamon<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

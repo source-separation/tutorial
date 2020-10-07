@@ -1,17 +1,6 @@
 Tutorial Structure and Setup
 ============================
 
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-If you are having access issues, here is a OneDrive mirror to the full video.
-<a href=""></a>
-
-Alternatively the text on this page covers the same material as the video.
-```
-
 This tutorial will mostly be asynchronous and self-guided. All of the material
 needed to go through this tutorial is here on this website. 
 
@@ -24,21 +13,7 @@ This website and materials will be available after the allotted tutorial time.
 
 ## How this Tutorial is Structured
 
-There are many videos throughout the tutorial that will guide you through the main 
-concepts. The content of the videos will mirror the text that surrounds them,
-therefore you can either:
- 
-<p align="center"><b>
-Watch the videos
-</b></p>
- 
-<p align="center"><b>
-OR
-</b></p>
- 
-<p align="center"><b>
-Read the text.
-</b></p>
+TODOTODOTODOTODO
 
 Both will give you the same information overall, although the text might go into
 more detail on certain subjects and will provide references for further reading.

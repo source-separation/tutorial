@@ -58,7 +58,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Evaluation" href="eval.html" />
+    <link rel="next" title="Evaluation" href="evaluation.html" />
     <link rel="prev" title="TF Representations and Masking" href="tf_and_masking.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -113,6 +113,11 @@
    What is Source Separation?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/open_src_projects.html">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -141,7 +146,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="eval.html">
+  <a class="reference internal" href="evaluation.html">
    Evaluation
   </a>
  </li>
@@ -163,18 +168,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/nmf.html">
-   Non-Negative Matrix Factorization
+  <a class="reference internal" href="../approaches/classic/timbre.html">
+   Timbre Clustering with NMF
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/spatial.html">
-   Spatial Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/melodia.html">
-   Melodia
+   Spatialization
   </a>
  </li>
 </ul>
@@ -185,28 +185,18 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/intro.html">
-   Introduction to Deep Learning-based Approaches
+  <a class="reference internal" href="../approaches/deep/introduction.html">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/masking.html">
-   Deep Learning - Masking-based Approaches
+  <a class="reference internal" href="../approaches/deep/building_blocks.html">
+   Building Blocks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/waveform.html">
-   Deep Learning - Waveform-based Approaches
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html">
-   Guide to Open-Source Source Separation Projects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html#architecture-specific-repositories">
-   Architecture-Specific Repositories
+  <a class="reference internal" href="../approaches/deep/architectures.html">
+   Architectures
   </a>
  </li>
 </ul>
@@ -422,21 +412,8 @@
               <div>
                 
   <div class="section" id="phase">
-<h1>Phase<a class="headerlink" href="#phase" title="Permalink to this headline">¶</a></h1>
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Video not working?<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">Here is a <a href="">OneDrive link</a> to the full video.
-<a href=""></a></p>
-</div>
-</details><p>While many source separation papers mainly focus on their approaches for creating
+<span id="id1"></span><h1>Phase<a class="headerlink" href="#phase" title="Permalink to this headline">¶</a></h1>
+<p>While many source separation papers mainly focus on their approaches for creating
 better mask estimates, which only apply to the magnitude components of a
 <a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a>, the other crucial aspect of sound is its phase.</p>
 <p>In this section, we will discuss the important problem of how to turn a magnitude
@@ -482,10 +459,15 @@ approaches model phase information?</p>
 </div>
 <div class="section" id="why-we-don-t-model-phase">
 <h2>Why We Don’t Model Phase<a class="headerlink" href="#why-we-don-t-model-phase" title="Permalink to this headline">¶</a></h2>
-<p>[[REAL PHASE &amp; GAUSSIAN NOISE]]</p>
+<div class="figure align-default" id="real-vs-fake-phase">
+<img alt="Which one of these images shows the real phase versus random noise?" src="../_images/real_vs_fake_phase.png" />
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">The structure of phase within an STFT makes it hard to model.
+One of these two images shows the phase component of an STFT and another
+shows random noise. Can you guess which is which?</span><a class="headerlink" href="#real-vs-fake-phase" title="Permalink to this image">¶</a></p>
+</div>
 <p>Let’s do a little experiment. Above are two images. One of the two images shows
-the phase component of an audio signal, the other shows gaussian noise. Can you
-guess which is which?</p>
+the phase component of an audio signal, the other shows white noise. Can you
+guess which is which? <a class="footnote-reference brackets" href="#fn2" id="id2">1</a></p>
 <p>Therein lies the problem: there is a complicated interplay between how the
 <a class="reference internal" href="../appendix/glossary.html#term-DFT"><span class="xref std std-term">DFT</span></a> captures the signal at each time step, how the frequency is captured
 and how the phase is captured. Let’s build some intuition for why this is.
@@ -532,7 +514,7 @@ Recall that we can apply the mask to a magnitude spectrogram of <span class="mat
 our source estimate. Note that this equation looks similar if we want to apply
 a mask to a power spectrogram (<span class="math notranslate nohighlight">\(|Y|^2\)</span>), log spectrogram (<span class="math notranslate nohighlight">\(\log |Y|\)</span>), etc.</p>
 <p>Now we can just copy the phase from the mixture over to the magnitude spectrogram
-of our source estimate, <span class="math notranslate nohighlight">\(\hat{X_i}\)</span>:</p>
+of our source estimate, <span class="math notranslate nohighlight">\(\hat{X}_i\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \tilde{X}_i = \hat{X}_i \odot e^{j \cdot \angle Y}
@@ -557,11 +539,23 @@ that the estimate for Source <span class="math notranslate nohighlight">\(i\)</s
 <div class="section" id="the-hard-way-part-1-phase-estimation">
 <h3>The Hard Way, Part 1: Phase Estimation<a class="headerlink" href="#the-hard-way-part-1-phase-estimation" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to <em>estimate</em> the phase once the estimated mask is applied to the
-mixture spectrogram. One popular way is the Griffin-Lim algorithm, which can
-iteratively reconstruct the phase component of a spectrogram by…</p>
-<p>MISI</p>
+mixture spectrogram. One popular way is the Griffin-Lim algorithm <a class="bibtex reference internal" href="../zzz_refs.html#griffin1984signal" id="id3">[GL84]</a>,
+which attempts to reconstruct the phase component of a spectrogram by iteratively
+computing an STFT and an inverse STFT. Griffin-Lim usually converges in 50-100
+iterations, although faster methods have been developed <a class="bibtex reference internal" href="../zzz_refs.html#perraudin2013fast" id="id4">[PBSondergaard13]</a>.
+In our experience, Griffin-Lim can still leave artifacts in the audio.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">librosa</span></code> has an implementation of Griffin-Lim <a class="reference external" href="https://librosa.org/doc/latest/generated/librosa.griffinlim.html">here</a>.</p>
+</div>
+<p>Multiple Input Spectrogram Inversion (MISI) is a variant of Girffin-Lim specifically
+designed for source separation with multiple sources. It adds an additional
+constraint to the original algorithm such that all of the estimated sources with
+estimated phase components must all add up to the input mixture. <a class="bibtex reference internal" href="../zzz_refs.html#gunawan2010iterative" id="id5">[GS10]</a></p>
 <p>It’s worth noting that the STFT &amp; iSTFT computations, and these phase estimation
-algorithms are all differentiable and researchers have made models that</p>
+algorithms are all differentiable. This means that we can incorporate them as
+part of neural network architectures and train directly on the waveforms, even
+when using mask-based algorithms. <a class="bibtex reference internal" href="../zzz_refs.html#wichern2018phase" id="id6">[WLR18]</a><a class="bibtex reference internal" href="../zzz_refs.html#le2019phasebook" id="id7">[LRWW+19]</a><a class="bibtex reference internal" href="../zzz_refs.html#masuyama2019deep" id="id8">[MYK+19]</a></p>
 </div>
 <div class="section" id="the-hard-way-part-2-waveform-estimation">
 <h3>The Hard Way, Part 2:  Waveform Estimation<a class="headerlink" href="#the-hard-way-part-2-waveform-estimation" title="Permalink to this headline">¶</a></h3>
@@ -569,7 +563,18 @@ algorithms are all differentiable and researchers have made models that</p>
 by side-stepping any explicit representations of it at all. Recently, many
 deep learning-based models have been proposed that are “end-to-end”, meaning that
 the model’s input and output are all waveforms. In this case, the model decides
-how to represent phase.</p>
+how it wants to represent phase. This might not always be the most efficient
+or effective solution, although many ways to mitigate the drawbacks of this tactic
+are currently being researched. <a class="bibtex reference internal" href="../zzz_refs.html#engel2018gansynth" id="id9">[EAC+18]</a><a class="bibtex reference internal" href="../zzz_refs.html#engel2019ddsp" id="id10">[EGR+19]</a></p>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="fn2"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>We won’t keep you guessing forever: the real phase is on the left. This signal
+was converted from an mp3 so there is a low-pass shelf at ~17 kHz, which is noticeable once
+you know what you’re looking for. There is no data above the shelf though, so this
+is actually an artifact, not a true representation of the signal.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -603,7 +608,7 @@ how to represent phase.</p>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="tf_and_masking.html" title="previous page">TF Representations and Masking</a>
-    <a class='right-next' id="next-link" href="eval.html" title="next page">Evaluation</a>
+    <a class='right-next' id="next-link" href="evaluation.html" title="next page">Evaluation</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

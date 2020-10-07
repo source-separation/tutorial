@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction to nussl" href="nussl_intro.html" />
-    <link rel="prev" title="What is Source Separation?" href="../intro/src_sep_101.html" />
+    <link rel="prev" title="Map of Open-Source Source Separation Projects" href="../intro/open_src_projects.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -113,6 +113,11 @@
    What is Source Separation?
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro/open_src_projects.html">
+   Map of Open-Source Source Separation Projects
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -141,7 +146,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="eval.html">
+  <a class="reference internal" href="evaluation.html">
    Evaluation
   </a>
  </li>
@@ -163,18 +168,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/nmf.html">
-   Non-Negative Matrix Factorization
+  <a class="reference internal" href="../approaches/classic/timbre.html">
+   Timbre Clustering with NMF
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/spatial.html">
-   Spatial Methods
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/melodia.html">
-   Melodia
+   Spatialization
   </a>
  </li>
 </ul>
@@ -185,28 +185,18 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/intro.html">
-   Introduction to Deep Learning-based Approaches
+  <a class="reference internal" href="../approaches/deep/introduction.html">
+   Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/masking.html">
-   Deep Learning - Masking-based Approaches
+  <a class="reference internal" href="../approaches/deep/building_blocks.html">
+   Building Blocks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/deep/waveform.html">
-   Deep Learning - Waveform-based Approaches
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html">
-   Guide to Open-Source Source Separation Projects
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/open_src_projects.html#architecture-specific-repositories">
-   Architecture-Specific Repositories
+  <a class="reference internal" href="../approaches/deep/architectures.html">
+   Architectures
   </a>
  </li>
 </ul>
@@ -431,23 +421,8 @@
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#power-spectrograms">
-       Power Spectrograms
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-spectrograms">
-       Log Spectrograms
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mel-spaced-spectrograms">
        Mel-spaced Spectrograms
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#log-mel-spaced-spectrograms">
-       Log Mel-spaced Spectrograms
       </a>
      </li>
     </ul>
@@ -481,22 +456,8 @@
               <div>
                 
   <div class="section" id="representing-audio">
-<h1>Representing Audio<a class="headerlink" href="#representing-audio" title="Permalink to this headline">¶</a></h1>
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Video not working?<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<p class="card-text">If you are having access issues, here is a OneDrive mirror to the full video.
-<a href=""></a></p>
-<p class="card-text">Alternatively the text on this page covers the same material as the video.</p>
-</div>
-</details><p>The first thing we want to examine are the input and output representations of a source
+<span id="representingaudio"></span><h1>Representing Audio<a class="headerlink" href="#representing-audio" title="Permalink to this headline">¶</a></h1>
+<p>The first thing we want to examine are the input and output representations of a source
 separation system and how the inputs and outputs are represented. In its most
 unprocessed form, we assume that audio is stored as a waveform. Some source
 separation approaches operate on the waveform directly, although many require
@@ -511,7 +472,7 @@ for source separation.</p>
 <h2>Waveforms<a class="headerlink" href="#waveforms" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="waveform-gif">
 <img alt="Waveform shown at many different time scales from a few seconds to a few samples." src="../_images/richter.gif" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">A waveform shown at many different time scales. Each value is sampled at a uniform
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">A waveform shown at many different time scales. Each value is sampled at a uniform
 rate and quantized. Image used courtesy of Jan Van Balen (<a href="https://jvbalen.github.io/notes/waveform.html">source</a>).</span><a class="headerlink" href="#waveform-gif" title="Permalink to this image">¶</a></p>
 </div>
 <p>A <em>waveform</em> is shorthand for a digitized audio signal, which is most similar to
@@ -546,8 +507,8 @@ possible frequency is 22.05 kHz.</p>
 <p>Many deep learning-based source separation approaches will reduce the sample
 rate of their input signals (called <span class="xref std std-term">downsampling</span>) to reduce the
 computational load during training time. Downsampling removes high frequency
-information from a signal, which is seen as a necessary evil to increase the
-overall performance of an approach.</p>
+information from a signal, which is seen as a necessary evil when prototyping
+models.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All of the source separation approaches we will discuss assume that the sample
@@ -561,7 +522,7 @@ all input audio should be resampled to 16 kHz before using it.</p>
 <h2>Desirable Properties of Representations<a class="headerlink" href="#desirable-properties-of-representations" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="representation-img">
 <img alt="A signal that looks completely unseparable in one representation becomes easily separable in another representation." src="../_images/right_representation.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Examples of two signals represented differently. The first row has two ways of
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Examples of two signals represented differently. The first row has two ways of
 displaying a mixture of two single-frequency sine waves; panel (a) represents
 the waveform and panel (b) shows the frequency spectrum. The second row has two
 ways of displaying a mixture of two linear chirp signals (<em>i.e.</em>, sine waves
@@ -590,7 +551,7 @@ arise from converting back and forth will be audible in our separation output, s
 we want to minimize these types of errors (although eliminating them does not
 guarantee a perfect separation).</p>
 <p>An other important aspect is whether this representation can keep data from
-one source apart from another source. As seen in <a class="reference internal" href="#representation-img"><span class="std std-numref">Fig. 6</span></a>,
+one source apart from another source. As seen in <a class="reference internal" href="#representation-img"><span class="std std-numref">Fig. 7</span></a>,
 some representations might be better suited to separate certain signals than other
 representations. In this tutorial we will explore methods that produce representations
 specifically designed for separating sources.</p>
@@ -608,7 +569,7 @@ on the separation quality of your approach.</p>
 <h3>Time-Frequency (TF) Representations<a class="headerlink" href="#time-frequency-tf-representations" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="tf-repr">
 <img alt="A time-frequency representation." src="../_images/tf_representation.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">A time-frequency representation. One dimension is indexed by time, another is
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">A time-frequency representation. One dimension is indexed by time, another is
 index by frequency, and values in the matrix represent the energy of the sound
 at that partifular time and frequency.</span><a class="headerlink" href="#tf-repr" title="Permalink to this image">¶</a></p>
 </div>
@@ -630,7 +591,7 @@ and fundamental time-frequency representations.</p>
 <h4>Short-time Fourier Transform (STFT)<a class="headerlink" href="#short-time-fourier-transform-stft" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="stft-process">
 <img alt="Diagram depicting how a short-time Fourier transform is computed." src="../_images/stft_process.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">The process of computing a short-time Fourier transform of a waveform. Imaged used
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">The process of computing a short-time Fourier transform of a waveform. Imaged used
 courtesy of Bryan Pardo.</span><a class="headerlink" href="#stft-process" title="Permalink to this image">¶</a></p>
 </div>
 <p>Many of the time-frequency representations that we will see in this tutorial
@@ -651,12 +612,12 @@ to a waveform. This is called the inverse Short-time Fourier Transform or iSTFT.
 <h5>Window Types<a class="headerlink" href="#window-types" title="Permalink to this headline">¶</a></h5>
 <div class="figure align-default" id="id5">
 <img alt="Six commonly used window types for calculating an STFT." src="../_images/window_types.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Six commonly used window types for calculating an STFT.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Six commonly used window types for calculating an STFT.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The window type determines the shape of the short-time window that will segment
 the audio into short segments before applying the DFT. The shape of this window
 can will affect which frequencies get emphasized or attenuated in the DFT. There
-are many types of window functions, in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 9</span></a>, we show the most
+are many types of window functions, in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 10</span></a>, we show the most
 common ones when calculating an STFT for source separation. For more information
 on other types of windows and their frequency response, please see <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code>’s
 documentation <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.windows.html">here</a>.</p>
@@ -670,7 +631,7 @@ the <code class="docutils literal notranslate"><span class="pre">sqrt_hann</span
 <h5>Window Length<a class="headerlink" href="#window-length" title="Permalink to this headline">¶</a></h5>
 <div class="figure align-default" id="window-lens">
 <img alt="Trade off between time and frequency resolution for different window lengths." src="../_images/win_len.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Trade off between time and frequency resolution for different window lengths.
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Trade off between time and frequency resolution for different window lengths.
 In the simplified case, the number of frequency bins is determined by the window
 length.
 Using the same signal, we compute the STFT once with window length 512, and
@@ -681,19 +642,19 @@ the window length.</span><a class="headerlink" href="#window-lens" title="Permal
 <p>The window length determines how many samples are included in each short-time
 window. Due to how the DFT is computed, this parameter also determines the
 resolution of the frequency axis of the STFT. The longer the window, the higher
-the frequency resolution and vice versa, as is visible in <a class="reference internal" href="#window-lens"><span class="std std-numref">Fig. 10</span></a>.</p>
+the frequency resolution and vice versa, as is visible in <a class="reference internal" href="#window-lens"><span class="std std-numref">Fig. 11</span></a>.</p>
 </div>
 <div class="section" id="hop-length">
 <h5>Hop Length<a class="headerlink" href="#hop-length" title="Permalink to this headline">¶</a></h5>
 <div class="figure align-default" id="hop-lens">
 <img alt="The hope length determines the distance (in samples) between adjacent short-time windows." src="../_images/hop_len.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">The hope length determines the distance (in samples) between adjacent short-time
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">The hope length determines the distance (in samples) between adjacent short-time
 windows. An STFT is computed twice on the same signal; the smaller the hop length
 the more times a particular segment of the audio signal is represented in the
 STFT.</span><a class="headerlink" href="#hop-lens" title="Permalink to this image">¶</a></p>
 </div>
 <p>The hop length determines the distance, in samples, between any two adjacent
-short-time windows. In the image shown in <a class="reference internal" href="#hop-lens"><span class="std std-numref">Fig. 11</span></a> shows how the hop
+short-time windows. In the image shown in <a class="reference internal" href="#hop-lens"><span class="std std-numref">Fig. 12</span></a> shows how the hop
 length can elongate or shorten the time axis on an STFT depending on how it is
 set.</p>
 </div>
@@ -712,13 +673,17 @@ and an <a class="reference external" href="https://docs.scipy.org/doc/scipy/refe
 </div>
 <div class="section" id="magnitude-power-and-log-spectrograms">
 <h4>Magnitude, Power, and Log Spectrograms<a class="headerlink" href="#magnitude-power-and-log-spectrograms" title="Permalink to this headline">¶</a></h4>
-<div class="figure align-default" id="mag-spec">
-<img alt="" src="../_images/mag_spec.png" />
+<div class="figure align-default" id="spectrograms">
+<img alt="Four types of spectrograms with different scaling for function." src="../_images/ylinear_specs.png" />
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">A visual comparison of the four types of spectrograms discussed in this section.
+Each has a different scaling function applied to the loudness, which is reflected
+in the colors of the heatmap plots.</span><a class="headerlink" href="#spectrograms" title="Permalink to this image">¶</a></p>
 </div>
 <p>As we will touch on later in this tutorial, it is hard to model the
 phase of a signal. Therefore most source separation approaches only operate on
 the some variant of the spectrogram that does not explicitly represent phase in
-each <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>.</p>
+each <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>. A visualization of four types of spectrograms is shown
+in <a class="reference internal" href="#spectrograms"><span class="std std-numref">Fig. 13</span></a>.</p>
 <p><strong>Magnitude Spectrogram</strong>
 For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Magnitude
 Spectrogram is calculated by taking the absolute value of each element in the
@@ -727,15 +692,20 @@ STFT, <span class="math notranslate nohighlight">\(|X| \in \mathbb{R}^{T \times 
 For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Power
 Spectrogram is calculated by squaring  each element in the
 STFT, <span class="math notranslate nohighlight">\(|X|^2 \in \mathbb{R}^{T \times F}\)</span>.</p>
-<p><strong>Log Spectrogram</strong></p>
-<p>Human hearing is logarithmic with regards to amplitude.
+<p><strong>Log Spectrogram</strong>
+Human hearing is logarithmic with regards to amplitude.
 For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Log
 Spectrogram is calculated taking the log of the absolute value of each element in the
 STFT, <span class="math notranslate nohighlight">\(\log{|X|} \in \mathbb{R}^{T \times F}\)</span>.</p>
-<p><strong>Log Power Spectrogram</strong></p>
-<p>For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Log
+<p><strong>Log Power Spectrogram</strong>
+For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Log
 Spectrogram is calculated taking the log of the square of each element in the
 STFT, <span class="math notranslate nohighlight">\(\log{|X|^2} \in \mathbb{R}^{T \times F}\)</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Even though it is hard to visualize the detail in a magnitude or power spectrogram,
+most source separation algorithms work completely fine on these representations.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A note on terminology: while researchers might loosely interchange “STFT” and
@@ -746,32 +716,22 @@ Log Mel Spectrogram, or similar. Use context clues to determine which representa
 is being discussed when possible.</p>
 </div>
 </div>
-<div class="section" id="power-spectrograms">
-<h4>Power Spectrograms<a class="headerlink" href="#power-spectrograms" title="Permalink to this headline">¶</a></h4>
-<div class="figure align-default" id="pow-spec">
-<img alt="" src="basics/../images/basics/pow_spec.png" />
-</div>
-<p>Similar to the Magnitude Spectrogram, the Power Spectrogram only contains information
-about the amplitude of a signal.</p>
-</div>
-<div class="section" id="log-spectrograms">
-<h4>Log Spectrograms<a class="headerlink" href="#log-spectrograms" title="Permalink to this headline">¶</a></h4>
-<p>[IMAGE]</p>
-</div>
 <div class="section" id="mel-spaced-spectrograms">
 <h4>Mel-spaced Spectrograms<a class="headerlink" href="#mel-spaced-spectrograms" title="Permalink to this headline">¶</a></h4>
-<p>[IMAGE]</p>
+<div class="figure align-default" id="mel-spectrograms">
+<img alt="A visual comparison of linear-scaled vs mel-spaced y axies." src="../_images/ymel_specs.png" />
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">A visual comparison of linear-scaled vs mel-spaced y axies.
+Lower frequencies have a larger representation in a mel-spaced spectrogram.</span><a class="headerlink" href="#mel-spectrograms" title="Permalink to this image">¶</a></p>
+</div>
 <p>Human hearing is also logarithmic with regards to frequencies. The
 <a class="reference external" href="https://en.wikipedia.org/wiki/Mel_scale">Mel scale</a> approximates this property
 and is a quick way to make the frequency axis of a spectrogram
 quasi-logarithmic<a class="footnote-reference brackets" href="#fn3" id="id6">3</a>. This is also commonly used to reduce the computational
 load on deep learning-based approaches, because the number of Mel-spaced frequency
 bins is often lower then the number of linearly-spaced frequency bins.</p>
-</div>
-<div class="section" id="log-mel-spaced-spectrograms">
-<h4>Log Mel-spaced Spectrograms<a class="headerlink" href="#log-mel-spaced-spectrograms" title="Permalink to this headline">¶</a></h4>
-<p>[IMAGE]</p>
-<p>Combine Mel representations and</p>
+<p>A visual comparison is shown in <a class="reference internal" href="#mel-spectrograms"><span class="std std-numref">Fig. 14</span></a>. Notice the how the
+y-axis in the Mel-spaced spectrogram is quasi-logarithmic, squishing higher frequencies
+and leaving more space for lower frequencies.</p>
 </div>
 </div>
 <div class="section" id="other-representations">
@@ -788,10 +748,7 @@ for a few below:</p>
 <li><p>Common Fate Transform (CFT) <a class="bibtex reference internal" href="../zzz_refs.html#stoter2016common" id="id14">[StoterLB+16]</a></p></li>
 <li><p>Multi-resolution Common Fate Transform (MCFT) <a class="bibtex reference internal" href="../zzz_refs.html#pishdadian2018multi" id="id15">[PP18]</a></p></li>
 <li><p>2-Dimensional Fourier Transform (2DFT) <a class="bibtex reference internal" href="../zzz_refs.html#seetharaman2017music" id="id16">[SPP17]</a></p></li>
-<li><p>Gabor Transform</p></li>
 <li><p>Per Channel Energy Normalization (PCEN) <a class="bibtex reference internal" href="../zzz_refs.html#lostanlen2018per" id="id17">[LSC+18]</a></p></li>
-<li><p>Wavelets?</p></li>
-<li><p>KAM</p></li>
 </ul>
 </div>
 </div>
@@ -809,16 +766,20 @@ mixture waveform.</p>
 </div>
 <div class="section" id="which-is-better-inputting-a-waveform-or-a-time-frequency-representation">
 <h2>Which is Better? Inputting a Waveform or a Time-Frequency Representation?<a class="headerlink" href="#which-is-better-inputting-a-waveform-or-a-time-frequency-representation" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The details of this answer will be covered later in this tutorial. Feel free to
-come back to this question after you have read the first two sections.</p>
-</div>
-<p>It depends! Very few non-deep learning source separation approaches operate directly
-on waveforms, and there are a growing number</p>
-<p>The scientific work on evaluating source separation approaches
-is happening with regards to mixtures of speech signals, this does give us some
-indication of how</p>
+<p>Very few non-deep learning source separation approaches operate directly
+on waveforms, so we will restrict our answer to deep learning methods, which
+have dominated the field for the past few years. Even still, the answer is that
+it depends!</p>
+<p>While this may change in the coming years, in general, determining which
+approach is best a <em>very hard</em> problem, as we will see in the
+<a class="reference internal" href="evaluation.html#evaluation"><span class="std std-ref">Evaluation</span></a> section.</p>
+<p>In recent years, many state-of-the-art systems for music separation
+have used both spectrogram and waveforms as input. However, research in
+speech separation has mostly converged upon using the waveform as input. This
+may be a sign of things to come for music separation; we’ll have to wait and
+see!</p>
+<p>By the end of this tutorial, we hope that you will be able to make an educated
+decision about which type of source system is right for your goals.</p>
 <hr class="docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fn2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -866,7 +827,7 @@ different: <a href="https://librosa.org/doc/latest/_modules/librosa/core/convert
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../intro/src_sep_101.html" title="previous page">What is Source Separation?</a>
+    <a class='left-prev' id="prev-link" href="../intro/open_src_projects.html" title="previous page">Map of Open-Source Source Separation Projects</a>
     <a class='right-next' id="next-link" href="nussl_intro.html" title="next page">Introduction to nussl</a>
 
     </div>
