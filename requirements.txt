@@ -8,3 +8,4 @@ scaper==1.6.4
 numpydoc
 pyyaml
 pyloudnorm
+gradio
