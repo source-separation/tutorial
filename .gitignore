@@ -947,6 +947,7 @@ book/_build
 output/
 checkpoints/
 results/
+*.wav
 
 # PyCharm
 .idea/*
