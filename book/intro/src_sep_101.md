@@ -1,6 +1,8 @@
 What is Source Separation?
 ==========================
 
+
+
 Source Separation is the process of isolating individual sounds in an auditory
 mixture of multiple sounds. {cite}`vincent2018audio` We call each sound heard
 in a mixture a _source_.
@@ -29,6 +31,16 @@ source(s)). For example, if a stereo mixture contains a recording of a piano qua
 mixture we only have two observations (each channel of the stereo mix),
 therefore source separation would be a useful tool to isolate one of the
 sources (_e.g._, just the piano).
+
+
+```{figure} ../images/intro/mixing_overview.png
+---
+alt: Mixing of musical signals.
+name: mixing_sources
+---
+The mixing of music signals is a complex and non-linear process. This makes
+separating musical sources difficult.
+```
 
 
 In this tutorial we will be focusing on music separation, or the process of 

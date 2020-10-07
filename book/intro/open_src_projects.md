@@ -1,5 +1,6 @@
-Map of Open-Source Source Separation Projects
-===============================================
+
+(opensrcmap)=
+# Map of Open-Source Source Separation Projects
 
 The open source world is filled with lots of projects for source separation! Here
 we want to compile a list of some of these projects to provide an overview of the
@@ -15,11 +16,14 @@ All projects outlined below are primarily written in the `python` programming
 language, unless otherwise noted.
 
 
+(opensrc:audioprojects)=
 ## Useful Audio Projects
 
 These projects are useful for any type of `python` audio project you might want to
 do.
 
+
+(opensrc:librosa)=
 #### `librosa`
 
 `librosa` is the de-facto standard library for all things music information retrieval.
@@ -29,6 +33,7 @@ it is hard to imaging the field without it. Ignore it at your own peril!
 [Github Link](https://github.com/librosa/librosa)
 
 
+(opensrc:soundfile)=
 #### `SoundFile`
 
 `SoundFile` is one of many ways to load audio files in python, but we find that
@@ -38,6 +43,8 @@ many more open source projects use it under the hood.
 
 [Github Link](https://github.com/bastibe/SoundFile)
 
+
+(opensrc:ffmpeg)=
 #### `ffmpeg`
 
 `ffmpeg` is a command line application written in `C` that can read and manipulate
@@ -47,6 +54,7 @@ read many different audio formats (_e.g._ `.mp3`, `.ogg`, etc) without any hassl
 [Project Link](https://ffmpeg.org/)
 
 
+(opensrc:scaper)=
 #### `Scaper`
 
 `Scaper` was originally intended for soundscape creation with the intention of
@@ -57,17 +65,21 @@ In this tutorial, we will discuss `Scaper` in detail. Stay tuned!
 [Github Link](https://github.com/justinsalamon/scaper)
 
 
+(opensrc:sourceseparationprojects)=
 ## Source Separation Projects
 
 These projects are more tailored to doing source separation, as opposed to the
 general projects we discussed above.
 
+
+(opensrc:sourceseparationinfra)=
 ### Source Separation Infrastructure
 
 Before we talk about projects that contain source separation approaches, let's
 talk about some projects that help with source separation.
 
 
+(opensrc:mireval)=
 #### `mir_eval`
 
 `mir_eval` is a python library that contains reference implementations for 
@@ -77,6 +89,8 @@ here as they are obsolete at this point.
 
 [Github Link](https://github.com/craffel/mir_eval)
 
+
+(opensrc:museval)=
 #### `mus_eval`
 
 `mus_eval` has a more updated version of the source separation metrics, which
@@ -86,6 +100,7 @@ fixes some of the issues that `mir_eval` has. Some recent developments like
 [Github Link](https://github.com/sigsep/sigsep-mus-eval)
 
 
+(opensrc:architectures)=
 ### Architecture-Specific Projects
 
 It has become increasingly common for researchers to release code accompanying

@@ -1,5 +1,7 @@
-Representing Audio
-==================
+
+(representingaudio)=
+# Representing Audio
+
 
 The first thing we want to examine are the input and output representations of a source 
 separation system and how the inputs and outputs are represented. In its most
@@ -271,18 +273,21 @@ and an [easy way to check if a tuple of settings is COLA](https://docs.scipy.org
 
 #### Magnitude, Power, and Log Spectrograms
 
-```{figure} ../images/basics/mag_spec.png
+```{figure} ../images/basics/ylinear_specs.png
 ---
-alt:
-name: mag_spec
+alt: Four types of spectrograms with different scaling for function.
+name: spectrograms
 ---
-
+A visual comparison of the four types of spectrograms discussed in this section.
+Each has a different scaling function applied to the loudness, which is reflected
+in the colors of the heatmap plots.
 ```
 
 As we will touch on later in this tutorial, it is hard to model the
 phase of a signal. Therefore most source separation approaches only operate on
 the some variant of the spectrogram that does not explicitly represent phase in
-each {term}`TF bin`. 
+each {term}`TF bin`. A visualization of four types of spectrograms is shown
+in {numref}`spectrograms`.
 
 **Magnitude Spectrogram** 
 For a complex-valued STFT, $X \in \mathbb{C}^{T \times F}$, the Magnitude
@@ -295,19 +300,21 @@ Spectrogram is calculated by squaring  each element in the
 STFT, $|X|^2 \in \mathbb{R}^{T \times F}$.
 
 **Log Spectrogram**
-
 Human hearing is logarithmic with regards to amplitude. 
 For a complex-valued STFT, $X \in \mathbb{C}^{T \times F}$, the Log
 Spectrogram is calculated taking the log of the absolute value of each element in the
 STFT, $\log{|X|} \in \mathbb{R}^{T \times F}$.
 
 **Log Power Spectrogram**
-
 For a complex-valued STFT, $X \in \mathbb{C}^{T \times F}$, the Log
 Spectrogram is calculated taking the log of the square of each element in the
 STFT, $\log{|X|^2} \in \mathbb{R}^{T \times F}$.
 
 
+```{tip}
+Even though it is hard to visualize the detail in a magnitude or power spectrogram,
+most source separation algorithms work completely fine on these representations.
+```
 
 
 ```{note}
@@ -319,35 +326,17 @@ Log Mel Spectrogram, or similar. Use context clues to determine which representa
 is being discussed when possible.
 ```
 
-#### Power Spectrograms
-
-```{figure} ../images/basics/pow_spec.png
----
-alt:
-name: pow_spec
----
-
-```
-
-Similar to the Magnitude Spectrogram, the Power Spectrogram only contains information
-about the amplitude of a signal.
-
- 
-
-
-
-#### Log Spectrograms
-
-[IMAGE]
-
-
-
-
-
 
 #### Mel-spaced Spectrograms
 
-[IMAGE]
+```{figure} ../images/basics/ymel_specs.png
+---
+alt: A visual comparison of linear-scaled vs mel-spaced y axies.
+name: mel_spectrograms
+---
+A visual comparison of linear-scaled vs mel-spaced y axies.
+Lower frequencies have a larger representation in a mel-spaced spectrogram.
+```
 
 Human hearing is also logarithmic with regards to frequencies. The 
 [Mel scale](https://en.wikipedia.org/wiki/Mel_scale) approximates this property
@@ -356,11 +345,9 @@ quasi-logarithmic[^fn3]. This is also commonly used to reduce the computational
 load on deep learning-based approaches, because the number of Mel-spaced frequency
 bins is often lower then the number of linearly-spaced frequency bins.
 
-#### Log Mel-spaced Spectrograms
-
-[IMAGE]
-
-Combine Mel representations and 
+A visual comparison is shown in {numref}`mel_spectrograms`. Notice the how the
+y-axis in the Mel-spaced spectrogram is quasi-logarithmic, squishing higher frequencies
+and leaving more space for lower frequencies.
 
 
 ### Other Representations
@@ -374,10 +361,7 @@ for a few below:
 - Common Fate Transform (CFT) {cite}`stoter2016common`
 - Multi-resolution Common Fate Transform (MCFT) {cite}`pishdadian2018multi`
 - 2-Dimensional Fourier Transform (2DFT) {cite}`seetharaman2017music`
-- Gabor Transform 
 - Per Channel Energy Normalization (PCEN) {cite}`lostanlen2018per`
-- Wavelets?
-- KAM 
 
 
 ## Output Representations
@@ -396,17 +380,24 @@ mixture waveform.
 
 ## Which is Better? Inputting a Waveform or a Time-Frequency Representation?
 
-```{note}
-The details of this answer will be covered later in this tutorial. Feel free to
-come back to this question after you have read the first two sections.
-```
+Very few non-deep learning source separation approaches operate directly
+on waveforms, so we will restrict our answer to deep learning methods, which
+have dominated the field for the past few years. Even still, the answer is that
+it depends!
 
-It depends! Very few non-deep learning source separation approaches operate directly
-on waveforms, and there are a growing number 
+While this may change in the coming years, in general, determining which
+approach is best a _very hard_ problem, as we will see in the
+{ref}`evaluation` section.
 
-The scientific work on evaluating source separation approaches
-is happening with regards to mixtures of speech signals, this does give us some
-indication of how 
+In recent years, many state-of-the-art systems for music separation
+have used both spectrogram and waveforms as input. However, research in
+speech separation has mostly converged upon using the waveform as input. This
+may be a sign of things to come for music separation; we'll have to wait and
+see!
+
+By the end of this tutorial, we hope that you will be able to make an educated
+decision about which type of source system is right for your goals.
+
 
 
 
