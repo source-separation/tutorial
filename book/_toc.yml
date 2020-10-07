@@ -28,6 +28,12 @@
     - file: approaches/deep/building_blocks
     - file: approaches/deep/architectures
 
+- part: Data
+  chapters:
+    - file: data/introduction
+    - file: data/datasets
+    - file: data/musdb18
+    - file: data/scaper
 
 - part: Conclusions
   chapters:
