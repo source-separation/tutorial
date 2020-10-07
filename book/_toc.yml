@@ -14,12 +14,12 @@
     - file: basics/phase
     - file: basics/evaluation
 
-- part: Classic Approaches
-  chapters:
-    - file: approaches/classic/intro
+#- part: Classic Approaches
+#  chapters:
+#    - file: approaches/classic/intro
     - file: approaches/classic/repetition
 #    - file: approaches/classic/timbre
-    - file: approaches/classic/spatial
+#    - file: approaches/classic/spatial
     - file: approaches/classic/byo_hpss
 
 - part: Deep Learning Approaches

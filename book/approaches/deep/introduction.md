@@ -2,7 +2,7 @@ Introduction
 ============
 
 
-We've now gotten a task of how classic algorithms approach the problem,
+We've now gotten some understanding of the general mechanics of source separation,
 now let's turn to Neural Network methods. Neural Network-based methods are
 commonly referred to as deep learning or deep net methods.
 
