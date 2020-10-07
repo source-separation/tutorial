@@ -2,21 +2,34 @@
 # Introduction
 
 In this chapter we'll cover the key aspects we need to know about data for source separation: what do data for source 
-separation look like, relevant datasets and, importantly, how to programatically generate training and evaluation data 
-to minimize the time we spend data wrangling and maximize the performance we can squeeze out of our data.
+separation look like, relevant datasets and, importantly, how to programatically generate training data (mixtures)
+in a way that's efficient, reproducible, and maximizes the performance we can squeeze out of our data.
 
 ## Data for music source separation
 
-The inputs and outputs of source separation model look like this:
+At a high level, the inputs and outputs of a source separation model look like this:
 
-PLACEHOLDER: image showing mixture --> model --> stems
+```{figure} ../images/data/source_separation_io.png
+---
+height: 300px
+name: fig-sourcesepio
+---
+Inputs and outputs of a source separation model.
+```
 
 For this tutorial, we will assume the inputs and outputs were created in the following way:
 1. Each instrument or voice is recorded in isolation into a separate audio track, called a "stem". The stem may be 
 processed with effects such as compression, reverb, etc.
 2. The mixture is obtained by summing the processed stems.
+3. The model takes the mixture as input and outputs its estimate of each stem
 
-PLACEHOLDER: diagram of simplified mixing process 
+```{figure} ../images/data/music_mixing.png
+---
+height: 300px
+name: fig-mixing
+---
+Mixing stems to produce a mixture (mix).
+```
 
 ```{note}
 This is a simplified view of music creation. In practice, the mixture (musicians refer to this as the *mix*) typically 
@@ -31,7 +44,13 @@ as input, the model outputs the estimated stems, and we compare these to the ori
 mixture. The difference between the estimated stems and the original stems is used to update the model parameters during 
 training:
 
-PLACEHOLDER: block diagram of training
+```{figure} ../images/data/source_separation_training.png
+---
+height: 300px
+name: fig-training
+---
+High-level diagram of training a source separation model.
+```
 
 The difference between the estimated stems and original stems is also used to *evaluate* a trained source separation model,
 as we shall see later on.

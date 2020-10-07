@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
-  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
     
   <link rel="stylesheet"
@@ -25,16 +25,17 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -361,7 +362,8 @@
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
@@ -410,19 +412,26 @@
   <div class="section" id="introduction">
 <span id="data-introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we’ll cover the key aspects we need to know about data for source separation: what do data for source
-separation look like, relevant datasets and, importantly, how to programatically generate training and evaluation data
-to minimize the time we spend data wrangling and maximize the performance we can squeeze out of our data.</p>
+separation look like, relevant datasets and, importantly, how to programatically generate training data (mixtures)
+in a way that’s efficient, reproducible, and maximizes the performance we can squeeze out of our data.</p>
 <div class="section" id="data-for-music-source-separation">
 <h2>Data for music source separation<a class="headerlink" href="#data-for-music-source-separation" title="Permalink to this headline">¶</a></h2>
-<p>The inputs and outputs of source separation model look like this:</p>
-<p>PLACEHOLDER: image showing mixture –&gt; model –&gt; stems</p>
+<p>At a high level, the inputs and outputs of a source separation model look like this:</p>
+<div class="figure align-default" id="fig-sourcesepio">
+<a class="reference internal image-reference" href="../_images/source_separation_io.png"><img alt="../_images/source_separation_io.png" src="../_images/source_separation_io.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Inputs and outputs of a source separation model.</span><a class="headerlink" href="#fig-sourcesepio" title="Permalink to this image">¶</a></p>
+</div>
 <p>For this tutorial, we will assume the inputs and outputs were created in the following way:</p>
 <ol class="simple">
 <li><p>Each instrument or voice is recorded in isolation into a separate audio track, called a “stem”. The stem may be
 processed with effects such as compression, reverb, etc.</p></li>
 <li><p>The mixture is obtained by summing the processed stems.</p></li>
+<li><p>The model takes the mixture as input and outputs its estimate of each stem</p></li>
 </ol>
-<p>PLACEHOLDER: diagram of simplified mixing process</p>
+<div class="figure align-default" id="fig-mixing">
+<a class="reference internal image-reference" href="../_images/music_mixing.png"><img alt="../_images/music_mixing.png" src="../_images/music_mixing.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Mixing stems to produce a mixture (mix).</span><a class="headerlink" href="#fig-mixing" title="Permalink to this image">¶</a></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is a simplified view of music creation. In practice, the mixture (musicians refer to this as the <em>mix</em>) typically
@@ -435,7 +444,10 @@ by summing the stems directly to create a linear mixture. When training a source
 as input, the model outputs the estimated stems, and we compare these to the original stems that were used to create the
 mixture. The difference between the estimated stems and the original stems is used to update the model parameters during
 training:</p>
-<p>PLACEHOLDER: block diagram of training</p>
+<div class="figure align-default" id="fig-training">
+<a class="reference internal image-reference" href="../_images/source_separation_training.png"><img alt="../_images/source_separation_training.png" src="../_images/source_separation_training.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">High-level diagram of training a source separation model.</span><a class="headerlink" href="#fig-training" title="Permalink to this image">¶</a></p>
+</div>
 <p>The difference between the estimated stems and original stems is also used to <em>evaluate</em> a trained source separation model,
 as we shall see later on.</p>
 <div class="admonition note">
@@ -531,7 +543,7 @@ for training and evaluation.</p></li>
     </div>
 
     
-  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
     
