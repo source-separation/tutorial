@@ -14,7 +14,7 @@ Here's a quick overview of existing datasets for Music Source Separation:
 | [iKala](http://mac.citi.sinica.edu.tw/ikala/)  | 2015 |  2  | 206 | 30 | ❌ | ❌ |
 | [DSD100](/datasets/dsd100.md)| 2015 | 4 | 100 | 251 $\pm$ 60 | ✅ | ✅ |
 | [MUSDB18](https://sigsep.github.io/datasets/musdb.html) | 2017 | 4 | 150 | 236 $\pm$ 95 | ✅ | ✅ | 
-| [Slakh2100](http://www.slakh.com/) | 2019 | 34 | 2100 | 249 | ✅ | ? |  
+| [Slakh2100](http://www.slakh.com/) | 2019 | 34 | 2100 | 249 | ✅ | ❌ |  
 This extended table is based on: [SigSep/datasets](https://sigsep.github.io/datasets/), and reproduced with permission.
 
 <!--- | [MUSDB18-HQ](https://sigsep.github.io/datasets/musdb.html) | 2019 | ? | ? | 150 | 236 $\pm$ 95 | ✅ | ✅ |)  # omitted since almost identical to MUSDB18 --->
