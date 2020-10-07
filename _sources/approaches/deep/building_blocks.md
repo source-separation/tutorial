@@ -292,7 +292,7 @@ Blue maps are inputs, and cyan maps are outputs. [Image Source](https://github.c
 
 ---
 
-```{figure} ../../images/deep_approaches/conv_no_padding_strides.gif
+```{figure} ../../images/deep_approaches/conv_dilation.gif
 :width: 75%
 :name: conv4
 
