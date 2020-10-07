@@ -9,18 +9,15 @@
 - part: Basics of Source Separation
   chapters:
     - file: basics/representations
-    - file: basics/nussl_intro
     - file: basics/tf_and_masking
     - file: basics/phase
     - file: basics/evaluation
 
-#- part: Classic Approaches
-#  chapters:
-#    - file: approaches/classic/intro
-    - file: approaches/classic/repetition
-#    - file: approaches/classic/timbre
-#    - file: approaches/classic/spatial
-    - file: approaches/classic/byo_hpss
+- part: First Steps
+  chapters:
+    - file: first_steps/nussl_intro
+    - file: first_steps/repetition
+    - file: first_steps/byo_hpss
 
 - part: Deep Learning Approaches
   chapters:
