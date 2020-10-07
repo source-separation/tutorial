@@ -1,13 +1,10 @@
 jupyter-book
 jupyterlab
-
 matplotlib
 numpy
 librosa
-nussl==1.1.3rc1
+nussl==1.1.3rc4
 scaper==1.6.4
 numpydoc
 pyyaml
 pyloudnorm
-# bokeh
-# ipywidgets

@@ -18,9 +18,9 @@
   chapters:
     - file: approaches/classic/intro
     - file: approaches/classic/repetition
-    - file: approaches/classic/timbre
+#    - file: approaches/classic/timbre
     - file: approaches/classic/spatial
-#    - file: approaches/classic/melodia
+    - file: approaches/classic/byo_hpss
 
 - part: Deep Learning Approaches
   chapters:
