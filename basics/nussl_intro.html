@@ -164,17 +164,17 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/repetition.html">
-   Repetition and Median Filtering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/timbre.html">
-   Timbre Clustering with NMF
+   Repetition
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/spatial.html">
    Spatialization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/byo_hpss.html">
+   Build Your Own HPSS
   </a>
  </li>
 </ul>
@@ -668,11 +668,11 @@ Root mean square energy: 0.1136
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">signal3</span> <span class="o">=</span> <span class="n">signal1</span> <span class="o">+</span> <span class="n">signal2</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nussl/core/audio_signal.py</span> in <span class="ni">__add__</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2321</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2322</span>     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2323</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2324</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2325</span>     <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2336</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2337</span>     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2338</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2339</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2340</span>     <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nussl/core/audio_signal.py</span> in <span class="ni">add</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1281</span>             <span class="k">return</span> <span class="bp">self</span>
@@ -682,18 +682,18 @@ Root mean square energy: 0.1136
 <span class="g g-Whitespace">   </span><span class="mi">1285</span>         <span class="n">new_signal</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nussl/core/audio_signal.py</span> in <span class="ni">_verify_audio_arithmetic</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2339</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2340</span>     <span class="k">def</span> <span class="nf">_verify_audio_arithmetic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2341</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_verify_audio</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2342</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2343</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_length</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">signal_length</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2354</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2355</span>     <span class="k">def</span> <span class="nf">_verify_audio_arithmetic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2356</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_verify_audio</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2357</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2358</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_length</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">signal_length</span><span class="p">:</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nussl/core/audio_signal.py</span> in <span class="ni">_verify_audio</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2331</span>     <span class="k">def</span> <span class="nf">_verify_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">2332</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_channels</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_channels</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2333</span>             <span class="k">raise</span> <span class="n">AudioSignalException</span><span class="p">(</span><span class="s1">&#39;Cannot do operation with two signals that have &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2334</span>                                        <span class="s1">&#39;a different number of channels!&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2335</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2346</span>     <span class="k">def</span> <span class="nf">_verify_audio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2347</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_channels</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">num_channels</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2348</span>             <span class="k">raise</span> <span class="n">AudioSignalException</span><span class="p">(</span><span class="s1">&#39;Cannot do operation with two signals that have &#39;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2349</span>                                        <span class="s1">&#39;a different number of channels!&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2350</span> 
 
 <span class="ne">AudioSignalException</span>: Cannot do operation with two signals that have a different number of channels!
 </pre></div>
@@ -728,11 +728,11 @@ Root mean square energy: 0.1136
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">signal3</span> <span class="o">=</span> <span class="n">signal1</span> <span class="o">+</span> <span class="n">signal2</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nussl/core/audio_signal.py</span> in <span class="ni">__add__</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2321</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2322</span>     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2323</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2324</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2325</span>     <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2336</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2337</span>     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2338</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2339</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2340</span>     <span class="k">def</span> <span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nussl/core/audio_signal.py</span> in <span class="ni">add</span><span class="nt">(self, other)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1281</span>             <span class="k">return</span> <span class="bp">self</span>
@@ -742,11 +742,11 @@ Root mean square energy: 0.1136
 <span class="g g-Whitespace">   </span><span class="mi">1285</span>         <span class="n">new_signal</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nussl/core/audio_signal.py</span> in <span class="ni">_verify_audio_arithmetic</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2342</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2343</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_length</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">signal_length</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2344</span>             <span class="k">raise</span> <span class="n">AudioSignalException</span><span class="p">(</span><span class="s1">&#39;Cannot do arithmetic with signals of different length!&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2345</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2346</span>     <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2357</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2358</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">signal_length</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">signal_length</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2359</span>             <span class="k">raise</span> <span class="n">AudioSignalException</span><span class="p">(</span><span class="s1">&#39;Cannot do arithmetic with signals of different length!&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2360</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2361</span>     <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
 
 <span class="ne">AudioSignalException</span>: Cannot do arithmetic with signals of different length!
 </pre></div>

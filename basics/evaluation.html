@@ -164,17 +164,17 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/repetition.html">
-   Repetition and Median Filtering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../approaches/classic/timbre.html">
-   Timbre Clustering with NMF
+   Repetition
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/classic/spatial.html">
    Spatialization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../approaches/classic/byo_hpss.html">
+   Build Your Own HPSS
   </a>
  </li>
 </ul>
@@ -564,28 +564,7 @@ distribution.</p>
 First is the input mixture, then the ground truth reference source,
 followed by two outputs from two different source separation
 models named ConvTasnet and Open-Unmix, respectively. Have a listen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nussl</span>
-<span class="n">mix</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">AudioSignal</span><span class="p">(</span><span class="n">nussl</span><span class="o">.</span><span class="n">efz_utils</span><span class="o">.</span><span class="n">download_audio_file</span><span class="p">(</span><span class="s1">&#39;zeno_sign_mix_LerFJoZ.wav&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">ref</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">AudioSignal</span><span class="p">(</span><span class="n">nussl</span><span class="o">.</span><span class="n">efz_utils</span><span class="o">.</span><span class="n">download_audio_file</span><span class="p">(</span><span class="s1">&#39;zeno_sign_vocals-reference.wav&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">convtasnet</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">AudioSignal</span><span class="p">(</span><span class="n">nussl</span><span class="o">.</span><span class="n">efz_utils</span><span class="o">.</span><span class="n">download_audio_file</span><span class="p">(</span><span class="s1">&#39;zeno_sign_vocals-convtasnet.wav&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">open_unmix</span> <span class="o">=</span> <span class="n">nussl</span><span class="o">.</span><span class="n">AudioSignal</span><span class="p">(</span><span class="n">nussl</span><span class="o">.</span><span class="n">efz_utils</span><span class="o">.</span><span class="n">download_audio_file</span><span class="p">(</span><span class="s1">&#39;zeno_sign_vocals-openunmix.wav&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mixture&#39;</span><span class="p">)</span>
-<span class="n">mix</span><span class="o">.</span><span class="n">embed_audio</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reference Source&#39;</span><span class="p">)</span>
-<span class="n">ref</span><span class="o">.</span><span class="n">embed_audio</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ConvTasnet Source&#39;</span><span class="p">)</span>
-<span class="n">convtasnet</span><span class="o">.</span><span class="n">embed_audio</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Open-Unmix Estimate&#39;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">open_unmix</span><span class="o">.</span><span class="n">embed_audio</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mixture
 </pre></div>
@@ -626,7 +605,7 @@ but these two estimates both have the same SDR!</p>
 <p>This is all to say that while SDR can give you a rough
 idea of how good an estimate might sound, it does not capture
 everything. Listen to your outputs!</p>
-<p>(These audio examples kindly provided by Fabian-Robert Stöter.)</p>
+<p>(The original input mix and reference are from MUSDB18 and the separation examples kindly provided by Fabian-Robert Stöter.)</p>
 </div>
 </div>
 </div>
