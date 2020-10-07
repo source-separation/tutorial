@@ -23,7 +23,13 @@ def download():
     """Downloads required files for tutorial.
     """
     AUDIO_FILES = [
-        'schoolboy_fascination_excerpt.wav'
+        'schoolboy_fascination_excerpt.wav',
+        'historyrepeating_7olLrex.wav',
+        'wsj_speech_mixture_ViCfBJj.mp3',
+        'zeno_sign_mix_LerFJoZ.wav',
+        'zeno_sign_vocals-openunmix.wav',
+        'zeno_sign_vocals-convtasnet.wav',
+        'zeno_sign_vocals-reference.wav'
     ]
     MODEL_FILES = [
         

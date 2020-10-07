@@ -1,18 +1,6 @@
 Welcome!
 ========
 
-
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-If you are having access issues, here is a OneDrive mirror to the full video.
-<a href=""></a>
-
-Alternatively the text on this page covers the same material as the video.
-```
-
 Hello and welcome to the website for our tutorial at [ISMIR 2020](https://ismir.github.io/ISMIR2020/)!
 We're excited that you've decided to join us! Our tutorial is entitled...
 

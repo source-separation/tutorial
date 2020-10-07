@@ -1,16 +1,7 @@
 What is Source Separation?
 ==========================
 
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
 
-```{dropdown} Video not working?
-If you are having access issues, here is a OneDrive mirror to the full video.
-<a href=""></a>
-
-Alternatively the text on this page covers the same material as the video.
-```
 
 Source Separation is the process of isolating individual sounds in an auditory
 mixture of multiple sounds. {cite}`vincent2018audio` We call each sound heard
@@ -40,6 +31,16 @@ source(s)). For example, if a stereo mixture contains a recording of a piano qua
 mixture we only have two observations (each channel of the stereo mix),
 therefore source separation would be a useful tool to isolate one of the
 sources (_e.g._, just the piano).
+
+
+```{figure} ../images/intro/mixing_overview.png
+---
+alt: Mixing of musical signals.
+name: mixing_sources
+---
+The mixing of music signals is a complex and non-linear process. This makes
+separating musical sources difficult.
+```
 
 
 In this tutorial we will be focusing on music separation, or the process of 
@@ -96,7 +97,7 @@ For example, source separation has been used to enhance:
 - lyric and music alignment {cite}`fujihara2006automatic`, 
 - musical instrument detection {cite}`heittola2009musical`, 
 - lyric recognition {cite}`mesaros2010automatic`, 
-- automatic singer identification {cite}`weninger2011automatic`, 
+- automatic singer identification {cite}`weninger2011automatic,hu2015separation,sharma2019importance`, 
 - vocal activity detection {cite}`stoller2018jointly`, 
 - fundamental frequency estimation {cite}`jansson2019joint`, and 
 - understanding the predictions of black-box audio models. {cite}`haunschmid2020towards,haunschmid2020audiolime`

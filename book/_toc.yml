@@ -4,6 +4,7 @@
   chapters:
     - file: intro/tutorial_structure
     - file: intro/src_sep_101
+    - file: intro/open_src_projects
 
 - part: Basics of Source Separation
   chapters:
@@ -11,31 +12,21 @@
     - file: basics/nussl_intro
     - file: basics/tf_and_masking
     - file: basics/phase
-    - file: basics/eval
+    - file: basics/evaluation
 
 - part: Classic Approaches
   chapters:
     - file: approaches/classic/intro
     - file: approaches/classic/repetition
-    - file: approaches/classic/nmf
+    - file: approaches/classic/timbre
     - file: approaches/classic/spatial
-    - file: approaches/classic/melodia
+#    - file: approaches/classic/melodia
 
 - part: Deep Learning Approaches
   chapters:
-    - file: approaches/deep/intro
-    - file: approaches/deep/masking
-      sections:
-        - file: approaches/deep/mask_inf
-        - file: approaches/deep/unet
-        - file: approaches/deep/deep_clustering
-        - file: approaches/deep/chimera
-    - file: approaches/deep/waveform
-      sections:
-        - file: approaches/deep/wave_u_net
-        - file: approaches/deep/tasnet
-        - file: approaches/deep/dprnn
-    - file: approaches/open_src_projects
+    - file: approaches/deep/introduction
+    - file: approaches/deep/building_blocks
+    - file: approaches/deep/architectures
 
 - part: Data
   chapters:
@@ -61,6 +52,7 @@
     - file: conclusions/applications
     - file: conclusions/concluding_remarks
     - file: conclusions/additional_resources
+
 
 - part: Appendix
   chapters:

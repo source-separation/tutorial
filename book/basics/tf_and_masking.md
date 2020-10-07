@@ -1,39 +1,5 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
 TF Representations and Masking
 ==============================
-
-
-<p align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FTQbiNvZqaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-
-```{dropdown} Video not working?
-Here is a <a href="">OneDrive link</a> to the full video.
-<a href=""></a>
-```
-
-```{code-cell} ipython3
----
-other:
-  more: true
-tags: [hide-output, hide-input]
----
-# Inputs for this notebook
-import nussl
-import librosa
-
-```
 
 
 Masking has many uses in different aspects computer science and machine
@@ -115,6 +81,7 @@ In the literature, this assumption is called W-disjoint orthogonality.
 
 
 
+(masks:softmasks)=
 ## Soft Masks (or Ratio Masks)
 
 Soft Masks are allowed to take any value within the inclusive interval $[0.0, 1.0]$,
@@ -146,7 +113,7 @@ phase, which we will discuss in the next section...
 [^fn1]: When we mix waves together, it is possible that the result is the product of
   <a href="https://en.wikipedia.org/wiki/Wave_interference">constructive or destructive interference.</a>
   Masking as we've presented it here does not account for either of these phenomena,
-  although we do note that we are aware of at least one research paper {cite}`le2019phasebook`
+  although we do note that we are aware of some research papers {cite}`le2019phasebook,choi2018phase`
   that specifically designs for interference.
   
 [^fn2]: The element-wise product is notated a few different ways in the literature. For

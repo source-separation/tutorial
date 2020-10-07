@@ -7,8 +7,10 @@ import librosa.display
 from nussl.core import utils
 
 
-def _get_signal():
+def _get_signal(zeno=False):
     path = nussl.efz_utils.download_audio_file('schoolboy_fascination_excerpt.wav')
+    if zeno:
+        path = nussl.efz_utils.download_audio_file('zeno_sign_vocals-reference.wav')
     sig = nussl.AudioSignal(path)
     sig.to_mono()
     return sig
@@ -107,7 +109,7 @@ def plot_stft_hop_lens():
     _plot_stfts(params)
 
 
-def plot_mag_spec():
+def plot_lineary_spec():
     sig = _get_signal()
     sig.truncate_seconds(3.0)
     spec = np.squeeze(np.abs(sig.stft()))
@@ -144,18 +146,69 @@ def plot_mag_spec():
     plt.show()
 
 
-def plot_pow_spec():
+def plot_mely_spec():
     sig = _get_signal()
     sig.truncate_seconds(3.0)
     spec = np.squeeze(np.abs(sig.stft()))
+    mel_spec = librosa.feature.melspectrogram(np.squeeze(sig.audio_data), sr=sig.sample_rate)
 
-    plt.figure(figsize=(8, 5))
-    spec = librosa.power_to_db(spec**2, ref=np.max)
-    im = librosa.display.specshow(spec, x_axis='time', y_axis='linear',
-                                  sr=sig.sample_rate, hop_length=sig.stft_params.hop_length)
-    plt.colorbar(im)
-    plt.title('Power Spectrogram')
+    fig = plt.figure(figsize=(8, 10))
+
+    plt.subplot(211)
+    librosa.display.specshow(librosa.amplitude_to_db(spec), x_axis='time', y_axis='linear',
+                             sr=sig.sample_rate, hop_length=sig.stft_params.hop_length)
+    plt.title('Linear-Frequency Log Power Spectrogram')
+
+    plt.subplot(212)
+    librosa.display.specshow(librosa.amplitude_to_db(mel_spec), x_axis='time', y_axis='mel',
+                             sr=sig.sample_rate, hop_length=sig.stft_params.hop_length,
+                             cmap='magma')
+    plt.title('Mel-Frequency Log Power Spectrogram')
+
+    for ax in fig.axes:
+        ax.label_outer()
+
+    # spec = librosa.power_to_db(spec, ref=np.max)
+    # im = librosa.display.specshow(spec, x_axis='time', y_axis='linear',
+    #                               sr=sig.sample_rate, hop_length=sig.stft_params.hop_length)
+    # plt.colorbar(im)
     plt.show()
+
+
+def plot_phase():
+    sig = _get_signal()
+    sig.truncate_seconds(3.0)
+    phase = np.squeeze(np.angle(sig.stft()))
+    noise = np.random.uniform(size=phase.shape)
+
+    fig = plt.figure(figsize=(10, 5))
+
+    plt.subplot(121)
+    librosa.display.specshow(phase, x_axis='time', y_axis='linear',
+                             sr=sig.sample_rate, hop_length=sig.stft_params.hop_length,
+                             cmap='magma')
+    # plt.imshow(phase, aspect='auto', cmap='magma', origin='lower')
+
+    plt.subplot(122)
+    librosa.display.specshow(noise, x_axis='time', y_axis='linear',
+                             sr=sig.sample_rate, hop_length=sig.stft_params.hop_length,
+                             cmap='magma')
+    # plt.imshow(noise, aspect='auto', cmap='magma', origin='lower')
+
+    for ax in fig.axes:
+        ax.label_outer()
+
+    plt.show()
+
+
+def phase_gif():
+    time = np.linspace(0.0, 0.05, 2000)
+    f1 = 440.0  # A440
+    f2 = 523.25  # C above A440
+    sin1 = np.sin(2 * np.pi * f1 * time)
+
+    offset = 3
+    sin2 = np.sin(2 * np.pi * f2 * time) + offset
 
 
 def main():
@@ -163,8 +216,9 @@ def main():
     # plot_waveform()
     # plot_stft_win_lens()
     # plot_stft_hop_lens()
-    plot_mag_spec()
-    # plot_pow_spec()
-
+    # plot_lineary_spec()
+    # plot_mely_spec()
+    plot_phase()
+#
 if __name__ == '__main__':
     main()

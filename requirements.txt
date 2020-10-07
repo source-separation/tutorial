@@ -10,5 +10,6 @@ numpydoc
 pyyaml
 gradio
 gif
+pyloudnorm
 # bokeh
 # ipywidgets
