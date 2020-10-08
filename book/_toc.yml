@@ -42,17 +42,11 @@
     - file: training/building_blocks
     - file: training/putting_it_all_together
 
-- part: Experimental workflow
-  chapters:
-    - file: experiments/intro
-    - file: experiments/principles
-
 - part: Conclusions
   chapters:
     - file: conclusions/applications
     - file: conclusions/concluding_remarks
     - file: conclusions/additional_resources
-
 
 - part: Appendix
   chapters:
