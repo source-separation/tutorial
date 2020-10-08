@@ -162,7 +162,7 @@ This math looks pretty complicated, but this is really just a few lines of code:
 ```python
 def apply_mask_with_noisy_phase(mix_stft, mask):
     mix_magnitude, mix_phase = np.abs(mix_stft), np.angle(mix_stft)
-    src_magnitude = mix_mag * mask
+    src_magnitude = mix_magnitude * mask
     src_stft = src_magnitude * np.exp(1j * mix_phase)
     return src_stft
 ```

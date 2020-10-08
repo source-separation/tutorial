@@ -19,4 +19,4 @@ Other resources useful for further exploration of MIR topics:
 - [Prof. Alexander Lerch's Audio Content Analysis](https://www.audiocontentanalysis.org/) website
 - [Coursera Course on Audio Signal Procesing for Musical Applications](https://www.coursera.org/learn/audio-signal-processing)
 - [Prof. Julius O. Smith III's Online DSP Textbooks](https://ccrma.stanford.edu/~jos/)
-- [Fabian-Robert Stöter's Awesome Python Scientific Audio Github list](https://github.com/faroit/awesome-pyt    hon-scientific-audio)
+- [Fabian-Robert Stöter's Awesome Python Scientific Audio Github list](https://github.com/faroit/awesome-python-scientific-audio)

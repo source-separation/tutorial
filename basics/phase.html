@@ -545,7 +545,7 @@ that the estimate for Source <span class="math notranslate nohighlight">\(i\)</s
 <p>This math looks pretty complicated, but this is really just a few lines of code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_mask_with_noisy_phase</span><span class="p">(</span><span class="n">mix_stft</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
     <span class="n">mix_magnitude</span><span class="p">,</span> <span class="n">mix_phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mix_stft</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">mix_stft</span><span class="p">)</span>
-    <span class="n">src_magnitude</span> <span class="o">=</span> <span class="n">mix_mag</span> <span class="o">*</span> <span class="n">mask</span>
+    <span class="n">src_magnitude</span> <span class="o">=</span> <span class="n">mix_magnitude</span> <span class="o">*</span> <span class="n">mask</span>
     <span class="n">src_stft</span> <span class="o">=</span> <span class="n">src_magnitude</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">mix_phase</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">src_stft</span>
 </pre></div>

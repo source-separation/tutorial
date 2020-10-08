@@ -50,4 +50,14 @@ open source projects:
 
 
 
+## Images
+
+The authors have used the following images from the [Noun Project](https://thenounproject.com/):
+
+- "Mixing Board" by Nick Dominguez 
+- "Overdrive Pedal" by Joel Wisneski 
+- "Guitar Amplifier" by Premyslav 
+- "Microphone" by Olena Panasovska 
+- "Singer" by Gan Khoon Lay 
+
 
