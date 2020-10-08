@@ -81,7 +81,7 @@ that is representative of the type of data you plan to apply your model to once 
 ## Data for source separation is hard to obtain
 
 Due to copyright, it is hard to obtain and share music recordings for machine learning purposes. It is even harder to obtain
-multi-track recordings that include the isolated stems, as these are rarely made available by artists. Fortuntaely, the research
+multi-track recordings that include the isolated stems, as these are rarely made available by artists. Fortunately, the research
 community has nonetheless been able to create and share multi-track datasets, as we shall see late. The size of these datasets
 is typically very small compared to other machine learning datasets. Luckily for us, we have tools to generate multiple, 
 different mixtures from the same set of stems, helping us to maximize what our model can learn from a given set of stems. 
