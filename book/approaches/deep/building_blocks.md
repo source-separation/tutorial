@@ -622,8 +622,6 @@ we so choose. This is useful if you want to use a spectrogram
 model with one of the waveform losses outlined below. But beware:
 this might noticeably slow down your training process.
 
-### Learned Filter Banks
-
 
 ## Loss Functions and Targets
 
@@ -644,7 +642,7 @@ mixture $X \in \mathbb{C}^{F\times T}$, and a net's estimated
 mask $\hat{M}_i \in \mathbb{R}^{F\times T}$ we compute the loss like
 
 $$
-\mathcal{L} = \Big\| S_i - \hat{M}_i \odot |X| \Big\|_p,
+\mathcal{L}_{\text{spec}} = \Big\| S_i - \hat{M}_i \odot |X| \Big\|_p,
 $$
 
 where$\odot$ denotes element-wise product adn $p$ is the _norm_ of
@@ -690,14 +688,109 @@ We have found L1 loss using the tPSA target is the best option for
 loss and target. 
 ```
 
-### Clustering Losses
+### Deep Clustering Losses
 
-Clustering losses are usually used to s
+```{figure} ../../images/deep_approaches/dc_loss.png
+            
+---
+alt: Diagram of the deep clustering loss.
+name: dc_loss
+---
+The deep clustering loss encourages a network to learn a high dimensional
+embedding space where TF bins from the same source are close and TF bins
+from different sources are far.
+```
 
+Deep Clustering {cite}`hershey2016deep,luo2017deep` losses are usually
+used with spectrograms as input.
+The goal is to learn a high-dimensional embedding space
+where all of the TF bins dominated by the same source close together
+and TF bins dominated by different sources are far apart. 
+
+For the single-channel, ground truth binary mask $Y \in \{0.0, 1.0\}^{T \times F}$ of 
+some source, we reshape it so that it has shape ${T F \times 1}$. We can then
+learn a $D$-dimensional embedding space called $V \in \mathbb{R}^{TF \times D}$.
+We can then define a ground truth binary affinity matrix $A = YY^T$, and an
+estimated affinity matrix from the network $\hat{A} = VV^T$. The deep
+clustering loss is thus given by,
+
+$$
+\mathcal{L}_{DC} = || \hat{A} - A ||^2_F = || VV^T - YY^T ||^2_F
+$$
+
+where $F$ is the Frobenius norm. Other types of deep clustering
+losses have been proposed, {cite}`wang2018alternative,chen2017deep`
+but the intuition is the same: put TF bins from the same source close to one
+another and far from TF bins from other sources.
+
+Once the network is trained, a clustering algorithm such as k-means must
+be used to create masks for each source if the network has no other outputs.
+As we will see in the next section, deep clustering is frequently used as a
+regularizer to help learn a mask directly. 
 
 ### Waveform Losses
 
+The simple way to compute loss in the waveform domain is to take an L1 or MSE
+loss between the real and estimated waveform, similar to how we did for
+spectrograms:
 
+$$
+\mathcal{L}_{\text{wvfm}} = \Big\| \hat{x}_i - x_i \Big\|_p = \frac{1}{T} \sum_{t=1}^{\infty} \Big\| \hat{x}_{i,t} - x_{i,t} \Big\|_p
+$$
+
+where $\hat{x}_i$ is the estimated waveform for source $i$ and $x_i$
+is the ground truth waveform for source $i$, $T$ is the total number of 
+samples in the source, and $p$ is the norm (1 for L1, 2 for MSE).
+{cite}`defossez2019music`
+
+
+Alternatively, we can emulate the evaluation metrics (SDR & Friends) by using
+that as a loss function. {cite}`luo2018tasnet` For
+
+$$
+x_{\text{target}} = \frac{\langle \hat{x}, x \rangle x}{\|x\|^2 }
+$$
+
+and
+
+$$
+e_{\text{noise}} = \hat{x} - x_{\text{target}},
+$$
+
+the SI-SNR loss is
+
+$$
+\mathcal{L}_{\text{SI-SNR}} = 10 \log_10 \left( \frac{\| x_{\text{target}}\|^2}{\|e_{\text{noise}}\|^2}.
+$$
+
+This is essentially optimizing the for the SDR evaluation metric. Variants
+include using SI-SDR itself as a loss function; the calculations are
+very similar.
+
+
+## Other Important Pieces
+
+* **Optimizers**:
+    * Optimizers actually perform gradient descent to update the weights of your
+      model. Most people use Adam. Important hyperparameters include the learning
+      rate, and gradient clipping. We will discuss this more in detail.
+* **Batch Size**:
+    * Batch size is the number of training examples in your mini-batch that
+      the gradients are computed on. Typically, the bigger the better; use
+      the largest power of 2 that you can fit on your GPU.
+* **Epochs**
+    * This is the number of times you cycle through all of your data. Typically
+      people train for a round number, like 100 epochs. Early stopping is
+      also a good trick. Early stopping means that you stop training when
+      the loss on the validation set stops decreasing (this is a sign that
+      your model is overfitting to the training set). More on data considerations
+      in a later section.
+
+
+## Next Steps...
+
+Now that we know what the building blocks are, we can put them together
+to make whole networks. We'll see how that's done on the next page.
 
 
 [^fn1]: Although we won't cover Wavenet in detail in this tutorial, it has been

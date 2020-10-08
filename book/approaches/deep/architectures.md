@@ -18,9 +18,15 @@ representations that we can separate.
 
 
 (architectures:unets)=
-### U-Nets
+### U-Net & Friends
 
-```
+```{figure} ../../images/deep_approaches/unet.png
+---
+alt: The U-Net architecture.
+name: unet
+---
+The U-Net architecture.
+Image used courtesy of Rachel Bittner.
 ```
 
 U-Nets {cite}`jansson2017singing` are a very popular architecture
@@ -77,7 +83,7 @@ before concatenating to the respective deconvolutional layer.
 ```{figure} ../../images/deep_approaches/open-unmix.png
             
 ---
-alt: Diagram of the Open-Unmix archiecture.
+alt: Diagram of the Open-Unmix architecture.
 name: open-unmix
 ---
 A diagram showing the Open-Unmix architecture for source separation.
@@ -110,6 +116,15 @@ batch normalization layers.
 (architectures:maskinference)=
 ### Mask Inference
 
+```{figure} ../../images/deep_approaches/mask_inf.png
+---
+alt: Diagram of the Mask Inference architecture.
+name: mask_inf
+scale: 50%
+---
+A diagram of the Mask Inference architecture.
+```
+
 Although many deep learning systems make masks, the term _Mask
 Inference_ typically refers to a specific type of source separation
 architecture. Mask Inference networks input a spectrogram, which is
@@ -132,13 +147,24 @@ is applied to the first 3 BLSTM layers.
 Mask Inference networks are usually trained with an $L_1$ loss
 between the estimated spectrogram (_i.e._, the estimated mask
 element-wise multiplied by the mixture spectrogram) and the
-target spectrogram. The target spectrogram can be 
+target spectrogram. Although it is a bit of a misnomer, this
+loss is called a Mask Inference Loss.
+
 
 
 (architectures:deepclustering)=
 ### Deep Clustering
 
-Deep Clustering maps each {term}`TF bin` to a high-dimensional
+```{figure} ../../images/deep_approaches/deep_clustering.png
+---
+alt: Diagram of the Deep Clustering architecture.
+name: deep_clustering
+scale: 50%
+---
+A diagram of the Deep Clustering architecture.
+```
+
+Deep Clustering maps each TF bin to a high-dimensional
 embedding space such that TF bins dominated by the same source
 are close and those dominated by different sources are far apart.
 We say that a TF bin is _dominated_ by some Source $S_i$ if most
@@ -158,35 +184,50 @@ separate clustering algorithm like
 [k-means](https://en.wikipedia.org/wiki/K-means_clustering)
 must be applied to the embedding space to make masks.
 
-Lets say we have a signal with 513 frequency bins and 200 time steps,
-and we train a deep clustering with a 20 dimensional embedding
-space. This means the output of the network is a flat, 1D array with
-$513 \times 200 \times 20 = 2,048,000$ values.
-Our network has created 20 values for each TF bin: how do we
-know which value means what? Indexing! If we determine that
-the first value is 
-
 
 
 (architectures:chimera)=
 ### Chimera
 
-Chimera combines the Mask Inference and Deep Clustering architectures
+```{figure} ../../images/deep_approaches/chimera.png
+---
+alt: Diagram of the Chimera architecture.
+name: deep_clustering
+scale: 50%
+---
+A diagram of the Chimera architecture.
+```
+
+Chimera {cite}`luo2017deep` combines the Mask Inference and Deep Clustering architectures
 into a multi-task neural network. The net is trained to optimize both
 loss functions simultaneously. It does this by having a separate
 "head" for each loss. Each of these heads is its own fully connected
-layer and activation with only one loss applied from the
+layer and activation with a shared set of BLSTM weights, usually set 
+up the same way as Mask Inference or Chimera above. In this instance
+we don't use the deep clustering head to produce masks, but rather
+we only use the Mask Inference head. During training the Deep Clustering
+head acts as a regularizer that helps the network generalize to unseen
+mixes.
 
 
 ## Waveform Systems
 
 (architectures:convtasnet)=
-### ConvTasnet
+### Tasnet & Friends
 
-ConvTasnet {cite}`luo2019conv` is the second iteration of the original 
-Tasnet {cite}`luo2018tasnet`speech separation architecture.
+```{figure} ../../images/deep_approaches/tasnet_all.png
+            
+---
+alt: Diagram of the Tasnet architecture.
+name: open-unmix
+---
+A diagram showing the ConvTasnet architecture.
+Image used courtesy of Yi Luo.
+```
 
-The original Tasnet was structured 
+
+The Tasnet {cite}`luo2018tasnet` is a speech separation architecture
+that is structured 
 very similar the Mask Inference architecture outlined above, with
 LSTM layers at the center. Tasnet has
 one main difference: Tasnet used a pair of convolutional layers
@@ -194,8 +235,9 @@ to input and output waveforms directly. Additionally, because Tasnet
 outputs the waveforms directly it doesn't need the additional step
 of multiplying by a mixture STFT to get the phase information.
 
-ConvTasnet replaces the LSTM center of Tasnet with convolutional
-layers that separate the input signal. 
+ConvTasnet {cite}`luo2019conv` is the second iteration of the original 
+TasNet speech separation architecture. It replaces the LSTM center of
+Tasnet with 1D convolutional layers that separate the input signal. 
 
 While both Tasnet and ConvTasnet have both been popular in the
 speech separation literature, to our knowledge only ConvTasnet
@@ -204,7 +246,8 @@ by the authors of Demucs {cite}`defossez2019music`. This is because
 the translation from speech to music was not so straight forward
 in this case.
 
-ConvTasnet and Tasnet both use SI-SDR loss between
+ConvTasnet and Tasnet both use SI-SNR loss between target and estimated
+waveforms.
 
 
 (architectures:waveunet)=
@@ -224,10 +267,37 @@ Wave-U-Net uses MSE loss between the target and estimated waveforms.
 (architectures:demucs)=
 ### Demucs
 
+```{figure} ../../images/deep_approaches/demucs.png
+            
+---
+alt: Diagram of the Demucs architecture.
+name: open-unmix
+---
+A diagram showing the original Tasnet architecture.
+Image used courtesy of Alexandre Défossez.
+```
+
 Demucs {cite}`defossez2019demucs,defossez2019music` is similar to
 both Wave-U-Net and Tasnet. It has the skip connections just as
 in Wave-U-Net, but at the center it has two BLSTM layers. The
 specific details of the shape of each layer are shown in the diagram.
 
+The Demucs authors [recently released](https://github.com/facebookresearch/denoiser)
+a real-time version of this architecture for speech enhancement.
+Training a similar model for music could be an exciting development
+that enables more applications in source separation.
+
 Demucs uses $L_1$ loss between the target and estimated waveform,
 scaled by the length (in samples) of the signals.
+
+
+## Next Steps...
+
+This wraps up this section of the tutorial. Over the next few sections
+we will get some hands-on experience building these kinds of models.
+Before we get to writing model code, though, there's one very important
+factor about these systems that we haven't covered yet: data!
+
+Coming up, we'll cover how to use Scaper to create large, augmented
+data sets, and after that we'll wrap up with how to put together and
+train a model like the ones on this page.

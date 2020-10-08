@@ -2,6 +2,10 @@ Additional Resources
 ====================
 
 
+## Source Separation 
+
+## Learning about Music Information Retrieval (MIR)
+
 Other resources useful for further exploration of MIR topics:
 
 - [Music Information Retrieval](https://musicinformationretrieval.com/) website
