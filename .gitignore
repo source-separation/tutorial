@@ -944,8 +944,10 @@ cython_debug/
 .idea/vcs.xml
 
 book/_build
+output/
 checkpoints/
 results/
+*.wav
 
 # PyCharm
 .idea/*

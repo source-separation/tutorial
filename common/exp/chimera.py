@@ -9,6 +9,7 @@ import json
 import glob
 import numpy as np
 import ignite
+from typing import List
 
 @argbind.bind_to_parser()
 def train(
@@ -21,7 +22,6 @@ def train(
     dpcl_weight : float = .1,
     mi_weight : float = .9,
     num_workers : int = 1,
-    output_folder : str = '.',
     target_instrument : str = 'vocals',
 ):
     nussl.utils.seed(seed)
@@ -59,13 +59,16 @@ def train(
     def train_step(engine, batch):
         model.train()
         output = model(batch)
+
+        weights = torch.ones_like(
+            batch['weights']).to(batch['weights'].device)
         
         # Calculate DPCL loss
         _dpcl = dpcl_loss(
             output['embedding'], 
             # These come from the transforms
             batch['ideal_binary_mask'], 
-            batch['weights']
+            weights
         )
         # Calculate spectrogram loss
         _l1 = l1_loss(output['estimates'], batch['source_magnitudes'])
@@ -109,7 +112,7 @@ def train(
         num_workers=num_workers, batch_size=batch_size, 
         sampler=val_sampler)
 
-    output_folder = Path(output_folder).absolute()
+    output_folder = Path('.').absolute()
 
     # Add some handlers for printing to stdout and saving model
     nussl.ml.train.add_stdout_handler(trainer, validator)
@@ -140,11 +143,12 @@ def train(
 def evaluate(
     args,
     folder : str = 'data/test',
-    output_folder : str = './results',
     num_workers : int = 1,
+    results_folder : str = 'results/',
     target_instrument : str = 'vocals',
 ):
-    output_folder = Path(output_folder) 
+    output_folder = Path(results_folder) 
+    output_folder.mkdir(parents=True, exist_ok=True)
     stft_params, sample_rate = data.signal()
 
     with argbind.scope(args, 'test'):
@@ -158,13 +162,14 @@ def evaluate(
         transform=test_tfm, stft_params=stft_params, 
         sample_rate=sample_rate, strict_sample_rate=False
     )
+    musdb.sample_rate = sample_rate # TODO: Remove after nussl 1.1.3rc2.
     separator = models.deep_mask_estimation(utils.device())
     
-    utils.plot_metrics(separator, 'l1_loss', output_folder / 'metrics.png')
+    utils.plot_metrics(separator, 'l1_loss', output_folder.parent / 'metrics.png')
 
     pbar = tqdm.tqdm(musdb)
     for item in pbar:
-        pbar.set_description(item['mix'].file_name)
+        pbar.set_description(str(item['mix']))
         separator.audio_signal = item['mix']
         estimates = separator()
         
@@ -179,7 +184,7 @@ def evaluate(
         estimates = [estimates[k] for k in source_keys]
 
         evaluator = nussl.evaluation.BSSEvalScale(
-            sources, estimates, source_labels=LABELS
+            sources, estimates, source_labels=source_keys
         )
         scores = evaluator.evaluate()
         output_folder = Path(output_folder).absolute()
@@ -203,9 +208,24 @@ def evaluate(
     with open(output_file, 'w') as f:
         f.write(report_card)
 
+@argbind.bind_to_parser()
+def run(
+    args,
+    output_folder : str = '.',
+    stages : List[str] = ['train', 'evaluate']
+):
+    output_folder = Path(output_folder)
+    output_folder.mkdir(exist_ok=True, parents=True)
+    with utils.chdir(output_folder):
+        utils.log_file()
+        utils.save_exp(args, './args.yml')
+        for stage in stages:
+            fn = globals()[stage]
+            fn(args)
+
+
 if __name__ == "__main__":
     utils.logger()
     args = argbind.parse_args()
     with argbind.scope(args):
-        train(args)
-        evaluate(args)
+        run(args)

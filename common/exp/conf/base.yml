@@ -1,8 +1,15 @@
+evaluate.results_folder: 'results/'
+log_file.path: './logs/log.txt'
+
 autoclip.percentile: 10
 
-evaluate.folder: data/test
+signal.hop_length: 128
+signal.sample_rate: $sample_rate
+signal.window_length: 512
+signal.window_type: sqrt_hann
+
+evaluate.folder: $test_folder
 evaluate.num_workers: 1
-evaluate.output_folder: ./results
 
 logger.level: info
 
@@ -12,31 +19,34 @@ mixer.quick_pitch_time_prob: 1.0
 
 mixer.master_label: vocals
 mixer.duration: 5.0
-mixer.sample_rate: 16000
+mixer.sample_rate: $sample_rate
 mixer.n_channels: 1
 mixer.num_mixtures: 10
 mixer.ref_db: [-30, -10]
-mixer.snr: [uniform, -10, 10]
+mixer.snr: [uniform, -5.0, 0]
+mixer.target_snr_boost: 2.5
 mixer.source_file: [choose, []]
 mixer.time_stretch: [uniform, .9, 1.1]
 mixer.pitch_shift: [uniform, -2, 2]
 
+
 mixer.overfit_seed: 0
 
-train/mixer.fg_path: data/train
+train/mixer.fg_path: $train_folder
 train/mixer.duration: 5.0
 train/mixer.num_mixtures: 10000000
-train/transform.excerpt_length: 5.0
 
-val/mixer.duration: 5.0
-val/transform.excerpt_length: 5.0
-
+val/mixer.fg_path: $val_folder
+val/mixer.duration: 30.0
 val/mixer.coherent_prob: 1.0
 val/mixer.augment_prob: 0.0
-val.mixer.pitch_shift: [const, 0]
-val/mixer.time_stretch: [const, 1.0]
-val/mixer.fg_path: data/valid
 val/mixer.num_mixtures: 1000
+
+test/mixer.fg_path: $test_folder
+test/mixer.duration: 30.0
+test/mixer.coherent_prob: 1.0
+test/mixer.augment_prob: 0.0
+test/mixer.num_mixtures: 1000
 
 device.use: cuda
 

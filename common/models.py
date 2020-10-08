@@ -73,118 +73,89 @@ def deep_audio_estimation(
 # --------------- MASK ESTIMATION MODELS -------------
 # ----------------------------------------------------
 
-class BaseMaskEstimation(nn.Module):
-    def __init__(self, *args, **kwargs):
+class MaskInference(nn.Module):
+    def __init__(self, num_features, num_audio_channels, hidden_size,
+                 num_layers, bidirectional, dropout, num_sources, 
+                activation='sigmoid'):
         super().__init__()
-
-    @classmethod
-    def config(cls, add_embedding=True, **kwargs):
-        nussl.ml.register_module(cls)
-        alias_keys = ['mask', 'estimates']
-        if add_embedding:
-            alias_keys.append('embedding')
-        _modules = {
-            'model': {
-                'class': cls.__name__,
-                'args': kwargs
-            }   
-        }
-        _connections = [
-            ['model', ['mix_magnitude']],
-        ]
-        for i,k in enumerate(alias_keys):
-            _modules[k] = {'class': 'Alias'}
-            _connections += [[k, [f'model:{k}']]]
-
-        _config = {
-            'name': cls.__name__,
-            'modules': _modules,
-            'connections': _connections,
-            'output': alias_keys
-        }
-        return _config
-
-class RecurrentChimera(BaseMaskEstimation):
-    def __init__(self, num_sources, num_features, hidden_size, 
-                 num_layers, bidirectional=True, dropout=0.3, 
-                 mask_activation=['sigmoid'], 
-                 embedding_activation=['sigmoid', 'unit_norm'],
-                 embedding_size=20, num_audio_channels=1, rnn_type='lstm'):
-        super().__init__()
+        
         self.amplitude_to_db = AmplitudeToDB()
-        self.batch_norm = BatchNorm(num_features)
-        
+        self.input_normalization = BatchNorm(num_features)
         self.recurrent_stack = RecurrentStack(
-            num_features, hidden_size, num_layers, bidirectional,
-            dropout, rnn_type=rnn_type
+            num_features * num_audio_channels, hidden_size, 
+            num_layers, bool(bidirectional), dropout
         )
-        out_features = hidden_size * (int(bidirectional) + 1)
-        self.mask = Embedding(
-            num_features, out_features, num_sources,
-            mask_activation, num_audio_channels=num_audio_channels
-        )
-        self.embedding = Embedding(
-            num_features, out_features, embedding_size,
-            embedding_activation,
-            num_audio_channels=num_audio_channels
-        )
-
-    def forward(self, mix_magnitude):
-        # batch, time, features, audio channels 
-        nb, nt, nf, nc = mix_magnitude.shape
-
-        # Step 1. Convert amplitude to decibel-scale log-amplitude
-        data = self.amplitude_to_db(mix_magnitude)
-
-        # Step 2. Normalize before RNN! Very important.
-        data = self.batch_norm(data)
-
-        # Step 3. Process data with stack of recurrent layers
-        data = self.recurrent_stack(data)
+        hidden_size = hidden_size * (int(bidirectional) + 1)
+        self.embedding = Embedding(num_features, hidden_size, 
+                                   num_sources, activation, 
+                                   num_audio_channels)
         
-        # Step 4. Project recurrent stack to masks and embedding
-        mask = self.mask(data)
-        embedding = self.embedding(data)
-
-        # Step 5. Mask the mix magnitude to get the estimates
-        estimates = mask * mix_magnitude.unsqueeze(-1)
-
-        # Step 6. Return as a dictionary with keys that match nussl API
+    def forward(self, data):
+        mix_magnitude = data # save for masking
+        
+        data = self.amplitude_to_db(mix_magnitude)
+        data = self.input_normalization(data)
+        data = self.recurrent_stack(data)
+        mask = self.embedding(data)
+        estimates = mix_magnitude.unsqueeze(-1) * mask
+        
         output = {
             'mask': mask,
-            'estimates': estimates,
-            'embedding': embedding,
+            'estimates': estimates
         }
         return output
-
+    
+    # Added function
     @staticmethod
     @argbind.bind_to_parser()
-    def recurrent_chimera(
-        stft_params, 
-        num_sources : int = 4,
-        hidden_size : int = 100,
-        num_layers : int = 1,
-        bidirectional : int = 1,
-        dropout : float = 0.3,
-        mask_activation : List[str] = ['sigmoid'],
-        embedding_activation : List[str] = ['sigmoid', 'unit_norm'],
-        embedding_size : int = 20,
-        num_audio_channels : int = 1,
-        rnn_type : str = 'lstm',
-        verbose : int = 0,
-    ):
-        num_features = stft_params.window_length // 2 + 1
-        config = RecurrentChimera.config(
-            num_sources=num_sources, hidden_size=hidden_size, 
-            num_features=num_features, num_layers=num_layers, 
-            bidirectional=bool(bidirectional),
-            dropout=dropout, mask_activation=mask_activation,
-            embedding_activation=embedding_activation, 
-            embedding_size=embedding_size, 
-            num_audio_channels=num_audio_channels, rnn_type=rnn_type,
-            add_embedding=True
-        )
-        return nussl.ml.SeparationModel(config, verbose=verbose)
+    def build(num_features, num_audio_channels, hidden_size, 
+              num_layers, bidirectional, dropout, num_sources, 
+              activation='sigmoid'):
+        # Step 1. Register our model with nussl
+        nussl.ml.register_module(MaskInference)
+        
+        # Step 2a: Define the building blocks.
+        modules = {
+            'model': {
+                'class': 'MaskInference',
+                'args': {
+                    'num_features': num_features,
+                    'num_audio_channels': num_audio_channels,
+                    'hidden_size': hidden_size,
+                    'num_layers': num_layers,
+                    'bidirectional': bidirectional,
+                    'dropout': dropout,
+                    'num_sources': num_sources,
+                    'activation': activation
+                }
+            }
+        }
+        
+        # Step 2b: Define the connections between input and output.
+        # Here, the mix_magnitude key is the only input to the model.
+        connections = [
+            ['model', ['mix_magnitude']]
+        ]
+        
+        # Step 2c. The model outputs a dictionary, which SeparationModel will
+        # change the keys to model:mask, model:estimates. The lines below 
+        # alias model:mask to just mask, and model:estimates to estimates.
+        # This will be important later when we actually deploy our model.
+        for key in ['mask', 'estimates']:
+            modules[key] = {'class': 'Alias'}
+            connections.append([key, [f'model:{key}']])
+        
+        # Step 2d. There are two outputs from our SeparationModel: estimates and mask.
+        # Then put it all together.
+        output = ['estimates', 'mask',]
+        config = {
+            'name': 'MaskInference',
+            'modules': modules,
+            'connections': connections,
+            'output': output
+        }
+        # Step 3. Instantiate the model as a SeparationModel.
+        return nussl.ml.SeparationModel(config)
 
 # ----------------------------------------------------
 # --------------- AUDIO ESTIMATION MODELS ------------
@@ -215,4 +186,4 @@ class BaseAudioModel(nn.Module):
 # ------------- REGISTER MODELS WITH NUSSL -----------
 # ----------------------------------------------------
 
-RecurrentChimera.config()
+nussl.ml.register_module(MaskInference)

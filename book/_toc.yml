@@ -32,11 +32,17 @@
     - file: data/musdb18
     - file: data/scaper
 
+- part: Training
+  chapters:
+    - file: training/intro
+    - file: training/gradient_descent
+    - file: training/building_blocks
+    - file: training/putting_it_all_together
+
 - part: Conclusions
   chapters:
     - file: conclusions/applications
     - file: conclusions/concluding_remarks
-
 
 - part: Appendix
   chapters:

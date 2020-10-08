@@ -1,0 +1,20 @@
+# These settings are for training a model 
+# on the FULL MUSDB18 data. Be sure to change
+# the "symlink.folder" argument below to where
+# your full MUSDB download is.
+
+$vars:
+  sample_rate: 16000
+  test_folder: ../data/musdb18/wav/test
+  train_folder: ../data/musdb18/wav/train
+  val_folder: ../data/musdb18/wav/valid
+  target_instrument: vocals
+
+run.output_folder: 'output/musdb18/'
+
+# I saved my unzipped musdb18 data here 
+# to ~/.nussl/musdb18_full/
+symlink.folder: '~/.nussl/musdb18_full/'
+symlink.target: ../data/musdb18/
+prepare_musdb.folder: '../data/musdb18/wav/'
+prepare_musdb.musdb_root: '../data/musdb18'

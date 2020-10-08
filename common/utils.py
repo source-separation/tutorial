@@ -5,6 +5,8 @@ import torch
 import matplotlib.pyplot as plt
 import os
 from contextlib import contextmanager
+import tqdm
+from pathlib import Path
 from . import argbind
 
 @contextmanager
@@ -44,10 +46,8 @@ def run(module, *args, cmd : str = None):
             cmd_fn = getattr(module, cmd)
             cmd_fn(*args)
 
-def save_exp(args):
-    if args['args.save']:
-        save_path = args['args.save'].replace('yml')
-        argbind.dump_args(used_args, save_path)
+def save_exp(args, save_path):
+    argbind.dump_args(args, save_path)
 
 def parse_args_and_run(name, pass_args=False):
     args = argbind.parse_args()
@@ -83,6 +83,25 @@ def logger(level : str = 'info'):
         level=level
     )
 
+@argbind.bind_to_parser()
+def log_file(
+    path : str = './logs/log.txt'
+):
+    """Log everything that happens in the basic logger to a 
+    file.
+
+    Parameters
+    ----------
+    path : str
+        Path where log will be saved.
+    """
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    logger = logging.getLogger()
+    handler = logging.FileHandler(path)
+    logger.addHandler(handler)
+
+
 def pprint(data):
     if isinstance(data, dict):
         logging.info(json.dumps(data, indent=4))
@@ -100,7 +119,7 @@ def pprint(data):
             logging.info('\n' + desc)
 
 
-def plot_metrics(separator, key, output_path):
+def plot_metrics(separator, key, output_path=None):
     data = separator.metadata['trainer.state.epoch_history']
     plt.figure(figsize=(5, 4))
 
@@ -113,4 +132,7 @@ def plot_metrics(separator, key, output_path):
     plt.legend()
     plt.tight_layout()
 
-    plt.savefig(output_path)
+    if output_path is not None:
+        plt.savefig(output_path)
+    else:
+        plt.show()
