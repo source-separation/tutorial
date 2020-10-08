@@ -289,6 +289,8 @@ def mixer(
     )
     return dataset
 
+on_the_fly = mixer
+
 class MUSDBMixer():
     def __init__(
         self,
