@@ -1,6 +1,5 @@
 jupyter-book
 jupyterlab
-
 matplotlib
 numpy
 librosa
@@ -11,5 +10,4 @@ pyyaml
 gradio
 gif
 pyloudnorm
-# bokeh
-# ipywidgets
+gradio
