@@ -401,6 +401,31 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-functions">
+   Loss functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#brute-force-approach">
+   Brute-force approach
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Gradient descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#impact-of-learning-rate">
+   Impact of learning rate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#signs-of-healthy-training">
    Signs of healthy training
   </a>
@@ -461,6 +486,8 @@ ML library for this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+!pip install scaper
+!pip install nussl
 !pip install git+https://github.com/source-separation/tutorial
 </pre></div>
 </div>
@@ -493,6 +520,8 @@ ML library for this.</p>
 </div>
 </div>
 </div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Let’s make a single layer neural network with 1 hidden unit. This
 is just a line, and corresponds to:</p>
 <div class="math notranslate nohighlight">
@@ -521,7 +550,7 @@ learnable parameters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_4_0.png" src="../_images/gradient_descent_4_0.png" />
+<img alt="../_images/gradient_descent_5_0.png" src="../_images/gradient_descent_5_0.png" />
 </div>
 </div>
 <p>The network is randomly initialized, and we passed some random data through it.
@@ -570,7 +599,7 @@ descent. Okay, let’s make the data:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_8_0.png" src="../_images/gradient_descent_8_0.png" />
+<img alt="../_images/gradient_descent_9_0.png" src="../_images/gradient_descent_9_0.png" />
 </div>
 </div>
 <p>Let’s look at what our network does on this data, overlaid with the actual training data:</p>
@@ -588,9 +617,12 @@ descent. Okay, let’s make the data:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_10_0.png" src="../_images/gradient_descent_10_0.png" />
+<img alt="../_images/gradient_descent_11_0.png" src="../_images/gradient_descent_11_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="loss-functions">
+<h2>Loss functions<a class="headerlink" href="#loss-functions" title="Permalink to this headline">¶</a></h2>
 <p>Let’s now take a look at how gradient descent can be used to learn <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(b\)</span>
 directly from the training data. The first thing we need is a way to tell how
 well the network is doing right now. That is to say, how accurate are its predictions?
@@ -615,7 +647,7 @@ absolute difference between the predictions and the ground truth:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_12_0.png" src="../_images/gradient_descent_12_0.png" />
+<img alt="../_images/gradient_descent_14_0.png" src="../_images/gradient_descent_14_0.png" />
 </div>
 </div>
 <p>Above you can see the loss for every point in our training data. But in order to
@@ -637,6 +669,9 @@ single number. To do this, we’ll just take the mean:</p>
 it stays in the same range no matter how many data points you compute the loss over,
 unlike the sum. Second, we want to increase the performance across the board, so we wouldn’t want
 to use max or some operation that only looks at one data point.</p>
+</div>
+<div class="section" id="brute-force-approach">
+<h2>Brute-force approach<a class="headerlink" href="#brute-force-approach" title="Permalink to this headline">¶</a></h2>
 <p>Now that we’ve got a measure of how well our network is doing, how do we make the
 network better? The goal is to reduce the loss. Let’s do this in a really naive way
 first: let’s guess! We’ll do a search over all the possible network parameters for our
@@ -668,7 +703,7 @@ Line module within some range, and compute the loss for each one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_16_0.png" src="../_images/gradient_descent_16_0.png" />
+<img alt="../_images/gradient_descent_18_0.png" src="../_images/gradient_descent_18_0.png" />
 </div>
 </div>
 <p>What we did: iterate over all values of <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(b\)</span> above and compute the loss.
@@ -714,13 +749,16 @@ Actual m, b:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_20_0.png" src="../_images/gradient_descent_20_0.png" />
+<img alt="../_images/gradient_descent_22_0.png" src="../_images/gradient_descent_22_0.png" />
 </div>
 </div>
 <p>Iterating over all possible <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(b\)</span> values in a range worked here, but it’s not a great
 thing in general. We only have <span class="math notranslate nohighlight">\(2\)</span> parameters here, and we did <span class="math notranslate nohighlight">\(100\)</span> choices for each, so that worked
 out to <span class="math notranslate nohighlight">\(100 * 100\)</span> = 10k “iterations” to learn a line! How do we cut this down? By using
 gradient descent, of course.</p>
+</div>
+<div class="section" id="id1">
+<h2>Gradient descent<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>In gradient descent, we look at the local loss landscape - where we are now and the points that we
 could go to around us. To make things simpler, let’s use the data we generated above to look
 at how the loss changes as the value of <span class="math notranslate nohighlight">\(m\)</span> changes:</p>
@@ -735,7 +773,7 @@ at how the loss changes as the value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_22_0.png" src="../_images/gradient_descent_22_0.png" />
+<img alt="../_images/gradient_descent_24_0.png" src="../_images/gradient_descent_24_0.png" />
 </div>
 </div>
 <p>Now, let’s look at it as <span class="math notranslate nohighlight">\(b\)</span> changes:</p>
@@ -750,7 +788,7 @@ at how the loss changes as the value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_24_0.png" src="../_images/gradient_descent_24_0.png" />
+<img alt="../_images/gradient_descent_26_0.png" src="../_images/gradient_descent_26_0.png" />
 </div>
 </div>
 <p>The slope of these curves is the gradient. For example, in the first <span class="math notranslate nohighlight">\(m\)</span> plot, we
@@ -825,8 +863,8 @@ did for the loss before, but this time let’s look at the gradients as <span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_28_0.png" src="../_images/gradient_descent_28_0.png" />
-<img alt="../_images/gradient_descent_28_1.png" src="../_images/gradient_descent_28_1.png" />
+<img alt="../_images/gradient_descent_30_0.png" src="../_images/gradient_descent_30_0.png" />
+<img alt="../_images/gradient_descent_30_1.png" src="../_images/gradient_descent_30_1.png" />
 </div>
 </div>
 <p>Above we can see that at each value of <span class="math notranslate nohighlight">\(m\)</span> or <span class="math notranslate nohighlight">\(b\)</span> the gradient tells
@@ -880,9 +918,12 @@ must go in the <em>opposite</em> direction of the gradient. Let’s put it all t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_30_0.png" src="../_images/gradient_descent_30_0.png" />
+<img alt="../_images/gradient_descent_32_0.png" src="../_images/gradient_descent_32_0.png" />
 </div>
 </div>
+</div>
+<div class="section" id="impact-of-learning-rate">
+<h2>Impact of learning rate<a class="headerlink" href="#impact-of-learning-rate" title="Permalink to this headline">¶</a></h2>
 <p>The key hyperparameter to consider here is the learning rate. The learning rate
 controls how big of a step you take in the direction away from the gradient.
 Let’s see how this parameter can affect the performance of gradient descent, by
@@ -946,7 +987,7 @@ trying a few different values, and visualizing the learning process for each one
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_32_0.png" src="../_images/gradient_descent_32_0.png" />
+<img alt="../_images/gradient_descent_34_0.png" src="../_images/gradient_descent_34_0.png" />
 </div>
 </div>
 <p>If the learning rate is set too high, then the correct solution is never reached as the steps being taken are much
@@ -963,6 +1004,7 @@ optimization becomes unstable. Lower learning rates are generally “safer” in
 of reaching minima, but are more inefficient. Soon, we’ll look at ways that you can
 monitor the health of your training procedure and how that help guide your choices
 for optimization hyperparameters.</p>
+</div>
 </div>
 <div class="section" id="signs-of-healthy-training">
 <h2>Signs of healthy training<a class="headerlink" href="#signs-of-healthy-training" title="Permalink to this headline">¶</a></h2>
@@ -1001,7 +1043,7 @@ we saved the loss history as well as the norm of the gradient at each iteration.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_35_0.png" src="../_images/gradient_descent_35_0.png" />
+<img alt="../_images/gradient_descent_37_0.png" src="../_images/gradient_descent_37_0.png" />
 </div>
 </div>
 <p>How do we interpret these plots? The plot on the right tells us that for some learning rates,
@@ -1065,8 +1107,8 @@ gradient norm exceeds some set threshold, then it is renormalized such that the
 norm of the gradient is equal to that threshold. If the norm is below the set
 threshold, then the gradient is untouched.</p>
 <p>Why does gradient clipping work so well, theoretically? Well, it’s a bit of an
-open question right now with a long history <a class="bibtex reference internal" href="../zzz_refs.html#bengio1994learning" id="id1">[BSF94]</a><a class="bibtex reference internal" href="../zzz_refs.html#mikolov2012statistical" id="id2">[Mik12]</a>,
-and a lot of interesting recent work <a class="bibtex reference internal" href="../zzz_refs.html#zhang2019gradient" id="id3">[ZHSJ19]</a>!</p>
+open question right now with a long history <a class="bibtex reference internal" href="../zzz_refs.html#bengio1994learning" id="id2">[BSF94]</a><a class="bibtex reference internal" href="../zzz_refs.html#mikolov2012statistical" id="id3">[Mik12]</a>,
+and a lot of interesting recent work <a class="bibtex reference internal" href="../zzz_refs.html#zhang2019gradient" id="id4">[ZHSJ19]</a>!</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><em>Exploding gradients</em>, along with <em>vanishing gradients</em> are important to look out for. Note that most
@@ -1078,7 +1120,7 @@ separation networks.</p>
 <div class="section" id="autoclip">
 <h4>AutoClip<a class="headerlink" href="#autoclip" title="Permalink to this headline">¶</a></h4>
 <p>Picking the optimal gradient clipping threshold can be tough, and choosing it poorly can lead to bad
-results. Recent work <a class="bibtex reference internal" href="../zzz_refs.html#seetharaman2020autoclip" id="id4">[SWPR20]</a> proposes an automated mechanism to choose
+results. Recent work <a class="bibtex reference internal" href="../zzz_refs.html#seetharaman2020autoclip" id="id5">[SWPR20]</a> proposes an automated mechanism to choose
 the gradient clipping threshold by using the history of the gradient norms in conjunction with a
 simple percentile based approach. For more, see here: https://github.com/pseeth/autoclip (full
 disclosure: the author of this method is currently writing what you’re reading now).</p>
