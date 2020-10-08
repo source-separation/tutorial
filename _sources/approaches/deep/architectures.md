@@ -24,13 +24,18 @@ representations that we can separate.
 ---
 alt: The U-Net architecture.
 name: unet
+scale: 35%
 ---
 The U-Net architecture.
 Image used courtesy of Rachel Bittner.
 ```
 
 U-Nets {cite}`jansson2017singing` are a very popular architecture
-for music source separation systems. They input a spectrogram and
+for music source separation systems. The popular source separation
+system Spleeter by Deezer uses this network architecture. {cite}`spleeter2020`
+
+
+U-Nets input a spectrogram and
 perform a series of 2D convolutions, each of which producing an encoding of
 a smaller and smaller representation of the input. The small representation
 at the center is then scaled back up by decoding with the same number of
@@ -120,7 +125,7 @@ batch normalization layers.
 ---
 alt: Diagram of the Mask Inference architecture.
 name: mask_inf
-scale: 50%
+scale: 25%
 ---
 A diagram of the Mask Inference architecture.
 ```
@@ -159,7 +164,7 @@ loss is called a Mask Inference Loss.
 ---
 alt: Diagram of the Deep Clustering architecture.
 name: deep_clustering
-scale: 50%
+scale: 25%
 ---
 A diagram of the Deep Clustering architecture.
 ```
@@ -193,7 +198,7 @@ must be applied to the embedding space to make masks.
 ---
 alt: Diagram of the Chimera architecture.
 name: deep_clustering
-scale: 50%
+scale: 25%
 ---
 A diagram of the Chimera architecture.
 ```

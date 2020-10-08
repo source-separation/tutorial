@@ -525,7 +525,7 @@ voice separation is <span class="math notranslate nohighlight">\(7.24 dB\)</span
 <h4>SI-SDR<a class="headerlink" href="#si-sdr" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="sdr-vs-sisdr">
 <img alt="Waveform shown at many different time scales from a few seconds to a few samples." src="../_images/sdr_vs_sisdr.png" />
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">The way SDR calculates the <span class="math notranslate nohighlight">\(e_{\text{interf}}\)</span>, <span class="math notranslate nohighlight">\(e_{\text{noise}}\)</span>, and
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">The way SDR calculates the <span class="math notranslate nohighlight">\(e_{\text{interf}}\)</span>, <span class="math notranslate nohighlight">\(e_{\text{noise}}\)</span>, and
 <span class="math notranslate nohighlight">\(e_{\text{artif}}\)</span> terms
 can lead to issues where the original signal (top) can be horribly degraded (bottom)
 and still get a very high SDR score.
@@ -544,7 +544,7 @@ which corresponds to SAR and SIR described above, respectively.
 Although these measures are not sensitive to amplitude scaling, it
 is a quicker computation because it does not require windowing
 the estimatd and ground truth signals like SDR.</p>
-<p>In <a class="reference internal" href="#sdr-vs-sisdr"><span class="std std-numref">Fig. 20</span></a>, the discrepency between SDR and SI-SDR
+<p>In <a class="reference internal" href="#sdr-vs-sisdr"><span class="std std-numref">Fig. 19</span></a>, the discrepency between SDR and SI-SDR
 scores is shown. The top spectrogram shows the ground truth signal.
 Above it are its scores for SDR, SNR, and SI-SDR. As expected the
 ground truth signal gets high values for SDR, SNR, and SI-SDR

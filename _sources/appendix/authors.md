@@ -10,6 +10,8 @@ applications. Previously he was an intern at Mitsubishi Electric Research Labs
 (MERL) and at Google Magenta. He is one of the lead developers of nussl, an
 open source audio separation library.
 
+[website.](https://ethman.github.io/) [twitter.](https://twitter.com/ethanmanilow)
+
 
 **Prem Seetharaman** is a research scientist at Descript in San Francisco.
 Previously, he was a teaching fellow at Northwestern University, where he
@@ -18,6 +20,8 @@ is to create machines that can understand the auditory world. He works in
 computer audition, machine learning, and human computer interaction. He is one
 of the lead developers of nussl, an open source audio separation library, and
 Scaper, a library for soundscape generation & augmentation.
+
+[website.](https://pseeth.github.io/) [twitter.](https://twitter.com/pseetharaman)
 
 
 **Justin Salamon** is a research scientist and member of the Audio Research
@@ -29,3 +33,5 @@ applications in machine listening, representation learning & self-supervision,
 music information retrieval, bioacoustics, environmental sound analysis and
 open-source software & data. He is the lead developer of Scaper, a library for
 soundscape generation & augmentation.
+
+[website.](https://www.justinsalamon.com/) [twitter.](https://twitter.com/justin_salamon)

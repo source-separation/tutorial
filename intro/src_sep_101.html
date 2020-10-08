@@ -417,10 +417,10 @@
 <h1>What is Source Separation?<a class="headerlink" href="#what-is-source-separation" title="Permalink to this headline">¶</a></h1>
 <div class="figure align-default" id="source-separation">
 <img alt="Separating of musical signals." src="../_images/source_separation_io1.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Source separation is the opposite of the mixing process.</span><a class="headerlink" href="#source-separation" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Source separation is the opposite of the mixing process.</span><a class="headerlink" href="#source-separation" title="Permalink to this image">¶</a></p>
 </div>
 <p>Source Separation is the process of isolating individual sounds in an auditory
-mixture of multiple sounds. <a class="bibtex reference internal" href="../zzz_refs.html#vincent2018audio" id="id1">[VVG18]</a> We call each sound heard
+mixture of multiple sounds. <a class="bibtex reference internal" href="../zzz_refs.html#vincent2018audio" id="id1">[VVG18]</a><a class="bibtex reference internal" href="../zzz_refs.html#cano2018musical" id="id2">[CFL+18]</a><a class="bibtex reference internal" href="../zzz_refs.html#rafii2018overview" id="id3">[RLStoter+18]</a> We call each sound heard
 in a mixture a <em>source</em>.
 For example, we might want to isolate a singer from the background music to make
 a karaoke version of a song or isolate the bass guitar from the from the rest of
@@ -445,14 +445,14 @@ therefore source separation would be a useful tool to isolate one of the
 sources (<em>e.g.</em>, just the piano).</p>
 <div class="figure align-default" id="mixing-sources">
 <img alt="Mixing of musical signals." src="../_images/mixing_overview.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The mixing of music signals is a complex and non-linear process. This makes
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The mixing of music signals is a complex and non-linear process. This makes
 separating musical sources difficult.</span><a class="headerlink" href="#mixing-sources" title="Permalink to this image">¶</a></p>
 </div>
 <p>In this tutorial we will be focusing on music separation, or the process of
 isolating at least one musical instrument or singer from a musical mixture that
 contains one or more other musical instruments or singers. Music is seen as a
 distinct problem from other types of source separation because there are many
-factors that make it uniquely challenging <a class="bibtex reference internal" href="../zzz_refs.html#cano2018musical" id="id2">[CFL+18]</a>:</p>
+factors that make it uniquely challenging <a class="bibtex reference internal" href="../zzz_refs.html#cano2018musical" id="id4">[CFL+18]</a>:</p>
 <ul class="simple">
 <li><p>Sources in music are <em>highly correlated</em>, meaning that all of the sources usually
 change together at the same time. For example, in a rock band if the bass guitar
@@ -471,7 +471,7 @@ for musicians and sound engineers that incorporate source separation. As opposed
 to source separation being used as an intermediate step for another auditory
 process, source separation is the end goal and being listened to by users that
 might expect high quality results. Therefore it is paramount that the results
-of the system sound good enough for those users.<a class="footnote-reference brackets" href="#fn1" id="id3">1</a></p></li>
+of the system sound good enough for those users.<a class="footnote-reference brackets" href="#fn1" id="id5">1</a></p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -493,14 +493,14 @@ Music Information Retrieval (MIR). In many scenarios, researchers have discovere
 that it is easier to process a isolated sources than mixtures of those sources.
 For example, source separation has been used to enhance:</p>
 <ul class="simple">
-<li><p>automatic music transcription <a class="bibtex reference internal" href="../zzz_refs.html#plumbley2002automatic" id="id4">[PAB+02]</a><a class="bibtex reference internal" href="../zzz_refs.html#manilow2020simultaneous" id="id5">[MSP20]</a>,</p></li>
-<li><p>lyric and music alignment <a class="bibtex reference internal" href="../zzz_refs.html#fujihara2006automatic" id="id6">[FGO+06]</a>,</p></li>
-<li><p>musical instrument detection <a class="bibtex reference internal" href="../zzz_refs.html#heittola2009musical" id="id7">[HKV09]</a>,</p></li>
-<li><p>lyric recognition <a class="bibtex reference internal" href="../zzz_refs.html#mesaros2010automatic" id="id8">[MV10]</a>,</p></li>
-<li><p>automatic singer identification <a class="bibtex reference internal" href="../zzz_refs.html#weninger2011automatic" id="id9">[WWollmerS11]</a><a class="bibtex reference internal" href="../zzz_refs.html#hu2015separation" id="id10">[HL15]</a><a class="bibtex reference internal" href="../zzz_refs.html#sharma2019importance" id="id11">[SDL19]</a>,</p></li>
-<li><p>vocal activity detection <a class="bibtex reference internal" href="../zzz_refs.html#stoller2018jointly" id="id12">[SED18a]</a>,</p></li>
-<li><p>fundamental frequency estimation <a class="bibtex reference internal" href="../zzz_refs.html#jansson2019joint" id="id13">[JBEW19]</a>, and</p></li>
-<li><p>understanding the predictions of black-box audio models. <a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020towards" id="id14">[HMW20a]</a><a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020audiolime" id="id15">[HMW20b]</a></p></li>
+<li><p>automatic music transcription <a class="bibtex reference internal" href="../zzz_refs.html#plumbley2002automatic" id="id6">[PAB+02]</a><a class="bibtex reference internal" href="../zzz_refs.html#manilow2020simultaneous" id="id7">[MSP20]</a>,</p></li>
+<li><p>lyric and music alignment <a class="bibtex reference internal" href="../zzz_refs.html#fujihara2006automatic" id="id8">[FGO+06]</a>,</p></li>
+<li><p>musical instrument detection <a class="bibtex reference internal" href="../zzz_refs.html#heittola2009musical" id="id9">[HKV09]</a>,</p></li>
+<li><p>lyric recognition <a class="bibtex reference internal" href="../zzz_refs.html#mesaros2010automatic" id="id10">[MV10]</a>,</p></li>
+<li><p>automatic singer identification <a class="bibtex reference internal" href="../zzz_refs.html#weninger2011automatic" id="id11">[WWollmerS11]</a><a class="bibtex reference internal" href="../zzz_refs.html#hu2015separation" id="id12">[HL15]</a><a class="bibtex reference internal" href="../zzz_refs.html#sharma2019importance" id="id13">[SDL19]</a>,</p></li>
+<li><p>vocal activity detection <a class="bibtex reference internal" href="../zzz_refs.html#stoller2018jointly" id="id14">[SED18a]</a>,</p></li>
+<li><p>fundamental frequency estimation <a class="bibtex reference internal" href="../zzz_refs.html#jansson2019joint" id="id15">[JBEW19]</a>, and</p></li>
+<li><p>understanding the predictions of black-box audio models. <a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020towards" id="id16">[HMW20a]</a><a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020audiolime" id="id17">[HMW20b]</a></p></li>
 </ul>
 <p>Additionally, source separation has long been seen as an inherently worthwhile
 endeavor on its own merits, with many thousands of research papers appearing over
@@ -548,7 +548,7 @@ approaches are algorithms that make explicit assumptions about the auditory scen
 upon which they operate</p>
 <hr class="docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
 <dd><p>Some creative applications might not have such strict demands; when using
 source separation to create remixes for instance, the artifacts might be masked
 by other sources in the mix.</p>

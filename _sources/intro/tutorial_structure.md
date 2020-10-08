@@ -1,37 +1,12 @@
 Tutorial Structure and Setup
 ============================
 
-This tutorial will mostly be asynchronous and self-guided. All of the material
-needed to go through this tutorial is here on this website. 
-
-We will have a set of synchronous Zoom "office hours" after particular sections where we
-will be available to answer questions about that section.
-
-You are free to do this tutorial on your own time, if you choose.
-This website and materials will be available after the allotted tutorial time.
+All of the material needed to go through this tutorial is here on this website. 
+Feel free to browse it at your own pace.
 
 
-## How this Tutorial is Structured
 
-TODOTODOTODOTODO
-
-Both will give you the same information overall, although the text might go into
-more detail on certain subjects and will provide references for further reading.
-We will mark the sections in the text that you can practically skip, but we
-hope this document can act as a reference point if you decide come back at a 
-later time. If for some reason you are unable to load the YouTube videos, we have
-provided OneDrive links to the videos on the page for each section. 
- 
-```{figure} ../images/intro/search_bar.png
----
-alt: The search bar is on the top left corner of this webpage.
-width: 200px
-align: center
-name: search-bar
----
-The text is all searchable using the search function on the top
-left side of this webpage.
-```
+## How to Use This Website
 
 On the left-hand side of this web page you'll see the table of contents for the
 entire tutorial. If you don't see the contents, click the hamburger (&#9776;) icon
@@ -41,10 +16,9 @@ you can either click on the next section on the tutorial's table of contents on
 the left-hand side, or you can scroll to the bottom of the page to click the 
 button on the bottom right to go to the next section.
 
+### This Book is Interactive
 
-## How to Use This Book
-
-All of the material presented here is written in the `python3` programming language.
+Most of the material presented here is written in the `python3` programming language.
 It is presented in the [Jupyter Notebook](https://jupyter.org/) format,
 which allows us to interweave the lecture material with the code interactively.
 [Click here](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html)
@@ -188,7 +162,7 @@ This link is also at the top right corner of every page.
 
 ### ISMIR2020 Slack Channel
 
-There is also a 
+Feel free to join the conversation on the ISMIR2020 Slack. Channel name: `#tutorial-4-open-source-separation`.
 
 
 

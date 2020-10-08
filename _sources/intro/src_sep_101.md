@@ -12,7 +12,7 @@ Source separation is the opposite of the mixing process.
 
 
 Source Separation is the process of isolating individual sounds in an auditory
-mixture of multiple sounds. {cite}`vincent2018audio` We call each sound heard
+mixture of multiple sounds. {cite}`vincent2018audio,cano2018musical,rafii2018overview` We call each sound heard
 in a mixture a _source_.
 For example, we might want to isolate a singer from the background music to make
 a karaoke version of a song or isolate the bass guitar from the from the rest of

@@ -691,10 +691,10 @@ loss and target.
 ### Deep Clustering Losses
 
 ```{figure} ../../images/deep_approaches/dc_loss.png
-            
 ---
 alt: Diagram of the deep clustering loss.
 name: dc_loss
+scale: 25%
 ---
 The deep clustering loss encourages a network to learn a high dimensional
 embedding space where TF bins from the same source are close and TF bins
@@ -708,9 +708,9 @@ where all of the TF bins dominated by the same source close together
 and TF bins dominated by different sources are far apart. 
 
 For the single-channel, ground truth binary mask $Y \in \{0.0, 1.0\}^{T \times F}$ of 
-some source, we reshape it so that it has shape ${T F \times 1}$. We can then
+some source, we reshape it so that it has shape ${T F \times 1}$. We then
 learn a $D$-dimensional embedding space called $V \in \mathbb{R}^{TF \times D}$.
-We can then define a ground truth binary affinity matrix $A = YY^T$, and an
+We define a ground truth binary affinity matrix $A = YY^T$, and an
 estimated affinity matrix from the network $\hat{A} = VV^T$. The deep
 clustering loss is thus given by,
 
@@ -760,7 +760,7 @@ $$
 the SI-SNR loss is
 
 $$
-\mathcal{L}_{\text{SI-SNR}} = 10 \log_10 \left( \frac{\| x_{\text{target}}\|^2}{\|e_{\text{noise}}\|^2}.
+\mathcal{L}_{\text{SI-SNR}} = 10 \log_{10} \left( \frac{\| x_{\text{target}} \|^2}{\| e_{\text{noise}} \|^2} \right).
 $$
 
 This is essentially optimizing the for the SDR evaluation metric. Variants
