@@ -1,5 +1,5 @@
-Intro
-=====
+Introduction
+============
 
 Training deep networks in any field can be a challenging endeavor. It requires patience,
 luck, and a lot of debugging. The goal of this section is to provide an overview
