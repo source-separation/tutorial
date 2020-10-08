@@ -233,11 +233,6 @@
    Concluding Remarks
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../conclusions/additional_resources.html">
-   Additional Resources
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -245,11 +240,6 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../zzz_refs.html">
    References
@@ -403,23 +393,29 @@ approximate sources from a mixture. To separate a single source, a separation
 approach must create a single mask. To separate multiple sources, a separation
 approach must create multiple masks.</p>
 <p>Masks are most commonly used with approaches
-that process a <a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a>, however you could make the case that
+that process a TF Representation, however you could make the case that
 some waveform-based deep learning architectures use masking within specific parts
 of their network (for instance see these papers: <a class="bibtex reference internal" href="../zzz_refs.html#luo2018tasnet" id="id1">[LM18]</a><a class="bibtex reference internal" href="../zzz_refs.html#luo2019conv" id="id2">[LM19]</a>).
 The content in this section, however, applies specifically to masking
-<a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a>s.</p>
+TF Representations.</p>
 <p>For reasons we will fully discuss in the next section, we only apply masks to the
-magnitude values of a <a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a>, <em>i.e.</em>, we do no apply masks to
-the phase component of an <a class="reference internal" href="../appendix/glossary.html#term-STFT"><span class="xref std std-term">STFT</span></a>.
+magnitude values of a TF Representation, <em>i.e.</em>, we do no apply masks to
+the phase component of an STFT.
 Because of this, in this section we will focus on masks applied to a spectrogram,
 where phase information is not explicitly represented.</p>
 <div class="section" id="what-is-a-mask">
 <h2>What is a Mask?<a class="headerlink" href="#what-is-a-mask" title="Permalink to this headline">¶</a></h2>
-<p>[[“CARTOON” IMAGE OF MASK BEING APPLIED]]</p>
-<p>A <span class="xref std std-term">mask</span> is a matrix that is the same size as a spectrogram and contains
+<div class="figure align-default" id="mask-diagram">
+<img alt="Diagram of a binary mask being applied to a spectrogram" src="../_images/mask_diagram.png" />
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">A mask is a matrix with the same shape as the spectogram that is element-wise
+multiplied to it to produce a source estimate. This image shows an exaggerated
+binary mask that produces a source estimate. This estimate probably isn’t very
+good. ¯\_(ツ)_/¯</span><a class="headerlink" href="#mask-diagram" title="Permalink to this image">¶</a></p>
+</div>
+<p>A mask is a matrix that is the same size as a spectrogram and contains
 values in the inclusive interval <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> <a class="footnote-reference brackets" href="#fn1" id="id3">1</a>. Each value in the mask determines
 what proportion of energy of the original mixture that a source contributes. In
-other words, for a particular <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>, a value of <span class="math notranslate nohighlight">\(1.0\)</span> will allow <em>all</em> of
+other words, for a particular TF bin, a value of <span class="math notranslate nohighlight">\(1.0\)</span> will allow <em>all</em> of
 the sound from the mixture through and a value of <span class="math notranslate nohighlight">\(0.0\)</span> will allow <em>none</em> of the sound
 from the mixture through.</p>
 <p>We apply a mask to the original mixture by element-wise multiplying (sometimes
@@ -452,20 +448,29 @@ For example, if a value for Source <span class="math notranslate nohighlight">\(
 mask for the rest of the mix at the corresponding bin is <span class="math notranslate nohighlight">\(0.7\)</span>.</p>
 </div>
 <div class="section" id="binary-masks">
-<h2>Binary Masks<a class="headerlink" href="#binary-masks" title="Permalink to this headline">¶</a></h2>
+<span id="masks-binarymasks"></span><h2>Binary Masks<a class="headerlink" href="#binary-masks" title="Permalink to this headline">¶</a></h2>
 <p>The first mask type we’ll talk about is Binary Masks. Although not used much anymore,
 they can give us a good intuition about how masks work in practice.</p>
 <p>As the name implies, Binary Masks are masks where the only values the entries are
 allowed to take is <span class="math notranslate nohighlight">\(0.0\)</span> or <span class="math notranslate nohighlight">\(1.0\)</span>.
 Because all of the masks for the mixture element-wise sum up to a matrix of ones,
 a Binary Mask, therefore, makes the assumption
-that any <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a> is only dominated by exactly one source in the mixture.
+that any TF bin is only dominated by exactly one source in the mixture.
 In the literature, this assumption is called W-disjoint orthogonality.</p>
+<p>While Binary Masks are not used as much to produce final source estimates anymore,
+they are still useful as training targets, especially with neural network models like
+Deep Clustering, which we will discuss later in this tutorial.</p>
 </div>
 <div class="section" id="soft-masks-or-ratio-masks">
 <span id="masks-softmasks"></span><h2>Soft Masks (or Ratio Masks)<a class="headerlink" href="#soft-masks-or-ratio-masks" title="Permalink to this headline">¶</a></h2>
 <p>Soft Masks are allowed to take any value within the inclusive interval <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span>,
-which means that instead of assigning</p>
+which means that instead of assigning <em>all</em> of the energy from the mix to a
+source, it only assigns <em>part</em> of the mix’s energy to a source. This means that
+the energy in a mix from a TF bin can be split between the sources.</p>
+<p>Soft masks are more flexible than binary masks and usually lead to better
+sounding results; it’s not very
+often that all of the energy in a mixture can always be assigned
+to one source.</p>
 </div>
 <div class="section" id="ideal-masks">
 <h2>Ideal Masks<a class="headerlink" href="#ideal-masks" title="Permalink to this headline">¶</a></h2>

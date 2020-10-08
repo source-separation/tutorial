@@ -233,11 +233,6 @@
    Concluding Remarks
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../conclusions/additional_resources.html">
-   Additional Resources
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -245,11 +240,6 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../zzz_refs.html">
    References
@@ -472,14 +462,14 @@ windows of a new seconds long.</p>
 <p><strong>Source-to-Artifact Ratio (SAR)</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\text{SAR} := 10 \log_{10} \frac{|| s_{\text{target}} + e_{\text{interf}} + e_{\text{noise}} ||^2}{ || e_{\text{artif}} ||^2}
+\text{SAR} := 10 \log_{10} \left( \frac{\| s_{\text{target}} + e_{\text{interf}} + e_{\text{noise}} \|^2}{ \| e_{\text{artif}} \|^2} \right)
 \]</div>
 <p>This is usually interpreted as the amount of unwanted \text{artif}acts a source
 estimate has with relation to the true source.</p>
 <p><strong>Source-to-Interference Ratio (SIR)</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\text{SAR} := 10 \log_{10} \frac{|| s_{\text{target}} ||^2}{ || e_{\text{interf}} ||^2}
+\text{SIR} := 10 \log_{10} \left( \frac{\| s_{\text{target}} \|^2}{ \| e_{\text{interf}} \|^2} \right)
 \]</div>
 <p>This is usually interpreted as the amount of other sources that can be
 heard in a source estimate. This is most close to the concept of
@@ -487,7 +477,7 @@ heard in a source estimate. This is most close to the concept of
 <p><strong>Source-to-Interference Ratio (SIR)</strong></p>
 <div class="math notranslate nohighlight">
 \[
-\text{SAR} := 10 \log_{10} \frac{|| s_{\text{target}} ||^2}{ || e_{\text{interf}} + e_{\text{noise}} + e_{\text{artif}} ||^2}
+\text{SDR} := 10 \log_{10} \left( \frac{\| s_{\text{target}} \|^2}{ \| e_{\text{interf}} + e_{\text{noise}} + e_{\text{artif}} \|^2} \right)
 \]</div>
 <p>SDR is usually considered to be an overall measure of how good a source
 sounds. If a paper only reports one number for estimated quality, it
@@ -501,14 +491,14 @@ voice separation is <span class="math notranslate nohighlight">\(7.24 dB\)</span
 <p>This is not used as widely, but does appear sometimes in source separation:</p>
 <div class="math notranslate nohighlight">
 \[
-\text{SNR} := 10 \log_{10} \big( \frac{|| s_{\text{target}} ||^2}{ || s_{\text{target}} - \hat{s} ||^2} \big)
+\text{SNR} := 10 \log_{10} \left( \frac{\| s_{\text{target}} \|^2}{ \| s_{\text{target}} - \hat{s} \|^2} \right)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{s}\)</span> is the estimate of <span class="math notranslate nohighlight">\(s_{\text{target}}\)</span>.</p>
 <div class="section" id="si-sdr">
 <h4>SI-SDR<a class="headerlink" href="#si-sdr" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="sdr-vs-sisdr">
 <img alt="Waveform shown at many different time scales from a few seconds to a few samples." src="../_images/sdr_vs_sisdr.png" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">The way SDR calculates the <span class="math notranslate nohighlight">\(e_{\text{interf}}\)</span>, <span class="math notranslate nohighlight">\(e_{\text{noise}}\)</span>, and
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">The way SDR calculates the <span class="math notranslate nohighlight">\(e_{\text{interf}}\)</span>, <span class="math notranslate nohighlight">\(e_{\text{noise}}\)</span>, and
 <span class="math notranslate nohighlight">\(e_{\text{artif}}\)</span> terms
 can lead to issues where the original signal (top) can be horribly degraded (bottom)
 and still get a very high SDR score.
@@ -527,13 +517,13 @@ which corresponds to SAR and SIR described above, respectively.
 Although these measures are not sensitive to amplitude scaling, it
 is a quicker computation because it does not require windowing
 the estimatd and ground truth signals like SDR.</p>
-<p>In <a class="reference internal" href="#sdr-vs-sisdr"><span class="std std-numref">Fig. 16</span></a>, the discrepency between SDR and SI-SDR
+<p>In <a class="reference internal" href="#sdr-vs-sisdr"><span class="std std-numref">Fig. 20</span></a>, the discrepency between SDR and SI-SDR
 scores is shown. The top spectrogram shows the ground truth signal.
 Above it are its scores for SDR, SNR, and SI-SDR. As expected the
 ground truth signal gets high values for SDR, SNR, and SI-SDR
 (268.1 dB, infinity dB, and infinity dB, respectively. Shown above the plot).
 The bottom spectrogram shows a highly degraded version of the top
-signal. While the SI-SDR, and SNR are quite loe (-4.72 dB and 1.26 dB,
+signal. While the SI-SDR, and SNR are quite low (-4.72 dB and 1.26 dB,
 respectively), the SDR value is still quite high (11.56 db). For
 reference, this is a speech signal and this SDR value is higher than
 state-of-the-art speech separation systems from a few years ago.</p>
@@ -611,7 +601,8 @@ tests, which rarely—if ever—happen when evaluating source separation
 because of how time-consuming and expensive they are.</p>
 <p>Some studies have come have shown that crowd sourcing results from
 MUSHRA-like online listening studies can be an effective alternative
-to trained experts in a controlled setting. Although this is much
+to trained experts in a controlled setting. <a class="bibtex reference internal" href="../zzz_refs.html#cartwright2016fast" id="id6">[CPMH16]</a><a class="bibtex reference internal" href="../zzz_refs.html#schoeffler2018webmushra" id="id7">[SBStoter+18]</a>
+Although this is much
 cheaper than a full-blown MUSHRA study, it still costs money ($100-200 USD)
 and takes a few days to get the results. Calculating SDR values on
 the other hand is virtually free and takes a few hours at most.</p>

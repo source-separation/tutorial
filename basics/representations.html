@@ -233,11 +233,6 @@
    Concluding Remarks
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../conclusions/additional_resources.html">
-   Additional Resources
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -245,11 +240,6 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../zzz_refs.html">
    References
@@ -462,7 +452,7 @@ for source separation.</p>
 <h2>Waveforms<a class="headerlink" href="#waveforms" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="waveform-gif">
 <img alt="Waveform shown at many different time scales from a few seconds to a few samples." src="../_images/richter.gif" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">A waveform shown at many different time scales. Each value is sampled at a uniform
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">A waveform shown at many different time scales. Each value is sampled at a uniform
 rate and quantized. Image used courtesy of Jan Van Balen (<a href="https://jvbalen.github.io/notes/waveform.html">source</a>).</span><a class="headerlink" href="#waveform-gif" title="Permalink to this image">¶</a></p>
 </div>
 <p>A <em>waveform</em> is shorthand for a digitized audio signal, which is most similar to
@@ -474,9 +464,9 @@ quantized, and converted to a digital array in a computer. This digital array is
 what we call the waveform. Of course, this description glosses over a lot of
 details in the realm of physics, acoustics, and signal processing. What’s
 important to know is that a continuous-time signal is discretized in both time
-and amplitude. We say a signal is <a class="reference internal" href="../appendix/glossary.html#term-Monophonic"><span class="xref std std-term">monophonic</span></a>, or <a class="reference internal" href="../appendix/glossary.html#term-Mono"><span class="xref std std-term">mono</span></a>, if there
+and amplitude. We say a signal is monophonic, or mono, if there
 is only one audio channel, i.e., this array has shape <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{t \times 1}\)</span>.
-We say a signal is <a class="reference internal" href="../appendix/glossary.html#term-Stereophonic"><span class="xref std std-term">stereophonic</span></a>, or <a class="reference internal" href="../appendix/glossary.html#term-Stereo"><span class="xref std std-term">stereo</span></a>, if the array has two
+We say a signal is stereophonic, or stereo, if the array has two
 channels, i.e., this array has shape <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{t \times 2}\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -487,15 +477,15 @@ to under the title of <em>beamforming</em> approaches. Beamforming is a related,
 separate area of active research. As such, the work we are going to cover in
 this space is sometimes called <em>Single Channel Source Separation</em>.</p>
 </div>
-<p>An important aspect of the waveform is the <a class="reference internal" href="../appendix/glossary.html#term-Sample-Rate"><span class="xref std std-term">sample rate</span></a>, which describes how
-many measurements, or <a class="reference internal" href="../appendix/glossary.html#term-Sample"><span class="xref std std-term">sample</span></a>s, happen per second and is measured in Hertz, or
+<p>An important aspect of the waveform is the sample rate, which describes how
+many measurements, or samples, happen per second and is measured in Hertz, or
 Hz<a class="footnote-reference brackets" href="#fn2" id="id1">1</a>. For a signal with sample rate <span class="math notranslate nohighlight">\(sr\)</span>, the maximum frequency that can be
 reliably represented is <span class="math notranslate nohighlight">\(f_N=\frac{sr}{2}\)</span>, which is called the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem">Nyquist frequency</a>.
 For example, if a signal has a sample rate of 44.1 kHz, the highest
 possible frequency is 22.05 kHz.</p>
 <p>Many deep learning-based source separation approaches will reduce the sample
-rate of their input signals (called <span class="xref std std-term">downsampling</span>) to reduce the
+rate of their input signals (called downsampling) to reduce the
 computational load during training time. Downsampling removes high frequency
 information from a signal, which is seen as a necessary evil when prototyping
 models.</p>
@@ -512,7 +502,7 @@ all input audio should be resampled to 16 kHz before using it.</p>
 <h2>Desirable Properties of Representations<a class="headerlink" href="#desirable-properties-of-representations" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="representation-img">
 <img alt="A signal that looks completely unseparable in one representation becomes easily separable in another representation." src="../_images/right_representation.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Examples of two signals represented differently. The first row has two ways of
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Examples of two signals represented differently. The first row has two ways of
 displaying a mixture of two single-frequency sine waves; panel (a) represents
 the waveform and panel (b) shows the frequency spectrum. The second row has two
 ways of displaying a mixture of two linear chirp signals (<em>i.e.</em>, sine waves
@@ -534,14 +524,14 @@ variations on the same theme, namely:</p>
 <p>Almost every source separation approach we discuss here–classic and deep–can
 be broken down into these three steps. We want to note that each of these three
 steps might in fact involve multiple separate substeps.</p>
-<p>Therefore an important aspect of an audio representation is <span class="xref std std-term">invertability</span>, or
+<p>Therefore an important aspect of an audio representation is invertability, or
 whether a signal that is converted from a waveform to a new representation can
 reliably be converted back to a waveform with little-to-no error. Artifacts that
 arise from converting back and forth will be audible in our separation output, so
 we want to minimize these types of errors (although eliminating them does not
 guarantee a perfect separation).</p>
 <p>An other important aspect is whether this representation can keep data from
-one source apart from another source. As seen in <a class="reference internal" href="#representation-img"><span class="std std-numref">Fig. 7</span></a>,
+one source apart from another source. As seen in <a class="reference internal" href="#representation-img"><span class="std std-numref">Fig. 8</span></a>,
 some representations might be better suited to separate certain signals than other
 representations. In this tutorial we will explore methods that produce representations
 specifically designed for separating sources.</p>
@@ -559,7 +549,7 @@ on the separation quality of your approach.</p>
 <h3>Time-Frequency (TF) Representations<a class="headerlink" href="#time-frequency-tf-representations" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="tf-repr">
 <img alt="A time-frequency representation." src="../_images/tf_representation.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">A time-frequency representation. One dimension is indexed by time, another is
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">A time-frequency representation. One dimension is indexed by time, another is
 index by frequency, and values in the matrix represent the energy of the sound
 at that partifular time and frequency.</span><a class="headerlink" href="#tf-repr" title="Permalink to this image">¶</a></p>
 </div>
@@ -567,8 +557,8 @@ at that partifular time and frequency.</span><a class="headerlink" href="#tf-rep
 matrix that represents the frequency contents of an audio signal over time.
 There are many types of time-frequency representations out in the world, but we
 will only discuss those that are most frequently used for source separation here.</p>
-<p>We call a specific entry in this matrix a <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>. We can visualize a
-<a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a> using a heatmap, which has time along the x-axis and
+<p>We call a specific entry in this matrix a TF bin. We can visualize a
+TF Representation using a heatmap, which has time along the x-axis and
 frequency along the y-axis. Each TF bin in the heatmap represents the amplitude
 of the signal at that particular time and frequency. Some heatmaps have a colorbar
 alongside them that shows which colors indicate high amplitude values and which
@@ -581,7 +571,7 @@ and fundamental time-frequency representations.</p>
 <h4>Short-time Fourier Transform (STFT)<a class="headerlink" href="#short-time-fourier-transform-stft" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="stft-process">
 <img alt="Diagram depicting how a short-time Fourier transform is computed." src="../_images/stft_process.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">The process of computing a short-time Fourier transform of a waveform. Imaged used
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">The process of computing a short-time Fourier transform of a waveform. Imaged used
 courtesy of Bryan Pardo.</span><a class="headerlink" href="#stft-process" title="Permalink to this image">¶</a></p>
 </div>
 <p>Many of the time-frequency representations that we will see in this tutorial
@@ -602,12 +592,12 @@ to a waveform. This is called the inverse Short-time Fourier Transform or iSTFT.
 <h5>Window Types<a class="headerlink" href="#window-types" title="Permalink to this headline">¶</a></h5>
 <div class="figure align-default" id="id5">
 <img alt="Six commonly used window types for calculating an STFT." src="../_images/window_types.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Six commonly used window types for calculating an STFT.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Six commonly used window types for calculating an STFT.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The window type determines the shape of the short-time window that will segment
 the audio into short segments before applying the DFT. The shape of this window
 can will affect which frequencies get emphasized or attenuated in the DFT. There
-are many types of window functions, in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 10</span></a>, we show the most
+are many types of window functions, in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 11</span></a>, we show the most
 common ones when calculating an STFT for source separation. For more information
 on other types of windows and their frequency response, please see <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code>’s
 documentation <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.windows.html">here</a>.</p>
@@ -621,7 +611,7 @@ the <code class="docutils literal notranslate"><span class="pre">sqrt_hann</span
 <h5>Window Length<a class="headerlink" href="#window-length" title="Permalink to this headline">¶</a></h5>
 <div class="figure align-default" id="window-lens">
 <img alt="Trade off between time and frequency resolution for different window lengths." src="../_images/win_len.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Trade off between time and frequency resolution for different window lengths.
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Trade off between time and frequency resolution for different window lengths.
 In the simplified case, the number of frequency bins is determined by the window
 length.
 Using the same signal, we compute the STFT once with window length 512, and
@@ -632,19 +622,19 @@ the window length.</span><a class="headerlink" href="#window-lens" title="Permal
 <p>The window length determines how many samples are included in each short-time
 window. Due to how the DFT is computed, this parameter also determines the
 resolution of the frequency axis of the STFT. The longer the window, the higher
-the frequency resolution and vice versa, as is visible in <a class="reference internal" href="#window-lens"><span class="std std-numref">Fig. 11</span></a>.</p>
+the frequency resolution and vice versa, as is visible in <a class="reference internal" href="#window-lens"><span class="std std-numref">Fig. 12</span></a>.</p>
 </div>
 <div class="section" id="hop-length">
 <h5>Hop Length<a class="headerlink" href="#hop-length" title="Permalink to this headline">¶</a></h5>
 <div class="figure align-default" id="hop-lens">
 <img alt="The hope length determines the distance (in samples) between adjacent short-time windows." src="../_images/hop_len.png" />
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">The hope length determines the distance (in samples) between adjacent short-time
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">The hope length determines the distance (in samples) between adjacent short-time
 windows. An STFT is computed twice on the same signal; the smaller the hop length
 the more times a particular segment of the audio signal is represented in the
 STFT.</span><a class="headerlink" href="#hop-lens" title="Permalink to this image">¶</a></p>
 </div>
 <p>The hop length determines the distance, in samples, between any two adjacent
-short-time windows. In the image shown in <a class="reference internal" href="#hop-lens"><span class="std std-numref">Fig. 12</span></a> shows how the hop
+short-time windows. In the image shown in <a class="reference internal" href="#hop-lens"><span class="std std-numref">Fig. 13</span></a> shows how the hop
 length can elongate or shorten the time axis on an STFT depending on how it is
 set.</p>
 </div>
@@ -665,15 +655,15 @@ and an <a class="reference external" href="https://docs.scipy.org/doc/scipy/refe
 <h4>Magnitude, Power, and Log Spectrograms<a class="headerlink" href="#magnitude-power-and-log-spectrograms" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="spectrograms">
 <img alt="Four types of spectrograms with different scaling for function." src="../_images/ylinear_specs.png" />
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">A visual comparison of the four types of spectrograms discussed in this section.
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">A visual comparison of the four types of spectrograms discussed in this section.
 Each has a different scaling function applied to the loudness, which is reflected
 in the colors of the heatmap plots.</span><a class="headerlink" href="#spectrograms" title="Permalink to this image">¶</a></p>
 </div>
 <p>As we will touch on later in this tutorial, it is hard to model the
 phase of a signal. Therefore most source separation approaches only operate on
 the some variant of the spectrogram that does not explicitly represent phase in
-each <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a>. A visualization of four types of spectrograms is shown
-in <a class="reference internal" href="#spectrograms"><span class="std std-numref">Fig. 13</span></a>.</p>
+each TF bin. A visualization of four types of spectrograms is shown
+in <a class="reference internal" href="#spectrograms"><span class="std std-numref">Fig. 14</span></a>.</p>
 <p><strong>Magnitude Spectrogram</strong>
 For a complex-valued STFT, <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{T \times F}\)</span>, the Magnitude
 Spectrogram is calculated by taking the absolute value of each element in the
@@ -710,7 +700,7 @@ is being discussed when possible.</p>
 <h4>Mel-spaced Spectrograms<a class="headerlink" href="#mel-spaced-spectrograms" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="mel-spectrograms">
 <img alt="A visual comparison of linear-scaled vs mel-spaced y axies." src="../_images/ymel_specs.png" />
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">A visual comparison of linear-scaled vs mel-spaced y axies.
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">A visual comparison of linear-scaled vs mel-spaced y axies.
 Lower frequencies have a larger representation in a mel-spaced spectrogram.</span><a class="headerlink" href="#mel-spectrograms" title="Permalink to this image">¶</a></p>
 </div>
 <p>Human hearing is also logarithmic with regards to frequencies. The
@@ -719,7 +709,7 @@ and is a quick way to make the frequency axis of a spectrogram
 quasi-logarithmic<a class="footnote-reference brackets" href="#fn3" id="id6">3</a>. This is also commonly used to reduce the computational
 load on deep learning-based approaches, because the number of Mel-spaced frequency
 bins is often lower then the number of linearly-spaced frequency bins.</p>
-<p>A visual comparison is shown in <a class="reference internal" href="#mel-spectrograms"><span class="std std-numref">Fig. 14</span></a>. Notice the how the
+<p>A visual comparison is shown in <a class="reference internal" href="#mel-spectrograms"><span class="std std-numref">Fig. 15</span></a>. Notice the how the
 y-axis in the Mel-spaced spectrogram is quasi-logarithmic, squishing higher frequencies
 and leaving more space for lower frequencies.</p>
 </div>

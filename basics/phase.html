@@ -233,11 +233,6 @@
    Concluding Remarks
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../conclusions/additional_resources.html">
-   Additional Resources
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -245,11 +240,6 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../zzz_refs.html">
    References
@@ -405,13 +395,16 @@
 <span id="id1"></span><h1>Phase<a class="headerlink" href="#phase" title="Permalink to this headline">¶</a></h1>
 <p>While many source separation papers mainly focus on their approaches for creating
 better mask estimates, which only apply to the magnitude components of a
-<a class="reference internal" href="../appendix/glossary.html#term-TF-Representation"><span class="xref std std-term">TF Representation</span></a>, the other crucial aspect of sound is its phase.</p>
+TF Representation, the other crucial aspect of sound is its phase.</p>
 <p>In this section, we will discuss the important problem of how to turn a magnitude
 spectrogram of an estimated source back into a waveform so that we may listen to
 the source estimation.</p>
 <div class="section" id="phase-a-quick-primer">
 <h2>Phase - A Quick Primer<a class="headerlink" href="#phase-a-quick-primer" title="Permalink to this headline">¶</a></h2>
-<p>[[PHASE IMAGE]]</p>
+<div class="figure align-default" id="circle-phase">
+<img alt="Phase is an important component of sound." src="../_images/circle_phase.gif" />
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">An audio signal’s phase is fundamental to representing the signal.</span><a class="headerlink" href="#circle-phase" title="Permalink to this image">¶</a></p>
+</div>
 <p>An audio signal, <span class="math notranslate nohighlight">\(y(t)\)</span>, composed of exactly one sine wave,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -438,7 +431,7 @@ we hear can be represented as many, many tuples of <span class="math notranslate
 <p>Let’s think back
 to the section about time-frequency representations: each bin is index by time
 along the x-axis and frequency along the y-axis.
-We’ll be a little hand-wavy here, but we can think of a <a class="reference internal" href="../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a> as a “snapshot”
+We’ll be a little hand-wavy here, but we can think of a TF bin as a “snapshot”
 of the sound at that particular time and at that particular frequency component.
 In a magnitude spectrogram, power spectrogram, log spectrogram, etc, each value
 represents the sound’s energy for that frequency at that time. So, if you’re keeping
@@ -451,7 +444,7 @@ approaches model phase information?</p>
 <h2>Why We Don’t Model Phase<a class="headerlink" href="#why-we-don-t-model-phase" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="real-vs-fake-phase">
 <img alt="Which one of these images shows the real phase versus random noise?" src="../_images/real_vs_fake_phase.png" />
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">The structure of phase within an STFT makes it hard to model.
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">The structure of phase within an STFT makes it hard to model.
 One of these two images shows the phase component of an STFT and another
 shows random noise. Can you guess which is which?</span><a class="headerlink" href="#real-vs-fake-phase" title="Permalink to this image">¶</a></p>
 </div>
@@ -459,21 +452,28 @@ shows random noise. Can you guess which is which?</span><a class="headerlink" hr
 the phase component of an audio signal, the other shows white noise. Can you
 guess which is which? <a class="footnote-reference brackets" href="#fn2" id="id2">1</a></p>
 <p>Therein lies the problem: there is a complicated interplay between how the
-<a class="reference internal" href="../appendix/glossary.html#term-DFT"><span class="xref std std-term">DFT</span></a> captures the signal at each time step, how the frequency is captured
+DFT captures the signal at each time step, how the frequency is captured
 and how the phase is captured. Let’s build some intuition for why this is.
 For the same time step, the lower frequency components of the signal change less
 quickly than the higher frequency components. This means that for any two adjacent
 time steps, the time difference is the same but the amount of change of any frequency
 might not be the same. The phase wraparound happens much quicker at the higher frequencies
 than at the lower frequencies.</p>
-<p>For instance, let’s say we have a sound wave that is composed
-of two sine waves that have frequency <span class="math notranslate nohighlight">\(440\)</span> Hz and <span class="math notranslate nohighlight">\(523.25\)</span> Hz, which are A440 and
-the C note above A440 respectively. Both start at the origin at time <span class="math notranslate nohighlight">\(t = 0\)</span>.
-Let’s look at the value of each of these sine waves at different time intervals:</p>
-<p>When we take snapshots of each sine wave, it’s difficult to find a pattern between
-the two (other than, y’know, the sine wave we drew them from).
-Another difficulty is that humans do not always perceive phase offsets,, <em>i.e.</em>,
-a sine wave with <span class="math notranslate nohighlight">\(\phi = 0\)</span> sounds the same as a sine wave with <span class="math notranslate nohighlight">\(\phi` \ne 0\)</span></p>
+<div class="figure align-default" id="phase-sensitivity">
+<img alt="Phase is sensitive to frequency and its initial starting point." src="../_images/phase_sensitivity.gif" />
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Getting a snapshot of the phase (the black dotted vertical line) is very
+sensitive to the frequencies and initial phases of the sine waves. This
+is similar to what happens when take an STFT: many snapshots of sine waves
+with many frequencies and initial phase offsets.</span><a class="headerlink" href="#phase-sensitivity" title="Permalink to this image">¶</a></p>
+</div>
+<p>The gif above shows two sine waves. They both start at A440, or 440 Hz. But then the bottom one
+gradually changes frequency up an octave higher (880 Hz). The dotted black
+line shows a shapshot of the phase as the frequency changes. The initial phase also changes
+in the interval <span class="math notranslate nohighlight">\([0.0, 2\pi]\)</span>. Notice how sensitive the snapshot is to changes
+in the frequency and initial phase.</p>
+<p>Another big difficulty when dealing with phase is that humans do not always
+perceive phase differences, <em>i.e.</em>,
+a sine wave with <span class="math notranslate nohighlight">\(\phi = 0\)</span> sounds the same as a sine wave with <span class="math notranslate nohighlight">\(\phi' \ne 0\)</span></p>
 <p>This is all to say that getting phase right is <em>hard</em>. That being said, there are ways
 to estimate phase, but few if any source separation approaches
 (or sound generation models) attempt to explicitly model phase to the same extent
@@ -482,8 +482,6 @@ techniques below.</p>
 </div>
 <div class="section" id="how-to-deal-with-phase">
 <h2>How to Deal with Phase<a class="headerlink" href="#how-to-deal-with-phase" title="Permalink to this headline">¶</a></h2>
-<p>In this section, we will touch on some approaches to dealing with phase information
-in source separation.</p>
 <div class="section" id="the-easy-way">
 <h3>The Easy Way<a class="headerlink" href="#the-easy-way" title="Permalink to this headline">¶</a></h3>
 <p>For a mask-based source separation approach, a easy and very common way to deal with phase
@@ -510,8 +508,8 @@ of our source estimate, <span class="math notranslate nohighlight">\(\hat{X}_i\)
 \tilde{X}_i = \hat{X}_i \odot e^{j \cdot \angle Y}
 \]</div>
 <p>where we use <span class="math notranslate nohighlight">\(j = \sqrt{-1}\)</span>, “<span class="math notranslate nohighlight">\(\angle\)</span>” to represent the angle of the complex-valued
-<a class="reference internal" href="../appendix/glossary.html#term-STFT"><span class="xref std std-term">STFT</span></a> of <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(\tilde{X}_i \in \mathbb{C}^{T \times F}\)</span> to indicate
-that the estimate for Source <span class="math notranslate nohighlight">\(i\)</span> is now complex-valued similar to an <a class="reference internal" href="../appendix/glossary.html#term-STFT"><span class="xref std std-term">STFT</span></a>.</p>
+STFT of <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(\tilde{X}_i \in \mathbb{C}^{T \times F}\)</span> to indicate
+that the estimate for Source <span class="math notranslate nohighlight">\(i\)</span> is now complex-valued similar to an STFT.</p>
 <p>Putting it all together it looks like:</p>
 <div class="math notranslate nohighlight">
 \[

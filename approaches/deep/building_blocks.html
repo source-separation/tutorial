@@ -233,11 +233,6 @@
    Concluding Remarks
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../conclusions/additional_resources.html">
-   Additional Resources
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -245,11 +240,6 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../zzz_refs.html">
    References
@@ -475,11 +465,6 @@
      Spectrogram Considerations
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#learned-filter-banks">
-     Learned Filter Banks
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -500,8 +485,8 @@
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#clustering-losses">
-     Clustering Losses
+    <a class="reference internal nav-link" href="#deep-clustering-losses">
+     Deep Clustering Losses
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -510,6 +495,16 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-important-pieces">
+   Other Important Pieces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps…
+  </a>
  </li>
 </ul>
 
@@ -573,7 +568,7 @@ way there to a working system.</p>
 <h4>Fully Connected Layers<a class="headerlink" href="#fully-connected-layers" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="fully-connected">
 <a class="reference internal image-reference" href="../../_images/fully_connected.png"><img alt="A fully connected layer." src="../../_images/fully_connected.png" style="width: 249.5px; height: 300.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">An input layer, a fully connected hidden layer, and an output layer.
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">An input layer, a fully connected hidden layer, and an output layer.
 <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg">Image Source</a></span><a class="headerlink" href="#fully-connected" title="Permalink to this image">¶</a></p>
 </div>
 <p>In a fully connected layer, every node is connected to every input node
@@ -618,7 +613,7 @@ and then reshape it so that we can make sense of it.</p>
 <h4>Recurrent Layers<a class="headerlink" href="#recurrent-layers" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="rnn">
 <img alt="An unfolded recurrent node" src="../../_images/rnn.png" />
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Recurrent layers have self-connected loops. When the loops are
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Recurrent layers have self-connected loops. When the loops are
 “unfolded” they show how each loop represents a different time step.
 <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg">Image Source</a></span><a class="headerlink" href="#rnn" title="Permalink to this image">¶</a></p>
 </div>
@@ -651,7 +646,7 @@ convolutional layers, which we will cover shortly.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="lstm">
 <a class="reference internal image-reference" href="../../_images/lstm.png"><img alt="../../_images/lstm.png" src="../../_images/lstm.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">LSTM cell <a class="reference external" href="https://commons.wikimedia.org/wiki/File:The_LSTM_cell.png">Image Source</a></span><a class="headerlink" href="#lstm" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">LSTM cell <a class="reference external" href="https://commons.wikimedia.org/wiki/File:The_LSTM_cell.png">Image Source</a></span><a class="headerlink" href="#lstm" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -661,7 +656,7 @@ convolutional layers, which we will cover shortly.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="gru">
 <a class="reference internal image-reference" href="../../_images/gru.png"><img alt="../../_images/gru.png" src="../../_images/gru.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">GRU <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Gated_Recurrent_Unit,_base_type.svg">Image Source</a></span><a class="headerlink" href="#gru" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">GRU <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Gated_Recurrent_Unit,_base_type.svg">Image Source</a></span><a class="headerlink" href="#gru" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -674,7 +669,7 @@ and <strong><a class="reference external" href="https://en.wikipedia.org/wiki/Ga
 Although there are
 slight differences between the two, what’s important to know is that
 these layers are able to retain information in a way that is stable,
-whereas naive recurrent layers like those shown in <a class="reference internal" href="#rnn"><span class="std std-numref">Fig. 18</span></a> are
+whereas naive recurrent layers like those shown in <a class="reference internal" href="#rnn"><span class="std std-numref">Fig. 22</span></a> are
 <em>not</em> stable.</p>
 <p>For source separation, researcher mostly use <strong>LSTM</strong> layers. We are unaware of
 any reason that source separation researchers have settled on LSTMs over
@@ -729,7 +724,7 @@ shown below.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="conv1">
 <a class="reference internal image-reference" href="../../_images/conv_no_padding_no_strides.gif"><img alt="../../_images/conv_no_padding_no_strides.gif" src="../../_images/conv_no_padding_no_strides.gif" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Convolution with 2D input with a 3x3 kernel and stride 1.
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Convolution with 2D input with a 3x3 kernel and stride 1.
 Blue maps are inputs, and cyan maps are outputs. <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">Image Source</a></span><a class="headerlink" href="#conv1" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -740,7 +735,7 @@ Blue maps are inputs, and cyan maps are outputs. <a class="reference external" h
 <div class="card-body docutils">
 <div class="figure align-default" id="conv2">
 <a class="reference internal image-reference" href="../../_images/conv_no_padding_strides.gif"><img alt="../../_images/conv_no_padding_strides.gif" src="../../_images/conv_no_padding_strides.gif" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Convolution with 2D input with a 3x3 kernel and stride 2.
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Convolution with 2D input with a 3x3 kernel and stride 2.
 Blue maps are inputs, and cyan maps are outputs. <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">Image Source</a></span><a class="headerlink" href="#conv2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -763,7 +758,7 @@ the window moves between adjacent input nodes.</p>
 <div class="card-body docutils">
 <div class="figure align-default" id="conv3">
 <a class="reference internal image-reference" href="../../_images/conv_same_padding_no_strides.gif"><img alt="../../_images/conv_same_padding_no_strides.gif" src="../../_images/conv_same_padding_no_strides.gif" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Convolution with 2D input with a 5x5 kernel and padding of 1.
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">Convolution with 2D input with a 5x5 kernel and padding of 1.
 Blue maps are inputs, and cyan maps are outputs. <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">Image Source</a></span><a class="headerlink" href="#conv3" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -774,7 +769,7 @@ Blue maps are inputs, and cyan maps are outputs. <a class="reference external" h
 <div class="card-body docutils">
 <div class="figure align-default" id="conv4">
 <a class="reference internal image-reference" href="../../_images/conv_dilation.gif"><img alt="../../_images/conv_dilation.gif" src="../../_images/conv_dilation.gif" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Dilated Convolution with 2D input with a 3x3 kernel and dilation factor of 1.
+<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Dilated Convolution with 2D input with a 3x3 kernel and dilation factor of 1.
 Blue maps are inputs, and cyan maps are outputs. <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">Image Source</a></span><a class="headerlink" href="#conv4" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -786,11 +781,11 @@ Blue maps are inputs, and cyan maps are outputs. <a class="reference external" h
 no padding, then the inputs at the edge are only covered by the colvolutional
 layer nodes at the edge, but if there <em>is</em> padding then the inputs at
 the edge get covered by more convolutional nodes. Padding is shown in
-<a class="reference internal" href="#conv3"><span class="std std-numref">Fig. 23</span></a>.</p>
+<a class="reference internal" href="#conv3"><span class="std std-numref">Fig. 27</span></a>.</p>
 <p>Dilation determines the spacing between the input nodes that each
 convolutional node sees. This allows each node to understand more
 context than if no dilation is used. A gif of dilation is shown in
-<a class="reference internal" href="#conv4"><span class="std std-numref">Fig. 24</span></a>. Dilation is perhaps most famous in the audio world
+<a class="reference internal" href="#conv4"><span class="std std-numref">Fig. 28</span></a>. Dilation is perhaps most famous in the audio world
 because of its use in Wavenet <a class="bibtex reference internal" href="../../zzz_refs.html#oord2016wavenet" id="id1">[ODZ+16]</a>, which used
 dilated convolutions in an autoregressive manner to produce one sample
 of a waveform at a time. <a class="footnote-reference brackets" href="#fn1" id="id2">1</a></p>
@@ -803,7 +798,7 @@ convolutional layer.</p>
 <p><strong>Pooling</strong></p>
 <div class="figure align-default" id="max-pooling">
 <a class="reference internal image-reference" href="../../_images/Max_pooling.png"><img alt="Max Pooling" src="../../_images/Max_pooling.png" style="width: 285.0px; height: 165.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">A max pooling operation on a matrix.
+<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">A max pooling operation on a matrix.
 <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Max_pooling.png">Image Source</a></span><a class="headerlink" href="#max-pooling" title="Permalink to this image">¶</a></p>
 </div>
 <p>An important part of using convolutional layers is <em>pooling</em> or
@@ -828,7 +823,7 @@ time-frequency domain 2D convolutions are used to input spectrograms
 and output masks.</p>
 <div class="figure align-default" id="tasnet-filterbanks">
 <img alt="Learned filterbanks on speech for Tasnet." src="../../_images/tasnet_filterbanks.png" />
-<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Learned filterbanks from the last convolutional layer of two Tasnet
+<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">Learned filterbanks from the last convolutional layer of two Tasnet
 models (covered
 on the next page), which was trained on speech. Figure (a) shows the
 learned filterbanks of a causal model and Figure (b) shows a noncausal
@@ -841,7 +836,7 @@ Image used courtesy of Yi Luo. <a class="bibtex reference internal" href="../../
 this relates to the concept of filters that we normally think of in audio, like
 high-pass, low-pass, or band-pass filters. For instance, when we learn
 a 1D convolutional layer from a waveform, each of the nodes is learning
-a filter from the data. For instance, <a class="reference internal" href="#tasnet-filterbanks"><span class="std std-numref">Fig. 26</span></a> shows
+a filter from the data. For instance, <a class="reference internal" href="#tasnet-filterbanks"><span class="std std-numref">Fig. 30</span></a> shows
 the result of two networks with convolutional layers that output a waveform.
 The image shows the learned filterbanks from the networks, which were
 trained on human speech.</p>
@@ -870,7 +865,7 @@ or <a class="reference external" href="https://cs231n.github.io/convolutional-ne
 <h3>Activation Functions<a class="headerlink" href="#activation-functions" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="activation">
 <a class="reference internal image-reference" href="../../_images/activation_fn.png"><img alt="How an activation function is applied in a network." src="../../_images/activation_fn.png" style="width: 480.0px; height: 228.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">How an activation function is applied in a network. Each node has a
+<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">How an activation function is applied in a network. Each node has a
 “weight”, which get combined and passed through the activation function.
 <a class="reference external" href="https://commons.wikimedia.org/wiki/File:ArtificialNeuronModel_english.png">Image Source</a></span><a class="headerlink" href="#activation" title="Permalink to this image">¶</a></p>
 </div>
@@ -887,10 +882,10 @@ are discussed below:</p>
 <h4>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="id5">
 <a class="reference internal image-reference" href="../../_images/sigmoid.png"><img alt="A plot of the sigmoid activation function." src="../../_images/sigmoid.png" style="width: 300.0px; height: 200.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">A plot of the Sigmoid activation function.
+<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">A plot of the Sigmoid activation function.
 <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Logistic-curve.svg">Image Source</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> activation function is shown in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 28</span></a> and
+<p>The <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> activation function is shown in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 32</span></a> and
 is used very commonly as the output of a neural net that creates masks.
 Because it is bounded in the range <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> it is perfectly
 suited to make <a class="reference internal" href="../../basics/tf_and_masking.html#masks-softmasks"><span class="std std-ref">Soft Masks (or Ratio Masks)</span></a>. It is sometimes denoted <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
@@ -899,11 +894,11 @@ suited to make <a class="reference internal" href="../../basics/tf_and_masking.h
 <h4>Tanh<a class="headerlink" href="#tanh" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="id6">
 <a class="reference internal image-reference" href="../../_images/tanh.png"><img alt="A plot of the tanh activation function." src="../../_images/tanh.png" style="width: 320.0px; height: 160.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">A plot of the tanh activation function.
+<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">A plot of the tanh activation function.
 <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Activation_tanh.svg">Image Source</a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">tanh</span></code>, or the hyperbolic tangent, activation function is
-shown in <a class="reference internal" href="#id6"><span class="std std-numref">Fig. 29</span></a>. Tanh is similar to sigmoid, but it is bounded
+shown in <a class="reference internal" href="#id6"><span class="std std-numref">Fig. 33</span></a>. Tanh is similar to sigmoid, but it is bounded
 in the range <span class="math notranslate nohighlight">\([-1.0, 1.0]\)</span>, instead of <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> like sigmoid.
 For this reason it is more common to find a <code class="docutils literal notranslate"><span class="pre">tanh</span></code> in the
 middle of a source separation network than at the ends.</p>
@@ -912,18 +907,18 @@ middle of a source separation network than at the ends.</p>
 <h4>ReLU &amp; Friends<a class="headerlink" href="#relu-friends" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="relu">
 <a class="reference internal image-reference" href="../../_images/relu.png"><img alt="A plot of the ReLU activation function." src="../../_images/relu.png" style="width: 320.0px; height: 160.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">A plot of the ReLU activation function.
+<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">A plot of the ReLU activation function.
 <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Activation_rectified_linear.svg">Image Source</a></span><a class="headerlink" href="#relu" title="Permalink to this image">¶</a></p>
 </div>
 <p>The Rectified Linear Unit, or <code class="docutils literal notranslate"><span class="pre">relu</span></code> activation function is shown
-above in <a class="reference internal" href="#relu"><span class="std std-numref">Fig. 30</span></a>. It is <span class="math notranslate nohighlight">\(0.0\)</span> if the input is less than <span class="math notranslate nohighlight">\(0.0\)</span>
+above in <a class="reference internal" href="#relu"><span class="std std-numref">Fig. 34</span></a>. It is <span class="math notranslate nohighlight">\(0.0\)</span> if the input is less than <span class="math notranslate nohighlight">\(0.0\)</span>
 and is linear with slope <span class="math notranslate nohighlight">\(1\)</span> otherwise:</p>
 <p><img alt="relu_eq" src="../../_images/relu_eq.svg" /></p>
 <p>ReLUs are sometimes used to
 make masks, and some systems use them to output waveforms as well.</p>
 <div class="figure align-default" id="leaky-relu">
 <a class="reference internal image-reference" href="../../_images/leaky_relu.png"><img alt="A plot of the PReLU activation function." src="../../_images/leaky_relu.png" style="width: 320.0px; height: 160.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">A plot of the PReLU activation function.
+<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">A plot of the PReLU activation function.
 <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Activation_prelu.svg">Image Source</a></span><a class="headerlink" href="#leaky-relu" title="Permalink to this image">¶</a></p>
 </div>
 <p>Two related activation functions to ReLUs are the <code class="docutils literal notranslate"><span class="pre">Leaky</span> <span class="pre">ReLU</span></code> and <code class="docutils literal notranslate"><span class="pre">PReLU</span></code>.</p>
@@ -1032,9 +1027,6 @@ we so choose. This is useful if you want to use a spectrogram
 model with one of the waveform losses outlined below. But beware:
 this might noticeably slow down your training process.</p>
 </div>
-<div class="section" id="learned-filter-banks">
-<h3>Learned Filter Banks<a class="headerlink" href="#learned-filter-banks" title="Permalink to this headline">¶</a></h3>
-</div>
 </div>
 <div class="section" id="loss-functions-and-targets">
 <h2>Loss Functions and Targets<a class="headerlink" href="#loss-functions-and-targets" title="Permalink to this headline">¶</a></h2>
@@ -1053,7 +1045,7 @@ mixture <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{F\times T
 mask <span class="math notranslate nohighlight">\(\hat{M}_i \in \mathbb{R}^{F\times T}\)</span> we compute the loss like</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{L} = \Big\| S_i - \hat{M}_i \odot |X| \Big\|_p,
+\mathcal{L}_{\text{spec}} = \Big\| S_i - \hat{M}_i \odot |X| \Big\|_p,
 \]</div>
 <p>where<span class="math notranslate nohighlight">\(\odot\)</span> denotes element-wise product adn <span class="math notranslate nohighlight">\(p\)</span> is the <em>norm</em> of
 the loss value. Only two norms are widely
@@ -1090,20 +1082,112 @@ loss and target.</p>
 </div>
 </div>
 </div>
-<div class="section" id="clustering-losses">
-<h3>Clustering Losses<a class="headerlink" href="#clustering-losses" title="Permalink to this headline">¶</a></h3>
-<p>Clustering losses are usually used to s</p>
+<div class="section" id="deep-clustering-losses">
+<h3>Deep Clustering Losses<a class="headerlink" href="#deep-clustering-losses" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="id18">
+<img alt="../../_images/dc_loss.png" src="../../_images/dc_loss.png" />
+<p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">The deep clustering loss encourages a network to learn a high dimensional
+embedding space where TF bins from the same source are close and TF bins
+from different sources are far.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</div>
+<p>Deep Clustering <a class="bibtex reference internal" href="../../zzz_refs.html#hershey2016deep" id="id11">[HCLRW16]</a><a class="bibtex reference internal" href="../../zzz_refs.html#luo2017deep" id="id12">[LCH+17]</a> losses are usually
+used with spectrograms as input.
+The goal is to learn a high-dimensional embedding space
+where all of the TF bins dominated by the same source close together
+and TF bins dominated by different sources are far apart.</p>
+<p>For the single-channel, ground truth binary mask <span class="math notranslate nohighlight">\(Y \in \{0.0, 1.0\}^{T \times F}\)</span> of
+some source, we reshape it so that it has shape <span class="math notranslate nohighlight">\({T F \times 1}\)</span>. We can then
+learn a <span class="math notranslate nohighlight">\(D\)</span>-dimensional embedding space called <span class="math notranslate nohighlight">\(V \in \mathbb{R}^{TF \times D}\)</span>.
+We can then define a ground truth binary affinity matrix <span class="math notranslate nohighlight">\(A = YY^T\)</span>, and an
+estimated affinity matrix from the network <span class="math notranslate nohighlight">\(\hat{A} = VV^T\)</span>. The deep
+clustering loss is thus given by,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{DC} = || \hat{A} - A ||^2_F = || VV^T - YY^T ||^2_F
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(F\)</span> is the Frobenius norm. Other types of deep clustering
+losses have been proposed, <a class="bibtex reference internal" href="../../zzz_refs.html#wang2018alternative" id="id13">[WLRH18]</a><a class="bibtex reference internal" href="../../zzz_refs.html#chen2017deep" id="id14">[CLM17]</a>
+but the intuition is the same: put TF bins from the same source close to one
+another and far from TF bins from other sources.</p>
+<p>Once the network is trained, a clustering algorithm such as k-means must
+be used to create masks for each source if the network has no other outputs.
+As we will see in the next section, deep clustering is frequently used as a
+regularizer to help learn a mask directly.</p>
 </div>
 <div class="section" id="waveform-losses">
 <h3>Waveform Losses<a class="headerlink" href="#waveform-losses" title="Permalink to this headline">¶</a></h3>
+<p>The simple way to compute loss in the waveform domain is to take an L1 or MSE
+loss between the real and estimated waveform, similar to how we did for
+spectrograms:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{wvfm}} = \Big\| \hat{x}_i - x_i \Big\|_p = \frac{1}{T} \sum_{t=1}^{\infty} \Big\| \hat{x}_{i,t} - x_{i,t} \Big\|_p
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{x}_i\)</span> is the estimated waveform for source <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(x_i\)</span>
+is the ground truth waveform for source <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(T\)</span> is the total number of
+samples in the source, and <span class="math notranslate nohighlight">\(p\)</span> is the norm (1 for L1, 2 for MSE).
+<a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019music" id="id15">[DefossezUBB19b]</a></p>
+<p>Alternatively, we can emulate the evaluation metrics (SDR &amp; Friends) by using
+that as a loss function. <a class="bibtex reference internal" href="../../zzz_refs.html#luo2018tasnet" id="id16">[LM18]</a> For</p>
+<div class="math notranslate nohighlight">
+\[
+x_{\text{target}} = \frac{\langle \hat{x}, x \rangle x}{\|x\|^2 }
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+e_{\text{noise}} = \hat{x} - x_{\text{target}},
+\]</div>
+<p>the SI-SNR loss is</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{SI-SNR}} = 10 \log_10 \left( \frac{\| x_{\text{target}}\|^2}{\|e_{\text{noise}}\|^2}.
+\]</div>
+<p>This is essentially optimizing the for the SDR evaluation metric. Variants
+include using SI-SDR itself as a loss function; the calculations are
+very similar.</p>
+</div>
+</div>
+<div class="section" id="other-important-pieces">
+<h2>Other Important Pieces<a class="headerlink" href="#other-important-pieces" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Optimizers</strong>:</p>
+<ul>
+<li><p>Optimizers actually perform gradient descent to update the weights of your
+model. Most people use Adam. Important hyperparameters include the learning
+rate, and gradient clipping. We will discuss this more in detail.</p></li>
+</ul>
+</li>
+<li><p><strong>Batch Size</strong>:</p>
+<ul>
+<li><p>Batch size is the number of training examples in your mini-batch that
+the gradients are computed on. Typically, the bigger the better; use
+the largest power of 2 that you can fit on your GPU.</p></li>
+</ul>
+</li>
+<li><p><strong>Epochs</strong></p>
+<ul>
+<li><p>This is the number of times you cycle through all of your data. Typically
+people train for a round number, like 100 epochs. Early stopping is
+also a good trick. Early stopping means that you stop training when
+the loss on the validation set stops decreasing (this is a sign that
+your model is overfitting to the training set). More on data considerations
+in a later section.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps…<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>Now that we know what the building blocks are, we can put them together
+to make whole networks. We’ll see how that’s done on the next page.</p>
 <hr class="docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
 <dd><p>Although we won’t cover Wavenet in detail in this tutorial, it has been
-used for music source separation in this paper: <a class="bibtex reference internal" href="../../zzz_refs.html#lluis2019end" id="id11">[LluisPS19]</a>.</p>
+used for music source separation in this paper: <a class="bibtex reference internal" href="../../zzz_refs.html#lluis2019end" id="id17">[LluisPS19]</a>.</p>
 </dd>
 </dl>
-</div>
 </div>
 </div>
 

@@ -4,7 +4,7 @@
 
 While many source separation papers mainly focus on their approaches for creating
 better mask estimates, which only apply to the magnitude components of a
-{term}`TF Representation`, the other crucial aspect of sound is its phase.
+TF Representation, the other crucial aspect of sound is its phase.
 
 In this section, we will discuss the important problem of how to turn a magnitude
 spectrogram of an estimated source back into a waveform so that we may listen to
@@ -13,7 +13,13 @@ the source estimation.
 
 ## Phase - A Quick Primer
 
-[[PHASE IMAGE]]
+```{figure} ../images/basics/circle_phase.gif
+---
+alt: Phase is an important component of sound.
+name: circle_phase
+---
+An audio signal's phase is fundamental to representing the signal.
+```
 
 An audio signal, $y(t)$, composed of exactly one sine wave,
 
@@ -45,7 +51,7 @@ we hear can be represented as many, many tuples of $(t, A, f, \phi)$.
 Let's think back
 to the section about time-frequency representations: each bin is index by time
 along the x-axis and frequency along the y-axis.
-We'll be a little hand-wavy here, but we can think of a {term}`TF bin` as a "snapshot"
+We'll be a little hand-wavy here, but we can think of a TF bin as a "snapshot"
 of the sound at that particular time and at that particular frequency component.
 In a magnitude spectrogram, power spectrogram, log spectrogram, etc, each value
 represents the sound's energy for that frequency at that time. So, if you're keeping
@@ -72,7 +78,7 @@ the phase component of an audio signal, the other shows white noise. Can you
 guess which is which? [^fn2]
 
 Therein lies the problem: there is a complicated interplay between how the
-{term}`DFT` captures the signal at each time step, how the frequency is captured
+DFT captures the signal at each time step, how the frequency is captured
 and how the phase is captured. Let's build some intuition for why this is.
 For the same time step, the lower frequency components of the signal change less
 quickly than the higher frequency components. This means that for any two adjacent
@@ -80,19 +86,29 @@ time steps, the time difference is the same but the amount of change of any freq
 might not be the same. The phase wraparound happens much quicker at the higher frequencies
 than at the lower frequencies.
 
-For instance, let's say we have a sound wave that is composed
-of two sine waves that have frequency $440$ Hz and $523.25$ Hz, which are A440 and
-the C note above A440 respectively. Both start at the origin at time $t = 0$.
-Let's look at the value of each of these sine waves at different time intervals:
+
+```{figure} ../images/basics/phase_sensitivity.gif
+---
+alt: Phase is sensitive to frequency and its initial starting point.
+name: phase_sensitivity
+---
+Getting a snapshot of the phase (the black dotted vertical line) is very
+sensitive to the frequencies and initial phases of the sine waves. This
+is similar to what happens when take an STFT: many snapshots of sine waves
+with many frequencies and initial phase offsets.
+```
 
 
+The gif above shows two sine waves. They both start at A440, or 440 Hz. But then the bottom one
+gradually changes frequency up an octave higher (880 Hz). The dotted black
+line shows a shapshot of the phase as the frequency changes. The initial phase also changes
+in the interval $[0.0, 2\pi]$. Notice how sensitive the snapshot is to changes
+in the frequency and initial phase.
 
 
-
-When we take snapshots of each sine wave, it's difficult to find a pattern between
-the two (other than, y'know, the sine wave we drew them from).
-Another difficulty is that humans do not always perceive phase offsets,, _i.e._,
-a sine wave with $\phi = 0$ sounds the same as a sine wave with $\phi` \ne 0$
+Another big difficulty when dealing with phase is that humans do not always
+perceive phase differences, _i.e._,
+a sine wave with $\phi = 0$ sounds the same as a sine wave with $\phi' \ne 0$
 
 This is all to say that getting phase right is _hard_. That being said, there are ways
 to estimate phase, but few if any source separation approaches
@@ -101,9 +117,6 @@ that magnitude information is modeled. We will discuss some of these phase estim
 techniques below.
 
 ## How to Deal with Phase
-
-In this section, we will touch on some approaches to dealing with phase information
-in source separation.
 
 ### The Easy Way
 
@@ -135,8 +148,8 @@ $$
 $$
 
 where we use $j = \sqrt{-1}$, "$\angle$" to represent the angle of the complex-valued
-{term}`STFT` of $Y$, and $\tilde{X}_i \in \mathbb{C}^{T \times F}$ to indicate
-that the estimate for Source $i$ is now complex-valued similar to an {term}`STFT`.
+STFT of $Y$, and $\tilde{X}_i \in \mathbb{C}^{T \times F}$ to indicate
+that the estimate for Source $i$ is now complex-valued similar to an STFT.
 
 Putting it all together it looks like:
 

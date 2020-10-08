@@ -2,6 +2,14 @@ What is Source Separation?
 ==========================
 
 
+```{figure} ../images/data/source_separation_io.png
+---
+alt: Separating of musical signals.
+name: source_separation
+---
+Source separation is the opposite of the mixing process.
+```
+
 
 Source Separation is the process of isolating individual sounds in an auditory
 mixture of multiple sounds. {cite}`vincent2018audio` We call each sound heard
@@ -137,9 +145,6 @@ idea is to take advantage of the interference patterns in signals to isolate
 specific sources. Beamforming is commonly used to detect human speech in smart
 speaker products like Amazon's Alexa, but it has musical applications in
 [iZotopes Spire](https://www.izotope.com/en/products/spire-studio.html).
-
-While this field is beyond the expertise of the authors, we will be touching on
-some methods that do incorporate spatial features for source separation.
 
 
 ## A Historical Perspective

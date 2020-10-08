@@ -40,9 +40,9 @@ quantized, and converted to a digital array in a computer. This digital array is
 what we call the waveform. Of course, this description glosses over a lot of
 details in the realm of physics, acoustics, and signal processing. What's
 important to know is that a continuous-time signal is discretized in both time
-and amplitude. We say a signal is {term}`monophonic`, or {term}`mono`, if there
+and amplitude. We say a signal is monophonic, or mono, if there
 is only one audio channel, i.e., this array has shape $x \in \mathbb{R}^{t \times 1}$.
-We say a signal is {term}`stereophonic`, or {term}`stereo`, if the array has two
+We say a signal is stereophonic, or stereo, if the array has two
 channels, i.e., this array has shape $x \in \mathbb{R}^{t \times 2}$.
 
 ```{note}
@@ -54,8 +54,8 @@ separate area of active research. As such, the work we are going to cover in
 this space is sometimes called _Single Channel Source Separation_.
 ```
 
-An important aspect of the waveform is the {term}`sample rate`, which describes how
-many measurements, or {term}`sample`s, happen per second and is measured in Hertz, or
+An important aspect of the waveform is the sample rate, which describes how
+many measurements, or samples, happen per second and is measured in Hertz, or
 Hz[^fn2]. For a signal with sample rate $sr$, the maximum frequency that can be
 reliably represented is $f_N=\frac{sr}{2}$, which is called the
 [Nyquist frequency](https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem).
@@ -63,7 +63,7 @@ For example, if a signal has a sample rate of 44.1 kHz, the highest
 possible frequency is 22.05 kHz.
 
 Many deep learning-based source separation approaches will reduce the sample
-rate of their input signals (called {term}`downsampling`) to reduce the
+rate of their input signals (called downsampling) to reduce the
 computational load during training time. Downsampling removes high frequency
 information from a signal, which is seen as a necessary evil when prototyping
 models. 
@@ -108,7 +108,7 @@ Almost every source separation approach we discuss here--classic and deep--can
 be broken down into these three steps. We want to note that each of these three 
 steps might in fact involve multiple separate substeps.
 
-Therefore an important aspect of an audio representation is {term}`invertability`, or
+Therefore an important aspect of an audio representation is invertability, or
 whether a signal that is converted from a waveform to a new representation can
 reliably be converted back to a waveform with little-to-no error. Artifacts that
 arise from converting back and forth will be audible in our separation output, so
@@ -152,8 +152,8 @@ matrix that represents the frequency contents of an audio signal over time.
 There are many types of time-frequency representations out in the world, but we
 will only discuss those that are most frequently used for source separation here.
 
-We call a specific entry in this matrix a {term}`TF bin`. We can visualize a 
-{term}`TF Representation` using a heatmap, which has time along the x-axis and
+We call a specific entry in this matrix a TF bin. We can visualize a 
+TF Representation using a heatmap, which has time along the x-axis and
 frequency along the y-axis. Each TF bin in the heatmap represents the amplitude
 of the signal at that particular time and frequency. Some heatmaps have a colorbar
 alongside them that shows which colors indicate high amplitude values and which
@@ -286,7 +286,7 @@ in the colors of the heatmap plots.
 As we will touch on later in this tutorial, it is hard to model the
 phase of a signal. Therefore most source separation approaches only operate on
 the some variant of the spectrogram that does not explicitly represent phase in
-each {term}`TF bin`. A visualization of four types of spectrograms is shown
+each TF bin. A visualization of four types of spectrograms is shown
 in {numref}`spectrograms`.
 
 **Magnitude Spectrogram** 

@@ -233,11 +233,6 @@
    Concluding Remarks
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../conclusions/additional_resources.html">
-   Additional Resources
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -245,11 +240,6 @@
  </span>
 </p>
 <ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../appendix/glossary.html">
-   Glossary
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../zzz_refs.html">
    References
@@ -364,8 +354,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#u-nets">
-     U-Nets
+    <a class="reference internal nav-link" href="#u-net-friends">
+     U-Net &amp; Friends
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -403,8 +393,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#convtasnet">
-     ConvTasnet
+    <a class="reference internal nav-link" href="#tasnet-friends">
+     Tasnet &amp; Friends
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -418,6 +408,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps…
+  </a>
  </li>
 </ul>
 
@@ -443,10 +438,12 @@ using a more powerful system (<em>i.e.</em>, neural nets) to make a high dimensi
 representations that we can separate.</p>
 <div class="section" id="mask-based-systems">
 <h2>Mask-Based Systems<a class="headerlink" href="#mask-based-systems" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="u-nets">
-<span id="architectures-unets"></span><h3>U-Nets<a class="headerlink" href="#u-nets" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+<div class="section" id="u-net-friends">
+<span id="architectures-unets"></span><h3>U-Net &amp; Friends<a class="headerlink" href="#u-net-friends" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="unet">
+<img alt="The U-Net architecture." src="../../_images/unet.png" />
+<p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text">The U-Net architecture.
+Image used courtesy of Rachel Bittner.</span><a class="headerlink" href="#unet" title="Permalink to this image">¶</a></p>
 </div>
 <p>U-Nets <a class="bibtex reference internal" href="../../zzz_refs.html#jansson2017singing" id="id1">[JHM+17]</a> are a very popular architecture
 for music source separation systems. They input a spectrogram and
@@ -490,10 +487,10 @@ before concatenating to the respective deconvolutional layer.</p>
 </div>
 <div class="section" id="open-unmix">
 <span id="architectures-openunmix"></span><h3>Open-Unmix<a class="headerlink" href="#open-unmix" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id17">
+<div class="figure align-default" id="id20">
 <img alt="../../_images/open-unmix.png" src="../../_images/open-unmix.png" />
-<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">A diagram showing the Open-Unmix architecture for source separation.
-Image used courtesy of Fabian-Robert Stöter (<a href="https://github.com/sigsep/open-unmix-pytorch">source</a>).</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">A diagram showing the Open-Unmix architecture for source separation.
+Image used courtesy of Fabian-Robert Stöter (<a href="https://github.com/sigsep/open-unmix-pytorch">source</a>).</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </div>
 <p>Open-Unmix is a more recent neural network architecture that boasts impressive
 performance. Open-Unmix has one fully connected layer with batch norm and a <code class="docutils literal notranslate"><span class="pre">tanh</span></code>
@@ -516,6 +513,10 @@ batch normalization layers.</p>
 </div>
 <div class="section" id="mask-inference">
 <span id="architectures-maskinference"></span><h3>Mask Inference<a class="headerlink" href="#mask-inference" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="mask-inf">
+<a class="reference internal image-reference" href="../../_images/mask_inf.png"><img alt="Diagram of the Mask Inference architecture." src="../../_images/mask_inf.png" style="width: 419.0px; height: 675.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">A diagram of the Mask Inference architecture.</span><a class="headerlink" href="#mask-inf" title="Permalink to this image">¶</a></p>
+</div>
 <p>Although many deep learning systems make masks, the term <em>Mask
 Inference</em> typically refers to a specific type of source separation
 architecture. Mask Inference networks input a spectrogram, which is
@@ -536,11 +537,16 @@ is applied to the first 3 BLSTM layers.</p>
 <p>Mask Inference networks are usually trained with an <span class="math notranslate nohighlight">\(L_1\)</span> loss
 between the estimated spectrogram (<em>i.e.</em>, the estimated mask
 element-wise multiplied by the mixture spectrogram) and the
-target spectrogram. The target spectrogram can be</p>
+target spectrogram. Although it is a bit of a misnomer, this
+loss is called a Mask Inference Loss.</p>
 </div>
 <div class="section" id="deep-clustering">
 <span id="architectures-deepclustering"></span><h3>Deep Clustering<a class="headerlink" href="#deep-clustering" title="Permalink to this headline">¶</a></h3>
-<p>Deep Clustering maps each <a class="reference internal" href="../../appendix/glossary.html#term-TF-bin"><span class="xref std std-term">TF bin</span></a> to a high-dimensional
+<div class="figure align-default" id="id11">
+<a class="reference internal image-reference" href="../../_images/deep_clustering.png"><img alt="Diagram of the Deep Clustering architecture." src="../../_images/deep_clustering.png" style="width: 363.0px; height: 777.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">A diagram of the Deep Clustering architecture.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<p>Deep Clustering maps each TF bin to a high-dimensional
 embedding space such that TF bins dominated by the same source
 are close and those dominated by different sources are far apart.
 We say that a TF bin is <em>dominated</em> by some Source <span class="math notranslate nohighlight">\(S_i\)</span> if most
@@ -557,49 +563,57 @@ output of the embedding space.</p>
 separate clustering algorithm like
 <a class="reference external" href="https://en.wikipedia.org/wiki/K-means_clustering">k-means</a>
 must be applied to the embedding space to make masks.</p>
-<p>Lets say we have a signal with 513 frequency bins and 200 time steps,
-and we train a deep clustering with a 20 dimensional embedding
-space. This means the output of the network is a flat, 1D array with
-<span class="math notranslate nohighlight">\(513 \times 200 \times 20 = 2,048,000\)</span> values.
-Our network has created 20 values for each TF bin: how do we
-know which value means what? Indexing! If we determine that
-the first value is</p>
 </div>
 <div class="section" id="chimera">
 <span id="architectures-chimera"></span><h3>Chimera<a class="headerlink" href="#chimera" title="Permalink to this headline">¶</a></h3>
-<p>Chimera combines the Mask Inference and Deep Clustering architectures
+<div class="figure align-default" id="id12">
+<a class="reference internal image-reference" href="../../_images/chimera.png"><img alt="Diagram of the Chimera architecture." src="../../_images/chimera.png" style="width: 602.0px; height: 656.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">A diagram of the Chimera architecture.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+<p>Chimera <a class="bibtex reference internal" href="../../zzz_refs.html#luo2017deep" id="id13">[LCH+17]</a> combines the Mask Inference and Deep Clustering architectures
 into a multi-task neural network. The net is trained to optimize both
 loss functions simultaneously. It does this by having a separate
 “head” for each loss. Each of these heads is its own fully connected
-layer and activation with only one loss applied from the</p>
+layer and activation with a shared set of BLSTM weights, usually set
+up the same way as Mask Inference or Chimera above. In this instance
+we don’t use the deep clustering head to produce masks, but rather
+we only use the Mask Inference head. During training the Deep Clustering
+head acts as a regularizer that helps the network generalize to unseen
+mixes.</p>
 </div>
 </div>
 <div class="section" id="waveform-systems">
 <h2>Waveform Systems<a class="headerlink" href="#waveform-systems" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="convtasnet">
-<span id="architectures-convtasnet"></span><h3>ConvTasnet<a class="headerlink" href="#convtasnet" title="Permalink to this headline">¶</a></h3>
-<p>ConvTasnet <a class="bibtex reference internal" href="../../zzz_refs.html#luo2019conv" id="id11">[LM19]</a> is the second iteration of the original
-Tasnet <a class="bibtex reference internal" href="../../zzz_refs.html#luo2018tasnet" id="id12">[LM18]</a>speech separation architecture.</p>
-<p>The original Tasnet was structured
+<div class="section" id="tasnet-friends">
+<span id="architectures-convtasnet"></span><h3>Tasnet &amp; Friends<a class="headerlink" href="#tasnet-friends" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="id21">
+<img alt="../../_images/tasnet_all.png" src="../../_images/tasnet_all.png" />
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">A diagram showing the ConvTasnet architecture.
+Image used courtesy of Yi Luo.</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</div>
+<p>The Tasnet <a class="bibtex reference internal" href="../../zzz_refs.html#luo2018tasnet" id="id14">[LM18]</a> is a speech separation architecture
+that is structured
 very similar the Mask Inference architecture outlined above, with
 LSTM layers at the center. Tasnet has
 one main difference: Tasnet used a pair of convolutional layers
 to input and output waveforms directly. Additionally, because Tasnet
 outputs the waveforms directly it doesn’t need the additional step
 of multiplying by a mixture STFT to get the phase information.</p>
-<p>ConvTasnet replaces the LSTM center of Tasnet with convolutional
-layers that separate the input signal.</p>
+<p>ConvTasnet <a class="bibtex reference internal" href="../../zzz_refs.html#luo2019conv" id="id15">[LM19]</a> is the second iteration of the original
+TasNet speech separation architecture. It replaces the LSTM center of
+Tasnet with 1D convolutional layers that separate the input signal.</p>
 <p>While both Tasnet and ConvTasnet have both been popular in the
 speech separation literature, to our knowledge only ConvTasnet
 has seen use in music separation based on its implementation
-by the authors of Demucs <a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019music" id="id13">[DefossezUBB19b]</a>. This is because
+by the authors of Demucs <a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019music" id="id16">[DefossezUBB19b]</a>. This is because
 the translation from speech to music was not so straight forward
 in this case.</p>
-<p>ConvTasnet and Tasnet both use SI-SDR loss between</p>
+<p>ConvTasnet and Tasnet both use SI-SNR loss between target and estimated
+waveforms.</p>
 </div>
 <div class="section" id="wave-u-net">
 <span id="architectures-waveunet"></span><h3>Wave-U-Net<a class="headerlink" href="#wave-u-net" title="Permalink to this headline">¶</a></h3>
-<p>Wave-U-Net <a class="bibtex reference internal" href="../../zzz_refs.html#stoller2018wave" id="id14">[SED18b]</a> is an extension of the U-Net
+<p>Wave-U-Net <a class="bibtex reference internal" href="../../zzz_refs.html#stoller2018wave" id="id17">[SED18b]</a> is an extension of the U-Net
 architecture that operates directly on waveforms. Instead of 2D
 convolutions/deconvolutions acting on a spectrogram, Wave-U-Nets
 have a series of 1D convolutions/deconvolutions that operate on
@@ -610,13 +624,32 @@ deconvolutional decoding layers.</p>
 </div>
 <div class="section" id="demucs">
 <span id="architectures-demucs"></span><h3>Demucs<a class="headerlink" href="#demucs" title="Permalink to this headline">¶</a></h3>
-<p>Demucs <a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019demucs" id="id15">[DefossezUBB19a]</a><a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019music" id="id16">[DefossezUBB19b]</a> is similar to
+<div class="figure align-default" id="id22">
+<img alt="../../_images/demucs.png" src="../../_images/demucs.png" />
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">A diagram showing the original Tasnet architecture.
+Image used courtesy of Alexandre Défossez.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</div>
+<p>Demucs <a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019demucs" id="id18">[DefossezUBB19a]</a><a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019music" id="id19">[DefossezUBB19b]</a> is similar to
 both Wave-U-Net and Tasnet. It has the skip connections just as
 in Wave-U-Net, but at the center it has two BLSTM layers. The
 specific details of the shape of each layer are shown in the diagram.</p>
+<p>The Demucs authors <a class="reference external" href="https://github.com/facebookresearch/denoiser">recently released</a>
+a real-time version of this architecture for speech enhancement.
+Training a similar model for music could be an exciting development
+that enables more applications in source separation.</p>
 <p>Demucs uses <span class="math notranslate nohighlight">\(L_1\)</span> loss between the target and estimated waveform,
 scaled by the length (in samples) of the signals.</p>
 </div>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps…<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>This wraps up this section of the tutorial. Over the next few sections
+we will get some hands-on experience building these kinds of models.
+Before we get to writing model code, though, there’s one very important
+factor about these systems that we haven’t covered yet: data!</p>
+<p>Coming up, we’ll cover how to use Scaper to create large, augmented
+data sets, and after that we’ll wrap up with how to put together and
+train a model like the ones on this page.</p>
 </div>
 </div>
 
