@@ -1,6 +1,11 @@
 Welcome!
 ========
 
+```{image} ../images/data/source_separation_io.png
+---
+alt: Separating of musical signals.
+```
+
 Hello and welcome to the website for our tutorial at [ISMIR 2020](https://ismir.github.io/ISMIR2020/)!
 We're excited that you've decided to join us! Our tutorial is entitled...
 

@@ -20,7 +20,23 @@ python -m common.data --run.cmd='download'
 jb build --all book/
 ```
 
-## Running an experiment
+## FAQ
+
+**I can't get to the tutorial website! What do I do?**
+
+If you can't get to the tutorial website, you can either clone this repo
+and build the book using the instructions above, or clone the repo and
+switch to the gh-pages branch:
+
+```bash
+git clone https://github.com/source-separation/tutorial
+cd tutorial
+git checkout gh-pages
+git pull origin gh-pages
+open landing.html # or find it in explorer and launch it in a browser.
+```
+
+<!-- ## Running an experiment
 
 To run a basic mask estimation experiment with a Chimera network,
 do the following, given the base configuration included in
@@ -38,7 +54,7 @@ Now, train, evaluate, and listen to a model:
 ```
 # Train and evaluate the model
 python -m common.exp.chimera --args.load=common/exp/conf/chimera.yml
-```
+``` -->
 
 ## Questions? Comments? Typos? Bugs? Issues?
 
