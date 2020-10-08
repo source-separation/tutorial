@@ -1,7 +1,7 @@
 Welcome!
 ========
 
-```{image} ../images/data/source_separation_io.png
+```{image} images/data/source_separation_io.png
 ---
 alt: Separating of musical signals.
 ```
