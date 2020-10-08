@@ -14,6 +14,13 @@ done.
 
 ### nussl
 
+ - Fatemeh Pishdadia 
+ - Nathan Shelly 
+ - Andreas Bugler 
+ - Bryan Pardo
+ - Corey Grief
+ - Daniel Felix Kim
+ - Ben Kalish
 
 ### Scaper
 
@@ -22,8 +29,6 @@ done.
 
 Additionally, we want to thank the maintainers and contributors of these amazing
 open source projects:
-
-TODO: Add links
 
 - librosa
 - matplotlib
@@ -37,6 +42,11 @@ TODO: Add links
 - open_unmix
 - asteroid
 - demucs
+- gif
+- gradio
+- pyloudnorm
+- Spleeter
+- Wave-U-Net
 
 
 

@@ -125,9 +125,6 @@ This implementation is from the {ref}`opensrc:demucs` github page.
 | Yes            | MIT     | MUSDB             | pytorch       | 5.7       |
 | Yes            | MIT     | MUSDB + 150 songs | pytorch       | 6.3       |
 
-Also of note is MetaTasnet
-
-
 
 
 
