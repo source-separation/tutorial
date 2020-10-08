@@ -14,7 +14,7 @@ done.
 
 ### nussl
 
- - Fatemeh Pishdadia 
+ - Fatemeh Pishdadian
  - Nathan Shelly 
  - Andreas Bugler 
  - Bryan Pardo
