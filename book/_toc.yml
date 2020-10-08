@@ -36,12 +36,10 @@
   chapters:
     - file: conclusions/applications
     - file: conclusions/concluding_remarks
-    - file: conclusions/additional_resources
 
 
 - part: Appendix
   chapters:
-    - file: appendix/glossary
     - file: zzz_refs
     - file: appendix/resources
     - file: appendix/acknowledgements

@@ -10,26 +10,35 @@ approach must create a single mask. To separate multiple sources, a separation
 approach must create multiple masks.
 
 Masks are most commonly used with approaches
-that process a {term}`TF Representation`, however you could make the case that
+that process a TF Representation, however you could make the case that
 some waveform-based deep learning architectures use masking within specific parts
 of their network (for instance see these papers: {cite}`luo2018tasnet,luo2019conv`).
 The content in this section, however, applies specifically to masking
-{term}`TF Representation`s.
+TF Representations.
 
 For reasons we will fully discuss in the next section, we only apply masks to the
-magnitude values of a {term}`TF Representation`, _i.e._, we do no apply masks to
-the phase component of an {term}`STFT`.
+magnitude values of a TF Representation, _i.e._, we do no apply masks to
+the phase component of an STFT.
 Because of this, in this section we will focus on masks applied to a spectrogram,
 where phase information is not explicitly represented.
 
 ## What is a Mask?
 
-[["CARTOON" IMAGE OF MASK BEING APPLIED]]
+```{figure} ../images/basics/mask_diagram.png
+---
+alt: Diagram of a binary mask being applied to a spectrogram
+name: mask_diagram
+---
+A mask is a matrix with the same shape as the spectogram that is element-wise
+multiplied to it to produce a source estimate. This image shows an exaggerated
+binary mask that produces a source estimate. This estimate probably isn't very
+good. ¯\\\_(ツ)\_/¯
+```
 
-A {term}`mask` is a matrix that is the same size as a spectrogram and contains
+A mask is a matrix that is the same size as a spectrogram and contains
 values in the inclusive interval $[0.0, 1.0]$ [^fn1]. Each value in the mask determines
 what proportion of energy of the original mixture that a source contributes. In
-other words, for a particular {term}`TF bin`, a value of $1.0$ will allow _all_ of
+other words, for a particular TF bin, a value of $1.0$ will allow _all_ of
 the sound from the mixture through and a value of $0.0$ will allow _none_ of the sound
 from the mixture through.
 
@@ -67,6 +76,7 @@ For example, if a value for Source $i$ in $\hat{M}_i$ is $0.3$, the value of the
 mask for the rest of the mix at the corresponding bin is $0.7$.
 
 
+(masks:binarymasks)=
 ## Binary Masks
 
 The first mask type we'll talk about is Binary Masks. Although not used much anymore,
@@ -76,8 +86,12 @@ As the name implies, Binary Masks are masks where the only values the entries ar
 allowed to take is $0.0$ or $1.0$.
 Because all of the masks for the mixture element-wise sum up to a matrix of ones,
 a Binary Mask, therefore, makes the assumption
-that any {term}`TF bin` is only dominated by exactly one source in the mixture.
+that any TF bin is only dominated by exactly one source in the mixture.
 In the literature, this assumption is called W-disjoint orthogonality.
+
+While Binary Masks are not used as much to produce final source estimates anymore,
+they are still useful as training targets, especially with neural network models like
+Deep Clustering, which we will discuss later in this tutorial.
 
 
 
@@ -85,7 +99,14 @@ In the literature, this assumption is called W-disjoint orthogonality.
 ## Soft Masks (or Ratio Masks)
 
 Soft Masks are allowed to take any value within the inclusive interval $[0.0, 1.0]$,
-which means that instead of assigning 
+which means that instead of assigning _all_ of the energy from the mix to a
+source, it only assigns _part_ of the mix's energy to a source. This means that
+the energy in a mix from a TF bin can be split between the sources.
+
+Soft masks are more flexible than binary masks and usually lead to better
+sounding results; it's not very
+often that all of the energy in a mixture can always be assigned
+to one source.
 
 
 ## Ideal Masks

@@ -9,3 +9,4 @@ numpydoc
 pyyaml
 pyloudnorm
 gradio
+gif
