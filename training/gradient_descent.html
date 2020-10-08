@@ -460,6 +460,14 @@ pedagogy, we’ll start with this simple problem. We’ll use PyTorch as our
 ML library for this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+!pip install git+https://github.com/source-separation/tutorial
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">import</span> <span class="nn">nussl</span>
@@ -513,7 +521,7 @@ learnable parameters.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_3_0.png" src="../_images/gradient_descent_3_0.png" />
+<img alt="../_images/gradient_descent_4_0.png" src="../_images/gradient_descent_4_0.png" />
 </div>
 </div>
 <p>The network is randomly initialized, and we passed some random data through it.
@@ -562,7 +570,7 @@ descent. Okay, let’s make the data:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_7_0.png" src="../_images/gradient_descent_7_0.png" />
+<img alt="../_images/gradient_descent_8_0.png" src="../_images/gradient_descent_8_0.png" />
 </div>
 </div>
 <p>Let’s look at what our network does on this data, overlaid with the actual training data:</p>
@@ -580,7 +588,7 @@ descent. Okay, let’s make the data:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_9_0.png" src="../_images/gradient_descent_9_0.png" />
+<img alt="../_images/gradient_descent_10_0.png" src="../_images/gradient_descent_10_0.png" />
 </div>
 </div>
 <p>Let’s now take a look at how gradient descent can be used to learn <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(b\)</span>
@@ -607,7 +615,7 @@ absolute difference between the predictions and the ground truth:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_11_0.png" src="../_images/gradient_descent_11_0.png" />
+<img alt="../_images/gradient_descent_12_0.png" src="../_images/gradient_descent_12_0.png" />
 </div>
 </div>
 <p>Above you can see the loss for every point in our training data. But in order to
@@ -660,7 +668,7 @@ Line module within some range, and compute the loss for each one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_15_0.png" src="../_images/gradient_descent_15_0.png" />
+<img alt="../_images/gradient_descent_16_0.png" src="../_images/gradient_descent_16_0.png" />
 </div>
 </div>
 <p>What we did: iterate over all values of <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(b\)</span> above and compute the loss.
@@ -706,7 +714,7 @@ Actual m, b:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_19_0.png" src="../_images/gradient_descent_19_0.png" />
+<img alt="../_images/gradient_descent_20_0.png" src="../_images/gradient_descent_20_0.png" />
 </div>
 </div>
 <p>Iterating over all possible <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(b\)</span> values in a range worked here, but it’s not a great
@@ -727,7 +735,7 @@ at how the loss changes as the value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_21_0.png" src="../_images/gradient_descent_21_0.png" />
+<img alt="../_images/gradient_descent_22_0.png" src="../_images/gradient_descent_22_0.png" />
 </div>
 </div>
 <p>Now, let’s look at it as <span class="math notranslate nohighlight">\(b\)</span> changes:</p>
@@ -742,7 +750,7 @@ at how the loss changes as the value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_23_0.png" src="../_images/gradient_descent_23_0.png" />
+<img alt="../_images/gradient_descent_24_0.png" src="../_images/gradient_descent_24_0.png" />
 </div>
 </div>
 <p>The slope of these curves is the gradient. For example, in the first <span class="math notranslate nohighlight">\(m\)</span> plot, we
@@ -817,8 +825,8 @@ did for the loss before, but this time let’s look at the gradients as <span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_27_0.png" src="../_images/gradient_descent_27_0.png" />
-<img alt="../_images/gradient_descent_27_1.png" src="../_images/gradient_descent_27_1.png" />
+<img alt="../_images/gradient_descent_28_0.png" src="../_images/gradient_descent_28_0.png" />
+<img alt="../_images/gradient_descent_28_1.png" src="../_images/gradient_descent_28_1.png" />
 </div>
 </div>
 <p>Above we can see that at each value of <span class="math notranslate nohighlight">\(m\)</span> or <span class="math notranslate nohighlight">\(b\)</span> the gradient tells
@@ -872,7 +880,7 @@ must go in the <em>opposite</em> direction of the gradient. Let’s put it all t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_29_0.png" src="../_images/gradient_descent_29_0.png" />
+<img alt="../_images/gradient_descent_30_0.png" src="../_images/gradient_descent_30_0.png" />
 </div>
 </div>
 <p>The key hyperparameter to consider here is the learning rate. The learning rate
@@ -938,7 +946,7 @@ trying a few different values, and visualizing the learning process for each one
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_31_0.png" src="../_images/gradient_descent_31_0.png" />
+<img alt="../_images/gradient_descent_32_0.png" src="../_images/gradient_descent_32_0.png" />
 </div>
 </div>
 <p>If the learning rate is set too high, then the correct solution is never reached as the steps being taken are much
@@ -993,7 +1001,7 @@ we saved the loss history as well as the norm of the gradient at each iteration.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_34_0.png" src="../_images/gradient_descent_34_0.png" />
+<img alt="../_images/gradient_descent_35_0.png" src="../_images/gradient_descent_35_0.png" />
 </div>
 </div>
 <p>How do we interpret these plots? The plot on the right tells us that for some learning rates,
