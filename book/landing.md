@@ -1,5 +1,9 @@
-Welcome!
-========
+Open-Source Tools & Data for Music Source Separation
+====================================================
+
+**By Ethan Manilow, Prem Seetharaman, and Justin Salamon**
+
+Shared under [Creative Commons BY-NC-SA 4.0](https://github.com/source-separation/tutorial/blob/master/LICENSE.txt).
 
 ```{image} images/data/source_separation_io.png
 ---
@@ -7,11 +11,7 @@ alt: Separating of musical signals.
 ```
 
 Hello and welcome to the website for our tutorial at [ISMIR 2020](https://ismir.github.io/ISMIR2020/)!
-We're excited that you've decided to join us! Our tutorial is entitled...
-
-### Open-Source Tools & Data for Music Source Separation: A Pragmatic Guide for the MIR Practitioner
-
-**By Ethan Manilow, Prem Seetharaman, and Justin Salamon**
+We're excited that you've decided to join us!
 
 In this tutorial, we will guide you through modern, open-source tooling and datasets
 for running, evaluating, researching, and deploying source separation approaches. 

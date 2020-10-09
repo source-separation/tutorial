@@ -147,17 +147,10 @@ speaker products like Amazon's Alexa, but it has musical applications in
 [iZotopes Spire](https://www.izotope.com/en/products/spire-studio.html).
 
 
-## A Historical Perspective
+## Next Steps...
 
-Source Separation is a problem that has been studied for decades. Although we won't
-be able to cover everything in detail, this tutorial will provide a brief overview
-of methods that we think provide a representative demonstration of important concepts and
-provide practical value.
-
-In general, modern source separation approaches fall into two broad categories: blind
-source separation approaches and data-driven approaches. Blind source separation
-approaches are algorithms that make explicit assumptions about the auditory scene
-upon which they operate
+In the next section we will provide a brief overview of the open source landscape
+before diving into the basics of source separation.
 
 
 [^fn1]: Some creative applications might not have such strict demands; when using
