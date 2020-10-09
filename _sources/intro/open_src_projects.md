@@ -106,7 +106,8 @@ fixes some of the issues that `mir_eval` has. Some recent developments like
 It has become increasingly common for researchers to release code accompanying
 their research papers. In the era of deep learning, the trained models are also
 sometimes released. Here is a non-exhaustive list of some recent open source
-projects.
+projects. We have prioritized open source projects with code and downloadable
+trained models by the original authors of the research papers described.
 
 We will discuss some of these architectures in more detail in later sections,
 but here we will provide some highlights and links to their Github repositories,
@@ -235,15 +236,15 @@ There are so many wonderful open source projects out there, and we would love to
 do a deep dive into all of them. But there's only so much time, so we choose
 `nussl` and `Scaper` for a few reasons:
 
-- **We believe that the combination of `nussl`+`Scaper` provides a solid foundation
-  for all source separation projects.** We hope to convince you of the 
-  utility of both of these projects as you work through this tutorial.
+- **The combination of `nussl`+`Scaper` provides a solid foundation
+  for all source separation projects.** These projects provide solutions for
+  networks, data, evaluation, and interaction all in one.
   
 - **The lessons we will explore in these two projects extend beyond them.**
   There are many common themes and design patterns in this area of research,
   and as we progress you will start to see the themes again and again. We
   believe that `nussl`+`Scaper` is a good way to explore these themes so that
-  you can understand _any_ modern source separation system.
+  you can understand the structure of modern source separation systems.
   
 - **We are the primary developers for these projects.** We _really_ understand
   these tools because, well, we built them! That means we are well equipped to
