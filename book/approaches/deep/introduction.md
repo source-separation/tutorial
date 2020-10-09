@@ -6,7 +6,7 @@ We've now gotten some understanding of the general mechanics of source separatio
 now let's turn to Neural Network methods. Neural Network-based methods are
 commonly referred to as deep learning or deep net methods.
 
-```{image} ../images/data/source_separation_training.png
+```{image} ../../images/data/source_separation_training.png
 :align: center
 ```
 
