@@ -93,7 +93,7 @@
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../landing.html">
-   Welcome!
+   Open-Source Tools &amp; Data for Music Source Separation
   </a>
  </li>
 </ul>
@@ -477,10 +477,10 @@
                 
   <div class="section" id="introduction-to-nussl">
 <h1>Introduction to nussl<a class="headerlink" href="#introduction-to-nussl" title="Permalink to this headline">¶</a></h1>
-<p>In this section, we will explore many source separation approaches through <code class="docutils literal notranslate"><span class="pre">nussl</span></code>, which is an open source python project featuring implementations of many methods.</p>
+<p>In this section, we will explore many source separation approaches through <code class="docutils literal notranslate"><span class="pre">nussl</span></code>, which is an open source python project featuring implementations of many methods. <a class="bibtex reference internal" href="../zzz_refs.html#nussl" id="id1">[MSP18]</a></p>
 <div class="section" id="why-nussl">
 <h2>Why nussl?<a class="headerlink" href="#why-nussl" title="Permalink to this headline">¶</a></h2>
-<p>As we saw in the <a class="reference internal" href="../intro/open_src_projects.html#opensrcmap"><span class="std std-ref">Map of Open-Source Source Separation Projects</span></a> section, there are <em>a lot</em> of open source projects for source separation. We certainly don’t want do disuade you from using those projects, because they contain a ton of amazing work. But why aren’t we teaching each of those repositories? Why are we only teaching <code class="docutils literal notranslate"><span class="pre">nussl</span></code> in this tutorial?</p>
+<p>As we saw in the <a class="reference internal" href="../intro/open_src_projects.html#opensrcmap"><span class="std std-ref">Map of Open-Source Source Separation Projects</span></a> section, there are <em>a lot</em> of open source projects for source separation. We certainly don’t want do dissuade you from using those projects, because they contain a ton of amazing work. But why aren’t we teaching each of those repositories? Why are we only teaching <code class="docutils literal notranslate"><span class="pre">nussl</span></code> in this tutorial?</p>
 <ul class="simple">
 <li><p><strong>nussl contains over a dozen source separation algorithms</strong>:</p>
 <ul>
@@ -763,7 +763,7 @@ Root mean square energy: 0.1136
 </div>
 </div>
 </div>
-<p>If we hadn’t set <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> then <code class="docutils literal notranslate"><span class="pre">to_mono()</span></code> would just return a new audio signal that is an exact copy of signal1 except it is mono. You will see this pattern come up again. In certain places, <code class="docutils literal notranslate"><span class="pre">AudioSignal</span></code>’s default behavior is to overwrite its internal data, and in other places the default is to not overwrite data. See the reference pages for more info. Let’s try:</p>
+<p>If we hadn’t set <code class="docutils literal notranslate"><span class="pre">overwrite=True</span></code> then <code class="docutils literal notranslate"><span class="pre">to_mono()</span></code> would just return a new audio signal that is an exact copy of <code class="docutils literal notranslate"><span class="pre">signal1</span></code> except it is mono. You will see this pattern come up again. In certain places, <code class="docutils literal notranslate"><span class="pre">AudioSignal</span></code>’s default behavior is to overwrite its internal data, and in other places the default is to not overwrite data. See the reference pages for more info. Let’s try:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal3</span> <span class="o">=</span> <span class="n">signal1</span> <span class="o">+</span> <span class="n">signal2</span>
@@ -837,7 +837,7 @@ Root mean square energy: 0.1136
 </div>
 </div>
 </div>
-<p>No exceptions this time! Great! signal3 is now a new AudioSignal object. We can similarly subtract two signals.</p>
+<p>No exceptions this time! Great! <code class="docutils literal notranslate"><span class="pre">signal3</span></code> is now a new AudioSignal object. We can similarly subtract two signals.</p>
 <p>Let’s write this to a file:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

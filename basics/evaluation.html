@@ -93,7 +93,7 @@
   <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../landing.html">
-   Welcome!
+   Open-Source Tools &amp; Data for Music Source Separation
   </a>
  </li>
 </ul>
@@ -538,13 +538,13 @@ that SDR calculates the <span class="math notranslate nohighlight">\(e_{\text{in
 <span class="math notranslate nohighlight">\(e_{\text{artif}}\)</span> terms can cause issues where scores are artificially
 inflated.</p>
 <p>Scale-Invariant Source-to-Distortion Ratio (SI-SDR) aims to remedy this
-by removing SDR’s dependency on the amplidute scaling of the signal.
+by removing SDR’s dependency on the amplitude scaling of the signal.
 <a class="bibtex reference internal" href="../zzz_refs.html#le2019sdr" id="id5">[LRWEH19]</a> It also comes with accompanying SI-SAR, and SI-SIR,
 which corresponds to SAR and SIR described above, respectively.
 Although these measures are not sensitive to amplitude scaling, it
 is a quicker computation because it does not require windowing
-the estimatd and ground truth signals like SDR.</p>
-<p>In <a class="reference internal" href="#sdr-vs-sisdr"><span class="std std-numref">Fig. 19</span></a>, the discrepency between SDR and SI-SDR
+the estimated and ground truth signals like SDR.</p>
+<p>In <a class="reference internal" href="#sdr-vs-sisdr"><span class="std std-numref">Fig. 19</span></a>, the discrepancy between SDR and SI-SDR
 scores is shown. The top spectrogram shows the ground truth signal.
 Above it are its scores for SDR, SNR, and SI-SDR. As expected the
 ground truth signal gets high values for SDR, SNR, and SI-SDR

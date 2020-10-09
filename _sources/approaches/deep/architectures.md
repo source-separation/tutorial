@@ -98,7 +98,7 @@ Image used courtesy of Fabian-Robert Stöter (<a href="https://github.com/sigsep
 Open-Unmix is a more recent neural network architecture that boasts impressive
 performance. Open-Unmix has one fully connected layer with batch norm and a `tanh`
 activation, followed a set of three BLSTM layers in the center, and then two
-more fully connected layers with batch norma and `ReLU` activations. The pytorch
+more fully connected layers with batch norm and `ReLU` activations. The pytorch
 implementation has a dropout applied to the first two BLSTM layers with a 
 zeroing probability of 40%.
 
