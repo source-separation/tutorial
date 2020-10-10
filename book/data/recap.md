@@ -22,7 +22,7 @@ In this Chapter we covered:
 * How to download the dataset preview clips using `nussl`
 * How to inspect our data via audition and visualization
  
-## {ref}`Generating mixtures with Scaper <data:musdb18>`
+## {ref}`Generating mixtures with Scaper <data:scaper>`
 
 * Why use Scaper rather than write ad-hoc mixing code
 * Overview of Scaper
