@@ -9,9 +9,6 @@ contributed their time and expertise to the open source projects that we
 showcase. We want use this page to acknowledge the great work that they have
 done. 
 
-
-### Primary Resources
-
 ### nussl
 
  - Ethan Manilow
@@ -72,5 +69,20 @@ The authors have used the following images from the [Noun Project](https://theno
 - "Drum" by Hopkins
 - "Microphone" by IconMark
 - "piano keyboard" by b farias
+
+
+## Special Thanks
+
+The authors want to acknowledge the many members of the community who graciously
+let us use parts of their work in this book. Their names are placed throughout
+the text.
+
+We also want to thank these people, without whom we would not be able to write
+this book:
+
+- Bryan Pardo
+- Jonathan Le Roux
+- Gordon Wichern
+
 
 
