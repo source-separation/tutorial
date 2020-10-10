@@ -284,6 +284,7 @@ def make_phase_cirlce():
 
         # Setting the y axis ticks at (0, 180, 360, 540, 720) degree phase
         ax2.set_xticks([0, 180, 360, 540, 720])
+        # ax2.set_xlim(0, 720)
 
         # Setting the position of the x and y axis
         ax2.spines['left'].set_position(('axes', 0.045))
@@ -307,8 +308,8 @@ def make_phase_cirlce():
             0.0174533 * t)
 
         # plotting I+Q arrow that moves along to show the current phase
-        ax2.arrow(t, 0, 0, c1, length_includes_head='True', head_width=10, head_length=0.07,
-                  color='g')
+        # ax2.arrow(t, 0, 0, c1, length_includes_head='True', head_width=10, head_length=0.07,
+        #           color='g')
 
         # plotting I and Q amplitude arrows at position 180° and 90° respectively
         # ax2.arrow(180, 0, 0, 1 * np.cos(0.0174533 * t) * np.cos(0.0174533 * 180),
@@ -340,54 +341,55 @@ def phase_intersect():
     def make_frame(f2, phi_):
         plt.style.use('seaborn')
 
-        fig = plt.figure(figsize=(10, 5))
+        fig = plt.figure(figsize=(9, 3))
 
         max_t = 0.01
         time = np.linspace(0.0, max_t, 2000)
-        intersect = max_t / 2
-        f1 = 440.0  # A440
-        sin1 = np.sin(2 * np.pi * f1 * time)
+        intersect1 = max_t / 3
+        intersect2 = intersect1 * 2
 
         sin2 = np.sin(2 * np.pi * f2 * time + phi_)
 
-        plt.subplot(211)
-        plt.plot(time, sin1)
-        plt.axvline(x=intersect, ls='--', color='black', lw=1.0)
-        sin1_val = np.sin(2 * np.pi * f1 * intersect)
-        plt.text(intersect + 0.0001, 0, f'{sin1_val:+0.2f}')
-        plt.title(f'Frequency {f1:0.2f} Hz, Initial Phase 0.00' + r'$\pi$')
-        plt.ylabel('Amplitude')
-        plt.ylim([-1.1, 1.1])
-        plt.xlim([-0.00025, 0.01025])
+        props = dict(boxstyle='round', facecolor='wheat', alpha=1.0)
 
-        plt.subplot(212)
         plt.plot(time, sin2, 'g')
-        plt.axvline(x=intersect, ls='--', color='black', lw=1.0)
-        sin2_val = np.sin(2 * np.pi * f2 * intersect + phi_)
-        plt.text(intersect + 0.0001, 0, f'{sin2_val:+0.2f}')
+        plt.axvline(x=intersect1, ls='--', color='black', lw=1.0)
+        sin2_val1 = np.sin(2 * np.pi * f2 * intersect1 + phi_)
+        plt.text(intersect1 - 0.00045, -1.275, 'Snapshot 1', bbox=props)
+        plt.gcf().text(0.85, 0.65, 'Value at:')
+        plt.gcf().text(0.85, 0.55, f'Snapshot 1 = {sin2_val1:+0.2f}')
+
+        plt.axvline(x=intersect2, ls='--', color='black', lw=1.0)
+        sin2_val2 = np.sin(2 * np.pi * f2 * intersect2 + phi_)
+        plt.text(intersect2 - 0.00045, -1.275, 'Snapshot 2', bbox=props)
+        plt.gcf().text(0.85, 0.45, f'Snapshot 2 = {sin2_val2:+0.2f}')
+
         plt.title(f'Frequency {f2:0.2f} Hz, Initial Phase {phi_ / np.pi:0.2f}' + r'$\pi$')
         plt.ylabel('Amplitude')
         plt.xlabel('Time (s)')
-        plt.ylim([-1.1, 1.1])
-        plt.xlim([-0.00025, 0.01025])
+        plt.ylim([-1.4, 1.1])
+        plt.xlim([0.0, 0.01])
+        plt.subplots_adjust(right=0.85)
 
         for ax in fig.axes:
             ax.label_outer()
+        plt.tight_layout(rect=[0, 0, .85, 1.0])
         # plt.show()
 
     # f2 = 523.25  # C above A440
     # make_frame(f2, 0.0)
     # return
     f2_min = 440.0
-    f2_max = 659.25
     f2_max = 880.0
     f2_steps = np.hstack([np.linspace(f2_min, f2_max, 20),
+                          np.ones(20) * f2_max,
                          np.linspace(f2_max, f2_min, 20),
-                         np.ones(50) * f2_min])
-    phi_steps = np.hstack([np.zeros(40),
+                         np.ones(20) * f2_min])
+    phi_steps = np.hstack([np.zeros(20),
                           np.linspace(0.0, 2 * np.pi, 20),
+                           np.ones(20) * 2 * np.pi,
                           np.linspace(2 * np.pi, 0.0, 20),
-                          np.zeros(10)])
+                          np.zeros(20)])
 
     frames = [make_frame(f, p) for f, p in zip(f2_steps, phi_steps)]
     gif.save(frames, 'book/images/basics/phase_sensitivity.gif', duration=3.0)
