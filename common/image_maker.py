@@ -203,7 +203,7 @@ def plot_phase():
 
 
 
-def make_phase_cirlce():
+def make_phase_circle():
     """Adapted from: https://commons.wikimedia.org/wiki/File:Phase_shifter_using_IQ_modulator.gif"""
     # for t in range(0, 356, 5):
     @gif.frame
@@ -220,13 +220,13 @@ def make_phase_cirlce():
         y = 1 * np.sin(0.0174533 * t)
 
         # creating I, Q, I+Q amplitude and Phase (0° to 720°) for WAVE DIAGRAM
-        x2 = np.linspace(0, 721, 400)  # Pahse from 0° to 720° divided into 400 points
-        y2 = 1 * np.sin(0.0174533 * t) * np.sin(0.0174533 * x2)  # Q
-        z2 = 1 * np.cos(0.0174533 * t) * np.cos(0.0174533 * x2)  # I
-        q2 = (y2 + z2)  # (I+Q)
+        x2 = np.linspace(0, 721, 400)  # Phase from 0° to 720° divided into 400 points
+        y2 = 1 * np.sin(0.0174533 * t + np.pi) * np.sin(0.0174533 * x2 + np.pi)  # Q
+        z2 = 1 * np.cos(0.0174533 * t + np.pi) * np.cos(0.0174533 * x2 + np.pi)  # I
+        q2 = np.sin(0.0174533 * (x2 + t))
 
         # creating text to show current phase t
-        text1 = "phase = " + str(t) + '°'
+        text1 = f'phase = {t}°'
 
         # II) CREATING THE PLOT (phasor and wave diagram in one plot arranged 1 x 2)
 
@@ -264,26 +264,26 @@ def make_phase_cirlce():
 
         # Setting the y axis ticks at (-1,-0.5,0,0.5,1)
         ax1.set_yticks([-1, -0.5, 0, 0.5, 1])
+        ax1.set_xticks([-1, -0.5, 0, 0.5, 1])
+        ax1.set_ylim(-1.1, 1.1)
+        ax1.set_xlim(-1.1, 1.1)
 
         # Creating Arrows and dashed lines
         ax1.arrow(0, 0, x, y, length_includes_head='True', head_width=0.05, head_length=0.1,
                   color='g')  # I+Q
-        # ax1.arrow(0, 0, x, 0, length_includes_head='True', head_width=0.05, head_length=0.1,
-        #           color='b')  # I
-        # ax1.arrow(0, 0, 0, y, length_includes_head='True', head_width=0.05, head_length=0.1,
-        #           color='r')  # Q
         ax1.arrow(x, 0, 0, y, length_includes_head='True', head_width=0, head_length=0,
                   ls='-.')  # vertical dashed lines
-        ax1.arrow(0, y, x, 0, length_includes_head='True', head_width=0, head_length=0,
-                  ls='-.')  # Horizontal dashed lines
+        # ax1.arrow(0, y, x, 0, length_includes_head='True', head_width=0, head_length=0,
+        #           ls='-.')  # Horizontal dashed lines
 
         # II-B) WAVE DIAGRAM
 
         # setting the y axis limit
-        ax2.set_ylim(-1.5, 1.5)
+        ax2.set_ylim(-1.1, 1.1)
 
         # Setting the y axis ticks at (0, 180, 360, 540, 720) degree phase
         ax2.set_xticks([0, 180, 360, 540, 720])
+        ax2.set_yticks([-1, -0.5, 0, 0.5, 1])
         # ax2.set_xlim(0, 720)
 
         # Setting the position of the x and y axis
@@ -298,38 +298,16 @@ def make_phase_cirlce():
         ax2.set_xlabel('Phase (degree)', labelpad=0)
         ax2.set_ylabel('Amplitude', labelpad=0)
 
-        # Plotting I, Q and I+Q waves
-        # ax2.plot(x2, z2, 'b', label='I', linewidth=0.5)
-        # ax2.plot(x2, y2, 'r', label='Q', linewidth=0.5)
-        ax2.plot(x2, q2, 'g', label='I+Q')
-
-        # function for amplitude of I+Q green arrow
-        c1 = 1 * np.cos(0.0174533 * t) * np.cos(0.0174533 * t) + 1 * np.sin(0.0174533 * t) * np.sin(
-            0.0174533 * t)
-
-        # plotting I+Q arrow that moves along to show the current phase
-        # ax2.arrow(t, 0, 0, c1, length_includes_head='True', head_width=10, head_length=0.07,
-        #           color='g')
-
-        # plotting I and Q amplitude arrows at position 180° and 90° respectively
-        # ax2.arrow(180, 0, 0, 1 * np.cos(0.0174533 * t) * np.cos(0.0174533 * 180),
-        #           length_includes_head='True', head_width=10, head_length=0.07, color='b')
-        # ax2.arrow(90, 0, 0, 1 * np.sin(0.0174533 * t) * np.sin(0.0174533 * 90),
-        #           length_includes_head='True', head_width=10, head_length=0.07, color='r')
-
-        # Creating legend
-        # ax2.legend(loc='center', ncol=3, bbox_to_anchor=[0.5, 0.94])
+        # plot sine wave
+        ax2.plot(x2, q2, 'g')
 
         # Adjusting the relative position of the subplots inside the figure
         fig.subplots_adjust(left=0.07, bottom=0.15, right=None, top=None, wspace=0.3, hspace=None)
+        # plt.tight_layout()
 
-        # # Saving the figure
-        # fig.savefig('0file%s.png' % t)
+        # plt.show()
 
-        # Clearing the figure for the next iteration
-        # fig.clf()
-
-
+    # plt_set(90.0)
     frames = [plt_set(t) for t in range(0, 356, 5)]
     gif.save(frames, 'book/images/basics/circle_phase.gif', duration=5.0)
 
@@ -403,8 +381,8 @@ def main():
     # plot_lineary_spec()
     # plot_mely_spec()
     # plot_phase()
-    # make_phase_cirlce()
-    phase_intersect()
+    make_phase_circle()
+    # phase_intersect()
 
 if __name__ == '__main__':
     main()

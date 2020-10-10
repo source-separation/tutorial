@@ -1,4 +1,4 @@
-Open-Source Tools & Data for Music Source Separation
+Open Source Tools & Data for Music Source Separation
 ====================================================
 
 **By Ethan Manilow, Prem Seetharaman, and Justin Salamon**
