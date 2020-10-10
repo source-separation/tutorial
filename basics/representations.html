@@ -716,7 +716,8 @@ STFT, <span class="math notranslate nohighlight">\(\log{|X|^2} \in \mathbb{R}^{T
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Even though it is hard to visualize the detail in a magnitude or power spectrogram,
-most source separation algorithms work completely fine on these representations.</p>
+some source separation algorithms work completely fine on these representations, while
+some need log spectrograms. Make sure to set your spectrograms correctly!</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -731,7 +732,7 @@ is being discussed when possible.</p>
 <div class="section" id="mel-spaced-spectrograms">
 <h4>Mel-spaced Spectrograms<a class="headerlink" href="#mel-spaced-spectrograms" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="mel-spectrograms">
-<img alt="A visual comparison of linear-scaled vs mel-spaced y axies." src="../_images/ymel_specs.png" />
+<a class="reference internal image-reference" href="../_images/ymel_specs.png"><img alt="A visual comparison of linear-scaled vs mel-spaced y axies." src="../_images/ymel_specs.png" style="width: 280.0px; height: 350.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">A visual comparison of linear-scaled vs mel-spaced y axies.
 Lower frequencies have a larger representation in a mel-spaced spectrogram.</span><a class="headerlink" href="#mel-spectrograms" title="Permalink to this image">¶</a></p>
 </div>

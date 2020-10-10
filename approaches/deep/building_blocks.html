@@ -1073,11 +1073,11 @@ of the network.</p>
 of the true source to the input spectrogram with the network’s mask
 applied. Given some ground truth STFT for source <span class="math notranslate nohighlight">\(i\)</span>
 <span class="math notranslate nohighlight">\(S_i \in \mathbb{C}^{F\times T}\)</span>, an input
-mixture <span class="math notranslate nohighlight">\(X \in \mathbb{C}^{F\times T}\)</span>, and a net’s estimated
+mixture <span class="math notranslate nohighlight">\(Y \in \mathbb{C}^{F\times T}\)</span>, and a net’s estimated
 mask <span class="math notranslate nohighlight">\(\hat{M}_i \in \mathbb{R}^{F\times T}\)</span> we compute the loss like</p>
 <div class="math notranslate nohighlight">
 \[
-\mathcal{L}_{\text{spec}} = \Big\| S_i - \hat{M}_i \odot |X| \Big\|_p,
+\mathcal{L}_{\text{spec}} = \Big\| |S_i| - \hat{M}_i \odot |Y| \Big\|_p,
 \]</div>
 <p>where<span class="math notranslate nohighlight">\(\odot\)</span> denotes element-wise product adn <span class="math notranslate nohighlight">\(p\)</span> is the <em>norm</em> of
 the loss value. Only two norms are widely
@@ -1092,21 +1092,21 @@ the <em>Magnitude Spectrum Approximation</em> or MSA <a class="bibtex reference 
 This is just the same equation as above unmodified:</p>
 <div class="math notranslate nohighlight">
 \[
-\text{MSA} =  |S_i| - \hat{M}_i \odot |X|
+\text{MSA} =  |S_i| - \hat{M}_i \odot |Y|
 \]</div>
 <p>However, as we mentioned in previous sections computing the magnitude
 spectrogram neglects the phase. We can incorporate some aspect of
 the phase data by including it in our target calculation like so</p>
 <div class="math notranslate nohighlight">
 \[
-\text{tPSA} = \hat{M}_{i} \odot |X|  - \operatorname{T}_{0}^{|X|}\left(|S_i| \odot \cos(\angle S_i - \angle X)\right)
+\text{tPSA} = \hat{M}_{i} \odot |Y|  - \operatorname{T}_{0}^{|Y|}\left(|S_i| \odot \cos(\angle S_i - \angle Y)\right)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\angle S_i\)</span> is the true
-phase of Source i, <span class="math notranslate nohighlight">\(\angle X\)</span> is the mixture phase, and
-<span class="math notranslate nohighlight">\(\operatorname{T}_{0}^{|X|}(x)= \min(\max(x,0),|X|)\)</span> is a truncation
+phase of Source i, <span class="math notranslate nohighlight">\(\angle Y\)</span> is the mixture phase, and
+<span class="math notranslate nohighlight">\(\operatorname{T}_{0}^{|Y|}(x)= \min(\max(x,0),|Y|)\)</span> is a truncation
 function ensuring the target can be reached with a sigmoid activation function.
 Specifically, we incorporate constructive and destructive interference
-of the source and mixture into the target with the term <span class="math notranslate nohighlight">\(\cos(\angle S_i - \angle X)\)</span>.</p>
+of the source and mixture into the target with the term <span class="math notranslate nohighlight">\(\cos(\angle S_i - \angle Y)\)</span>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>We have found L1 loss using the tPSA target is the best option for

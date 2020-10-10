@@ -435,7 +435,9 @@ the source estimation.</p>
 <h2>Phase - A Quick Primer<a class="headerlink" href="#phase-a-quick-primer" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-default" id="circle-phase">
 <img alt="Phase is an important component of sound." src="../_images/circle_phase.gif" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">An audio signal’s phase is fundamental to representing the signal.</span><a class="headerlink" href="#circle-phase" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Phase is the instantaneous amplitude of an audio signal. Phase is a fundamental part of representing
+the signal.
+Adapted from <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Phase_shifter_using_IQ_modulator.gif">Wikimedia</a>.</span><a class="headerlink" href="#circle-phase" title="Permalink to this image">¶</a></p>
 </div>
 <p>An audio signal, <span class="math notranslate nohighlight">\(y(t)\)</span>, composed of exactly one sine wave,</p>
 <div class="math notranslate nohighlight">
@@ -493,16 +495,17 @@ might not be the same. The phase wraparound happens much quicker at the higher f
 than at the lower frequencies.</p>
 <div class="figure align-default" id="phase-sensitivity">
 <img alt="Phase is sensitive to frequency and its initial starting point." src="../_images/phase_sensitivity.gif" />
-<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Getting a snapshot of the phase (the black dotted vertical line) is very
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Getting a snapshot of the phase (the black dotted vertical lines) is very
 sensitive to the frequencies and initial phases of the sine waves. This
 is similar to what happens when take an STFT: many snapshots of sine waves
 with many frequencies and initial phase offsets.</span><a class="headerlink" href="#phase-sensitivity" title="Permalink to this image">¶</a></p>
 </div>
-<p>The gif above shows two sine waves. They both start at A440, or 440 Hz. But then the bottom one
-gradually changes frequency up an octave higher (880 Hz). The dotted black
-line shows a shapshot of the phase as the frequency changes. The initial phase also changes
-in the interval <span class="math notranslate nohighlight">\([0.0, 2\pi]\)</span>. Notice how sensitive the snapshot is to changes
-in the frequency and initial phase.</p>
+<p>The gif above shows a sine wave with varying frequency and initial phase.
+The frequency starts at A440, or 440 Hz and gradually changes frequency up an octave higher (880
+Hz). The initial phase also changes in the interval <span class="math notranslate nohighlight">\([0.0, 2\pi]\)</span>.
+The dotted black lines show two shapshots of the value of the sine wave as the frequency and
+initial phase both change.
+Notice how sensitive the snapshot are to changes in the frequency and initial phase.</p>
 <p>Another big difficulty when dealing with phase is that humans do not always
 perceive phase differences, <em>i.e.</em>,
 a sine wave with <span class="math notranslate nohighlight">\(\phi = 0\)</span> sounds the same as a sine wave with <span class="math notranslate nohighlight">\(\phi' \ne 0\)</span></p>

@@ -18,7 +18,9 @@ the source estimation.
 alt: Phase is an important component of sound.
 name: circle_phase
 ---
-An audio signal's phase is fundamental to representing the signal.
+Phase is the instantaneous amplitude of an audio signal. Phase is a fundamental part of representing
+the signal.
+Adapted from [Wikimedia](https://commons.wikimedia.org/wiki/File:Phase_shifter_using_IQ_modulator.gif).
 ```
 
 An audio signal, $y(t)$, composed of exactly one sine wave,
@@ -92,19 +94,19 @@ than at the lower frequencies.
 alt: Phase is sensitive to frequency and its initial starting point.
 name: phase_sensitivity
 ---
-Getting a snapshot of the phase (the black dotted vertical line) is very
+Getting a snapshot of the phase (the black dotted vertical lines) is very
 sensitive to the frequencies and initial phases of the sine waves. This
 is similar to what happens when take an STFT: many snapshots of sine waves
 with many frequencies and initial phase offsets.
 ```
 
 
-The gif above shows two sine waves. They both start at A440, or 440 Hz. But then the bottom one
-gradually changes frequency up an octave higher (880 Hz). The dotted black
-line shows a shapshot of the phase as the frequency changes. The initial phase also changes
-in the interval $[0.0, 2\pi]$. Notice how sensitive the snapshot is to changes
-in the frequency and initial phase.
-
+The gif above shows a sine wave with varying frequency and initial phase.
+The frequency starts at A440, or 440 Hz and gradually changes frequency up an octave higher (880
+Hz). The initial phase also changes in the interval $[0.0, 2\pi]$.
+The dotted black lines show two shapshots of the value of the sine wave as the frequency and
+initial phase both change.
+Notice how sensitive the snapshot are to changes in the frequency and initial phase.
 
 Another big difficulty when dealing with phase is that humans do not always
 perceive phase differences, _i.e._,

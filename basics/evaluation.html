@@ -496,7 +496,7 @@ windows of a new seconds long.</p>
 \[
 \text{SAR} := 10 \log_{10} \left( \frac{\| s_{\text{target}} + e_{\text{interf}} + e_{\text{noise}} \|^2}{ \| e_{\text{artif}} \|^2} \right)
 \]</div>
-<p>This is usually interpreted as the amount of unwanted \text{artif}acts a source
+<p>This is usually interpreted as the amount of unwanted artifacts a source
 estimate has with relation to the true source.</p>
 <p><strong>Source-to-Interference Ratio (SIR)</strong></p>
 <div class="math notranslate nohighlight">
@@ -506,7 +506,7 @@ estimate has with relation to the true source.</p>
 <p>This is usually interpreted as the amount of other sources that can be
 heard in a source estimate. This is most close to the concept of
 <a class="reference external" href="https://en.wikipedia.org/wiki/Spill_(audio)">“bleed”, or “leakage”</a>.</p>
-<p><strong>Source-to-Interference Ratio (SIR)</strong></p>
+<p><strong>Source-to-Distortion Ratio (SDR)</strong></p>
 <div class="math notranslate nohighlight">
 \[
 \text{SDR} := 10 \log_{10} \left( \frac{\| s_{\text{target}} \|^2}{ \| e_{\text{interf}} + e_{\text{noise}} + e_{\text{artif}} \|^2} \right)
@@ -517,7 +517,7 @@ is usually SDR.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As of this writing (October 2020), the best reported SDR for singing
-voice separation is <span class="math notranslate nohighlight">\(7.24 dB\)</span>. <a class="bibtex reference internal" href="../zzz_refs.html#takahashi2020d3net" id="id3">[TM20]</a></p>
+voice separation on MUSDB18 is <span class="math notranslate nohighlight">\(7.24 dB\)</span>. <a class="bibtex reference internal" href="../zzz_refs.html#takahashi2020d3net" id="id3">[TM20]</a></p>
 </div>
 <p><strong>Signal-to-Noise Ratio (SNR)</strong></p>
 <p>This is not used as widely, but does appear sometimes in source separation:</p>

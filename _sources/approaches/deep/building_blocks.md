@@ -638,11 +638,11 @@ When computing losses with spectrograms, we compare the spectrogram
 of the true source to the input spectrogram with the network's mask
 applied. Given some ground truth STFT for source $i$
 $S_i \in \mathbb{C}^{F\times T}$, an input
-mixture $X \in \mathbb{C}^{F\times T}$, and a net's estimated
+mixture $Y \in \mathbb{C}^{F\times T}$, and a net's estimated
 mask $\hat{M}_i \in \mathbb{R}^{F\times T}$ we compute the loss like
 
 $$
-\mathcal{L}_{\text{spec}} = \Big\| S_i - \hat{M}_i \odot |X| \Big\|_p,
+\mathcal{L}_{\text{spec}} = \Big\| |S_i| - \hat{M}_i \odot |Y| \Big\|_p,
 $$
 
 where$\odot$ denotes element-wise product adn $p$ is the _norm_ of
@@ -661,7 +661,7 @@ the _Magnitude Spectrum Approximation_ or MSA {cite}`weninger2014discriminativel
 This is just the same equation as above unmodified:
 
 $$
-\text{MSA} =  |S_i| - \hat{M}_i \odot |X|
+\text{MSA} =  |S_i| - \hat{M}_i \odot |Y|
 $$
 
 
@@ -671,16 +671,16 @@ the phase data by including it in our target calculation like so
 
 
 $$
-\text{tPSA} = \hat{M}_{i} \odot |X|  - \operatorname{T}_{0}^{|X|}\left(|S_i| \odot \cos(\angle S_i - \angle X)\right)
+\text{tPSA} = \hat{M}_{i} \odot |Y|  - \operatorname{T}_{0}^{|Y|}\left(|S_i| \odot \cos(\angle S_i - \angle Y)\right)
 $$
 
 
 where $\angle S_i$ is the true
-phase of Source i, $\angle X$ is the mixture phase, and
-$\operatorname{T}_{0}^{|X|}(x)= \min(\max(x,0),|X|)$ is a truncation
+phase of Source i, $\angle Y$ is the mixture phase, and
+$\operatorname{T}_{0}^{|Y|}(x)= \min(\max(x,0),|Y|)$ is a truncation
 function ensuring the target can be reached with a sigmoid activation function.
 Specifically, we incorporate constructive and destructive interference 
-of the source and mixture into the target with the term $\cos(\angle S_i - \angle X)$.
+of the source and mixture into the target with the term $\cos(\angle S_i - \angle Y)$.
 
 
 ```{tip}
