@@ -31,6 +31,7 @@
     - file: data/datasets
     - file: data/musdb18
     - file: data/scaper
+    - file: data/recap
 
 - part: Training
   chapters:

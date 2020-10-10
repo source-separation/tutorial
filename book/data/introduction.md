@@ -93,3 +93,4 @@ The remainder of this chapter is structured as follows:
 * In {ref}`The MUSDB18 dataset <data:musdb18>`, we will go into further detail about the dataset we will use in this tutorial.
 * In {ref}`Data generation with Scaper <data:scaper>`, we will learn how to use the Scaper library to generate and augment mixtures on-the-fly
 for training and evaluation. 
+* In {ref}`Recap <data:recap>` we will provide a brief recap (summary) of what we covered in this Chapter.
