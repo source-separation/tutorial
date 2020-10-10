@@ -14,6 +14,8 @@ done.
 
 ### nussl
 
+ - Ethan Manilow
+ - Prem Seetharaman 
  - Fatemeh Pishdadian
  - Nathan Shelly 
  - Andreas Bugler 
@@ -23,6 +25,13 @@ done.
  - Ben Kalish
 
 ### Scaper
+
+- Justin Salamon
+- Prem Seetharaman
+- Duncan MacConnell
+- Mark Cartwright
+- Peter Li
+- Juan Pablo Bello
 
 
 ### Other Projects
@@ -59,5 +68,9 @@ The authors have used the following images from the [Noun Project](https://theno
 - "Guitar Amplifier" by Premyslav 
 - "Microphone" by Olena Panasovska 
 - "Singer" by Gan Khoon Lay 
+- "Bass Guitar" by Marvdrock
+- "Drum" by Hopkins
+- "Microphone" by IconMark
+- "piano keyboard" by b farias
 
 
