@@ -12,7 +12,7 @@ Here's a quick overview of existing datasets for Music Source Separation:
 | [ccMixter](http://www.loria.fr/~aliutkus/kam/)  | 2014 | N/A | 50 | 231 $\pm$ 77 | ✅ | ✅ |
 | [MedleyDB](http://medleydb.weebly.com/) | 2014 | 82 | 63 | 206 $\pm$ 121 | ✅ | ✅ |
 | [iKala](http://mac.citi.sinica.edu.tw/ikala/)  | 2015 |  2  | 206 | 30 | ❌ | ❌ |
-| [DSD100](/datasets/dsd100.md)| 2015 | 4 | 100 | 251 $\pm$ 60 | ✅ | ✅ |
+| [DSD100](https://sigsep.github.io/datasets/dsd100.html)| 2015 | 4 | 100 | 251 $\pm$ 60 | ✅ | ✅ |
 | [MUSDB18](https://sigsep.github.io/datasets/musdb.html) | 2017 | 4 | 150 | 236 $\pm$ 95 | ✅ | ✅ | 
 | [Slakh2100](http://www.slakh.com/) | 2019 | 34 | 2100 | 249 | ✅ | ❌ |  
 This extended table is based on: [SigSep/datasets](https://sigsep.github.io/datasets/), and reproduced with permission.
