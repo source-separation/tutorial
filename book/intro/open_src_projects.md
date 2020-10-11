@@ -108,6 +108,8 @@ their research papers. In the era of deep learning, the trained models are also
 sometimes released. Here is a non-exhaustive list of some recent open source
 projects. We have prioritized open source projects with code and downloadable
 trained models by the original authors of the research papers described.
+[Papers With Code](https://paperswithcode.com/task/music-source-separation) also
+has a nice section on many of these methods.
 
 We will discuss some of these architectures in more detail in later sections,
 but here we will provide some highlights and links to their Github repositories,

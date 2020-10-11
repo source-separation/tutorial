@@ -49,5 +49,6 @@
   chapters:
     - file: zzz_refs
     - file: appendix/resources
+    - file: appendix/cite_this
     - file: appendix/acknowledgements
     - file: appendix/authors

@@ -313,7 +313,8 @@ STFT, $\log{|X|^2} \in \mathbb{R}^{T \times F}$.
 
 ```{tip}
 Even though it is hard to visualize the detail in a magnitude or power spectrogram,
-most source separation algorithms work completely fine on these representations.
+some source separation algorithms work completely fine on these representations, while
+some need log spectrograms. Make sure to set your spectrograms correctly!
 ```
 
 
@@ -333,6 +334,7 @@ is being discussed when possible.
 ---
 alt: A visual comparison of linear-scaled vs mel-spaced y axies.
 name: mel_spectrograms
+scale: 35%
 ---
 A visual comparison of linear-scaled vs mel-spaced y axies.
 Lower frequencies have a larger representation in a mel-spaced spectrogram.
