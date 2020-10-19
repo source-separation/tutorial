@@ -45,10 +45,10 @@
     - file: conclusions/applications
     - file: conclusions/concluding_remarks
 
-- part: Appendix
+- part: Resources
   chapters:
     - file: zzz_refs
-    - file: appendix/resources
-    - file: appendix/cite_this
-    - file: appendix/acknowledgements
-    - file: appendix/authors
+    - file: resources/reading
+    - file: resources/cite_this
+    - file: resources/acknowledgements
+    - file: resources/authors
