@@ -35,6 +35,21 @@ separation in your work and you should know which tools to reach for. We hope
 this website will serve as a reference guide or starting point for your future
 endeavours with source separation technology.
 
+#### Referencing this book
+
+If you wish to reference this book in your own work, you can use the following 
+`bibtex` entry:
+
+```
+@book{opensourceseparation:book,
+	Author = {Ethan Manilow and Prem Seetharman and Justin Salamon},
+	Month = Oct.,
+	Publisher = {https://source-separation.github.io/tutorial},
+	Title = {Open Source Tools \& Data for Music Source Separation},
+	Year = 2020,
+	Url = {https://source-separation.github.io/tutorial}
+}
+```
 
 #### Let's get started!
 
