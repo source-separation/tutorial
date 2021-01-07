@@ -206,7 +206,7 @@ Six commonly used window types for calculating an STFT.
 
 The window type determines the shape of the short-time window that will segment
 the audio into short segments before applying the DFT. The shape of this window
-can will affect which frequencies get emphasized or attenuated in the DFT. There
+will affect which frequencies get emphasized or attenuated in the DFT. There
 are many types of window functions, in {numref}`window_types`, we show the most
 common ones when calculating an STFT for source separation. For more information
 on other types of windows and their frequency response, please see `scipy.signal`'s
@@ -246,7 +246,7 @@ the frequency resolution and vice versa, as is visible in {numref}`window_lens`.
 alt: The hope length determines the distance (in samples) between adjacent short-time windows.
 name: hop_lens
 ---
-The hope length determines the distance (in samples) between adjacent short-time
+The hop length determines the distance (in samples) between adjacent short-time
 windows. An STFT is computed twice on the same signal; the smaller the hop length
 the more times a particular segment of the audio signal is represented in the
 STFT.

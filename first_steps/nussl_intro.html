@@ -25,8 +25,8 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -41,12 +41,11 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -82,22 +81,19 @@
   <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
   
 </a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
-
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+    <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../landing.html">
    Open Source Tools &amp; Data for Music Source Separation
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Introduction
  </span>
@@ -119,7 +115,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Basics of Source Separation
  </span>
@@ -146,7 +142,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   First Steps
  </span>
@@ -168,7 +164,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Deep Learning Approaches
  </span>
@@ -190,7 +186,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Data
  </span>
@@ -222,7 +218,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Training
  </span>
@@ -249,7 +245,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Conclusions
  </span>
@@ -266,7 +262,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Resources
  </span>
@@ -299,9 +295,7 @@
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -330,11 +324,11 @@
             <i class="fas fa-arrow-up"></i>
         </button>
         
-        <div class="dropdown-buttons-trigger">
+        
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         
@@ -346,8 +340,8 @@
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
+
         <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
@@ -413,6 +407,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#why-nussl">
    Why nussl?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-nussl">
+   Installing nussl
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -519,11 +518,20 @@
 </li>
 </ul>
 </div>
+<div class="section" id="installing-nussl">
+<h2>Installing nussl<a class="headerlink" href="#installing-nussl" title="Permalink to this headline">¶</a></h2>
+<p>You can install nussl through pip like so:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">nussl</span></code></p></li>
+</ul>
+<p>In this tutorial, nussl is installed through the <code class="docutils literal notranslate"><span class="pre">common</span></code> utility library. This library was specifically created for the tutorial and will provide functions for us to visualize and interact with audio. It will also install <code class="docutils literal notranslate"><span class="pre">nussl</span></code> and <code class="docutils literal notranslate"><span class="pre">scaper</span></code> into the notebook environments for use on these pages.</p>
+</div>
 <div class="section" id="nussl-resources">
 <h2>nussl Resources<a class="headerlink" href="#nussl-resources" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial will guide you through using nussl, but for further details see the following links:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/nussl/nussl">nussl’s Github repository is located here.</a></p></li>
-<li><p><a class="reference external" href="https://nussl.github.io/docs/">Documentation for nussl is located here.</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nussl/nussl">nussl’s Github repository</a></p></li>
+<li><p><a class="reference external" href="https://nussl.github.io/docs/">nussl’s Documentation pages.</a></p></li>
 </ul>
 </div>
 <div class="section" id="nussl-basics">
@@ -951,7 +959,7 @@ Root mean square energy: 0.1136
 <div class="section" id="inverse-stfts">
 <h3>Inverse STFTs<a class="headerlink" href="#inverse-stfts" title="Permalink to this headline">¶</a></h3>
 <p>Let’s do something a little more interesting with our <code class="docutils literal notranslate"><span class="pre">AudioSignal</span></code> object. Since <code class="docutils literal notranslate"><span class="pre">signal1.stft_data</span></code> is just a regular numpy array, we can access and manipulate it as such. So let’s implement a low pass filter by creating a new <code class="docutils literal notranslate"><span class="pre">AudioSignal</span></code> object and leaving <code class="docutils literal notranslate"><span class="pre">signal1</span></code> unaltered.</p>
-<p>Let’s eliminate all frequencies above about 400 Hz in our signal.</p>
+<p>Let’s eliminate all frequencies above about 1000 Hz in our signal.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
