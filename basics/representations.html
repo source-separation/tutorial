@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Representing Audio &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -45,9 +45,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -55,6 +53,8 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="TF Representations and Masking" href="tf_and_masking.html" />
@@ -310,21 +310,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -342,7 +342,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -361,21 +361,22 @@
 </div>
 
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i>
+            Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -459,6 +460,7 @@
 
         </nav>
         
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -540,7 +542,7 @@ ways of displaying a mixture of two linear chirp signals (<em>i.e.</em>, sine wa
 with rising frequency); panel (c) shows a frequency spectrum and panel (d) shows
 a time-frequency representation. Notice how a signal that looks completely
 unseparable in one representation becomes easily separable in another representation.
-Image used courtesy of Fatemeh Pishdadian and Bryan Pardo. <a class="bibtex reference internal" href="../zzz_refs.html#pishdadian2018multi" id="id2">[PP18]</a></span><a class="headerlink" href="#representation-img" title="Permalink to this image">¶</a></p>
+Image used courtesy of Fatemeh Pishdadian and Bryan Pardo. <a href="#id2"><span class="problematic" id="id3">:cite:`pishdadian2018multi`</span></a></span><a class="headerlink" href="#representation-img" title="Permalink to this image">¶</a></p>
 </div>
 <p>It can be argued that a source separation approach is only as good as its ability
 to represent audio in a separable manner. With that in mind, it’s important
@@ -584,7 +586,7 @@ on the separation quality of your approach.</p>
 index by frequency, and values in the matrix represent the energy of the sound
 at that partifular time and frequency.</span><a class="headerlink" href="#tf-repr" title="Permalink to this image">¶</a></p>
 </div>
-<p>A Time-Frequency <a class="bibtex reference internal" href="../zzz_refs.html#smith2011spectral" id="id3">[SI11]</a> representation is a 2 dimensional
+<p>A Time-Frequency <a href="#id4"><span class="problematic" id="id5">:cite:`smith2011spectral`</span></a> representation is a 2 dimensional
 matrix that represents the frequency contents of an audio signal over time.
 There are many types of time-frequency representations out in the world, but we
 will only discuss those that are most frequently used for source separation here.</p>
@@ -609,7 +611,7 @@ courtesy of Bryan Pardo.</span><a class="headerlink" href="#stft-process" title=
 start out as a Short-time Fourier Transform or STFT. An STFT is calculated
 from a waveform representation by computing a
 <a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">discrete Fourier transform</a>
-(DFT) of a small, moving window<a class="footnote-reference brackets" href="#fn1" id="id4">2</a> across the duration of the window. The location
+(DFT) of a small, moving window<a class="footnote-reference brackets" href="#fn1" id="id6">2</a> across the duration of the window. The location
 of each entry in an STFT determines its time (x-axis) and frequency (y-axis). The
 absolute value of a TF bin <span class="math notranslate nohighlight">\(|X(t, f)|\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> and frequency <span class="math notranslate nohighlight">\(f\)</span> determines the
 amount of energy heard from frequency <span class="math notranslate nohighlight">\(f\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -621,14 +623,14 @@ to a waveform. This is called the inverse Short-time Fourier Transform or iSTFT.
 <p>Here are some important parameters to consider when computing an STFT:</p>
 <div class="section" id="window-types">
 <h5>Window Types<a class="headerlink" href="#window-types" title="Permalink to this headline">¶</a></h5>
-<div class="figure align-default" id="id5">
+<div class="figure align-default" id="id7">
 <img alt="Six commonly used window types for calculating an STFT." src="../_images/window_types.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Six commonly used window types for calculating an STFT.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Six commonly used window types for calculating an STFT.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 <p>The window type determines the shape of the short-time window that will segment
 the audio into short segments before applying the DFT. The shape of this window
 will affect which frequencies get emphasized or attenuated in the DFT. There
-are many types of window functions, in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 10</span></a>, we show the most
+are many types of window functions, in <a class="reference internal" href="#id7"><span class="std std-numref">Fig. 10</span></a>, we show the most
 common ones when calculating an STFT for source separation. For more information
 on other types of windows and their frequency response, please see <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code>’s
 documentation <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.windows.html">here</a>.</p>
@@ -738,7 +740,7 @@ Lower frequencies have a larger representation in a mel-spaced spectrogram.</spa
 <p>Human hearing is also logarithmic with regards to frequencies. The
 <a class="reference external" href="https://en.wikipedia.org/wiki/Mel_scale">Mel scale</a> approximates this property
 and is a quick way to make the frequency axis of a spectrogram
-quasi-logarithmic<a class="footnote-reference brackets" href="#fn3" id="id6">3</a>. This is also commonly used to reduce the computational
+quasi-logarithmic<a class="footnote-reference brackets" href="#fn3" id="id8">3</a>. This is also commonly used to reduce the computational
 load on deep learning-based approaches, because the number of Mel-spaced frequency
 bins is often lower then the number of linearly-spaced frequency bins.</p>
 <p>A visual comparison is shown in <a class="reference internal" href="#mel-spectrograms"><span class="std std-numref">Fig. 14</span></a>. Notice the how the
@@ -753,14 +755,14 @@ for a few below:</p>
 <ul class="simple">
 <li><p>Constant-Q Transform (CQT)</p>
 <ul>
-<li><p>General Calculation: <a class="bibtex reference internal" href="../zzz_refs.html#brown1991calculation" id="id7">[Bro91]</a><a class="bibtex reference internal" href="../zzz_refs.html#brown1992efficient" id="id8">[BP92]</a></p></li>
-<li><p>Use in source separation: <a class="bibtex reference internal" href="../zzz_refs.html#rafii2011degenerate" id="id9">[RP11]</a><a class="bibtex reference internal" href="../zzz_refs.html#fuentes2012blind" id="id10">[FBR12]</a><a class="bibtex reference internal" href="../zzz_refs.html#jaiswal2011clustering" id="id11">[JFB+11]</a><a class="bibtex reference internal" href="../zzz_refs.html#ganseman2012improving" id="id12">[GSD12]</a><a class="bibtex reference internal" href="../zzz_refs.html#shi2019cqt" id="id13">[SLL+19]</a></p></li>
+<li><p>General Calculation: <a href="#id9"><span class="problematic" id="id10">:cite:`brown1991calculation,brown1992efficient`</span></a></p></li>
+<li><p>Use in source separation: <a href="#id11"><span class="problematic" id="id12">:cite:`rafii2011degenerate,fuentes2012blind,jaiswal2011clustering,ganseman2012improving,shi2019cqt`</span></a></p></li>
 </ul>
 </li>
-<li><p>Common Fate Transform (CFT) <a class="bibtex reference internal" href="../zzz_refs.html#stoter2016common" id="id14">[StoterLB+16]</a></p></li>
-<li><p>Multi-resolution Common Fate Transform (MCFT) <a class="bibtex reference internal" href="../zzz_refs.html#pishdadian2018multi" id="id15">[PP18]</a></p></li>
-<li><p>2-Dimensional Fourier Transform (2DFT) <a class="bibtex reference internal" href="../zzz_refs.html#seetharaman2017music" id="id16">[SPP17]</a></p></li>
-<li><p>Per Channel Energy Normalization (PCEN) <a class="bibtex reference internal" href="../zzz_refs.html#lostanlen2018per" id="id17">[LSC+18]</a></p></li>
+<li><p>Common Fate Transform (CFT) <a href="#id13"><span class="problematic" id="id14">:cite:`stoter2016common`</span></a></p></li>
+<li><p>Multi-resolution Common Fate Transform (MCFT) <a href="#id15"><span class="problematic" id="id16">:cite:`pishdadian2018multi`</span></a></p></li>
+<li><p>2-Dimensional Fourier Transform (2DFT) <a href="#id17"><span class="problematic" id="id18">:cite:`seetharaman2017music`</span></a></p></li>
+<li><p>Per Channel Energy Normalization (PCEN) <a href="#id19"><span class="problematic" id="id20">:cite:`lostanlen2018per`</span></a></p></li>
 </ul>
 </div>
 </div>
@@ -792,17 +794,17 @@ may be a sign of things to come for music separation; we’ll have to wait and
 see!</p>
 <p>By the end of this tutorial, we hope that you will be able to make an educated
 decision about which type of source system is right for your goals.</p>
-<hr class="docutils" />
+<hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fn2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Named after <a href="https://en.wikipedia.org/wiki/Heinrich_Hertz">Heinrich Hertz</a>,
 who proved the existence of electromagnetic waves.</p>
 </dd>
-<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
 <dd><p>This window is where the term “Short-time” comes from in the name
 “Short-time Fourier Transform”.</p>
 </dd>
-<dt class="label" id="fn3"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
+<dt class="label" id="fn3"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">librosa</span></code>, arguably the most commonly used python library for
 MIR work, has two ways to convert from Hz to Mel, which are slightly
 different: <a href="https://librosa.org/doc/latest/_modules/librosa/core/convert.html#hz_to_mel">see here.</a></p>
@@ -833,15 +835,15 @@ different: <a href="https://librosa.org/doc/latest/_modules/librosa/core/convert
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="../intro/open_src_projects.html" title="previous page">Map of Open-Source Source Separation Projects</a>
     <a class='right-next' id="next-link" href="tf_and_masking.html" title="next page">TF Representations and Masking</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -860,7 +862,7 @@ different: <a href="https://librosa.org/doc/latest/_modules/librosa/core/convert
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

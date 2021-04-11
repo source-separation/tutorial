@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>What is Source Separation? &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -45,9 +45,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -55,6 +53,8 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Map of Open-Source Source Separation Projects" href="open_src_projects.html" />
@@ -310,21 +310,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -342,7 +342,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -361,21 +361,22 @@
 </div>
 
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i>
+            Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -410,6 +411,7 @@
 
         </nav>
         
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -420,11 +422,11 @@
   <div class="section" id="what-is-source-separation">
 <h1>What is Source Separation?<a class="headerlink" href="#what-is-source-separation" title="Permalink to this headline">¶</a></h1>
 <div class="figure align-default" id="source-separation">
-<img alt="Separating of musical signals." src="../_images/source_separation_io1.png" />
+<img alt="Separating of musical signals." src="../_images/source_separation_io.png" />
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Source separation is the opposite of the mixing process.</span><a class="headerlink" href="#source-separation" title="Permalink to this image">¶</a></p>
 </div>
 <p>Source Separation is the process of isolating individual sounds in an auditory
-mixture of multiple sounds. <a class="bibtex reference internal" href="../zzz_refs.html#vincent2018audio" id="id1">[VVG18]</a><a class="bibtex reference internal" href="../zzz_refs.html#cano2018musical" id="id2">[CFL+18]</a><a class="bibtex reference internal" href="../zzz_refs.html#rafii2018overview" id="id3">[RLStoter+18]</a> We call each sound heard
+mixture of multiple sounds. <a href="#id1"><span class="problematic" id="id2">:cite:`vincent2018audio,cano2018musical,rafii2018overview`</span></a> We call each sound heard
 in a mixture a <em>source</em>.
 For example, we might want to isolate a singer from the background music to make
 a karaoke version of a song or isolate the bass guitar from the from the rest of
@@ -456,7 +458,7 @@ separating musical sources difficult.</span><a class="headerlink" href="#mixing-
 isolating at least one musical instrument or singer from a musical mixture that
 contains one or more other musical instruments or singers. Music is seen as a
 distinct problem from other types of source separation because there are many
-factors that make it uniquely challenging <a class="bibtex reference internal" href="../zzz_refs.html#cano2018musical" id="id4">[CFL+18]</a>:</p>
+factors that make it uniquely challenging <a href="#id3"><span class="problematic" id="id4">:cite:`cano2018musical`</span></a>:</p>
 <ul class="simple">
 <li><p>Sources in music are <em>highly correlated</em>, meaning that all of the sources usually
 change together at the same time. For example, in a rock band if the bass guitar
@@ -497,14 +499,14 @@ Music Information Retrieval (MIR). In many scenarios, researchers have discovere
 that it is easier to process a isolated sources than mixtures of those sources.
 For example, source separation has been used to enhance:</p>
 <ul class="simple">
-<li><p>automatic music transcription <a class="bibtex reference internal" href="../zzz_refs.html#plumbley2002automatic" id="id6">[PAB+02]</a><a class="bibtex reference internal" href="../zzz_refs.html#manilow2020simultaneous" id="id7">[MSP20]</a>,</p></li>
-<li><p>lyric and music alignment <a class="bibtex reference internal" href="../zzz_refs.html#fujihara2006automatic" id="id8">[FGO+06]</a>,</p></li>
-<li><p>musical instrument detection <a class="bibtex reference internal" href="../zzz_refs.html#heittola2009musical" id="id9">[HKV09]</a>,</p></li>
-<li><p>lyric recognition <a class="bibtex reference internal" href="../zzz_refs.html#mesaros2010automatic" id="id10">[MV10]</a>,</p></li>
-<li><p>automatic singer identification <a class="bibtex reference internal" href="../zzz_refs.html#weninger2011automatic" id="id11">[WWollmerS11]</a><a class="bibtex reference internal" href="../zzz_refs.html#hu2015separation" id="id12">[HL15]</a><a class="bibtex reference internal" href="../zzz_refs.html#sharma2019importance" id="id13">[SDL19]</a>,</p></li>
-<li><p>vocal activity detection <a class="bibtex reference internal" href="../zzz_refs.html#stoller2018jointly" id="id14">[SED18a]</a>,</p></li>
-<li><p>fundamental frequency estimation <a class="bibtex reference internal" href="../zzz_refs.html#jansson2019joint" id="id15">[JBEW19]</a>, and</p></li>
-<li><p>understanding the predictions of black-box audio models. <a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020towards" id="id16">[HMW20a]</a><a class="bibtex reference internal" href="../zzz_refs.html#haunschmid2020audiolime" id="id17">[HMW20b]</a></p></li>
+<li><p>automatic music transcription <a href="#id6"><span class="problematic" id="id7">:cite:`plumbley2002automatic,manilow2020simultaneous`</span></a>,</p></li>
+<li><p>lyric and music alignment <a href="#id8"><span class="problematic" id="id9">:cite:`fujihara2006automatic`</span></a>,</p></li>
+<li><p>musical instrument detection <a href="#id10"><span class="problematic" id="id11">:cite:`heittola2009musical`</span></a>,</p></li>
+<li><p>lyric recognition <a href="#id12"><span class="problematic" id="id13">:cite:`mesaros2010automatic`</span></a>,</p></li>
+<li><p>automatic singer identification <a href="#id14"><span class="problematic" id="id15">:cite:`weninger2011automatic,hu2015separation,sharma2019importance`</span></a>,</p></li>
+<li><p>vocal activity detection <a href="#id16"><span class="problematic" id="id17">:cite:`stoller2018jointly`</span></a>,</p></li>
+<li><p>fundamental frequency estimation <a href="#id18"><span class="problematic" id="id19">:cite:`jansson2019joint`</span></a>, and</p></li>
+<li><p>understanding the predictions of black-box audio models. <a href="#id20"><span class="problematic" id="id21">:cite:`haunschmid2020towards,haunschmid2020audiolime`</span></a></p></li>
 </ul>
 <p>Additionally, source separation has long been seen as an inherently worthwhile
 endeavor on its own merits, with many thousands of research papers appearing over
@@ -544,7 +546,7 @@ speaker products like Amazon’s Alexa, but it has musical applications in
 <h2>Next Steps…<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
 <p>In the next section we will provide a brief overview of the open source landscape
 before diving into the basics of source separation.</p>
-<hr class="docutils" />
+<hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id5">1</a></span></dt>
 <dd><p>Some creative applications might not have such strict demands; when using
@@ -577,15 +579,15 @@ by other sources in the mix.</p>
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="tutorial_structure.html" title="previous page">Tutorial Structure and Setup</a>
     <a class='right-next' id="next-link" href="open_src_projects.html" title="next page">Map of Open-Source Source Separation Projects</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -604,7 +606,7 @@ by other sources in the mix.</p>
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

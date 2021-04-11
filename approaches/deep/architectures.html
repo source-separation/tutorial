@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Architectures &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -45,9 +45,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -55,6 +53,8 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Introduction" href="../../data/introduction.html" />
@@ -310,21 +310,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -342,7 +342,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -361,21 +361,22 @@
 </div>
 
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i>
+            Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -449,6 +450,7 @@
 
         </nav>
         
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -476,9 +478,9 @@ representations that we can separate.</p>
 <p class="caption"><span class="caption-number">Fig. 36 </span><span class="caption-text">The U-Net architecture.
 Image used courtesy of Rachel Bittner.</span><a class="headerlink" href="#unet" title="Permalink to this image">¶</a></p>
 </div>
-<p>U-Nets <a class="bibtex reference internal" href="../../zzz_refs.html#jansson2017singing" id="id1">[JHM+17]</a> are a very popular architecture
+<p>U-Nets <a href="#id1"><span class="problematic" id="id2">:cite:`jansson2017singing`</span></a> are a very popular architecture
 for music source separation systems. The popular source separation
-system Spleeter by Deezer uses this network architecture. <a class="bibtex reference internal" href="../../zzz_refs.html#spleeter2020" id="id2">[HKVM20]</a></p>
+system Spleeter by Deezer uses this network architecture. <a href="#id3"><span class="problematic" id="id4">:cite:`spleeter2020`</span></a></p>
 <p>U-Nets input a spectrogram and
 perform a series of 2D convolutions, each of which producing an encoding of
 a smaller and smaller representation of the input. The small representation
@@ -487,7 +489,7 @@ at the center is then scaled back up by decoding with the same number of
 each of which corresponds to the shape of
 one of the convolutional encoding layers. Each of the encoding layers
 is concatenated to the corresponding decoding layers.</p>
-<p>The original U-Net paper <a class="bibtex reference internal" href="../../zzz_refs.html#jansson2017singing" id="id3">[JHM+17]</a> has 6 strided 2D
+<p>The original U-Net paper <a href="#id5"><span class="problematic" id="id6">:cite:`jansson2017singing`</span></a> has 6 strided 2D
 convolutional encoder layers with 5x5 kernel sizes and strides of 2.
 After each encoder layer was a batch norm followed by a ReLU activation.
 A Dropout of 50% is applied to the first three encoder layers.
@@ -505,25 +507,25 @@ with.</p>
 <h4>Variants<a class="headerlink" href="#variants" title="Permalink to this headline">¶</a></h4>
 <p>Many variants of the U-Net architecture have been proposed. A few recent papers
 have added a method of controlling the output source by <em>conditioning</em> the
-network. <a class="bibtex reference internal" href="../../zzz_refs.html#slizovskaia2020conditioned" id="id4">[SHGomez20]</a><a class="bibtex reference internal" href="../../zzz_refs.html#petermann2020deep" id="id5">[PCC+20]</a><a class="bibtex reference internal" href="../../zzz_refs.html#meseguer2019conditioned" id="id6">[MBP19]</a>
+network. <a href="#id7"><span class="problematic" id="id8">:cite:`slizovskaia2020conditioned,petermann2020deep,meseguer2019conditioned`</span></a>
 Conditioning means providing additional information to the network; we add a control module
 to the network that allows us to tell it which source we want it to separate.</p>
 <p>Other variants include U-Nets that separate multiple sources at once (as opposed
-to one network per source) <a class="bibtex reference internal" href="../../zzz_refs.html#kadandale2020multi" id="id7">[KMHGomez20]</a>, jointly learning the
-fundamental frequency of the singing voice <a class="bibtex reference internal" href="../../zzz_refs.html#jansson2019joint" id="id8">[JBEW19]</a>, jointly learning
-instrument <a class="bibtex reference internal" href="../../zzz_refs.html#hung2020multitask" id="id9">[HL20]</a> or singing voice activity <a class="bibtex reference internal" href="../../zzz_refs.html#stoller2018jointly" id="id10">[SED18a]</a>.</p>
+to one network per source) <a href="#id9"><span class="problematic" id="id10">:cite:`kadandale2020multi`</span></a>, jointly learning the
+fundamental frequency of the singing voice <a href="#id11"><span class="problematic" id="id12">:cite:`jansson2019joint`</span></a>, jointly learning
+instrument <a href="#id13"><span class="problematic" id="id14">:cite:`hung2020multitask`</span></a> or singing voice activity <a href="#id15"><span class="problematic" id="id16">:cite:`stoller2018jointly`</span></a>.</p>
 <p>Some of these variants follow the neural network details outlined above
-(which are taked from the original U-Net paper <a class="bibtex reference internal" href="../../zzz_refs.html#jansson2017singing" id="id11">[JHM+17]</a>),
+(which are taked from the original U-Net paper <a href="#id17"><span class="problematic" id="id18">:cite:`jansson2017singing`</span></a>),
 but some use different activation functions or do multiple convolutional layers
 before concatenating to the respective deconvolutional layer.</p>
 </div>
 </div>
 <div class="section" id="open-unmix">
 <span id="architectures-openunmix"></span><h3>Open-Unmix<a class="headerlink" href="#open-unmix" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id21">
+<div class="figure align-default" id="id33">
 <img alt="../../_images/open-unmix.png" src="../../_images/open-unmix.png" />
 <p class="caption"><span class="caption-number">Fig. 37 </span><span class="caption-text">A diagram showing the Open-Unmix architecture for source separation.
-Image used courtesy of Fabian-Robert Stöter (<a href="https://github.com/sigsep/open-unmix-pytorch">source</a>).</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+Image used courtesy of Fabian-Robert Stöter (<a href="https://github.com/sigsep/open-unmix-pytorch">source</a>).</span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
 </div>
 <p>Open-Unmix is a more recent neural network architecture that boasts impressive
 performance. Open-Unmix has one fully connected layer with batch norm and a <code class="docutils literal notranslate"><span class="pre">tanh</span></code>
@@ -575,9 +577,9 @@ loss is called a Mask Inference Loss.</p>
 </div>
 <div class="section" id="deep-clustering">
 <span id="architectures-deepclustering"></span><h3>Deep Clustering<a class="headerlink" href="#deep-clustering" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id12">
+<div class="figure align-default" id="id19">
 <a class="reference internal image-reference" href="../../_images/deep_clustering.png"><img alt="Diagram of the Deep Clustering architecture." src="../../_images/deep_clustering.png" style="width: 181.5px; height: 388.5px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">A diagram of the Deep Clustering architecture.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">A diagram of the Deep Clustering architecture.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 <p>Deep Clustering maps each TF bin to a high-dimensional
 embedding space such that TF bins dominated by the same source
@@ -599,11 +601,11 @@ must be applied to the embedding space to make masks.</p>
 </div>
 <div class="section" id="chimera">
 <span id="architectures-chimera"></span><h3>Chimera<a class="headerlink" href="#chimera" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id13">
+<div class="figure align-default" id="id20">
 <a class="reference internal image-reference" href="../../_images/chimera.png"><img alt="Diagram of the Chimera architecture." src="../../_images/chimera.png" style="width: 301.0px; height: 328.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">A diagram of the Chimera architecture.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">A diagram of the Chimera architecture.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </div>
-<p>Chimera <a class="bibtex reference internal" href="../../zzz_refs.html#luo2017deep" id="id14">[LCH+17]</a> combines the Mask Inference and Deep Clustering architectures
+<p>Chimera <a href="#id21"><span class="problematic" id="id22">:cite:`luo2017deep`</span></a> combines the Mask Inference and Deep Clustering architectures
 into a multi-task neural network. The net is trained to optimize both
 loss functions simultaneously. It does this by having a separate
 “head” for each loss. Each of these heads is its own fully connected
@@ -619,12 +621,12 @@ mixes.</p>
 <h2>Waveform Systems<a class="headerlink" href="#waveform-systems" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="tasnet-friends">
 <span id="architectures-convtasnet"></span><h3>Tasnet &amp; Friends<a class="headerlink" href="#tasnet-friends" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id22">
+<div class="figure align-default" id="id34">
 <img alt="../../_images/tasnet_all.png" src="../../_images/tasnet_all.png" />
 <p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">A diagram showing the ConvTasnet architecture.
-Image used courtesy of Yi Luo.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+Image used courtesy of Yi Luo.</span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
 </div>
-<p>The Tasnet <a class="bibtex reference internal" href="../../zzz_refs.html#luo2018tasnet" id="id15">[LM18]</a> is a speech separation architecture
+<p>The Tasnet <a href="#id23"><span class="problematic" id="id24">:cite:`luo2018tasnet`</span></a> is a speech separation architecture
 that is structured
 very similar the Mask Inference architecture outlined above, with
 LSTM layers at the center. Tasnet has
@@ -632,13 +634,13 @@ one main difference: Tasnet used a pair of convolutional layers
 to input and output waveforms directly. Additionally, because Tasnet
 outputs the waveforms directly it doesn’t need the additional step
 of multiplying by a mixture STFT to get the phase information.</p>
-<p>ConvTasnet <a class="bibtex reference internal" href="../../zzz_refs.html#luo2019conv" id="id16">[LM19]</a> is the second iteration of the original
+<p>ConvTasnet <a href="#id25"><span class="problematic" id="id26">:cite:`luo2019conv`</span></a> is the second iteration of the original
 TasNet speech separation architecture. It replaces the LSTM center of
 Tasnet with 1D convolutional layers that separate the input signal.</p>
 <p>While both Tasnet and ConvTasnet have both been popular in the
 speech separation literature, to our knowledge only ConvTasnet
 has seen use in music separation based on its implementation
-by the authors of Demucs <a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019music" id="id17">[DefossezUBB19b]</a>. This is because
+by the authors of Demucs <a href="#id27"><span class="problematic" id="id28">:cite:`defossez2019music`</span></a>. This is because
 the translation from speech to music was not so straight forward
 in this case.</p>
 <p>ConvTasnet and Tasnet both use SI-SNR loss between target and estimated
@@ -646,7 +648,7 @@ waveforms.</p>
 </div>
 <div class="section" id="wave-u-net">
 <span id="architectures-waveunet"></span><h3>Wave-U-Net<a class="headerlink" href="#wave-u-net" title="Permalink to this headline">¶</a></h3>
-<p>Wave-U-Net <a class="bibtex reference internal" href="../../zzz_refs.html#stoller2018wave" id="id18">[SED18b]</a> is an extension of the U-Net
+<p>Wave-U-Net <a href="#id29"><span class="problematic" id="id30">:cite:`stoller2018wave`</span></a> is an extension of the U-Net
 architecture that operates directly on waveforms. Instead of 2D
 convolutions/deconvolutions acting on a spectrogram, Wave-U-Nets
 have a series of 1D convolutions/deconvolutions that operate on
@@ -657,12 +659,12 @@ deconvolutional decoding layers.</p>
 </div>
 <div class="section" id="demucs">
 <span id="architectures-demucs"></span><h3>Demucs<a class="headerlink" href="#demucs" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-default" id="id23">
+<div class="figure align-default" id="id35">
 <img alt="../../_images/demucs.png" src="../../_images/demucs.png" />
 <p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">A diagram showing the original Tasnet architecture.
-Image used courtesy of Alexandre Défossez.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+Image used courtesy of Alexandre Défossez.</span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
 </div>
-<p>Demucs <a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019demucs" id="id19">[DefossezUBB19a]</a><a class="bibtex reference internal" href="../../zzz_refs.html#defossez2019music" id="id20">[DefossezUBB19b]</a> is similar to
+<p>Demucs <a href="#id31"><span class="problematic" id="id32">:cite:`defossez2019demucs,defossez2019music`</span></a> is similar to
 both Wave-U-Net and Tasnet. It has the skip connections just as
 in Wave-U-Net, but at the center it has two BLSTM layers. The
 specific details of the shape of each layer are shown in the diagram.</p>
@@ -708,15 +710,15 @@ train a model like the ones on this page.</p>
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="building_blocks.html" title="previous page">Building Blocks</a>
     <a class='right-next' id="next-link" href="../../data/introduction.html" title="next page">Introduction</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -735,7 +737,7 @@ train a model like the ones on this page.</p>
     </div>
 
     
-  <script src="../../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
