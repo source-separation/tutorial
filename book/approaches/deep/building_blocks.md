@@ -509,7 +509,7 @@ Two related activation functions to ReLUs are the `Leaky ReLU` and `PReLU`.
 
 The Leaky ReLU is similar to the regular ReLU, but instead of 
 the output being $0.0$ below $x=0.0$ it is weighted ever so slightly above $0.0$ 
-so that smaller updates will be made:
+so that small updates will still be made:
 
 ![leaky_relu_eq](../../images/deep_approaches/leaky_relu_eq.svg)
 
