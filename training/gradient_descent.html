@@ -740,7 +740,7 @@ value is:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loss minimum of nan at 
-	 m_hat=-2.00, b_hat=-0.87
+	 m_hat=1.27, b_hat=1.56
 Actual m, b: 
 	 m=1.76, b=0.40
 </pre></div>
@@ -801,7 +801,13 @@ at how the loss changes as the value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_24_0.png" src="../_images/gradient_descent_24_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/numpy/core/_methods.py:178: RuntimeWarning: overflow encountered in reduce
+  ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/numpy/core/_methods.py:178: RuntimeWarning: invalid value encountered in reduce
+  ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+</pre></div>
+</div>
+<img alt="../_images/gradient_descent_24_1.png" src="../_images/gradient_descent_24_1.png" />
 </div>
 </div>
 <p>Now, let’s look at it as <span class="math notranslate nohighlight">\(b\)</span> changes:</p>
@@ -816,7 +822,11 @@ at how the loss changes as the value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_26_0.png" src="../_images/gradient_descent_26_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/numpy/core/_methods.py:178: RuntimeWarning: invalid value encountered in reduce
+  ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+</pre></div>
+</div>
+<img alt="../_images/gradient_descent_26_1.png" src="../_images/gradient_descent_26_1.png" />
 </div>
 </div>
 <p>The slope of these curves is the gradient. For example, in the first <span class="math notranslate nohighlight">\(m\)</span> plot, we
@@ -843,7 +853,7 @@ the gradients, just compute the loss and then call <code class="docutils literal
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[-5.0424]]), tensor([-0.0400]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[-4.7596]]), tensor([0.2400]))
 </pre></div>
 </div>
 </div>

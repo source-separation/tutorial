@@ -956,7 +956,8 @@ make masks, and some systems use them to output waveforms as well.</p>
 </div>
 <p>Two related activation functions to ReLUs are the <code class="docutils literal notranslate"><span class="pre">Leaky</span> <span class="pre">ReLU</span></code> and <code class="docutils literal notranslate"><span class="pre">PReLU</span></code>.</p>
 <p>The Leaky ReLU is similar to the regular ReLU, but instead of
-the output being <span class="math notranslate nohighlight">\(0.0\)</span> below <span class="math notranslate nohighlight">\(x=0.0\)</span> it is ever so slightly above <span class="math notranslate nohighlight">\(0.0\)</span>:</p>
+the output being <span class="math notranslate nohighlight">\(0.0\)</span> below <span class="math notranslate nohighlight">\(x=0.0\)</span> it is weighted ever so slightly above <span class="math notranslate nohighlight">\(0.0\)</span>
+so that small updates will still be made:</p>
 <p><img alt="leaky_relu_eq" src="../../_images/leaky_relu_eq.svg" /></p>
 <p>And PReLU has a learnable network parameter <span class="math notranslate nohighlight">\(\alpha\)</span> that defines the slope
 below <span class="math notranslate nohighlight">\(x=0.0\)</span>:</p>
