@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Building Blocks &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
-  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -35,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -45,7 +42,7 @@
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -59,14 +56,14 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Architectures" href="architectures.html" />
     <link rel="prev" title="Introduction" href="introduction.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -75,30 +72,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../landing.html">
    Open Source Tools &amp; Data for Music Source Separation
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro/tutorial_structure.html">
    Tutorial Structure and Setup
@@ -115,12 +112,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Basics of Source Separation
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../basics/representations.html">
    Representing Audio
@@ -142,12 +139,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   First Steps
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../first_steps/nussl_intro.html">
    Introduction to nussl
@@ -164,12 +161,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Deep Learning Approaches
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="introduction.html">
    Introduction
@@ -186,12 +183,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../data/introduction.html">
    Introduction
@@ -218,12 +215,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Training
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../training/intro.html">
    Introduction
@@ -245,12 +242,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Conclusions
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../conclusions/applications.html">
    Applications
@@ -262,12 +259,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Resources
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../zzz_refs.html">
    References
@@ -295,6 +292,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -360,12 +358,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -374,12 +372,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-network-components">
    Neural Network Components
@@ -540,8 +537,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -819,9 +815,9 @@ the edge get covered by more convolutional nodes. Padding is shown in
 convolutional node sees. This allows each node to understand more
 context than if no dilation is used. A gif of dilation is shown in
 <a class="reference internal" href="#conv4"><span class="std std-numref">Fig. 27</span></a>. Dilation is perhaps most famous in the audio world
-because of its use in Wavenet <a href="#id1"><span class="problematic" id="id2">:cite:`oord2016wavenet`</span></a>, which used
+because of its use in Wavenet <span id="id1">[<a class="reference internal" href="../../zzz_refs.html#id49"><span>ODZ+16</span></a>]</span>, which used
 dilated convolutions in an autoregressive manner to produce one sample
-of a waveform at a time. <a class="footnote-reference brackets" href="#fn1" id="id3">1</a></p>
+of a waveform at a time. <a class="footnote-reference brackets" href="#fn1" id="id2">1</a></p>
 <p><strong>Transpose Convolutions</strong><br />
 Typically the output of convolutional layers have a smaller dimensionality
 than the input layers, however we might want the opposite to happen
@@ -845,7 +841,7 @@ other types of pooling exist like <em>average pooling</em>.</p>
 <p><strong>Further Reading</strong></p>
 <p>For further information see <a class="reference external" href="https://arxiv.org/pdf/1603.07285.pdf">this paper</a>,
 or see the animations at <a class="reference external" href="https://github.com/vdumoulin/conv_arithmetic">this Gitub link</a> to provide more intuition
-about how these parameters affect the convolutional shapes. <a href="#id4"><span class="problematic" id="id5">:cite:`dumoulin2016guide`</span></a></p>
+about how these parameters affect the convolutional shapes. <span id="id3">[<a class="reference internal" href="../../zzz_refs.html#id48"><span>DumoulinVisin16</span></a>]</span></p>
 </div>
 <div class="section" id="in-source-separation">
 <h5>In Source Separation<a class="headerlink" href="#in-source-separation" title="Permalink to this headline">¶</a></h5>
@@ -863,7 +859,7 @@ learned filterbanks of a causal model and Figure (b) shows a noncausal
 model.
 Notice how most of the energy of the filterbanks is in the range
 of human speech.
-Image used courtesy of Yi Luo. <a href="#id6"><span class="problematic" id="id7">:cite:`luo2018tasnet`</span></a></span><a class="headerlink" href="#tasnet-filterbanks" title="Permalink to this image">¶</a></p>
+Image used courtesy of Yi Luo. <span id="id4">[<a class="reference internal" href="../../zzz_refs.html#id21"><span>LM18</span></a>]</span></span><a class="headerlink" href="#tasnet-filterbanks" title="Permalink to this image">¶</a></p>
 </div>
 <p>When we say that convolutions learn a set of filters (or, a <em>filterbank</em>),
 this relates to the concept of filters that we normally think of in audio, like
@@ -913,25 +909,25 @@ The most common ones seen in source separation
 are discussed below:</p>
 <div class="section" id="sigmoid">
 <h4>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this headline">¶</a></h4>
-<div class="figure align-default" id="id8">
+<div class="figure align-default" id="id5">
 <a class="reference internal image-reference" href="../../_images/sigmoid.png"><img alt="A plot of the sigmoid activation function." src="../../_images/sigmoid.png" style="width: 300.0px; height: 200.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 31 </span><span class="caption-text">A plot of the Sigmoid activation function.
-<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Logistic-curve.svg">Image Source</a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Logistic-curve.svg">Image Source</a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> activation function is shown in <a class="reference internal" href="#id8"><span class="std std-numref">Fig. 31</span></a> and
+<p>The <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> activation function is shown in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 31</span></a> and
 is used very commonly as the output of a neural net that creates masks.
 Because it is bounded in the range <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> it is perfectly
 suited to make <a class="reference internal" href="../../basics/tf_and_masking.html#masks-softmasks"><span class="std std-ref">Soft Masks (or Ratio Masks)</span></a>. It is sometimes denoted <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 </div>
 <div class="section" id="tanh">
 <h4>Tanh<a class="headerlink" href="#tanh" title="Permalink to this headline">¶</a></h4>
-<div class="figure align-default" id="id9">
+<div class="figure align-default" id="id6">
 <a class="reference internal image-reference" href="../../_images/tanh.png"><img alt="A plot of the tanh activation function." src="../../_images/tanh.png" style="width: 320.0px; height: 160.0px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">A plot of the tanh activation function.
-<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Activation_tanh.svg">Image Source</a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<a class="reference external" href="https://commons.wikimedia.org/wiki/File:Activation_tanh.svg">Image Source</a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">tanh</span></code>, or the hyperbolic tangent, activation function is
-shown in <a class="reference internal" href="#id9"><span class="std std-numref">Fig. 32</span></a>. Tanh is similar to sigmoid, but it is bounded
+shown in <a class="reference internal" href="#id6"><span class="std std-numref">Fig. 32</span></a>. Tanh is similar to sigmoid, but it is bounded
 in the range <span class="math notranslate nohighlight">\([-1.0, 1.0]\)</span>, instead of <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> like sigmoid.
 For this reason it is more common to find a <code class="docutils literal notranslate"><span class="pre">tanh</span></code> in the
 middle of a source separation network than at the ends.</p>
@@ -982,7 +978,7 @@ and standard deviation calculations. The most common types of normalization
 in source separation are outlined below.</p>
 <div class="section" id="batch-norm">
 <h4>Batch Norm<a class="headerlink" href="#batch-norm" title="Permalink to this headline">¶</a></h4>
-<p><em>Batch normalization</em>, or <em>batch norm</em>, <a href="#id10"><span class="problematic" id="id11">:cite:`ioffe2015batch`</span></a> computes the
+<p><em>Batch normalization</em>, or <em>batch norm</em>, <span id="id7">[<a class="reference internal" href="../../zzz_refs.html#id58"><span>IS15</span></a>]</span> computes the
 mean and standard
 deviation of each mini-batch during training and normalizes the data
 using those statistics. Like pooling, batch norm is considered another
@@ -1018,9 +1014,9 @@ uses a learnable normalization parameters to great effect.</p>
 <h4>Other Normalization Techniques<a class="headerlink" href="#other-normalization-techniques" title="Permalink to this headline">¶</a></h4>
 <p>There are many other normalization techniques that have been developed
 and quite a few have been used in source separation research such as
-<em>instance norm</em> <a href="#id12"><span class="problematic" id="id13">:cite:`ulyanov2016instance`</span></a>. A great resource for
+<em>instance norm</em> <span id="id8">[<a class="reference internal" href="../../zzz_refs.html#id53"><span>UVL16</span></a>]</span>. A great resource for
 learning more about neural network normalization techniques is
-outlined in the Group Normalization paper: <a href="#id14"><span class="problematic" id="id15">:cite:`wu2018group`</span></a></p>
+outlined in the Group Normalization paper: <span id="id9">[<a class="reference internal" href="../../zzz_refs.html#id57"><span>WH18</span></a>]</span></p>
 </div>
 </div>
 <div class="section" id="dropout">
@@ -1090,7 +1086,7 @@ euclidean norm where <span class="math notranslate nohighlight">\(p=2\)</span>. 
 <h4>Spectrogram Targets<a class="headerlink" href="#spectrogram-targets" title="Permalink to this headline">¶</a></h4>
 <p>There is some nuance in selecting how you determine the spectrogram of the isolated
 source <span class="math notranslate nohighlight">\(S_i\)</span>. Just using the magnitude spectrogram as the target is called
-the <em>Magnitude Spectrum Approximation</em> or MSA <a href="#id16"><span class="problematic" id="id17">:cite:`weninger2014discriminatively`</span></a>.
+the <em>Magnitude Spectrum Approximation</em> or MSA <span id="id10">[<a class="reference internal" href="../../zzz_refs.html#id62"><span>WHLRS14</span></a>]</span>.
 This is just the same equation as above unmodified:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1124,7 +1120,7 @@ loss and target.</p>
 embedding space where TF bins from the same source are close and TF bins
 from different sources are far.</span><a class="headerlink" href="#dc-loss" title="Permalink to this image">¶</a></p>
 </div>
-<p>Deep Clustering <a href="#id18"><span class="problematic" id="id19">:cite:`hershey2016deep,luo2017deep`</span></a> losses are usually
+<p>Deep Clustering <span id="id11">[<a class="reference internal" href="../../zzz_refs.html#id78"><span>HCLRW16</span></a>,<a class="reference internal" href="../../zzz_refs.html#id80"><span>LCH+17</span></a>]</span> losses are usually
 used with spectrograms as input.
 The goal is to learn a high-dimensional embedding space
 where all of the TF bins dominated by the same source close together
@@ -1140,7 +1136,7 @@ clustering loss is thus given by,</p>
 \mathcal{L}_{DC} = || \hat{A} - A ||^2_F = || VV^T - YY^T ||^2_F
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(F\)</span> is the Frobenius norm. Other types of deep clustering
-losses have been proposed, <a href="#id20"><span class="problematic" id="id21">:cite:`wang2018alternative,chen2017deep`</span></a>
+losses have been proposed, <span id="id12">[<a class="reference internal" href="../../zzz_refs.html#id79"><span>WLRH18</span></a>,<a class="reference internal" href="../../zzz_refs.html#id81"><span>CLM17</span></a>]</span>
 but the intuition is the same: put TF bins from the same source close to one
 another and far from TF bins from other sources.</p>
 <p>Once the network is trained, a clustering algorithm such as k-means must
@@ -1160,9 +1156,9 @@ spectrograms:</p>
 <p>where <span class="math notranslate nohighlight">\(\hat{x}_i\)</span> is the estimated waveform for source <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(x_i\)</span>
 is the ground truth waveform for source <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(T\)</span> is the total number of
 samples in the source, and <span class="math notranslate nohighlight">\(p\)</span> is the norm (1 for L1, 2 for MSE).
-<a href="#id22"><span class="problematic" id="id23">:cite:`defossez2019music`</span></a></p>
+<span id="id13">[<a class="reference internal" href="../../zzz_refs.html#id46"><span>DefossezUBB19b</span></a>]</span></p>
 <p>Alternatively, we can emulate the evaluation metrics (SDR &amp; Friends) by using
-that as a loss function. <a href="#id24"><span class="problematic" id="id25">:cite:`luo2018tasnet`</span></a> For</p>
+that as a loss function. <span id="id14">[<a class="reference internal" href="../../zzz_refs.html#id21"><span>LM18</span></a>]</span> For</p>
 <div class="math notranslate nohighlight">
 \[
 x_{\text{target}} = \frac{\langle \hat{x}, x \rangle x}{\|x\|^2 }
@@ -1217,9 +1213,9 @@ in a later section.</p></li>
 to make whole networks. We’ll see how that’s done on the next page.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
-<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
 <dd><p>Although we won’t cover Wavenet in detail in this tutorial, it has been
-used for music source separation in this paper: <a href="#id26"><span class="problematic" id="id27">:cite:`lluis2019end`</span></a>.</p>
+used for music source separation in this paper: <span id="id15">[<a class="reference internal" href="../../zzz_refs.html#id50"><span>LluisPS19</span></a>]</span>.</p>
 </dd>
 </dl>
 </div>
@@ -1272,21 +1268,19 @@ used for music source separation in this paper: <a href="#id26"><span class="pro
 
       </div>
     </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-180111316-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
 
-
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-180111316-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
-    
   </body>
 </html>

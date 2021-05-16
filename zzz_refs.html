@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>References &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -35,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -45,7 +42,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -57,14 +54,14 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Additional Reading" href="resources/reading.html" />
     <link rel="prev" title="Concluding Remarks" href="conclusions/concluding_remarks.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -73,30 +70,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="landing.html">
    Open Source Tools &amp; Data for Music Source Separation
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro/tutorial_structure.html">
    Tutorial Structure and Setup
@@ -113,12 +110,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Basics of Source Separation
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="basics/representations.html">
    Representing Audio
@@ -140,12 +137,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   First Steps
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="first_steps/nussl_intro.html">
    Introduction to nussl
@@ -162,12 +159,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Deep Learning Approaches
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="approaches/deep/introduction.html">
    Introduction
@@ -184,12 +181,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data/introduction.html">
    Introduction
@@ -216,12 +213,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Training
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="training/intro.html">
    Introduction
@@ -243,12 +240,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Conclusions
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="conclusions/applications.html">
    Applications
@@ -260,12 +257,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Resources
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    References
@@ -293,6 +290,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -358,12 +356,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -382,6 +380,228 @@
                 
   <div class="section" id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p id="id1"><dl class="citation">
+<dt class="label" id="id59"><span class="brackets">BSF94</span></dt>
+<dd><p>Yoshua Bengio, Patrice Simard, and Paolo Frasconi. Learning long-term dependencies with gradient descent is difficult. <em>IEEE Transactions on Neural Networks</em>, 5(2):157–166, 1994.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets">Bro91</span></dt>
+<dd><p>Judith C Brown. Calculation of a constant q spectral transform. <em>The Journal of the Acoustical Society of America</em>, 89(1):425–434, 1991.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">BP92</span></dt>
+<dd><p>Judith C Brown and Miller S Puckette. An efficient algorithm for the calculation of a constant q transform. <em>The Journal of the Acoustical Society of America</em>, 92(5):2698–2701, 1992.</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets">CFL+18</span></dt>
+<dd><p>Estefania Cano, Derry FitzGerald, Antoine Liutkus, Mark D Plumbley, and Fabian-Robert Stöter. Musical source separation: an introduction. <em>IEEE Signal Processing Magazine</em>, 36(1):31–40, 2018.</p>
+</dd>
+<dt class="label" id="id75"><span class="brackets">CPMH16</span></dt>
+<dd><p>Mark Cartwright, Bryan Pardo, Gautham J Mysore, and Matt Hoffman. Fast and easy crowdsourced perceptual audio evaluation. In <em>2016 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 619–623. IEEE, 2016.</p>
+</dd>
+<dt class="label" id="id81"><span class="brackets">CLM17</span></dt>
+<dd><p>Zhuo Chen, Yi Luo, and Nima Mesgarani. Deep attractor network for single-microphone speaker separation. In <em>2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 246–250. IEEE, 2017.</p>
+</dd>
+<dt class="label" id="id37"><span class="brackets">CKH+18</span></dt>
+<dd><p>Hyeong-Seok Choi, Jang-Hyun Kim, Jaesung Huh, Adrian Kim, Jung-Woo Ha, and Kyogu Lee. Phase-aware speech enhancement with deep complex u-net. In <em>International Conference on Learning Representations</em>. 2018.</p>
+</dd>
+<dt class="label" id="id47"><span class="brackets">DefossezUBB19a</span></dt>
+<dd><p>Alexandre Défossez, Nicolas Usunier, Léon Bottou, and Francis Bach. Demucs: deep extractor for music sources with extra unlabeled data remixed. <em>arXiv preprint arXiv:1909.01174</em>, 2019.</p>
+</dd>
+<dt class="label" id="id46"><span class="brackets">DefossezUBB19b</span></dt>
+<dd><p>Alexandre Défossez, Nicolas Usunier, Léon Bottou, and Francis Bach. Music source separation in the waveform domain. <em>arXiv preprint arXiv:1911.13254</em>, 2019.</p>
+</dd>
+<dt class="label" id="id71"><span class="brackets">EAC+18</span></dt>
+<dd><p>Jesse Engel, Kumar Krishna Agrawal, Shuo Chen, Ishaan Gulrajani, Chris Donahue, and Adam Roberts. Gansynth: adversarial neural audio synthesis. In <em>International Conference on Learning Representations</em>. 2018.</p>
+</dd>
+<dt class="label" id="id70"><span class="brackets">EGR+19</span></dt>
+<dd><p>Jesse Engel, Chenjie Gu, Adam Roberts, and others. Ddsp: differentiable digital signal processing. In <em>International Conference on Learning Representations</em>. 2019.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets">FBR12</span></dt>
+<dd><p>Benoit Fuentes, Roland Badeau, and Gaël Richard. Blind harmonic adaptive decomposition applied to supervised source separation. In <em>2012 Proceedings of the 20th European Signal Processing Conference (EUSIPCO)</em>, 2654–2658. IEEE, 2012.</p>
+</dd>
+<dt class="label" id="id25"><span class="brackets">FGO+06</span></dt>
+<dd><p>Hiromasa Fujihara, Masataka Goto, Jun Ogata, Kazunori Komatani, Tetsuya Ogata, and Hiroshi G Okuno. Automatic synchronization between lyrics and music cd recordings based on viterbi alignment of segregated vocal signals. In <em>Eighth IEEE International Symposium on Multimedia (ISM'06)</em>, 257–264. IEEE, 2006.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets">GSD12</span></dt>
+<dd><p>Joachim Ganseman, Paul Scheunders, and Simon Dixon. Improving plca-based score-informed source separation with invertible constant-q transforms. In <em>2012 Proceedings of the 20th European Signal Processing Conference (EUSIPCO)</em>, 2634–2638. IEEE, 2012.</p>
+</dd>
+<dt class="label" id="id66"><span class="brackets">GL84</span></dt>
+<dd><p>Daniel Griffin and Jae Lim. Signal estimation from modified short-time fourier transform. <em>IEEE Transactions on Acoustics, Speech, and Signal Processing</em>, 32(2):236–243, 1984.</p>
+</dd>
+<dt class="label" id="id69"><span class="brackets">GS10</span></dt>
+<dd><p>David Gunawan and Deep Sen. Iterative phase estimation for the synthesis of separated sources from single-channel mixtures. <em>IEEE Signal Processing Letters</em>, 17(5):421–424, 2010.</p>
+</dd>
+<dt class="label" id="id31"><span class="brackets">HMW20a</span></dt>
+<dd><p>Verena Haunschmid, Ethan Manilow, and Gerhard Widmer. Towards musically meaningful explanations using source separation. <em>arXiv preprint arXiv:2009.02051</em>, 2020.</p>
+</dd>
+<dt class="label" id="id32"><span class="brackets">HMW20b</span></dt>
+<dd><p>Verena Haunschmid, Ethan Manilow, and Gerhard Widmer. Audiolime: listenable explanations using source separation. <em>13th International Workshop on Machine Learning and Music 2020</em>, pages 20, 2020.</p>
+</dd>
+<dt class="label" id="id29"><span class="brackets">HKV09</span></dt>
+<dd><p>Toni Heittola, Anssi Klapuri, and Tuomas Virtanen. Musical instrument recognition in polyphonic audio using source-filter model for sound separation. In <em>ISMIR</em>, 327–332. 2009.</p>
+</dd>
+<dt class="label" id="id83"><span class="brackets">HKVM20</span></dt>
+<dd><p>Romain Hennequin, Anis Khlif, Felix Voituret, and Manuel Moussallam. Spleeter: a fast and efficient music source separation tool with pre-trained models. <em>Journal of Open Source Software</em>, 5(50):2154, 2020. Deezer Research. URL: <a class="reference external" href="https://doi.org/10.21105/joss.02154">https://doi.org/10.21105/joss.02154</a>, <a class="reference external" href="https://doi.org/10.21105/joss.02154">doi:10.21105/joss.02154</a>.</p>
+</dd>
+<dt class="label" id="id78"><span class="brackets">HCLRW16</span></dt>
+<dd><p>John R Hershey, Zhuo Chen, Jonathan Le Roux, and Shinji Watanabe. Deep clustering: discriminative embeddings for segmentation and separation. In <em>2016 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 31–35. IEEE, 2016.</p>
+</dd>
+<dt class="label" id="id44"><span class="brackets">HL15</span></dt>
+<dd><p>Ying Hu and Guizhong Liu. Separation of singing voice using nonnegative matrix partial co-factorization for singer identification. <em>IEEE/ACM Transactions on Audio, Speech, and Language Processing</em>, 23(4):643–653, 2015.</p>
+</dd>
+<dt class="label" id="id43"><span class="brackets">HL20</span></dt>
+<dd><p>Yun-Ning Hung and Alexander Lerch. Multitask learning for instrument activation aware music source separation. <em>arXiv preprint arXiv:2008.00616</em>, 2020.</p>
+</dd>
+<dt class="label" id="id58"><span class="brackets">IS15</span></dt>
+<dd><p>Sergey Ioffe and Christian Szegedy. Batch normalization: accelerating deep network training by reducing internal covariate shift. <em>arXiv preprint arXiv:1502.03167</em>, 2015.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets">JFB+11</span></dt>
+<dd><p>Rajesh Jaiswal, Derry FitzGerald, Dan Barry, Eugene Coyle, and Scott Rickard. Clustering nmf basis functions using shifted nmf for monaural sound source separation. In <em>2011 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 245–248. IEEE, 2011.</p>
+</dd>
+<dt class="label" id="id30"><span class="brackets">JBEW19</span></dt>
+<dd><p>Andreas Jansson, Rachel M Bittner, Sebastian Ewert, and Tillman Weyde. Joint singing voice separation and f0 estimation with deep u-net architectures. In <em>2019 27th European Signal Processing Conference (EUSIPCO)</em>, 1–5. IEEE, 2019.</p>
+</dd>
+<dt class="label" id="id36"><span class="brackets">JHM+17</span></dt>
+<dd><p>Andreas Jansson, Eric Humphrey, Nicola Montecchio, Rachel Bittner, Aparna Kumar, and Tillman Weyde. Singing voice separation with deep u-net convolutional networks. <em>International Society for Music Information Retrieval Conference, 2017</em>, 2017.</p>
+</dd>
+<dt class="label" id="id40"><span class="brackets">KMHGomez20</span></dt>
+<dd><p>Venkatesh S Kadandale, Juan F Montesinos, Gloria Haro, and Emilia Gómez. Multi-task u-net for music source separation. <em>arXiv preprint arXiv:2003.10414</em>, 2020.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets">LRWW+19</span></dt>
+<dd><p>Jonathan Le Roux, Gordon Wichern, Shinji Watanabe, Andy Sarroff, and John R Hershey. Phasebook and friends: leveraging discrete representations for source separation. <em>IEEE Journal of Selected Topics in Signal Processing</em>, 13(2):370–382, 2019.</p>
+</dd>
+<dt class="label" id="id64"><span class="brackets">LRWEH19</span></dt>
+<dd><p>Jonathan Le Roux, Scott Wisdom, Hakan Erdogan, and John R Hershey. Sdr–half-baked or well done? In <em>ICASSP 2019-2019 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 626–630. IEEE, 2019.</p>
+</dd>
+<dt class="label" id="id50"><span class="brackets">LluisPS19</span></dt>
+<dd><p>Francesc Lluís, Jordi Pons, and Xavier Serra. End-to-end music source separation: is it possible in the waveform domain? <em>Proc. Interspeech 2019</em>, pages 4619–4623, 2019.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">LSC+18</span></dt>
+<dd><p>Vincent Lostanlen, Justin Salamon, Mark Cartwright, Brian McFee, Andrew Farnsworth, Steve Kelling, and Juan Pablo Bello. Per-channel energy normalization: why and how. <em>IEEE Signal Processing Letters</em>, 26(1):39–43, 2018.</p>
+</dd>
+<dt class="label" id="id80"><span class="brackets">LCH+17</span></dt>
+<dd><p>Yi Luo, Zhuo Chen, John R Hershey, Jonathan Le Roux, and Nima Mesgarani. Deep clustering and conventional networks for music separation: stronger together. In <em>2017 IEEE international conference on acoustics, speech and signal processing (ICASSP)</em>, 61–65. IEEE, 2017.</p>
+</dd>
+<dt class="label" id="id21"><span class="brackets">LM18</span></dt>
+<dd><p>Yi Luo and Nima Mesgarani. Tasnet: time-domain audio separation network for real-time, single-channel speech separation. In <em>2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 696–700. IEEE, 2018.</p>
+</dd>
+<dt class="label" id="id18"><span class="brackets">LM19</span></dt>
+<dd><p>Yi Luo and Nima Mesgarani. Conv-tasnet: surpassing ideal time–frequency magnitude masking for speech separation. <em>IEEE/ACM transactions on audio, speech, and language processing</em>, 27(8):1256–1266, 2019.</p>
+</dd>
+<dt class="label" id="id86"><span class="brackets">MSP18</span></dt>
+<dd><p>Ethan Manilow, Prem Seetharaman, and Bryan Pardo. &quot;the northwestern university source separation library&quot;. In <em>&quot;Proceedings of the 19th International Society of Music Information Retrieval Conference (ISMIR 2018), Paris, France, September 23-27&quot;</em>. 2018.</p>
+</dd>
+<dt class="label" id="id33"><span class="brackets">MSP20</span></dt>
+<dd><p>Ethan Manilow, Prem Seetharaman, and Bryan Pardo. Simultaneous separation and transcription of mixtures with multiple polyphonic and percussive instruments. In <em>ICASSP 2020-2020 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 771–775. IEEE, 2020.</p>
+</dd>
+<dt class="label" id="id65"><span class="brackets">MYK+19</span></dt>
+<dd><p>Yoshiki Masuyama, Kohei Yatabe, Yuma Koizumi, Yasuhiro Oikawa, and Noboru Harada. Deep griffin–lim iteration. In <em>ICASSP 2019-2019 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 61–65. IEEE, 2019.</p>
+</dd>
+<dt class="label" id="id26"><span class="brackets">MV10</span></dt>
+<dd><p>Annamaria Mesaros and Tuomas Virtanen. Automatic recognition of lyrics in singing. <em>EURASIP Journal on Audio, Speech, and Music Processing</em>, 2010(1):546047, 2010.</p>
+</dd>
+<dt class="label" id="id38"><span class="brackets">MBP19</span></dt>
+<dd><p>Gabriel Meseguer-Brocal and Geoffroy Peeters. Conditioned-u-net: introducing a control mechanism in the u-net for multiple source separations. <em>arXiv preprint arXiv:1907.01277</em>, 2019.</p>
+</dd>
+<dt class="label" id="id56"><span class="brackets">Mik12</span></dt>
+<dd><p>Tomáš Mikolov. <em>Statistical language models based on neural networks</em>. PhD thesis, Brno University of Technology, 2012.</p>
+</dd>
+<dt class="label" id="id49"><span class="brackets">ODZ+16</span></dt>
+<dd><p>Aaron van den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, and Koray Kavukcuoglu. Wavenet: a generative model for raw audio. <em>arXiv preprint arXiv:1609.03499</em>, 2016.</p>
+</dd>
+<dt class="label" id="id67"><span class="brackets">PBSondergaard13</span></dt>
+<dd><p>Nathanaël Perraudin, Peter Balazs, and Peter L Søndergaard. A fast griffin-lim algorithm. In <em>2013 IEEE Workshop on Applications of Signal Processing to Audio and Acoustics</em>, 1–4. IEEE, 2013.</p>
+</dd>
+<dt class="label" id="id39"><span class="brackets">PCC+20</span></dt>
+<dd><p>Darius Petermann, Pritish Chandna, Helena Cuesta, Jordi Bonada, and Emilia Gomez. Deep learning based source separation applied to choir ensembles. <em>arXiv preprint arXiv:2008.07645</em>, 2020.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">PP18</span></dt>
+<dd><p>Fatemeh Pishdadian and Bryan Pardo. Multi-resolution common fate transform. <em>IEEE/ACM Transactions on Audio, Speech, and Language Processing</em>, 27(2):342–354, 2018.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets">PAB+02</span></dt>
+<dd><p>Mark D Plumbley, Samer A Abdallah, Juan Pablo Bello, Mike E Davies, Giuliano Monti, and Mark B Sandler. Automatic music transcription and audio source separation. <em>Cybernetics &amp;Systems</em>, 33(6):603–627, 2002.</p>
+</dd>
+<dt class="label" id="id84"><span class="brackets">RLStoter+17</span></dt>
+<dd><p>Zafar Rafii, Antoine Liutkus, Fabian-Robert Stöter, Stylianos Ioannis Mimilakis, and Rachel Bittner. The MUSDB18 corpus for music separation. December 2017. URL: <a class="reference external" href="https://doi.org/10.5281/zenodo.1117372">https://doi.org/10.5281/zenodo.1117372</a>, <a class="reference external" href="https://doi.org/10.5281/zenodo.1117372">doi:10.5281/zenodo.1117372</a>.</p>
+</dd>
+<dt class="label" id="id76"><span class="brackets">RLStoter+18</span></dt>
+<dd><p>Zafar Rafii, Antoine Liutkus, Fabian-Robert Stöter, Stylianos Ioannis Mimilakis, Derry FitzGerald, and Bryan Pardo. An overview of lead and accompaniment separation in music. <em>IEEE/ACM Transactions on Audio, Speech, and Language Processing</em>, 26(8):1307–1335, 2018.</p>
+</dd>
+<dt class="label" id="id85"><span class="brackets">RLS+19</span></dt>
+<dd><p>Zafar Rafii, Antoine Liutkus, Fabian-Robert Stöter, Stylianos Ioannis Mimilakis, and Rachel Bittner. Musdb18-hq - an uncompressed version of musdb18. August 2019. URL: <a class="reference external" href="https://doi.org/10.5281/zenodo.3338373">https://doi.org/10.5281/zenodo.3338373</a>, <a class="reference external" href="https://doi.org/10.5281/zenodo.3338373">doi:10.5281/zenodo.3338373</a>.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">RP11</span></dt>
+<dd><p>Zafar Rafii and Bryan Pardo. Degenerate unmixing estimation technique using the constant q transform. In <em>2011 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 217–220. IEEE, 2011.</p>
+</dd>
+<dt class="label" id="id74"><span class="brackets">RP12a</span></dt>
+<dd><p>Zafar Rafii and Bryan Pardo. Music/voice separation using the similarity matrix. In <em>ISMIR</em>. 2012.</p>
+</dd>
+<dt class="label" id="id73"><span class="brackets">RP12b</span></dt>
+<dd><p>Zafar Rafii and Bryan Pardo. Repeating pattern extraction technique (repet): a simple method for music/voice separation. <em>IEEE transactions on audio, speech, and language processing</em>, 21(1):73–84, 2012.</p>
+</dd>
+<dt class="label" id="id77"><span class="brackets">SBStoter+18</span></dt>
+<dd><p>Michael Schoeffler, Sarah Bartoschek, Fabian-Robert Stöter, Marlene Roess, Susanne Westphal, Bernd Edler, and Jürgen Herre. Webmushra—a comprehensive framework for web-based listening tests. <em>Journal of Open Research Software</em>, 2018.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">SPP17</span></dt>
+<dd><p>Prem Seetharaman, Fatemeh Pishdadian, and Bryan Pardo. Music/voice separation using the 2d fourier transform. In <em>2017 IEEE Workshop on Applications of Signal Processing to Audio and Acoustics (WASPAA)</em>, 36–40. IEEE, 2017.</p>
+</dd>
+<dt class="label" id="id60"><span class="brackets">SWPR20</span></dt>
+<dd><p>Prem Seetharaman, Gordon Wichern, Bryan Pardo, and Jonathan Le Roux. Autoclip: adaptive gradient clipping for source separation networks. <em>arXiv preprint arXiv:2007.14469</em>, 2020.</p>
+</dd>
+<dt class="label" id="id42"><span class="brackets">SDL19</span></dt>
+<dd><p>Bidisha Sharma, Rohan Kumar Das, and Haizhou Li. On the importance of audio-source separation for singer identification in polyphonic music. In <em>INTERSPEECH</em>, 2020–2024. 2019.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets">SLL+19</span></dt>
+<dd><p>Ziqiang Shi, Huibin Lin, Liu Liu, Rujie Liu, and Jiqing Han. Is cqt more suitable for monaural speech separation than stft? an empirical study. <em>arXiv preprint arXiv:1902.00631</em>, 2019.</p>
+</dd>
+<dt class="label" id="id41"><span class="brackets">SHGomez20</span></dt>
+<dd><p>Olga Slizovskaia, Gloria Haro, and Emilia Gómez. Conditioned source separation for music instrument performances. <em>arXiv preprint arXiv:2004.03873</em>, 2020.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">SI11</span></dt>
+<dd><p>Juliu O Smith III. <em>Spectral audio signal processing</em>. W3K publishing, 2011.</p>
+</dd>
+<dt class="label" id="id28"><span class="brackets">SED18a</span></dt>
+<dd><p>Daniel Stoller, Sebastian Ewert, and Simon Dixon. Jointly detecting and separating singing voice: a multi-task approach. In <em>International Conference on Latent Variable Analysis and Signal Separation</em>, 329–339. Springer, Cham, 2018.</p>
+</dd>
+<dt class="label" id="id45"><span class="brackets">SED18b</span></dt>
+<dd><p>Daniel Stoller, Sebastian Ewert, and Simon Dixon. Wave-u-net: a multi-scale neural network for end-to-end audio source separation. <em>arXiv preprint arXiv:1806.03185</em>, 2018.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets">StoterLB+16</span></dt>
+<dd><p>Fabian-Robert Stöter, Antoine Liutkus, Roland Badeau, Bernd Edler, and Paul Magron. Common fate model for unison source separation. In <em>2016 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 126–130. IEEE, 2016.</p>
+</dd>
+<dt class="label" id="id72"><span class="brackets">TM20</span></dt>
+<dd><p>Naoya Takahashi and Yuki Mitsufuji. D3net: densely connected multidilated densenet for music source separation. <em>arXiv preprint arXiv:2010.01733</em>, 2020.</p>
+</dd>
+<dt class="label" id="id53"><span class="brackets">UVL16</span></dt>
+<dd><p>Dmitry Ulyanov, Andrea Vedaldi, and Victor Lempitsky. Instance normalization: the missing ingredient for fast stylization. <em>arXiv preprint arXiv:1607.08022</em>, 2016.</p>
+</dd>
+<dt class="label" id="id63"><span class="brackets">VGFevotte06</span></dt>
+<dd><p>Emmanuel Vincent, Rémi Gribonval, and Cédric Févotte. Performance measurement in blind audio source separation. <em>IEEE transactions on audio, speech, and language processing</em>, 14(4):1462–1469, 2006.</p>
+</dd>
+<dt class="label" id="id23"><span class="brackets">VVG18</span></dt>
+<dd><p>Emmanuel Vincent, Tuomas Virtanen, and Sharon Gannot. <em>Audio source separation and speech enhancement</em>. John Wiley &amp; Sons, 2018.</p>
+</dd>
+<dt class="label" id="id79"><span class="brackets">WLRH18</span></dt>
+<dd><p>Zhong-Qiu Wang, Jonathan Le Roux, and John R Hershey. Alternative objective functions for deep clustering. In <em>2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 686–690. IEEE, 2018.</p>
+</dd>
+<dt class="label" id="id62"><span class="brackets">WHLRS14</span></dt>
+<dd><p>Felix Weninger, John R Hershey, Jonathan Le Roux, and Björn Schuller. Discriminatively trained recurrent neural networks for single-channel speech separation. In <em>2014 IEEE Global Conference on Signal and Information Processing (GlobalSIP)</em>, 577–581. IEEE, 2014.</p>
+</dd>
+<dt class="label" id="id27"><span class="brackets">WWollmerS11</span></dt>
+<dd><p>Felix Weninger, Martin Wöllmer, and Björn Schuller. Automatic assessment of singer traits in popular music: gender, age, height and race. In <em>Proc. 12th Intern. Society for Music Information Retrieval Conference, ISMIR 2011, Miami, FL, USA</em>. 2011.</p>
+</dd>
+<dt class="label" id="id68"><span class="brackets">WLR18</span></dt>
+<dd><p>Gordon Wichern and Jonathan Le Roux. Phase reconstruction with learned time-frequency representations for single-channel speech separation. In <em>2018 16th International Workshop on Acoustic Signal Enhancement (IWAENC)</em>, 396–400. IEEE, 2018.</p>
+</dd>
+<dt class="label" id="id57"><span class="brackets">WH18</span></dt>
+<dd><p>Yuxin Wu and Kaiming He. Group normalization. In <em>Proceedings of the European conference on computer vision (ECCV)</em>, 3–19. 2018.</p>
+</dd>
+<dt class="label" id="id55"><span class="brackets">ZHSJ19</span></dt>
+<dd><p>Jingzhao Zhang, Tianxing He, Suvrit Sra, and Ali Jadbabaie. Why gradient clipping accelerates training: a theoretical justification for adaptivity. <em>arXiv preprint arXiv:1905.11881</em>, 2019.</p>
+</dd>
+<dt class="label" id="id48"><span class="brackets">DumoulinVisin16</span></dt>
+<dd><p>Vincent Dumoulin and Francesco Visin. A guide to convolution arithmetic for deep learning. <em>ArXiv e-prints</em>, mar 2016. <a class="reference external" href="https://arxiv.org/abs/1603.07285">arXiv:1603.07285</a>.</p>
+</dd>
+</dl>
+</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -431,21 +651,19 @@
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-180111316-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
 
-
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-180111316-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
-    
   </body>
 </html>

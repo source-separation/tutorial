@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Representing Audio &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -45,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -59,14 +56,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="TF Representations and Masking" href="tf_and_masking.html" />
     <link rel="prev" title="Map of Open-Source Source Separation Projects" href="../intro/open_src_projects.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -75,30 +72,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../landing.html">
    Open Source Tools &amp; Data for Music Source Separation
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro/tutorial_structure.html">
    Tutorial Structure and Setup
@@ -115,12 +112,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Basics of Source Separation
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Representing Audio
@@ -142,12 +139,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   First Steps
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../first_steps/nussl_intro.html">
    Introduction to nussl
@@ -164,12 +161,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Deep Learning Approaches
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/deep/introduction.html">
    Introduction
@@ -186,12 +183,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../data/introduction.html">
    Introduction
@@ -218,12 +215,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Training
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../training/intro.html">
    Introduction
@@ -245,12 +242,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Conclusions
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../conclusions/applications.html">
    Applications
@@ -262,12 +259,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Resources
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../zzz_refs.html">
    References
@@ -295,6 +292,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -360,12 +358,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -374,12 +372,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#waveforms">
    Waveforms
@@ -458,8 +455,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -542,7 +538,7 @@ ways of displaying a mixture of two linear chirp signals (<em>i.e.</em>, sine wa
 with rising frequency); panel (c) shows a frequency spectrum and panel (d) shows
 a time-frequency representation. Notice how a signal that looks completely
 unseparable in one representation becomes easily separable in another representation.
-Image used courtesy of Fatemeh Pishdadian and Bryan Pardo. <a href="#id2"><span class="problematic" id="id3">:cite:`pishdadian2018multi`</span></a></span><a class="headerlink" href="#representation-img" title="Permalink to this image">¶</a></p>
+Image used courtesy of Fatemeh Pishdadian and Bryan Pardo. <span id="id2">[<a class="reference internal" href="../zzz_refs.html#id7"><span>PP18</span></a>]</span></span><a class="headerlink" href="#representation-img" title="Permalink to this image">¶</a></p>
 </div>
 <p>It can be argued that a source separation approach is only as good as its ability
 to represent audio in a separable manner. With that in mind, it’s important
@@ -586,7 +582,7 @@ on the separation quality of your approach.</p>
 index by frequency, and values in the matrix represent the energy of the sound
 at that partifular time and frequency.</span><a class="headerlink" href="#tf-repr" title="Permalink to this image">¶</a></p>
 </div>
-<p>A Time-Frequency <a href="#id4"><span class="problematic" id="id5">:cite:`smith2011spectral`</span></a> representation is a 2 dimensional
+<p>A Time-Frequency <span id="id3">[<a class="reference internal" href="../zzz_refs.html#id4"><span>SI11</span></a>]</span> representation is a 2 dimensional
 matrix that represents the frequency contents of an audio signal over time.
 There are many types of time-frequency representations out in the world, but we
 will only discuss those that are most frequently used for source separation here.</p>
@@ -611,7 +607,7 @@ courtesy of Bryan Pardo.</span><a class="headerlink" href="#stft-process" title=
 start out as a Short-time Fourier Transform or STFT. An STFT is calculated
 from a waveform representation by computing a
 <a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_Fourier_transform">discrete Fourier transform</a>
-(DFT) of a small, moving window<a class="footnote-reference brackets" href="#fn1" id="id6">2</a> across the duration of the window. The location
+(DFT) of a small, moving window<a class="footnote-reference brackets" href="#fn1" id="id4">2</a> across the duration of the window. The location
 of each entry in an STFT determines its time (x-axis) and frequency (y-axis). The
 absolute value of a TF bin <span class="math notranslate nohighlight">\(|X(t, f)|\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> and frequency <span class="math notranslate nohighlight">\(f\)</span> determines the
 amount of energy heard from frequency <span class="math notranslate nohighlight">\(f\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -623,14 +619,14 @@ to a waveform. This is called the inverse Short-time Fourier Transform or iSTFT.
 <p>Here are some important parameters to consider when computing an STFT:</p>
 <div class="section" id="window-types">
 <h5>Window Types<a class="headerlink" href="#window-types" title="Permalink to this headline">¶</a></h5>
-<div class="figure align-default" id="id7">
+<div class="figure align-default" id="id5">
 <img alt="Six commonly used window types for calculating an STFT." src="../_images/window_types.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Six commonly used window types for calculating an STFT.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Six commonly used window types for calculating an STFT.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The window type determines the shape of the short-time window that will segment
 the audio into short segments before applying the DFT. The shape of this window
 will affect which frequencies get emphasized or attenuated in the DFT. There
-are many types of window functions, in <a class="reference internal" href="#id7"><span class="std std-numref">Fig. 10</span></a>, we show the most
+are many types of window functions, in <a class="reference internal" href="#id5"><span class="std std-numref">Fig. 10</span></a>, we show the most
 common ones when calculating an STFT for source separation. For more information
 on other types of windows and their frequency response, please see <code class="docutils literal notranslate"><span class="pre">scipy.signal</span></code>’s
 documentation <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.windows.html">here</a>.</p>
@@ -740,7 +736,7 @@ Lower frequencies have a larger representation in a mel-spaced spectrogram.</spa
 <p>Human hearing is also logarithmic with regards to frequencies. The
 <a class="reference external" href="https://en.wikipedia.org/wiki/Mel_scale">Mel scale</a> approximates this property
 and is a quick way to make the frequency axis of a spectrogram
-quasi-logarithmic<a class="footnote-reference brackets" href="#fn3" id="id8">3</a>. This is also commonly used to reduce the computational
+quasi-logarithmic<a class="footnote-reference brackets" href="#fn3" id="id6">3</a>. This is also commonly used to reduce the computational
 load on deep learning-based approaches, because the number of Mel-spaced frequency
 bins is often lower then the number of linearly-spaced frequency bins.</p>
 <p>A visual comparison is shown in <a class="reference internal" href="#mel-spectrograms"><span class="std std-numref">Fig. 14</span></a>. Notice the how the
@@ -755,14 +751,14 @@ for a few below:</p>
 <ul class="simple">
 <li><p>Constant-Q Transform (CQT)</p>
 <ul>
-<li><p>General Calculation: <a href="#id9"><span class="problematic" id="id10">:cite:`brown1991calculation,brown1992efficient`</span></a></p></li>
-<li><p>Use in source separation: <a href="#id11"><span class="problematic" id="id12">:cite:`rafii2011degenerate,fuentes2012blind,jaiswal2011clustering,ganseman2012improving,shi2019cqt`</span></a></p></li>
+<li><p>General Calculation: <span id="id7">[<a class="reference internal" href="../zzz_refs.html#id9"><span>Bro91</span></a>,<a class="reference internal" href="../zzz_refs.html#id10"><span>BP92</span></a>]</span></p></li>
+<li><p>Use in source separation: <span id="id8">[<a class="reference internal" href="../zzz_refs.html#id11"><span>RP11</span></a>,<a class="reference internal" href="../zzz_refs.html#id12"><span>FBR12</span></a>,<a class="reference internal" href="../zzz_refs.html#id13"><span>JFB+11</span></a>,<a class="reference internal" href="../zzz_refs.html#id14"><span>GSD12</span></a>,<a class="reference internal" href="../zzz_refs.html#id15"><span>SLL+19</span></a>]</span></p></li>
 </ul>
 </li>
-<li><p>Common Fate Transform (CFT) <a href="#id13"><span class="problematic" id="id14">:cite:`stoter2016common`</span></a></p></li>
-<li><p>Multi-resolution Common Fate Transform (MCFT) <a href="#id15"><span class="problematic" id="id16">:cite:`pishdadian2018multi`</span></a></p></li>
-<li><p>2-Dimensional Fourier Transform (2DFT) <a href="#id17"><span class="problematic" id="id18">:cite:`seetharaman2017music`</span></a></p></li>
-<li><p>Per Channel Energy Normalization (PCEN) <a href="#id19"><span class="problematic" id="id20">:cite:`lostanlen2018per`</span></a></p></li>
+<li><p>Common Fate Transform (CFT) <span id="id9">[<a class="reference internal" href="../zzz_refs.html#id6"><span>StoterLB+16</span></a>]</span></p></li>
+<li><p>Multi-resolution Common Fate Transform (MCFT) <span id="id10">[<a class="reference internal" href="../zzz_refs.html#id7"><span>PP18</span></a>]</span></p></li>
+<li><p>2-Dimensional Fourier Transform (2DFT) <span id="id11">[<a class="reference internal" href="../zzz_refs.html#id8"><span>SPP17</span></a>]</span></p></li>
+<li><p>Per Channel Energy Normalization (PCEN) <span id="id12">[<a class="reference internal" href="../zzz_refs.html#id5"><span>LSC+18</span></a>]</span></p></li>
 </ul>
 </div>
 </div>
@@ -800,11 +796,11 @@ decision about which type of source system is right for your goals.</p>
 <dd><p>Named after <a href="https://en.wikipedia.org/wiki/Heinrich_Hertz">Heinrich Hertz</a>,
 who proved the existence of electromagnetic waves.</p>
 </dd>
-<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id6">2</a></span></dt>
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
 <dd><p>This window is where the term “Short-time” comes from in the name
 “Short-time Fourier Transform”.</p>
 </dd>
-<dt class="label" id="fn3"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
+<dt class="label" id="fn3"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">librosa</span></code>, arguably the most commonly used python library for
 MIR work, has two ways to convert from Hz to Mel, which are slightly
 different: <a href="https://librosa.org/doc/latest/_modules/librosa/core/convert.html#hz_to_mel">see here.</a></p>
@@ -860,21 +856,19 @@ different: <a href="https://librosa.org/doc/latest/_modules/librosa/core/convert
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-180111316-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
 
-
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-180111316-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
-    
   </body>
 </html>

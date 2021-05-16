@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evaluation &#8212; Open-Source Tools &amp; Data for Music Source Separation</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -45,7 +42,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -59,14 +56,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction to nussl" href="../first_steps/nussl_intro.html" />
     <link rel="prev" title="Phase" href="phase.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -75,30 +72,30 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Open-Source Tools & Data for Music Source Separation</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../landing.html">
    Open Source Tools &amp; Data for Music Source Separation
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Introduction
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro/tutorial_structure.html">
    Tutorial Structure and Setup
@@ -115,12 +112,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Basics of Source Separation
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="representations.html">
    Representing Audio
@@ -142,12 +139,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   First Steps
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../first_steps/nussl_intro.html">
    Introduction to nussl
@@ -164,12 +161,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Deep Learning Approaches
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../approaches/deep/introduction.html">
    Introduction
@@ -186,12 +183,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../data/introduction.html">
    Introduction
@@ -218,12 +215,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Training
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../training/intro.html">
    Introduction
@@ -245,12 +242,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Conclusions
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../conclusions/applications.html">
    Applications
@@ -262,12 +259,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Resources
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../zzz_refs.html">
    References
@@ -295,6 +292,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -360,12 +358,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -399,12 +397,11 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#objective-measures">
    Objective Measures
@@ -441,8 +438,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -486,7 +482,7 @@ of four separate components,</p>
 <span class="math notranslate nohighlight">\(e_{\text{artif}}\)</span> are error terms for interference, noise, and added \text{artif}acts,
 respectively. The actual calculations of these terms is quite complex, so
 we refer the curious reader to the original paper for their exact calculation:
-<a href="#id2"><span class="problematic" id="id3">:cite:`vincent2006performance`</span></a>.</p>
+<span id="id2">[<a class="reference internal" href="../zzz_refs.html#id63"><span>VGFevotte06</span></a>]</span>.</p>
 <p>Using these four terms, we can define our measures. All of the measures
 are in terms of decibels (dB), with higher values being better.
 To calculate they require access to the ground truth isolated sources and
@@ -518,7 +514,7 @@ is usually SDR.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As of this writing (October 2020), the best reported SDR for singing
-voice separation on MUSDB18 is <span class="math notranslate nohighlight">\(7.24 dB\)</span>. <a href="#id4"><span class="problematic" id="id5">:cite:`takahashi2020d3net`</span></a>
+voice separation on MUSDB18 is <span class="math notranslate nohighlight">\(7.24 dB\)</span>. <span id="id3">[<a class="reference internal" href="../zzz_refs.html#id72"><span>TM20</span></a>]</span>
 Recent research papers have been reporting vocal SDRs on MUSDB18
 in the range of 6-7 dB.
 Compare the SDR of different systems at this
@@ -539,7 +535,7 @@ Compare the SDR of different systems at this
 <span class="math notranslate nohighlight">\(e_{\text{artif}}\)</span> terms
 can lead to issues where the original signal (top) can be horribly degraded (bottom)
 and still get a very high SDR score.
-Image used courtesy of Jonathan Le Roux. <a href="#id6"><span class="problematic" id="id7">:cite:`le2019sdr`</span></a></span><a class="headerlink" href="#sdr-vs-sisdr" title="Permalink to this image">¶</a></p>
+Image used courtesy of Jonathan Le Roux. <span id="id4">[<a class="reference internal" href="../zzz_refs.html#id64"><span>LRWEH19</span></a>]</span></span><a class="headerlink" href="#sdr-vs-sisdr" title="Permalink to this image">¶</a></p>
 </div>
 <p>A handful of issues have been brought up in the years since it was
 originally proposed. Although some of the issues are implementation-specific,
@@ -549,7 +545,7 @@ that SDR calculates the <span class="math notranslate nohighlight">\(e_{\text{in
 inflated.</p>
 <p>Scale-Invariant Source-to-Distortion Ratio (SI-SDR) aims to remedy this
 by removing SDR’s dependency on the amplitude scaling of the signal.
-<a href="#id8"><span class="problematic" id="id9">:cite:`le2019sdr`</span></a> It also comes with accompanying SI-SAR, and SI-SIR,
+<span id="id5">[<a class="reference internal" href="../zzz_refs.html#id64"><span>LRWEH19</span></a>]</span> It also comes with accompanying SI-SAR, and SI-SIR,
 which corresponds to SAR and SIR described above, respectively.
 Although these measures are not sensitive to amplitude scaling, it
 is a quicker computation because it does not require windowing
@@ -646,7 +642,7 @@ tests, which rarely—if ever—happen when evaluating source separation
 because of how time-consuming and expensive they are.</p>
 <p>Some studies have come have shown that crowd sourcing results from
 MUSHRA-like online listening studies can be an effective alternative
-to trained experts in a controlled setting. <a href="#id10"><span class="problematic" id="id11">:cite:`cartwright2016fast,schoeffler2018webmushra`</span></a>
+to trained experts in a controlled setting. <span id="id6">[<a class="reference internal" href="../zzz_refs.html#id75"><span>CPMH16</span></a>,<a class="reference internal" href="../zzz_refs.html#id77"><span>SBStoter+18</span></a>]</span>
 Although this is much
 cheaper than a full-blown MUSHRA study, it still costs money ($100-200 USD)
 and takes a few days to get the results. Calculating SDR values on
@@ -701,21 +697,19 @@ the other hand is virtually free and takes a few hours at most.</p>
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-180111316-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
 
-
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-180111316-1', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
-    
   </body>
 </html>
