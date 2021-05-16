@@ -27,3 +27,6 @@ html:
   use_repository_button: true
   use_issues_button: true
   google_analytics_id: UA-180111316-1
+  
+bibtex_bibfiles:
+  - references.bib
