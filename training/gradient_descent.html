@@ -687,13 +687,14 @@ Line module within some range, and compute the loss for each one:</p>
     <span class="n">possible_b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="p">))</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m_hat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">possible_m</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">b_hat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">possible_b</span><span class="p">):</span>
-        <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_hat</span>
-        <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">b_hat</span>
-        <span class="n">y_hat</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-        <span class="n">_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">to_tensor</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-        <span class="n">loss</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">_loss</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m_hat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">possible_m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">b_hat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">possible_b</span><span class="p">):</span>
+            <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_hat</span>
+            <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">b_hat</span>
+            <span class="n">y_hat</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+            <span class="n">_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">to_tensor</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">loss</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">_loss</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;2D Visualization of Loss Landscape&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">possible_m</span><span class="p">,</span> <span class="n">possible_b</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
@@ -705,18 +706,7 @@ Line module within some range, and compute the loss for each one:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">3086559</span><span class="n">cf911</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m_hat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">possible_m</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">b_hat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">possible_b</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">10</span>         <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_hat</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">b_hat</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">y_hat</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-
-<span class="ne">RuntimeError</span>: a view of a leaf Variable that requires grad is being used in an in-place operation.
-</pre></div>
-</div>
+<img alt="../_images/gradient_descent_18_0.png" src="../_images/gradient_descent_18_0.png" />
 </div>
 </div>
 <p>What we did: iterate over all values of <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(b\)</span> above and compute the loss.
@@ -735,8 +725,8 @@ value is:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loss minimum of nan at 
-	 m_hat=-2.00, b_hat=-1.84
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loss minimum of 0.086866 at 
+	 m_hat=1.76, b_hat=0.38
 Actual m, b: 
 	 m=1.76, b=0.40
 </pre></div>
@@ -746,10 +736,11 @@ Actual m, b:
 <p>Here’s what the network predictions look like, with the learned line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_hat</span>
-<span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">b_hat</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_hat</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">b_hat</span>
 
-<span class="n">y_hat</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Training data + network predictions&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training data&#39;</span><span class="p">)</span>
@@ -762,18 +753,7 @@ Actual m, b:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">282</span><span class="n">b64ad43ce</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">m_hat</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">line</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">bias</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">b_hat</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">y_hat</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="ne">RuntimeError</span>: a view of a leaf Variable that requires grad is being used in an in-place operation.
-</pre></div>
-</div>
+<img alt="../_images/gradient_descent_22_0.png" src="../_images/gradient_descent_22_0.png" />
 </div>
 </div>
 <p>Iterating over all possible <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(b\)</span> values in a range worked here, but it’s not a great
@@ -797,11 +777,7 @@ at how the loss changes as the value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/numpy/core/_methods.py:178: RuntimeWarning: invalid value encountered in reduce
-  ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
-</pre></div>
-</div>
-<img alt="../_images/gradient_descent_24_1.png" src="../_images/gradient_descent_24_1.png" />
+<img alt="../_images/gradient_descent_24_0.png" src="../_images/gradient_descent_24_0.png" />
 </div>
 </div>
 <p>Now, let’s look at it as <span class="math notranslate nohighlight">\(b\)</span> changes:</p>
@@ -816,11 +792,7 @@ at how the loss changes as the value of <span class="math notranslate nohighligh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.10/x64/lib/python3.7/site-packages/numpy/core/_methods.py:178: RuntimeWarning: invalid value encountered in reduce
-  ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
-</pre></div>
-</div>
-<img alt="../_images/gradient_descent_26_1.png" src="../_images/gradient_descent_26_1.png" />
+<img alt="../_images/gradient_descent_26_0.png" src="../_images/gradient_descent_26_0.png" />
 </div>
 </div>
 <p>The slope of these curves is the gradient. For example, in the first <span class="math notranslate nohighlight">\(m\)</span> plot, we
@@ -847,7 +819,7 @@ the gradients, just compute the loss and then call <code class="docutils literal
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[-5.0323]]), tensor([-0.0600]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([[-0.8747]]), tensor([-0.1000]))
 </pre></div>
 </div>
 </div>
