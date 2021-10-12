@@ -1,54 +1,57 @@
-- file: landing
-
-- part: Introduction
-  chapters:
+format: jb-book
+root: landing
+parts:
+  - caption: Introduction
+    numbered: True
+    chapters:
     - file: intro/tutorial_structure
     - file: intro/src_sep_101
     - file: intro/open_src_projects
 
-- part: Basics of Source Separation
-  chapters:
+  - caption: Basics of Source Separation
+    numbered: True
+    chapters:
     - file: basics/representations
     - file: basics/tf_and_masking
     - file: basics/phase
     - file: basics/evaluation
-
-- part: First Steps
-  chapters:
-    - file: first_steps/nussl_intro
-    - file: first_steps/repetition
-    - file: first_steps/byo_hpss
-
-- part: Deep Learning Approaches
-  chapters:
-    - file: approaches/deep/introduction
-    - file: approaches/deep/building_blocks
-    - file: approaches/deep/architectures
-
-- part: Data
-  chapters:
-    - file: data/introduction
-    - file: data/datasets
-    - file: data/musdb18
-    - file: data/scaper
-    - file: data/recap
-
-- part: Training
-  chapters:
-    - file: training/intro
-    - file: training/gradient_descent
-    - file: training/building_blocks
-    - file: training/putting_it_all_together
-
-- part: Conclusions
-  chapters:
-    - file: conclusions/applications
-    - file: conclusions/concluding_remarks
-
-- part: Resources
-  chapters:
-    - file: zzz_refs
-    - file: resources/reading
-    - file: resources/cite_this
-    - file: resources/acknowledgements
-    - file: resources/authors
+#
+#- part: First Steps
+#  chapters:
+#    - file: first_steps/nussl_intro
+#    - file: first_steps/repetition
+#    - file: first_steps/byo_hpss
+#
+#- part: Deep Learning Approaches
+#  chapters:
+#    - file: approaches/deep/introduction
+#    - file: approaches/deep/building_blocks
+#    - file: approaches/deep/architectures
+#
+#- part: Data
+#  chapters:
+#    - file: data/introduction
+#    - file: data/datasets
+#    - file: data/musdb18
+#    - file: data/scaper
+#    - file: data/recap
+#
+#- part: Training
+#  chapters:
+#    - file: training/intro
+#    - file: training/gradient_descent
+#    - file: training/building_blocks
+#    - file: training/putting_it_all_together
+#
+#- part: Conclusions
+#  chapters:
+#    - file: conclusions/applications
+#    - file: conclusions/concluding_remarks
+#
+#- part: Resources
+#  chapters:
+#    - file: zzz_refs
+#    - file: resources/reading
+#    - file: resources/cite_this
+#    - file: resources/acknowledgements
+#    - file: resources/authors
