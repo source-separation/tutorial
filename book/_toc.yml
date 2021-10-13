@@ -2,19 +2,26 @@ format: jb-book
 root: landing
 parts:
   - caption: Introduction
-    numbered: True
+#    numbered: True
     chapters:
     - file: intro/tutorial_structure
     - file: intro/src_sep_101
     - file: intro/open_src_projects
 
   - caption: Basics of Source Separation
-    numbered: True
+#    numbered: True
     chapters:
     - file: basics/representations
     - file: basics/tf_and_masking
     - file: basics/phase
     - file: basics/evaluation
+
+  - caption: MDX Challenge
+    chapters:
+      - file: mdx/mdx
+      - file: mdx/cws_presunet
+      - file: mdx/kuielab_mdx_net
+      - file: mdx/demucs_pp
 #
 #- part: First Steps
 #  chapters:

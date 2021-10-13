@@ -1,0 +1,3 @@
+(mdx)=
+
+# MDX Challenge
